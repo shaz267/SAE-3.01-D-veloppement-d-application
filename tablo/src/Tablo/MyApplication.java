@@ -43,7 +43,7 @@ public class MyApplication extends Application {
 
         root.getChildren().addAll(racine);
         stage.setScene(scene);
-        stage.setTitle("Tabl'o"); // Titre de la fenêtre
+        stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage
     }
 

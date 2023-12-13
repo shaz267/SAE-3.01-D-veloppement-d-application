@@ -52,4 +52,30 @@ public class Liste {
 	public void retirerTache(Tache t){
 		this.taches.remove(t);
 	}
+
+	/**
+	 * Permet de récupérer l'attribut titre
+	 * @return titre de l'objet Liste
+	 */
+	public String getTitre() {
+		return this.titre;
+	}
+
+	/**
+	 * Permet de récupérer l'attribut id
+	 * @return id de l'objet Liste
+	 */
+	public int getId() {
+		return this.id;
+	}
+
+	/**
+	 * Permet de récupérer l'attribut taches
+	 * @return taches de l'objet Liste
+	 */
+	public List<Tache> getTaches() {
+		return this.taches;
+	}
+
+
 }

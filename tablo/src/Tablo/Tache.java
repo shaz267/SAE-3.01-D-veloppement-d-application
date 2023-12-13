@@ -79,4 +79,12 @@ public abstract class Tache {
         this.dateDebut = dateDebut;
     }
 
+    /**
+     * Méthode qui retourne l'attribut titre de la tâche.
+     * @return titre
+     */
+    public String getTitre() {
+        return this.titre;
+    }
+
 }

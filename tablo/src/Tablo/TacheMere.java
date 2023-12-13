@@ -28,6 +28,7 @@ public class TacheMere extends Tache{
      */
     public boolean ajouterTache(Tache tache) {
 
+        Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
         return this.taches.add(tache);
     }
 
@@ -38,6 +39,7 @@ public class TacheMere extends Tache{
      */
     public boolean supprimerTache(Tache tache) {
 
+        Loggeur.enregistrer("Suppression de la tâche " + tache.getTitre() + " de la tâche mère " + this.titre);
         return this.taches.remove(tache);
     }
 

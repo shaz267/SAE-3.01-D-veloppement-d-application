@@ -1,23 +1,24 @@
 package Tablo;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Modele implements Sujet{
 
     /**
      * Attribut tableauCourant de la classe Modele qui est un entier qui représente l'id du tableau courant.
      */
-    private static int tableauCourant = -1;
+    private static int tableauCourant = 0;
 
     /**
      * Attribut listeCourante de la classe Modele qui est un entier qui représente l'id de la liste courante.
      */
-    private static int listeCourante = -1;
+    private static int listeCourante = 0;
 
     /**
      * Attribut tacheCourante de la classe Modele qui est un entier qui représente l'id de la tâche courante.
      */
-    private static int tacheCourante = -1;
+    private static int tacheCourante = 0;
 
     /**
      * Attribut tableaux de la classe Modele qui est un tableau de tableaux qui représente les tableaux de l'application.
@@ -35,7 +36,32 @@ public class Modele implements Sujet{
     public Modele() {
 
         this.tableaux = new ArrayList<Tableau>();
+        this.tableaux.add(new Tableau("Tableau 1"));
         this.observateurs = new ArrayList<Observateur>();
+    }
+
+    /**
+     * Méthode qui permet de changer le tableau courant.
+     */
+    public void changerTableauCourant(int id) {
+
+        tableauCourant = id;
+    }
+
+    /**
+     * Méthode qui permet de changer la liste courante.
+     */
+    public void changerListeCourante(int id) {
+
+        listeCourante = id;
+    }
+
+    /**
+     * Méthode qui permet de changer la tâche courante.
+     */
+    public void changerTacheCourante(int id) {
+
+        tacheCourante = id;
     }
 
     /**
@@ -80,6 +106,10 @@ public class Modele implements Sujet{
         }
     }
 
+    /**
+     * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
+     * @param nouveauTitre
+     */
     public void changerTitreTache(String nouveauTitre) {
 
         for (Tableau tableau : tableaux) {
@@ -92,6 +122,91 @@ public class Modele implements Sujet{
         }
     }
 
+    /**
+     * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
+     * @param nouveauContenu
+     */
+    public void changerContenuTache(String nouveauContenu) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getId() == tableauCourant) {
+
+                tableau.changerContenuTache(nouveauContenu);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui change le titre de la liste courante dans le tableau courant.
+     * @param dateLimite
+     */
+    public void modifierDateLimite(Date dateLimite) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getId() == tableauCourant) {
+
+                tableau.modifierDateLimite(dateLimite);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui met la tâche en terminée.
+     */
+    public void fini() {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getId() == tableauCourant) {
+
+                tableau.fini();
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui ajoute une liste au tableau courant.
+     * @param l
+     */
+    public void ajouterListe(Liste l) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.ajouterListe(l);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui retourne le tableau courant.
+     * @return
+     */
+    public ArrayList<Tableau> getTableaux() {
+        return tableaux;
+    }
+
+    /**
+     * Méthode qui retourne la liste de liste du tableau courant.
+     * @return
+     */
+    public ArrayList<Liste> getListes() {
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getId() == tableauCourant) {
+
+                return tableau.getListes();
+            }
+        }
+        return null;
+    }
 
 
     public void enregistrerObservateur(Observateur o) {
@@ -123,4 +238,5 @@ public class Modele implements Sujet{
     public static int getTacheCourante() {
         return tacheCourante;
     }
+
 }

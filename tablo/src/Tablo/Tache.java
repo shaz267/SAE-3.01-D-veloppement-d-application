@@ -58,6 +58,8 @@ public abstract class Tache {
      * @param titre
      */
     public void changerTitre(String titre) {
+
+        Loggeur.enregistrer("Changement du titre de la tâche " + this.titre + " en " + titre);
         this.titre = titre;
     }
 
@@ -66,6 +68,8 @@ public abstract class Tache {
      * @param contenu
      */
     public void changerContenu(String contenu) {
+
+        Loggeur.enregistrer("Changement du contenu de la tâche " + this.titre + " en " + contenu);
         this.contenu = contenu;
     }
 
@@ -74,6 +78,8 @@ public abstract class Tache {
      * @param dateLimite
      */
     public void modifierDateLimite(Date dateLimite) {
+
+        Loggeur.enregistrer("Changement de la date limite de la tâche " + this.titre + " en " + dateLimite);
         this.dateLimite = dateLimite;
     }
 
@@ -97,6 +103,8 @@ public abstract class Tache {
      * @return titre
      */
     public void fini(){
+
+        Loggeur.enregistrer("La tâche " + this.titre + " est terminée");
         this.estTerminee = true;
     }
 

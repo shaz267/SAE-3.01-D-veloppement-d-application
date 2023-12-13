@@ -18,6 +18,11 @@ public class Tableau {
     // Correspond à l'ensemble des listes dans un objet Tableau
     private List<Liste> listes;
 
+    private static int numTableauMax = 0;
+
+
+    private int numTableau;
+
     /**
      * Constructeur de l'objet Tableau
      * @param t titre du tableau
@@ -25,6 +30,8 @@ public class Tableau {
     public Tableau(String t){
         this.id = -1;
         this.titre = t;
+        this.numTableau = numTableauMax;
+        numTableauMax++;
         this.listes = new ArrayList<>();
     }
 
@@ -105,7 +112,22 @@ public class Tableau {
         }
     }
 
+
+    public void ajouterListe(Liste l) {
+
+        this.listes.add(l);
+    }
+
     public int getId() {
         return this.id;
     }
+
+    public ArrayList<Liste> getListes() {
+        return (ArrayList<Liste>) this.listes;
+    }
+
+    public int getNumTableau() {
+        return numTableau;
+    }
+
 }

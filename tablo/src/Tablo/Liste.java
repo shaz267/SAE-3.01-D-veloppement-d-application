@@ -35,6 +35,8 @@ public class Liste {
 	 * @param titre nouvelle valeur de l'attribut
 	 */
 	public void changerTitre(String titre) {
+
+		Loggeur.enregistrer("Changement du titre de la liste " + this.titre + " en " + titre);
 		this.titre = titre;
 	}
 
@@ -43,6 +45,8 @@ public class Liste {
 	 * @param t tâche à ajouter
 	 */
 	public void ajouterTache(Tache t){
+
+		Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
 		this.taches.add(t);
 	}
 
@@ -51,6 +55,8 @@ public class Liste {
 	 * @param t tâche à supprimer
 	 */
 	public void retirerTache(Tache t){
+
+		Loggeur.enregistrer("Suppression de la tâche " + t.getTitre() + " de la liste " + this.titre);
 		this.taches.remove(t);
 	}
 

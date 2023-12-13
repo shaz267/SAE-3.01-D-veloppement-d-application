@@ -26,8 +26,8 @@ public class TacheMere extends Tache{
      *
      * @param tache
      */
-    public void ajouterTache(Tache tache) {
-        this.taches.add(tache);
+    public boolean ajouterTache(Tache tache) {
+        return this.taches.add(tache);
     }
 
     /**
@@ -35,8 +35,33 @@ public class TacheMere extends Tache{
      *
      * @param tache
      */
-    public void supprimerTache(Tache tache) {
-        this.taches.remove(tache);
+    public boolean supprimerTache(Tache tache) {
+
+        return this.taches.remove(tache);
+    }
+
+    /**
+     * Méthode qui retourne le tableau de tâches filles de la tâche mère.
+     * @return
+     */
+    public ArrayList<Tache> getTaches() {
+        return taches;
+    }
+
+    /**
+     * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.
+     * @return
+     */
+    public String toString() {
+
+        String s = "-" + this.titre + "\n";
+        for (Tache element : taches) {
+
+            for (String line : element.toString().split("\n")) {
+                s += "| " + line + "\n";
+            }
+        }
+        return s;
     }
 
 }

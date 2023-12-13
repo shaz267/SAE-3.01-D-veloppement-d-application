@@ -10,4 +10,31 @@ public class TacheSimple extends Tache{
     public TacheSimple(String titre, String contenu) {
         super(titre, contenu);
     }
+
+    /**
+     * Méthode qui retourne uniquement false car une tâche simple ne peut pas avoir de tâche fille.
+     *
+     * @param tache
+     */
+    public boolean ajouterTache(Tache tache) {
+        return false;
+    }
+
+    /**
+     * Méthode qui retourne uniquement false car une tâche simple ne peut pas avoir de tâche fille.
+     * @param tache
+     * @return
+     */
+    public boolean supprimerTache(Tache tache) {
+        return false;
+    }
+
+    /**
+     * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.
+     * @return
+     */
+    public String toString() {
+
+        return "> " + this.titre;
+    }
 }

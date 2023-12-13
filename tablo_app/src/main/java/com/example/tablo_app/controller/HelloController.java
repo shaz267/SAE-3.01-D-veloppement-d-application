@@ -1,4 +1,4 @@
-package com.example.tablo_app.model;
+package com.example.tablo_app.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

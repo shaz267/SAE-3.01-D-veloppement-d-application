@@ -5,4 +5,6 @@ module com.example.tablo_app {
 
     opens com.example.tablo_app to javafx.fxml;
     exports com.example.tablo_app;
+    exports com.example.tablo_app.model;
+    opens com.example.tablo_app.model to javafx.fxml;
 }

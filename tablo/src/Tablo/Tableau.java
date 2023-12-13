@@ -91,23 +91,6 @@ public class Tableau {
     }
 
     /**
-     * initialise la date de début de la tache dans la liste courante
-     * @param titre
-     * @param date
-     */
-    public void initialiserDateDebut(String titre, Date date){
-        for (Liste l : this.listes) {
-            if (l.getId() == this.listeCourante) {
-                for (Tache t : l.getTaches()) {
-                    if (t.getTitre().equals(titre)) {
-                        t.initialiserDateDebut(date);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
      * Modifie la date limite de la tache dans la liste courante
      * @param titre
      * @param date

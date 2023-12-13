@@ -30,6 +30,11 @@ public abstract class Tache {
     protected Date dateDebut;
 
     /**
+     * Attribut estTerminee de la classe Tache qui est un booléen qui représente si la tâche est terminée ou non.
+     */
+    protected boolean estTerminee;
+
+    /**
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
      * @param titre
      * @param contenu
@@ -41,6 +46,7 @@ public abstract class Tache {
 
         this.titre = titre;
         this.contenu = contenu;
+        this.estTerminee = false;
         this.dateDebut = new Date();
 
         //On initialise la date limite à la date du jour. Elle serra ensuite changée par la méthode modifierDateLimite.
@@ -72,12 +78,21 @@ public abstract class Tache {
     }
 
     /**
-     * Méthode qui change la date de début de la tâche.
-     * @param dateDebut
+     * Méthode qui ajoute une tâche fille à la tâche mère. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
+     * @param tache
+     * @return
      */
-    public void initialiserDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
+    public abstract boolean ajouterTache(Tache tache);
+
+
+    /**
+     * Méthode qui supprime une tâche fille de la tâche mère. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
+     * @param tache
+     * @return
+     */
+    public abstract boolean supprimerTache(Tache tache);
+
+
 
     /**
      * Méthode qui retourne l'attribut titre de la tâche.

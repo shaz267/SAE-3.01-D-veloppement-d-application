@@ -15,9 +15,6 @@ public class Tableau {
     // Correspond au titre/nom du tableau
     private String titre;
 
-    // Correspond au numéro de la liste courante
-    private int listeCourante;
-
     // Correspond à l'ensemble des listes dans un objet Tableau
     private List<Liste> listes;
 
@@ -28,7 +25,6 @@ public class Tableau {
     public Tableau(String t){
         this.id = -1;
         this.titre = t;
-        this.listeCourante = -1;
         this.listes = new ArrayList<>();
     }
 
@@ -38,7 +34,7 @@ public class Tableau {
      */
     public void ajouterTache(Tache t){
         for (Liste l : this.listes) {
-            if (l.getId() == this.listeCourante) {
+            if (l.getId() == Modele.getListeCourante()) {
                 l.ajouterTache(t);
             }
         }
@@ -50,7 +46,8 @@ public class Tableau {
      */
     public void retirerTache(Tache t){
         for (Liste l : this.listes) {
-            if (l.getId() == this.listeCourante) {
+            if (l.getId() == Modele.getListeCourante()) {
+
                 l.retirerTache(t);
             }
         }
@@ -58,53 +55,57 @@ public class Tableau {
 
     /**
      * Change le titre de la tache dans la liste courante
-     * @param titre
      * @param nouveauTitre
      */
-    public void changerTitreTache(String titre, String nouveauTitre){
+    public void changerTitreTache(String nouveauTitre){
         for (Liste l : this.listes) {
-            if (l.getId() == this.listeCourante) {
-                for (Tache t : l.getTaches()) {
-                    if (t.getTitre().equals(titre)) {
-                        t.changerTitre(nouveauTitre);
-                    }
-                }
+            if (l.getId() == Modele.getListeCourante()) {
+
+                l.changerTitreTache(nouveauTitre);
             }
         }
     }
 
     /**
      * Change le titre de la liste courante
-     * @param titre
      * @param nouveauContenu
      */
-    public void changerContenuTache(String titre, String nouveauContenu){
+    public void changerContenuTache(String nouveauContenu){
         for (Liste l : this.listes) {
-            if (l.getId() == this.listeCourante) {
-                for (Tache t : l.getTaches()) {
-                    if (t.getTitre().equals(titre)) {
-                        t.changerContenu(nouveauContenu);
-                    }
-                }
+            if (l.getId() == Modele.getListeCourante()) {
+
+                l.changerContenuTache(nouveauContenu);
             }
         }
     }
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     * @param titre
      * @param date
      */
-    public void modifierDateLimite(String titre, Date date){
+    public void modifierDateLimite(Date date){
         for (Liste l : this.listes) {
-            if (l.getId() == this.listeCourante) {
-                for (Tache t : l.getTaches()) {
-                    if (t.getTitre().equals(titre)) {
-                        t.modifierDateLimite(date);
-                    }
-                }
+            if (l.getId() == Modele.getListeCourante()) {
+
+                l.modifierDateLimite(date);
             }
         }
     }
 
+    /**
+     * Appelle la méthode fini() de la liste courante
+     */
+    public void fini(){
+
+        for (Liste l : this.listes) {
+            if (l.getId() == Modele.getListeCourante()) {
+
+                l.fini();
+            }
+        }
+    }
+
+    public int getId() {
+        return this.id;
+    }
 }

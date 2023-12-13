@@ -1,6 +1,7 @@
 package Tablo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,6 +52,57 @@ public class Liste {
 	 */
 	public void retirerTache(Tache t){
 		this.taches.remove(t);
+	}
+
+	/**
+	 * Permet de changer le titre d'une tâche dans la liste des taches
+	 * @param nouveauTitre
+	 */
+	public void changerTitreTache(String nouveauTitre){
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				t.changerTitre(nouveauTitre);
+			}
+		}
+	}
+
+	/**
+	 * Permet de changer le contenu d'une tâche dans la liste des taches
+	 * @param nouveauContenu
+	 */
+	public void changerContenuTache(String nouveauContenu){
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				t.changerContenu(nouveauContenu);
+			}
+		}
+	}
+
+	/**
+	 * Permet de changer la date limite d'une tâche dans la liste des taches
+	 * @param dateLimite
+	 */
+	public void modifierDateLimite(Date dateLimite) {
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				t.modifierDateLimite(dateLimite);
+			}
+		}
+	}
+
+	/**
+	 * Permet de mettre une tâche en terminée
+	 */
+	public void fini(){
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				t.fini();
+			}
+		}
 	}
 
 	/**

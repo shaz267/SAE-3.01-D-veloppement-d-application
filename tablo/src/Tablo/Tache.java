@@ -92,6 +92,14 @@ public abstract class Tache {
      */
     public abstract boolean supprimerTache(Tache tache);
 
+    /**
+     * Méthode qui met la tâche en terminée.
+     * @return titre
+     */
+    public void fini(){
+        this.estTerminee = true;
+    }
+
 
 
     /**
@@ -102,4 +110,7 @@ public abstract class Tache {
         return this.titre;
     }
 
+    public int getId() {
+        return this.id;
+    }
 }

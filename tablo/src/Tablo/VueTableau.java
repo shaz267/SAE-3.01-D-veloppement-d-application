@@ -32,7 +32,7 @@ public class VueTableau extends HBox implements Observateur {
     public void actualiser(Sujet s) {
 
         //On efface tout
-        //this.getChildren().clear();
+        this.getChildren().clear();
 
         Modele m = (Modele) s;
 
@@ -40,10 +40,8 @@ public class VueTableau extends HBox implements Observateur {
         Tableau t = m.getTableaux().get(this.numTableau);
 
 
-
         for (Liste liste : t.getListes()) {
 
-            System.out.println(liste.getTitre());
             VueListe vueListe = new VueListe(liste.getId(), liste.getTitre());
             vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
             this.getChildren().add(vueListe);

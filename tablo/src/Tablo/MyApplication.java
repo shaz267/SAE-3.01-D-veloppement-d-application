@@ -135,6 +135,8 @@ public class MyApplication extends Application {
 
 
 
+        HBox centre = new HBox();
+
         VueTableau center = new VueTableau(0, "Tableau 1");
         //On enregistre le centre comme observateur du modèle
         modele.enregistrerObservateur(center);
@@ -149,9 +151,9 @@ public class MyApplication extends Application {
         ajouterListe.setOnMouseClicked(new ControleurAjouterListe(modele));
 
         //On ajoute les composantes graphiques à la racine
-        center.getChildren().add(ajouterListe);
+        centre.getChildren().addAll(center, ajouterListe);
 
-        root.setCenter(center);
+        root.setCenter(centre);
 
 
         stage.setScene(scene);

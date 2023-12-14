@@ -19,6 +19,9 @@ public class VueTableau extends HBox implements Observateur {
         super();
         this.numTableau = numTableau;
         this.setSpacing(10);
+
+        this.numTableau = Modele.nombresTableaux;
+        Modele.nombresTableaux++;
     }
 
     /**
@@ -28,19 +31,22 @@ public class VueTableau extends HBox implements Observateur {
     @Override
     public void actualiser(Sujet s) {
 
+        //On efface tout
+        //this.getChildren().clear();
+
         Modele m = (Modele) s;
 
         //On récupère le tableau courant
-        //Tableau t = m.getTableaux().get(Modele.getTableauCourant());
-        Tableau t = m.getTableaux().get(0);
+        Tableau t = m.getTableaux().get(this.numTableau);
 
-        //On récupère la liste courante
-        Liste l = t.getListes().get(t.getListes().size() - 1);
 
-        //On crée la vue de la liste
-        VueListe vl = new VueListe(l.getId(), l.getTitre());
 
-        //On ajoute la vue de la liste à la vue du tableau
-        this.getChildren().add(vl);
+        for (Liste liste : t.getListes()) {
+
+            System.out.println(liste.getTitre());
+            VueListe vueListe = new VueListe(liste.getId(), liste.getTitre());
+            vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
+            this.getChildren().add(vueListe);
+        }
     }
 }

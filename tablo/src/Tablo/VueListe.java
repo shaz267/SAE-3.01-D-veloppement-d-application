@@ -22,10 +22,12 @@ public class VueListe extends VBox implements Observateur {
 
         //On leur donne une taille fixe
         this.setMinWidth(200);
-        this.setMaxHeight(300);
 
         //On leur donne une couleur de fond
         this.setStyle("-fx-background-color: #e6e6e6;");
+
+        Modele.nombresListes++;
+        this.numListe = Modele.nombresListes;
     }
 
     /**
@@ -36,5 +38,9 @@ public class VueListe extends VBox implements Observateur {
     public void actualiser(Sujet s) {
 
 
+    }
+
+    public int getNumListe() {
+        return numListe;
     }
 }

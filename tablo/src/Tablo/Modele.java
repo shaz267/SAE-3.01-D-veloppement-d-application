@@ -21,6 +21,21 @@ public class Modele implements Sujet{
     private static int tacheCourante = 0;
 
     /**
+     * Attribut nombresTableaux de la classe Modele qui est un entier qui représente le nombre de tableaux de l'application.
+     */
+    public static int nombresTableaux = 0;
+
+    /**
+     * Attribut nombresListes de la classe Modele qui est un entier qui représente le nombre de listes de l'application.
+     */
+    public static int nombresListes = 0;
+
+    /**
+     * Attribut nombresTaches de la classe Modele qui est un entier qui représente le nombre de tâches de l'application.
+     */
+    public static int nombresTaches = 0;
+
+    /**
      * Attribut tableaux de la classe Modele qui est un tableau de tableaux qui représente les tableaux de l'application.
      */
     private ArrayList<Tableau> tableaux;
@@ -54,6 +69,7 @@ public class Modele implements Sujet{
     public void changerListeCourante(int id) {
 
         listeCourante = id;
+        this.notifierObservateurs();
     }
 
     /**

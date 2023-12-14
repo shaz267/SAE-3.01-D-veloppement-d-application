@@ -112,20 +112,35 @@ public class Tableau {
         }
     }
 
-
+    /**
+     * Ajoute une liste à l'objet Tableau
+     * @param l liste à ajouter
+     */
     public void ajouterListe(Liste l) {
 
         this.listes.add(l);
     }
 
+    /**
+     * Retire l'Id de la liste de l'objet Tableau
+     * @return id
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * Retourne la liste des listes de l'objet Tableau
+     * @return listes
+     */
     public ArrayList<Liste> getListes() {
         return (ArrayList<Liste>) this.listes;
     }
 
+    /**
+     * Retourne le numéro du tableau
+     * @return numTableau
+     */
     public int getNumTableau() {
         return numTableau;
     }

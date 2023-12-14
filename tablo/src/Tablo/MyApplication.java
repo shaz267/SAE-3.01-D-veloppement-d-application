@@ -1,6 +1,7 @@
 package Tablo;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -83,6 +84,7 @@ public class MyApplication extends Application {
         text.setY(110);
 
         StackPane stack = new StackPane();
+        stack.setPadding(new Insets(10, 10, 10, 850));
         stack.getChildren().addAll(circle, text);
 
         //TODO : mettre le StackPane à droite

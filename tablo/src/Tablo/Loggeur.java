@@ -48,4 +48,25 @@ public class Loggeur {
         }
 
     }
+
+    /**
+     * Affiche le contenu du fichier log.txt du plus récent au plus ancien
+     * @return Le contenu du fichier log.txt
+     */
+    public static String afficherLog() {
+    	StringBuilder log = new StringBuilder();
+    	try {
+    		BufferedReader reader = new BufferedReader(new FileReader("log.txt"));
+    		String line = reader.readLine();
+    		while (line != null) {
+    			log.insert(0, line + "\n");
+    			line = reader.readLine();
+    		}
+    		reader.close();
+    	}
+    	catch (IOException e) {
+    		System.out.println("Erreur lors de la lecture du fichier log.txt");
+    	}
+    	return log.toString();
+    }
 }

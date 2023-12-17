@@ -1,5 +1,6 @@
 package Tablo;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 public class VueListe extends VBox implements Observateur {
@@ -30,6 +31,9 @@ public class VueListe extends VBox implements Observateur {
 
         // Couleur de fond de la liste
         this.setStyle("-fx-background-color: #e6e6e6;");
+
+        this.setMinHeight(700);
+        this.setPadding(new Insets(10));
 
 
         Modele.nombresListes++;

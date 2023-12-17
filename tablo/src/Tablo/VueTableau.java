@@ -1,50 +1,56 @@
 package Tablo;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-public class VueTableau extends HBox implements Observateur {
+public class VueTableau extends ScrollPane implements Observateur {
 
-    /**
-     * Attribut qui permet de reconnaitre un tableau
-     */
     private int numTableau;
+    private Button ajouterListe;
+    private HBox listeContainer;
 
-    /**
-     * Constructeur de la classe VueTableau
-     * @param numTableau
-     * @param titre
-     */
     public VueTableau(int numTableau, String titre) {
-
         super();
+
         this.numTableau = numTableau;
-        this.setSpacing(10);
+
+        ajouterListe = new Button("Ajouter une liste");
+        ajouterListe.setStyle("-fx-font-weight: bold;");
+        ajouterListe.setStyle("-fx-font-size: 20px;");
+        ajouterListe.setStyle("-fx-background-color: #f8b9a7;");
+        ajouterListe.setPrefSize(200, 50);
+
+        listeContainer = new HBox();
+        listeContainer.setSpacing(10);
+        listeContainer.setFillHeight(true);
+
+        HBox container = new HBox();
+        container.getChildren().addAll(listeContainer, ajouterListe);
+
+        this.setContent(container);
 
         this.numTableau = Modele.nombresTableaux;
         Modele.nombresTableaux++;
     }
 
-    /**
-     * Méthode qui permet de mettre à jour la vue
-     * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
-     */
     @Override
     public void actualiser(Sujet s) {
-
-        //On efface tout
-        this.getChildren().clear();
-
         Modele m = (Modele) s;
-
-        //On récupère le tableau courant
         Tableau t = m.getTableaux().get(this.numTableau);
 
+        listeContainer.getChildren().clear();
 
         for (Liste liste : t.getListes()) {
-
             VueListe vueListe = new VueListe(liste.getId(), liste.getTitre());
             vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
-            this.getChildren().add(vueListe);
+            listeContainer.getChildren().add(vueListe);
         }
+    }
+
+    public Button getAjouterListe() {
+        return ajouterListe;
     }
 }

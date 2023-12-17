@@ -135,25 +135,16 @@ public class MyApplication extends Application {
 
 
 
-        HBox centre = new HBox();
 
-        VueTableau center = new VueTableau(0, "Tableau 1");
+        VueTableau tableauCentre = new VueTableau(0, "Tableau 1");
+        tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
         //On enregistre le centre comme observateur du modèle
-        modele.enregistrerObservateur(center);
+        modele.enregistrerObservateur(tableauCentre);
 
-        Button ajouterListe = new Button("Ajouter une liste");
-        ajouterListe.setStyle("-fx-font-weight: bold;");
-        ajouterListe.setStyle("-fx-font-size: 20px;");
-        ajouterListe.setTranslateY(30);
-        ajouterListe.setTranslateX(30);
-
-        //On ajoute un écouteur d'événement sur le bouton
-        ajouterListe.setOnMouseClicked(new ControleurAjouterListe(modele));
 
         //On ajoute les composantes graphiques à la racine
-        centre.getChildren().addAll(center, ajouterListe);
 
-        root.setCenter(centre);
+        root.setCenter(tableauCentre);
 
 
         stage.setScene(scene);

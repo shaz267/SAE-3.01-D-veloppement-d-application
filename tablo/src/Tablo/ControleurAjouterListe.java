@@ -45,5 +45,7 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
                     modele.ajouterListe(l);
 
                 });
+
+        Loggeur.enregistrer("Ajout d'une liste");
     }
 }

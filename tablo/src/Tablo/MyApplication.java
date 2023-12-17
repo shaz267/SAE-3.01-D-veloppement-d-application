@@ -18,11 +18,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MyApplication extends Application {
+
+    // On crée le modèle
+    private Modele modele = new Modele();
+
     @Override
     public void start(Stage stage) throws IOException {
-
-        // On crée le modèle
-        Modele modele = new Modele();
 
         BorderPane root = new BorderPane();
         // On crée la scène
@@ -93,8 +94,13 @@ public class MyApplication extends Application {
         top.getChildren().addAll(view, espaceTravail, templates, stack);
         root.setTop(top);
 
+        VBox left = new VBox();
 
-        GridPane left = new GridPane();
+        HBox boutonTableaux = new HBox();
+
+        HBox boutonCollaborateurs = new HBox();
+
+        HBox boutonParametres = new HBox();
 
         // On crée les composantes graphiques pour la zone 'left'
         //Tableaux
@@ -111,22 +117,23 @@ public class MyApplication extends Application {
 
         Button ajouterCollaborateur = new Button("+");
 
-        //Paramètres
-        Text parametres = new Text("Paramètres");
-        parametres.setStyle("-fx-font-weight: bold;");
-        parametres.setStyle("-fx-font-size: 20px;");
+        //VueParametre qui permet d'accéder aux paramètres
+        VueParametre parametres = new VueParametre();
 
-        Button ajouterParametre = new Button("+");
+        //On ajoute un évènement au bouton qui permet d'accéder aux paramètres à l'aide du controleur
+        parametres.getAllerParametre().setOnMouseClicked(new ControleurParametre(modele));
+
 
         //On ajoute les composantes graphiques à la racine
-        left.add(tableaux, 0, 0);
-        left.add(ajouterTableau, 1, 0);
-        left.add(collaborateurs, 0, 1);
-        left.add(ajouterCollaborateur, 1, 1);
-        left.add(parametres, 0, 2);
-        left.add(ajouterParametre, 1, 2);
-        left.setVgap(50);
-        left.setHgap(20);
+        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
+        boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
+
+        boutonTableaux.setSpacing(70);
+        boutonCollaborateurs.setSpacing(20);
+
+        left.getChildren().addAll(boutonTableaux, boutonCollaborateurs, parametres);
+
+        left.setSpacing(20);
 
         //On décale les composantes graphiques un peu en bas pour qu'ils ne soient pas collés au bord
         left.setTranslateY(30);

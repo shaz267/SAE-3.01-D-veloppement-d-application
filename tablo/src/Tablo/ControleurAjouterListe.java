@@ -2,6 +2,7 @@ package Tablo;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 
 public class ControleurAjouterListe implements EventHandler<MouseEvent> {
@@ -29,10 +30,20 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
         //On récupère le bouton qui a été cliqué
         //Button b = (Button) mouseEvent.getSource();
 
-        //On crée la liste
-        Liste l = new Liste("Nouvelle liste");
+        // Création d'une nouvelle liste
+        TextInputDialog dialog = new TextInputDialog("Nouvelle liste");
+        dialog.setTitle("Ajouter une liste");
+        dialog.setHeaderText("Ajouter une liste");
+        dialog.setContentText("Veuillez entrer le nom de la liste :");
 
-        //On ajoute la liste au tableau
-        modele.ajouterListe(l);
+        // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
+        dialog.showAndWait().ifPresent(titre -> {
+                    // Création de la liste
+                    Liste l = new Liste(titre);
+
+                    //On ajoute la liste au modele
+                    modele.ajouterListe(l);
+
+                });
     }
 }

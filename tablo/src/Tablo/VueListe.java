@@ -1,13 +1,14 @@
 package Tablo;
 
 import javafx.scene.layout.VBox;
-
+import javafx.scene.control.Label;
 public class VueListe extends VBox implements Observateur {
 
     /**
      * Attribut qui permet de reconnaitre une liste
      */
     private int numListe;
+    private Label labelTitre;
 
     /**
      * Constructeur de la classe VueListe
@@ -19,15 +20,24 @@ public class VueListe extends VBox implements Observateur {
         super();
         this.numListe = numListe;
         this.setSpacing(10);
-
-        //On leur donne une taille fixe
         this.setMinWidth(200);
 
-        //On leur donne une couleur de fond
+        // Affichage du titre de la liste
+        this.labelTitre = new Label(titre);
+        this.labelTitre.setStyle("-fx-font-weight: bold;");
+
+        this.getChildren().add(this.labelTitre);
+
+        // Couleur de fond de la liste
         this.setStyle("-fx-background-color: #e6e6e6;");
+
 
         Modele.nombresListes++;
         this.numListe = Modele.nombresListes;
+
+        this.setOnMouseEntered(event -> setStyle("-fx-background-color: #d9d9d9;"));
+        this.setOnMouseExited(event -> setStyle("-fx-background-color: #e6e6e6;"));
+
     }
 
     /**
@@ -36,7 +46,7 @@ public class VueListe extends VBox implements Observateur {
      */
     @Override
     public void actualiser(Sujet s) {
-
+    //TODO : actualiser la vue liste avec les nouvelles tâches
 
     }
 

@@ -202,6 +202,21 @@ public class Modele implements Sujet{
     }
 
     /**
+     * Méthode qui retire une liste au tableau courant
+     * @param l
+     */
+    public void retirerListe(Liste l){
+        // On parcourt les tableaux
+        for(Tableau tableau : tableaux){
+            // Quand on a trouvé le tableau courant alors on retire la liste et on notifie les observateurs
+            if(tableau.getNumTableau() == tableauCourant){
+                tableau.retirerListe(l);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
      * Méthode qui retourne le tableau courant.
      * @return
      */

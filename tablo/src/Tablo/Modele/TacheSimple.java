@@ -1,4 +1,4 @@
-package Tablo;
+package Tablo.Modele;
 
 public class TacheSimple extends Tache{
     /**

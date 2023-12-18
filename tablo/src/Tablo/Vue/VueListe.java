@@ -1,5 +1,12 @@
-package Tablo;
+package Tablo.Vue;
 
+import Tablo.Controleur.ControleurCreationTache;
+import Tablo.Controleur.ControleurTacheCliquee;
+import Tablo.Modele.Liste;
+import Tablo.Modele.Modele;
+import Tablo.Modele.Tache;
+import Tablo.Observateur;
+import Tablo.Sujet;
 import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;

@@ -1,10 +1,14 @@
-package Tablo;
+package Tablo.Vue;
 
-import javafx.geometry.Insets;
+import Tablo.Controleur.ControleurListeCliquee;
+import Tablo.Modele.Liste;
+import Tablo.Modele.Modele;
+import Tablo.Modele.Tableau;
+import Tablo.Observateur;
+import Tablo.Sujet;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class VueTableau extends ScrollPane implements Observateur {
 

@@ -1,13 +1,13 @@
-package Tablo;
+package Tablo.Controleur;
 
 
+import Tablo.Modele.Modele;
+import Tablo.Modele.Tache;
+import Tablo.Modele.TacheMere;
+import Tablo.Vue.VueListe;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-
-import java.util.ConcurrentModificationException;
 
 public class ControleurCreationTache implements EventHandler<ActionEvent> {
 

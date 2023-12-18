@@ -4,4 +4,7 @@ module tablo {
     requires javafx.base;
 
     exports Tablo;
+    exports Tablo.Modele;
+    exports Tablo.Vue;
+    exports Tablo.Controleur;
 }

@@ -1,5 +1,7 @@
-package Tablo;
+package Tablo.Vue;
 
+import Tablo.Observateur;
+import Tablo.Sujet;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -8,7 +10,7 @@ import javafx.scene.text.Text;
 /**
  * Classe VueParametre qui permet de gérer les paramètres de l'application
  */
-public class VueParametre extends HBox implements Observateur{
+public class VueParametre extends HBox implements Observateur {
 
     //On créé un attribut qui va contenir le titre des paramètres
     private Text titreParametres;

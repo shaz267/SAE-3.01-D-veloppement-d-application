@@ -1,11 +1,13 @@
-package Tablo;
+package Tablo.Modele;
+
+import Tablo.Observateur;
+import Tablo.Sujet;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-public class Modele implements Sujet{
+public class Modele implements Sujet {
 
     /**
      * Attribut tableauCourant de la classe Modele qui est un entier qui représente l'id du tableau courant.

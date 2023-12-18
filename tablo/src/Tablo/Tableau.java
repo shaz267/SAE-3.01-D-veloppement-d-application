@@ -117,8 +117,16 @@ public class Tableau {
      * @param l liste à ajouter
      */
     public void ajouterListe(Liste l) {
-
         this.listes.add(l);
+    }
+
+    /**
+     * Retire une liste de l'objet Tableau
+     * @param l
+     */
+    public void retirerListe(Liste l){
+        Loggeur.enregistrer("Suppression de la liste " + l.getTitre() + " du tableau " + this.titre);
+        this.listes.remove(l);
     }
 
     /**

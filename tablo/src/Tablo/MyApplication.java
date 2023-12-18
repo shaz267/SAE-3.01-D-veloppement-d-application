@@ -87,7 +87,8 @@ public class MyApplication extends Application {
         text.setY(110);
 
         StackPane stack = new StackPane();
-        stack.setPadding(new Insets(10, 10, 10, 850));
+        // On crée un padding pour décaler le StackPane à droite (on voulait le bouton du compte sur la droite)
+        stack.setPadding(new Insets(0, 0, 0, 855));
         stack.getChildren().addAll(circle, text);
 
         //TODO : mettre le StackPane à droite

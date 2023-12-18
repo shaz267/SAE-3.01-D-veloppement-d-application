@@ -1,5 +1,7 @@
-package Tablo;
+package Tablo.Controleur;
 
+import Tablo.Modele.Modele;
+import Tablo.Vue.VueListe;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;

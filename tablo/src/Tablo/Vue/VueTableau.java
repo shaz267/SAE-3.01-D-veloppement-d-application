@@ -1,6 +1,6 @@
 package Tablo.Vue;
 
-import Tablo.Controleur.ControleurListeCliquee;
+import Tablo.Controleur.*;
 import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tableau;

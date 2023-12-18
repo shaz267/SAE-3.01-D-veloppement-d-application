@@ -1,6 +1,6 @@
 package Tablo.Vue;
 
-import Tablo.Controleur.ControleurListeCliquee;
+import Tablo.Controleur.*;
 import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tableau;
@@ -65,6 +65,7 @@ public class VueTableau extends ScrollPane implements Observateur {
 
             VueListe vueListe = new VueListe(liste.getTitre(), numListe, m);
             vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
+            vueListe.setOnMouseClicked(new ControleurSupprimerListe(m));
             listeContainer.getChildren().add(vueListe);
             numListe++;
         }

@@ -1,7 +1,8 @@
-package Tablo;
+package Tablo.Controleur;
 
+import Tablo.Loggeur;
+import Tablo.Modele.Modele;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;

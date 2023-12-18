@@ -1,7 +1,6 @@
-import Tablo.Loggeur;
-import Tablo.Tache;
-import Tablo.TacheMere;
-import Tablo.TacheSimple;
+import Tablo.Modele.Tache;
+import Tablo.Modele.TacheMere;
+import Tablo.Modele.TacheSimple;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

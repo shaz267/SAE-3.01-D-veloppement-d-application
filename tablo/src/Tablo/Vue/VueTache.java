@@ -1,5 +1,8 @@
-package Tablo;
+package Tablo.Vue;
 
+import Tablo.Modele.Modele;
+import Tablo.Observateur;
+import Tablo.Sujet;
 import javafx.scene.text.Text;
 
 public class VueTache extends Text implements Observateur {

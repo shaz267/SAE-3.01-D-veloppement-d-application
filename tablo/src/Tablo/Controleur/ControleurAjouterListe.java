@@ -1,7 +1,10 @@
-package Tablo;
+package Tablo.Controleur;
 
+import Tablo.Loggeur;
+import Tablo.Modele.Liste;
+import Tablo.Modele.Modele;
+import Tablo.Vue.VueListe;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 
@@ -37,13 +40,17 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
 
         // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
         dialog.showAndWait().ifPresent(titre -> {
-                    // Création de la liste
-                    Liste l = new Liste(numListe, titre);
 
-                    //On ajoute la liste au modele
-                    modele.ajouterListe(l);
+            // Création de la liste
+            Liste l = new Liste(numListe, titre);
 
-                });
+            //On ajoute la liste au modele
+            modele.ajouterListe(l);
+
+            //On ajoute la vue à la liste d'observateurs du modele
+            modele.enregistrerObservateur(new VueListe(titre, numListe, modele));
+
+        });
 
         Loggeur.enregistrer("Ajout d'une liste");
     }

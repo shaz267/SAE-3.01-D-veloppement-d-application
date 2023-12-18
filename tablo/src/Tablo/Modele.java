@@ -1,7 +1,9 @@
 package Tablo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public class Modele implements Sujet{
 
@@ -19,21 +21,6 @@ public class Modele implements Sujet{
      * Attribut tacheCourante de la classe Modele qui est un entier qui représente l'id de la tâche courante.
      */
     private static int tacheCourante = 0;
-
-    /**
-     * Attribut nombresTableaux de la classe Modele qui est un entier qui représente le nombre de tableaux de l'application.
-     */
-    public static int nombresTableaux = 0;
-
-    /**
-     * Attribut nombresListes de la classe Modele qui est un entier qui représente le nombre de listes de l'application.
-     */
-    public static int nombresListes = 0;
-
-    /**
-     * Attribut nombresTaches de la classe Modele qui est un entier qui représente le nombre de tâches de l'application.
-     */
-    public static int nombresTaches = 0;
 
     /**
      * Attribut tableaux de la classe Modele qui est un tableau de tableaux qui représente les tableaux de l'application.
@@ -66,10 +53,10 @@ public class Modele implements Sujet{
     /**
      * Méthode qui permet de changer la liste courante.
      */
-    public void changerListeCourante(int id) {
+    public void changerListeCourante(int num) {
 
-        listeCourante = id;
-        this.notifierObservateurs();
+        System.out.println(num);
+        listeCourante = num;
     }
 
     /**
@@ -98,10 +85,9 @@ public class Modele implements Sujet{
 
         for (Tableau tableau : tableaux) {
 
-            if (tableau.getId() == tableauCourant) {
+            if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.ajouterTache(tache);
-                this.notifierObservateurs();
             }
         }
     }
@@ -196,6 +182,7 @@ public class Modele implements Sujet{
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.ajouterListe(l);
+
                 this.notifierObservateurs();
             }
         }
@@ -231,7 +218,7 @@ public class Modele implements Sujet{
     public ArrayList<Liste> getListes() {
         for (Tableau tableau : tableaux) {
 
-            if (tableau.getId() == tableauCourant) {
+            if (tableau.getNumTableau() == tableauCourant) {
 
                 return tableau.getListes();
             }
@@ -250,8 +237,10 @@ public class Modele implements Sujet{
         this.observateurs.remove(o);
     }
 
-    public void notifierObservateurs() {
+    public synchronized void notifierObservateurs() {
 
+
+        System.out.println(this.observateurs);
         for (Observateur observateur : observateurs) {
 
             observateur.actualiser(this);
@@ -270,4 +259,15 @@ public class Modele implements Sujet{
         return tacheCourante;
     }
 
+    public List<Tache> getTaches() {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getId() == tableauCourant) {
+
+                return tableau.getTaches();
+            }
+        }
+        return null;
+    }
 }

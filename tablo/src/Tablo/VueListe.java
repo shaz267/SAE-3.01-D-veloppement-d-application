@@ -1,5 +1,6 @@
 package Tablo;
 
+import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -12,14 +13,17 @@ public class VueListe extends VBox implements Observateur {
     private Label labelTitre;
 
     /**
+     * Modele de l'application
+     */
+    private Modele modele;
+
+    /**
      * Constructeur de la classe VueListe
-     * @param numListe
      * @param titre
      */
-    public VueListe(int numListe, String titre) {
+    public VueListe(String titre, int numListe, Modele modele) {
 
         super();
-        this.numListe = numListe;
         this.setSpacing(10);
         this.setMinWidth(200);
 
@@ -35,13 +39,18 @@ public class VueListe extends VBox implements Observateur {
         this.setMinHeight(700);
         this.setPadding(new Insets(10));
 
-
-        Modele.nombresListes++;
-        this.numListe = Modele.nombresListes;
-
         this.setOnMouseEntered(event -> setStyle("-fx-background-color: #d9d9d9;"));
         this.setOnMouseExited(event -> setStyle("-fx-background-color: #e6e6e6;"));
 
+
+        this.numListe = numListe;
+
+        Button b = new Button("Ajouter une tache");
+
+
+        this.getChildren().add(b);
+
+        b.setOnAction(new ControleurCreationTache(modele));
     }
 
     /**
@@ -50,8 +59,30 @@ public class VueListe extends VBox implements Observateur {
      */
     @Override
     public void actualiser(Sujet s) {
-    //TODO : actualiser la vue liste avec les nouvelles tâches
 
+        System.out.println("Actualisation de la liste");
+
+        //On efface tout
+        this.getChildren().clear();
+
+        Modele m = (Modele) s;
+
+        System.out.println(m.getListes().get(this.numListe - 1).getTaches());
+
+        //On récupère la liste courante
+        Liste l = m.getListes().get(this.numListe - 1);
+
+        for (Tache tache : l.getTaches()) {
+
+            VueTache vueTache = new VueTache(tache.getTitre(), m);
+            vueTache.setOnMouseClicked(new ControleurTacheCliquee(m));
+            this.getChildren().add(vueTache);
+        }
+
+        Button b = new Button("Ajouter une tache");
+
+
+        this.getChildren().add(b);
     }
 
     public int getNumListe() {

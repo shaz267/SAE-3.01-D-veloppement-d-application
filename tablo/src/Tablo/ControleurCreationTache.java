@@ -1,12 +1,15 @@
 package Tablo;
 
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
-public class ControleurCreationTache implements EventHandler<MouseEvent> {
+import java.util.ConcurrentModificationException;
+
+public class ControleurCreationTache implements EventHandler<ActionEvent> {
 
     private Modele modele;
 
@@ -16,15 +19,16 @@ public class ControleurCreationTache implements EventHandler<MouseEvent> {
 
 
     @Override
-    public void handle(MouseEvent mouseEvent) {
+    public void handle(ActionEvent actionEvent) {
 
-        Button b = (Button) mouseEvent.getSource();
+        Button b = (Button) actionEvent.getSource();
 
         //On accède à la Vbox qui contient le bouton
-        VBox v = (VBox) b.getParent();
+        VueListe v = (VueListe) b.getParent();
 
         //On récupere l'id de la liste
-        int idListe = Integer.parseInt(v.getId());
+        int idListe = v.getNumListe();
+        System.out.println(idListe);
         modele.changerListeCourante(idListe);
 
         String titre = "Nouvelle tâche";
@@ -32,5 +36,9 @@ public class ControleurCreationTache implements EventHandler<MouseEvent> {
 
         Tache tache = new TacheMere(titre, contenu);
         modele.ajouterTache(tache);
+
+        //On gère l'exception ConcurrentModificationException en notifiant les observateurs
+        this.modele.notifierObservateurs();
+
     }
 }

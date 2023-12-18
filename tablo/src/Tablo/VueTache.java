@@ -11,13 +11,18 @@ public class VueTache extends Text implements Observateur {
 
     /**
      * Constructeur de la classe VueTache
-     * @param numTache
      * @param titre
      */
-    public VueTache(int numTache, String titre){
+    public VueTache(String titre, Modele modele) {
 
         super(titre);
-        this.numTache = numTache;
+
+        this.setStyle("-fx-background-color: #e6e6e6;");
+        this.setWrappingWidth(200);
+        this.setLineSpacing(10);
+
+
+        this.numTache = modele.getTaches().size();
     }
 
     /**
@@ -28,5 +33,9 @@ public class VueTache extends Text implements Observateur {
     public void actualiser(Sujet s) {
 
 
+    }
+
+    public int getNumTache() {
+        return numTache;
     }
 }

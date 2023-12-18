@@ -19,15 +19,19 @@ public class Liste {
 	// Correspond à l'ensemble des tâches dans un objet Liste
 	private List<Tache> taches;
 
+	private int numListe;
+
 	/**
 	 * Constructeur de l'objet Liste
 	 * @param t titre de la Liste
 	 */
-	public Liste(String t){
+	public Liste(int numListe, String t){
 		// l'id est initialisé à -1 conformément au patron activeRecord
 		this.id = -1;
 		this.titre = t;
 		this.taches = new ArrayList<>();
+
+		this.numListe = numListe;
 	}
 
 	/**
@@ -133,6 +137,10 @@ public class Liste {
 	 */
 	public List<Tache> getTaches() {
 		return this.taches;
+	}
+
+	public int getNumListe() {
+		return this.numListe;
 	}
 
 

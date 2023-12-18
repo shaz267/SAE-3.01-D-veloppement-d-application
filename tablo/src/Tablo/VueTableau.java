@@ -8,14 +8,19 @@ import javafx.scene.layout.VBox;
 
 public class VueTableau extends ScrollPane implements Observateur {
 
+    /**
+     * Attribut qui permet de reconnaitre un tableau
+     */
     private int numTableau;
     private Button ajouterListe;
     private HBox listeContainer;
 
+    /**
+     * Constructeur de la classe VueTableau
+     * @param titre
+     */
     public VueTableau(int numTableau, String titre) {
         super();
-
-        this.numTableau = numTableau;
 
         ajouterListe = new Button("Ajouter une liste");
         ajouterListe.setStyle("-fx-font-weight: bold;");
@@ -31,22 +36,33 @@ public class VueTableau extends ScrollPane implements Observateur {
         container.getChildren().addAll(listeContainer, ajouterListe);
 
         this.setContent(container);
-
-        this.numTableau = Modele.nombresTableaux;
-        Modele.nombresTableaux++;
     }
 
+    /**
+     * Méthode qui permet de mettre à jour la vue
+     * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
+     */
     @Override
     public void actualiser(Sujet s) {
+
+        //On efface tout
+        listeContainer.getChildren().clear();
+
         Modele m = (Modele) s;
-        Tableau t = m.getTableaux().get(this.numTableau);
+
+        //On récupère le tableau courant
+        Tableau t = m.getTableaux().get(m.getTableaux().size() - 1);
 
         listeContainer.getChildren().clear();
 
+        int numListe = 1;
+        //On parcourt les listes du tableau
         for (Liste liste : t.getListes()) {
-            VueListe vueListe = new VueListe(liste.getId(), liste.getTitre());
+
+            VueListe vueListe = new VueListe(liste.getTitre(), numListe, m);
             vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
             listeContainer.getChildren().add(vueListe);
+            numListe++;
         }
     }
 

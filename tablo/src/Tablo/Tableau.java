@@ -1,6 +1,7 @@
 package Tablo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -40,8 +41,10 @@ public class Tableau {
      * @param t
      */
     public void ajouterTache(Tache t){
+
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+
+            if (l.getNumListe() == Modele.getListeCourante()) {
                 l.ajouterTache(t);
             }
         }
@@ -118,6 +121,7 @@ public class Tableau {
      */
     public void ajouterListe(Liste l) {
         this.listes.add(l);
+        Loggeur.enregistrer("Ajout de la liste " + l.getTitre() + " au tableau " + this.titre);
     }
 
     /**
@@ -153,4 +157,14 @@ public class Tableau {
         return numTableau;
     }
 
+    public List<Tache> getTaches() {
+
+        for (Liste l : this.listes) {
+            if (l.getId() == Modele.getListeCourante()) {
+
+                return l.getTaches();
+            }
+        }
+        return null;
+    }
 }

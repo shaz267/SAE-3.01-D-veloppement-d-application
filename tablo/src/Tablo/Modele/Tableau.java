@@ -133,6 +133,7 @@ public class Tableau {
     public void retirerListe(Liste l){
         Loggeur.enregistrer("Suppression de la liste " + l.getTitre() + " du tableau " + this.titre);
         this.listes.remove(l);
+        Modele.setListeCourante(0);
     }
 
     /**

@@ -282,4 +282,8 @@ public class Modele implements Sujet {
         return -1;
 
     }
+
+    public static void setListeCourante(int numListe) {
+        listeCourante = numListe;
+    }
 }

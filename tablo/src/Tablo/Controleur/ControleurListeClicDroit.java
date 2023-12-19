@@ -3,9 +3,10 @@ package Tablo.Controleur;
 import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import javafx.event.EventHandler;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
 
@@ -30,22 +31,42 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
 
         if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-            // On crée une boîte de dialogue dans laquelle l'utilisateur pourra entrer le nouveau nom de la liste
-            TextInputDialog dialog = new TextInputDialog("Modifier la liste");
-            dialog.setTitle("Modifier la liste");
-            dialog.setHeaderText("Modifier la liste");
-            dialog.setContentText("Veuillez entrer le nouveau nom de la liste :");
+            // On crée une VBox qui va contenir les choix de l'utilisateur
+            VBox conteneur = new VBox();
+
+            // On crée le TextArea qui va contenir le nouveau titre de la liste
+            TextField champ_saisie = new TextField();
+
+            // On crée le bouton supprimer pour supprimer la liste
+            Button supprimer = new Button("Supprimer");
+
+            // On ajoute le controleur pour supprimer la liste
+            supprimer.setOnMouseClicked(new ControleurSupprimerListe(this.modele));
+
+            // On ajoute les composantes graphiques à la VBox
+            conteneur.getChildren().addAll(champ_saisie, supprimer);
+
+            //On créé la boîte de dialogue
+            ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
+            dialog.setTitle("Modifier Liste");
+            dialog.setHeaderText("Modifier une liste");
+
+            // On ajoute la VBox à la boîte de dialogue
+            dialog.getDialogPane().setContent(conteneur);
 
             // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
-            dialog.showAndWait().ifPresent(titre -> {
-                // On modifie donc la liste
-                this.modele.getListes().get(Modele.getListeCourante()).changerTitre(titre);
-            });
+            dialog.showAndWait();
 
-            // On notifie les observateurs
-            this.modele.notifierObservateurs();
-            // On enregistre l'action dans les logs
-            Loggeur.enregistrer("Modification de titre d'une liste");
+            if(dialog.getResult() != null){
+                // On récupère le nouveau titre de la liste
+                String titre = champ_saisie.getText();
+                this.modele.getListes().get(Modele.getListeCourante()).changerTitre(titre);
+
+                // On notifie les observateurs
+                this.modele.notifierObservateurs();
+                // On enregistre l'action dans les logs
+                Loggeur.enregistrer("Modification de titre d'une liste");
+            }
         }
     }
 }

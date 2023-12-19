@@ -57,7 +57,7 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
             // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
             dialog.showAndWait();
 
-            if(dialog.getResult() != null){
+            if(champ_saisie.getText() != ""){
                 // On récupère le nouveau titre de la liste
                 String titre = champ_saisie.getText();
                 this.modele.getListes().get(Modele.getListeCourante()).changerTitre(titre);
@@ -67,6 +67,7 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
                 // On enregistre l'action dans les logs
                 Loggeur.enregistrer("Modification de titre d'une liste");
             }
+
         }
     }
 }

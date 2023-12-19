@@ -44,6 +44,11 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
             //On change la liste courante
             modele.changerListeCourante(numListe);
 
+            //On créé la boîte de dialogue
+            ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
+            dialog.setTitle("Modifier Liste");
+            dialog.setHeaderText("Modifier une liste");
+
             // On crée une VBox qui va contenir les choix de l'utilisateur
             VBox conteneur = new VBox();
 
@@ -58,11 +63,6 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
 
             // On ajoute les composantes graphiques à la VBox
             conteneur.getChildren().addAll(champ_saisie, supprimer);
-
-            //On créé la boîte de dialogue
-            ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
-            dialog.setTitle("Modifier Liste");
-            dialog.setHeaderText("Modifier une liste");
 
             // On ajoute la VBox à la boîte de dialogue
             dialog.getDialogPane().setContent(conteneur);
@@ -81,7 +81,6 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
                 // On enregistre l'action dans les logs
                 Loggeur.enregistrer("Modification de titre d'une liste");
             }
-
         }
     }
 }

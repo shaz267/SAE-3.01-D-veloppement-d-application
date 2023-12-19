@@ -2,6 +2,7 @@ package Tablo.Controleur;
 
 import Tablo.Loggeur;
 import Tablo.Modele.Modele;
+import Tablo.Vue.VueListe;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
@@ -31,6 +32,18 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
 
         if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+
+            //On récupère la liste qui a été cliquée
+            VueListe vl = (VueListe) mouseEvent.getSource();
+
+            vl.setStyle("-fx-background-color: #666666;");
+
+            //On récupère le numéro de la liste
+            int numListe = vl.getNumListe();
+
+            //On change la liste courante
+            modele.changerListeCourante(numListe);
+
             // On crée une VBox qui va contenir les choix de l'utilisateur
             VBox conteneur = new VBox();
 
@@ -57,10 +70,11 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
             // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
             dialog.showAndWait();
 
+            // Si le champ de saisie n'est pas vide
             if(champ_saisie.getText() != ""){
                 // On récupère le nouveau titre de la liste
                 String titre = champ_saisie.getText();
-                this.modele.getListes().get(Modele.getListeCourante()).changerTitre(titre);
+                this.modele.getListes().get(Modele.getListeCourante() - 1).changerTitre(titre);
 
                 // On notifie les observateurs
                 this.modele.notifierObservateurs();

@@ -16,6 +16,9 @@ public class VueTableau extends ScrollPane implements Observateur {
      * Attribut qui permet de reconnaitre un tableau
      */
     private int numTableau;
+
+    private String titre;
+
     private Button ajouterListe;
     private HBox listeContainer;
 
@@ -25,6 +28,9 @@ public class VueTableau extends ScrollPane implements Observateur {
      */
     public VueTableau(int numTableau, String titre) {
         super();
+
+        this.titre = titre;
+        this.numTableau = numTableau;
 
         ajouterListe = new Button("Ajouter une liste");
         ajouterListe.setStyle("-fx-font-weight: bold;");
@@ -55,9 +61,7 @@ public class VueTableau extends ScrollPane implements Observateur {
         Modele m = (Modele) s;
 
         //On récupère le tableau courant
-        Tableau t = m.getTableaux().get(m.getTableaux().size() - 1);
-
-        listeContainer.getChildren().clear();
+        Tableau t = m.getTableaux().get(Modele.getTableauCourant());
 
         int numListe = 1;
         //On parcourt les listes du tableau
@@ -65,7 +69,7 @@ public class VueTableau extends ScrollPane implements Observateur {
 
             VueListe vueListe = new VueListe(liste.getTitre(), numListe, m);
             vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
-            vueListe.setOnMouseClicked(new ControleurSupprimerListe(m));
+//            vueListe.setOnMouseClicked(new ControleurSupprimerListe(m));
             listeContainer.getChildren().add(vueListe);
             numListe++;
         }

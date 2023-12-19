@@ -1,9 +1,10 @@
 package Tablo;
 
 import Tablo.Controleur.ControleurAjouterListe;
+import Tablo.Controleur.ControleurAjouterTableau;
 import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
-import Tablo.Vue.VueParametre;
+import Tablo.Vue.VueDifferentTableaux;
 import Tablo.Vue.VueTableau;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -103,8 +104,6 @@ public class MyApplication extends Application {
 
         HBox boutonCollaborateurs = new HBox();
 
-        HBox boutonParametres = new HBox();
-
         // On crée les composantes graphiques pour la zone 'left'
         //Tableaux
         Text tableaux = new Text("Tableaux");
@@ -113,6 +112,17 @@ public class MyApplication extends Application {
 
         Button ajouterTableau = new Button("+");
 
+        ajouterTableau.setOnMouseClicked(new ControleurAjouterTableau(modele));
+
+        boutonTableaux.setSpacing(70);
+
+        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
+
+        VueDifferentTableaux vueDifferentTableaux = new VueDifferentTableaux(modele);
+        vueDifferentTableaux.setSpacing(20);
+
+        modele.enregistrerObservateur(vueDifferentTableaux);
+
         //Collaborateurs
         Text collaborateurs = new Text("Collaborateurs");
         collaborateurs.setStyle("-fx-font-weight: bold;");
@@ -120,21 +130,31 @@ public class MyApplication extends Application {
 
         Button ajouterCollaborateur = new Button("+");
 
-        //VueParametre qui permet d'accéder aux paramètres
-        VueParametre parametres = new VueParametre();
+        HBox parametre = new HBox();
 
-        //On ajoute un évènement au bouton qui permet d'accéder aux paramètres à l'aide du controleur
-        parametres.getAllerParametre().setOnMouseClicked(new ControleurParametre(modele));
+        Text titreParametres = new Text("Paramètres");
+        titreParametres.setStyle("-fx-font-weight: bold;");
+        titreParametres.setStyle("-fx-font-size: 20px;");
+
+        Button boutonParametre = new Button("+");
+
+        parametre.setSpacing(50);
+
+        parametre.getChildren().addAll(titreParametres, boutonParametre);
+
+        boutonParametre.setOnMouseClicked(new ControleurParametre(modele));
+
+
 
 
         //On ajoute les composantes graphiques à la racine
-        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
+//        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
         boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
 
-        boutonTableaux.setSpacing(70);
+//        boutonTableaux.setSpacing(70);
         boutonCollaborateurs.setSpacing(20);
 
-        left.getChildren().addAll(boutonTableaux, boutonCollaborateurs, parametres);
+        left.getChildren().addAll(boutonTableaux,vueDifferentTableaux, boutonCollaborateurs, parametre);
 
         left.setSpacing(20);
 
@@ -144,10 +164,11 @@ public class MyApplication extends Application {
         root.setLeft(left);
 
 
-        VueTableau tableauCentre = new VueTableau(0, "Tableau 1");
+        VueTableau tableauCentre = new VueTableau(1, "Tableau 1");
+        modele.enregistrerObservateur(tableauCentre);
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
         //On enregistre le centre comme observateur du modèle
-        modele.enregistrerObservateur(tableauCentre);
+
 
 
         //On ajoute les composantes graphiques à la racine

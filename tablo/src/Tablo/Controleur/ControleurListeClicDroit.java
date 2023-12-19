@@ -29,7 +29,6 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
-        System.out.println("tt");
         if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
             // On crée une boîte de dialogue dans laquelle l'utilisateur pourra entrer le nouveau nom de la liste
             TextInputDialog dialog = new TextInputDialog("Modifier la liste");

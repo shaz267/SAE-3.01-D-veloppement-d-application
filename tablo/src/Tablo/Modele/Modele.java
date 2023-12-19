@@ -270,4 +270,16 @@ public class Modele implements Sujet {
         }
         return null;
     }
+
+    public int getNumTableaux(String titre) {
+
+        for (Tableau tableau : this.getTableaux()) {
+            if (tableau.getTitre().equals(titre)) {
+
+                return tableau.getNumTableau();
+            }
+        }
+        return -1;
+
+    }
 }

@@ -39,7 +39,7 @@ public class Tableau {
 
     /**
      * Ajoute une tâche à la liste courante
-     * @param t
+     * @param t tâche à ajouter
      */
     public void ajouterTache(Tache t){
 
@@ -168,5 +168,17 @@ public class Tableau {
             }
         }
         return null;
+    }
+
+    /**
+     * Retourne le titre du tableau
+     * @return titre
+     */
+    public String getTitre() {
+        return titre;
+    }
+
+    public int getNumTableauMax() {
+        return numTableauMax;
     }
 }

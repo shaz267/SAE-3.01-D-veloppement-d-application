@@ -1,0 +1,13 @@
+Lors de cette itération nous avons implémenter les fonctionnalités suivantes :
+- Créer des tâches
+- Sélectionner des tâches
+- Modifier une liste
+- Supprimer une liste
+
+Nous avons aussi rendu le tableau des listes déroulant, dans le cas où le nombre de listes étaient supérieurs à la taille de la fenêtre. 
+Nous avons aussi décidé de réorganiser notre dossier src/ en utilisant notamment des packages rendant le dossier plus clair. 
+De plus, avec ce nouveau planning d’itération, nous sommes mieux organisés et assignons plus facilement chaque tâche à chacun. 
+Le temps pris pour refaire notre planning, nous a pris une grande partie de notre itération, ce qui a nous a poussé à coder directement et réaliser certains diagrammes à posteriori. 
+Cependant dès la troisième itération, nous allons reprendre correctement la conception de notre projet et des prochaines itérations.
+
+Pour lancer l'application, il faut utiliser le main de la classe MyApplication.

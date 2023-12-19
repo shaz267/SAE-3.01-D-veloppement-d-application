@@ -28,7 +28,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
 
         vl.setStyle("-fx-background-color: #666666;");
 
-        //On récupère l'id de la liste
+        //On récupère le numéro de la liste
         int numListe = vl.getNumListe();
 
         //On change la liste courante

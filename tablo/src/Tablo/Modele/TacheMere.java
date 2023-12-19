@@ -17,9 +17,9 @@ public class TacheMere extends Tache{
      * @param titre
      * @param contenu
      */
-    public TacheMere(String titre, String contenu) {
+    public TacheMere(int numTache, String titre) {
         //On appelle le constructeur de la classe mère.
-        super(titre, contenu);
+        super(numTache, titre);
         this.taches = new ArrayList<Tache>();
     }
 

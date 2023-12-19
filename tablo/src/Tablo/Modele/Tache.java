@@ -36,18 +36,19 @@ public abstract class Tache {
      */
     protected boolean estTerminee;
 
+    protected int numTache;
+
     /**
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
      * @param titre
-     * @param contenu
      */
-    public Tache(String titre, String contenu) {
+    public Tache(int numTache, String titre) {
 
         //On initialise l'id à -1 car il n'est pas encore défini selon le patron Active Record.
         this.id = -1;
 
         this.titre = titre;
-        this.contenu = contenu;
+        this.contenu = "";
         this.estTerminee = false;
         this.dateDebut = new Date();
 

@@ -46,6 +46,7 @@ public class Tableau {
         for (Liste l : this.listes) {
 
             if (l.getNumListe() == Modele.getListeCourante()) {
+
                 l.ajouterTache(t);
             }
         }
@@ -161,7 +162,7 @@ public class Tableau {
     public List<Tache> getTaches() {
 
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
 
                 return l.getTaches();
             }

@@ -144,8 +144,6 @@ public class MyApplication extends Application {
         root.setLeft(left);
 
 
-
-
         VueTableau tableauCentre = new VueTableau(0, "Tableau 1");
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
         //On enregistre le centre comme observateur du modèle

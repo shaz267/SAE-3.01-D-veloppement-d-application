@@ -12,7 +12,9 @@ import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
-public class VueListe extends VBox implements Observateur {
+import javafx.scene.text.Text;
+
+public class VueListe extends VBox {
 
     /**
      * Attribut qui permet de reconnaitre une liste
@@ -50,14 +52,30 @@ public class VueListe extends VBox implements Observateur {
         this.setOnMouseEntered(event -> setStyle("-fx-background-color: #d9d9d9;"));
         this.setOnMouseExited(event -> setStyle("-fx-background-color: #e6e6e6;"));
 
-
         this.numListe = numListe;
 
         Button b = new Button("Ajouter une tache");
 
+        b.setStyle("-fx-font-weight: bold;");
+        b.setStyle("-fx-font-size: 20px;");
+        b.setPrefSize(200, 50);
+
+        //On met le bouton en VERT
+        b.setStyle("-fx-background-color: #b6f5b6;");
+
+        //On récupère la liste courante
+        Liste l = modele.getListes().get(this.numListe - 1);
+
+        int numTache = 1;
+        for (Tache tache : l.getTaches()) {
+
+            VueTache text = new VueTache(numTache, tache.getTitre());
+            text.setOnMouseClicked(new ControleurTacheCliquee(modele));
+            this.getChildren().add(text);
+            numTache++;
+        }
 
         this.getChildren().add(b);
-
         b.setOnAction(new ControleurCreationTache(modele));
         // On associe un évènement pour gérer le clic droit sur une liste
         this.setOnMousePressed(new ControleurListeClicDroit(modele));
@@ -65,13 +83,11 @@ public class VueListe extends VBox implements Observateur {
 
     /**
      * Méthode qui permet de mettre à jour la vue
-     * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
+     * //@param s Objet qui implémente l'interface Sujet et qui va être actualisé
      */
-    @Override
+    /*@Override
     public void actualiser(Sujet s) {
 
-
-        System.out.println("Actualisation de la liste");
 
         //On efface tout
         this.getChildren().clear();
@@ -79,22 +95,22 @@ public class VueListe extends VBox implements Observateur {
         Modele m = (Modele) s;
 
 
-        System.out.println(m.getListes().get(this.numListe - 1).getTaches());
-
         //On récupère la liste courante
         Liste l = m.getListes().get(this.numListe - 1);
 
         for (Tache tache : l.getTaches()) {
 
-            VueTache vueTache = new VueTache(tache.getTitre(), m);
-            vueTache.setOnMouseClicked(new ControleurTacheCliquee(m));
-            this.getChildren().add(vueTache);
+            Button text = new Button(tache.getTitre());
+            text.setOnMouseClicked(new ControleurTacheCliquee(m));
+            this.getChildren().add(text);
         }
+
+        System.out.println(this.getChildren());
 
         Button b = new Button("Ajouter une tache");
 
         this.getChildren().add(b);
-    }
+    }*/
 
     public int getNumListe() {
         return numListe;

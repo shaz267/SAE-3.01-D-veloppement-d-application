@@ -29,7 +29,7 @@ public class VueTableau extends ScrollPane implements Observateur {
         ajouterListe = new Button("Ajouter une liste");
         ajouterListe.setStyle("-fx-font-weight: bold;");
         ajouterListe.setStyle("-fx-font-size: 20px;");
-        ajouterListe.setStyle("-fx-background-color: #f8b9a7;");
+        ajouterListe.setStyle("-fx-background-color: #b6f5b6;");
         ajouterListe.setPrefSize(200, 50);
 
         listeContainer = new HBox();

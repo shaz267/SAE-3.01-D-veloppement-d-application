@@ -57,7 +57,6 @@ public class Modele implements Sujet {
      */
     public void changerListeCourante(int num) {
 
-        System.out.println(num);
         listeCourante = num;
     }
 
@@ -90,6 +89,7 @@ public class Modele implements Sujet {
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.ajouterTache(tache);
+                this.notifierObservateurs();
             }
         }
     }
@@ -241,8 +241,6 @@ public class Modele implements Sujet {
 
     public synchronized void notifierObservateurs() {
 
-
-        System.out.println(this.observateurs);
         for (Observateur observateur : observateurs) {
 
             observateur.actualiser(this);
@@ -265,7 +263,7 @@ public class Modele implements Sujet {
 
         for (Tableau tableau : tableaux) {
 
-            if (tableau.getId() == tableauCourant) {
+            if (tableau.getNumTableau() == tableauCourant) {
 
                 return tableau.getTaches();
             }

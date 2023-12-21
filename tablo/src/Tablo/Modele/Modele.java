@@ -301,9 +301,19 @@ public class Modele implements Sujet {
 
         if (this.tableaux.size() > 1) {
 
-
+            //On retire le tableau
             this.tableaux.remove(numTableau);
-            this.tableaux.get(0).setNumTableauMax(this.tableaux.get(0).getNumTableauMax() - 1);
+
+            //On change le tableau courant
+            this.changerTableauCourant(0);
+
+            //On change le numéro des tableaux
+            for (int i = 0; i < this.tableaux.size(); i++) {
+                this.tableaux.get(i).setNumTableau(i);
+            }
+
+            //On change le numéro des tableauxMax et on notifie les observateurs
+            this.getTableaux().get(0).setNumTableauMax(this.getTableaux().size());
             this.notifierObservateurs();
 
 

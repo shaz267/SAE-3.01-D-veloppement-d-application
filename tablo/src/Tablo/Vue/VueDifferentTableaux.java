@@ -64,15 +64,18 @@ public class VueDifferentTableaux extends VBox implements Observateur {
                 Button b = new Button(this.modele.getTableaux().get(i).getTitre());
                 this.boutonsTableaux.add(b);
                 this.getChildren().add(b);
-
             }
         }
 
         // Si il y a moins de tableaux dans le modele que de boutons dans la vue, on supprime des boutons
-        for (int i = 0; i < this.boutonsTableaux.size(); i++) {
-            if (i >= this.modele.getTableaux().size()) {
-                this.getChildren().remove(this.boutonsTableaux.get(i));
-                this.boutonsTableaux.remove(i);
+        if (this.boutonsTableaux.size() > this.modele.getTableaux().size()) {
+            //On supprime tous les boutons et on les remet
+            this.getChildren().clear();
+            this.boutonsTableaux.clear();
+            for (Tableau tableau : modele.getTableaux()) {
+                Button b = new Button(tableau.getTitre());
+                this.boutonsTableaux.add(b);
+                this.getChildren().add(b);
             }
         }
 
@@ -81,6 +84,7 @@ public class VueDifferentTableaux extends VBox implements Observateur {
         // Si on clique sur un tableau avec le clic droit, on affiche un menu contextuel
         for (Button boutonsTableau : this.boutonsTableaux) {
             boutonsTableau.setOnMousePressed(new ControleurTableauClicDroit(this.modele));
+            boutonsTableau.setOnMouseClicked(new ControleurChangementTableau(this.modele));
         }
     }
 }

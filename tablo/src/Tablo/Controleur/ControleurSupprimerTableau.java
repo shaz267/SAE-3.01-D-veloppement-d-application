@@ -35,6 +35,9 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         if (Modele.getTableauCourant() == this.numTableau) {
             this.modele.changerTableauCourant(this.modele.getTableaux().get(0).getNumTableauMax());
         }
+
+        System.out.println("Tableau à supprimer : " + this.numTableau);
+        System.out.println("Tableau courant : " + Modele.getTableauCourant());
         //On retire le tableau
         this.modele.retirerTableau(this.numTableau);
 

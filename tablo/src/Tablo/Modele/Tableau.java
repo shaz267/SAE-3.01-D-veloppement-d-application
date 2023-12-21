@@ -203,4 +203,12 @@ public class Tableau {
         Loggeur.enregistrer("Changement du titre du tableau " + this.titre + " en " + nouveauTitre);
         this.titre = nouveauTitre;
     }
+
+    /**
+     * Change le numéro du tableau
+     * @param numTableau nouveau numéro du tableau
+     */
+    public void setNumTableau(int numTableau) {
+        this.numTableau = numTableau;
+    }
 }

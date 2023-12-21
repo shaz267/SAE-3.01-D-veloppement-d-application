@@ -17,7 +17,7 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
     private Modele modele;
 
     /**
-     * Constructeur de la classe ControleurAjouterListe
+     * Constructeur de la classe ControleurListeClicDroit
      * @param m Modele de l'application
      */
     public ControleurListeClicDroit(Modele m){
@@ -25,7 +25,7 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
     }
 
     /**
-     * Méthode qui permet de gérer l'ajout d'une liste
+     * Méthode qui permet de gérer la modification d'une liste
      * @param mouseEvent
      */
     @Override

@@ -124,4 +124,10 @@ public abstract class Tache {
     public int getId() {
         return this.id;
     }
+
+    /**
+     * Getter qui retourne l'attribut contenu de la tâche
+     * @return contenu
+     */
+    public String getContenu() { return this.contenu; }
 }

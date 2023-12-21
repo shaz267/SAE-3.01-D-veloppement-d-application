@@ -70,6 +70,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute un tableau à l'application.
+     *
      * @param tableau
      */
     public void ajouterTableau(Tableau tableau) {
@@ -80,6 +81,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une tache à la liste courante. et au tableau courant
+     *
      * @param tache
      */
     public void ajouterTache(Tache tache) {
@@ -96,6 +98,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une tache du tableau courant de la liste courante.
+     *
      * @param tache
      */
     public void retirerTache(Tache tache) {
@@ -112,6 +115,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
+     *
      * @param nouveauTitre
      */
     public void changerTitreTache(String nouveauTitre) {
@@ -128,6 +132,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
+     *
      * @param nouveauContenu
      */
     public void changerContenuTache(String nouveauContenu) {
@@ -144,6 +149,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le titre de la liste courante dans le tableau courant.
+     *
      * @param dateLimite
      */
     public void modifierDateLimite(Date dateLimite) {
@@ -175,6 +181,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une liste au tableau courant.
+     *
      * @param l
      */
     public void ajouterListe(Liste l) {
@@ -192,13 +199,14 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une liste au tableau courant
-     * @param l
+     *
+     * @param l Liste à retirer
      */
-    public void retirerListe(Liste l){
+    public void retirerListe(Liste l) {
         // On parcourt les tableaux
-        for(Tableau tableau : tableaux){
+        for (Tableau tableau : tableaux) {
             // Quand on a trouvé le tableau courant alors on retire la liste et on notifie les observateurs
-            if(tableau.getNumTableau() == tableauCourant){
+            if (tableau.getNumTableau() == tableauCourant) {
                 tableau.retirerListe(l);
                 this.notifierObservateurs();
             }
@@ -207,7 +215,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne le tableau courant.
-     * @return
+     *
+     * @return les tableaux
      */
     public ArrayList<Tableau> getTableaux() {
         return tableaux;
@@ -215,7 +224,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne la liste de liste du tableau courant.
-     * @return
+     *
+     * @return les listes
      */
     public ArrayList<Liste> getListes() {
         for (Tableau tableau : tableaux) {
@@ -285,5 +295,18 @@ public class Modele implements Sujet {
 
     public static void setListeCourante(int numListe) {
         listeCourante = numListe;
+    }
+
+    public void retirerTableau(int numTableau) {
+
+        if (this.tableaux.size() > 1) {
+
+
+            this.tableaux.remove(numTableau);
+            this.tableaux.get(0).setNumTableauMax(this.tableaux.get(0).getNumTableauMax() - 1);
+            this.notifierObservateurs();
+
+
+        }
     }
 }

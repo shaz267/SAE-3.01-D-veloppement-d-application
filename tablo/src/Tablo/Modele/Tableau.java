@@ -179,7 +179,28 @@ public class Tableau {
         return titre;
     }
 
+    /**
+     * Retourne le numéro des tableaux créés
+     * @return numTableauMax
+     */
     public int getNumTableauMax() {
         return numTableauMax;
+    }
+
+    /**
+     * Change le numéro des tableaux créés
+     * @param numTableauMax nouveau numéro des tableaux créés
+     */
+    public void setNumTableauMax(int numTableauMax) {
+        Tableau.numTableauMax = numTableauMax;
+    }
+
+    /**
+     * Change le titre du tableau
+     * @param nouveauTitre nouveau titre du tableau
+     */
+    public void changerTitre(String nouveauTitre) {
+        Loggeur.enregistrer("Changement du titre du tableau " + this.titre + " en " + nouveauTitre);
+        this.titre = nouveauTitre;
     }
 }

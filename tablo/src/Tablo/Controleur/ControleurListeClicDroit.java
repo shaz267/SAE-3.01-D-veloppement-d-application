@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import java.util.Objects;
 
 public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
 
@@ -71,7 +72,7 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
             dialog.showAndWait();
 
             // Si le champ de saisie n'est pas vide
-            if(champ_saisie.getText() != ""){
+            if(!Objects.equals(champ_saisie.getText(), "")){
                 // On récupère le nouveau titre de la liste
                 String titre = champ_saisie.getText();
                 this.modele.getListes().get(Modele.getListeCourante() - 1).changerTitre(titre);

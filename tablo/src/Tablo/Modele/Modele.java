@@ -102,7 +102,7 @@ public class Modele implements Sujet {
 
         for (Tableau tableau : tableaux) {
 
-            if (tableau.getId() == tableauCourant) {
+            if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.retirerTache(tache);
                 this.notifierObservateurs();

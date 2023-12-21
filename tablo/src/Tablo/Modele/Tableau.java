@@ -58,7 +58,7 @@ public class Tableau {
      */
     public void retirerTache(Tache t){
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.retirerTache(t);
             }
@@ -71,7 +71,7 @@ public class Tableau {
      */
     public void changerTitreTache(String nouveauTitre){
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.changerTitreTache(nouveauTitre);
             }
@@ -84,7 +84,7 @@ public class Tableau {
      */
     public void changerContenuTache(String nouveauContenu){
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.changerContenuTache(nouveauContenu);
             }
@@ -97,7 +97,7 @@ public class Tableau {
      */
     public void modifierDateLimite(Date date){
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.modifierDateLimite(date);
             }
@@ -110,7 +110,7 @@ public class Tableau {
     public void fini(){
 
         for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.fini();
             }

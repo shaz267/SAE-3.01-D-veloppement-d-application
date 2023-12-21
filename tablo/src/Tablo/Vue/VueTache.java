@@ -1,5 +1,8 @@
 package Tablo.Vue;
 
+import Tablo.Controleur.ControleurListeClicDroit;
+import Tablo.Controleur.ControleurTacheClicDroit;
+import Tablo.Controleur.ControleurTacheCliquee;
 import Tablo.Modele.Modele;
 import Tablo.Observateur;
 import Tablo.Sujet;
@@ -17,7 +20,7 @@ public class VueTache extends Button implements Observateur {
      * Constructeur de la classe VueTache
      * @param titre
      */
-    public VueTache(int numTache, String titre) {
+    public VueTache(int numTache, String titre, Modele modele) {
         super(titre);
 
         this.numTache = numTache;
@@ -30,6 +33,9 @@ public class VueTache extends Button implements Observateur {
 
         //Le texte en gras
         this.setFont(javafx.scene.text.Font.font("Verdana", 15));
+
+        // On associe un évènement pour gérer le clic droit sur une liste
+        this.setOnMousePressed(new ControleurTacheClicDroit(modele));
     }
 
     /**

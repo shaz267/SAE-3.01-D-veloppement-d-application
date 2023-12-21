@@ -91,7 +91,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 				Loggeur.enregistrer("Modification de titre d'une tâche");
 			}
 			// Si le contenu n'est pas vide
-			if()
+			//if()
 		}
 	}
 }

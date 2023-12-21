@@ -23,11 +23,6 @@ public class VueListe extends VBox {
     private Label labelTitre;
 
     /**
-     * Modele de l'application
-     */
-    private Modele modele;
-
-    /**
      * Constructeur de la classe VueListe
      * @param titre
      */
@@ -69,7 +64,7 @@ public class VueListe extends VBox {
         int numTache = 1;
         for (Tache tache : l.getTaches()) {
 
-            VueTache text = new VueTache(numTache, tache.getTitre());
+            VueTache text = new VueTache(numTache, tache.getTitre(),modele);
             text.setOnMouseClicked(new ControleurTacheCliquee(modele));
             this.getChildren().add(text);
             numTache++;
@@ -80,6 +75,7 @@ public class VueListe extends VBox {
         // On associe un évènement pour gérer le clic droit sur une liste
         this.setOnMousePressed(new ControleurListeClicDroit(modele));
     }
+
 
     /**
      * Méthode qui permet de mettre à jour la vue

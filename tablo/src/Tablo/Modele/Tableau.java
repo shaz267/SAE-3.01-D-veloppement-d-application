@@ -92,6 +92,20 @@ public class Tableau {
     }
 
     /**
+     * Deplacer une tache dans une autre liste
+     * @param tache
+     */
+    public void deplacerTache(Tache tache){
+        for (Liste l : this.listes) {
+            if (l.getId() == Modele.getListeCourante()) {
+
+                l.deplacerTache(tache);
+            }
+        }
+    }
+
+
+    /**
      * Modifie la date limite de la tache dans la liste courante
      * @param date
      */

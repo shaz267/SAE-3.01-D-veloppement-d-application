@@ -1,5 +1,6 @@
 package Tablo.Modele;
 
+import Tablo.MyApplication;
 import Tablo.Observateur;
 import Tablo.Sujet;
 
@@ -34,6 +35,8 @@ public class Modele implements Sujet {
      */
     private ArrayList<Observateur> observateurs;
 
+    private MyApplication application;
+
     /**
      * Constructeur de la classe Modele qui initialise les attributs tableauCourant, listeCourante et tacheCourante à -1.
      */
@@ -42,13 +45,16 @@ public class Modele implements Sujet {
         this.tableaux = new ArrayList<Tableau>();
         this.tableaux.add(new Tableau("Tableau 1"));
         this.observateurs = new ArrayList<Observateur>();
+        System.out.println(this.tableaux.get(0).getId());
+        System.out.println(this.tableaux.get(0).getNumTableau());
+        System.out.println(tableauCourant);
+
     }
 
     /**
      * Méthode qui permet de changer le tableau courant.
      */
     public void changerTableauCourant(int id) {
-
         tableauCourant = id;
     }
 
@@ -137,6 +143,21 @@ public class Modele implements Sujet {
             if (tableau.getId() == tableauCourant) {
 
                 tableau.changerContenuTache(nouveauContenu);
+                this.notifierObservateurs();
+            }
+        }
+    }
+    /**
+     * Méthode qui change une tache de liste dans le tableau courant.
+     * @param tache
+     */
+    public void deplacerTache(Tache tache) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getId() == tableauCourant) {
+
+                tableau.deplacerTache(tache);
                 this.notifierObservateurs();
             }
         }

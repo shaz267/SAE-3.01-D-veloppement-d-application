@@ -102,6 +102,12 @@ public abstract class Tache {
     public abstract boolean supprimerTache(Tache tache);
 
     /**
+     * Méthode qui deplace une tâche dans une autre liste. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
+     * @param tache
+     */
+    public abstract void deplacerTache(Tache tache);
+
+    /**
      * Méthode qui met la tâche en terminée.
      * @return titre
      */

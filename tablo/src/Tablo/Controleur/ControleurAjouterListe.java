@@ -50,6 +50,9 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
             //On ajoute la vue à la liste d'observateurs du modele
             //modele.enregistrerObservateur(new VueListe(titre, numListe, modele));
 
+            //
+
+
         });
     }
 }

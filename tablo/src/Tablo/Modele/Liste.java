@@ -106,6 +106,19 @@ public class Liste {
 	}
 
 	/**
+	 * Permet de déplacer une tâche dans une autre liste
+	 * @param tache
+	 */
+	public void deplacerTache(Tache tache) {
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				t.deplacerTache(tache);
+			}
+		}
+	}
+
+	/**
 	 * Permet de mettre une tâche en terminée
 	 */
 	public void fini(){

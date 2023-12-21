@@ -4,6 +4,7 @@ import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import Tablo.Vue.VueTache;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -49,16 +50,20 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			// On crée une VBox qui va contenir les choix de l'utilisateur
 			VBox conteneur = new VBox();
 
+			Label labeltitre = new Label("Titre");
 			// On crée le TextField qui va contenir le nouveau titre de la tâche
 			TextField titreField = new TextField();
 
+			Label labelcontenu = new Label("Contenu");
 			// On crée le TextArea qui va contenir la description de la tâche
 			TextArea contenuArea = new TextArea();
 
+			Label labelDateDeb = new Label("Date début");
 			// On crée le DatePicker pour gérer la date de début
 			DatePicker dateDeb = new DatePicker();
 			dateDeb.setShowWeekNumbers(false);
 
+			Label labelDateFin = new Label("Date fin");
 			// On crée le DatePicker pour gérer la date de fin
 			DatePicker dateFin = new DatePicker();
 			dateDeb.setShowWeekNumbers(false);
@@ -67,11 +72,12 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 
 			// On crée le bouton supprimer pour supprimer la liste
 			Button supprButton = new Button("Supprimer");
+
 			// On ajoute le controleur pour supprimer la liste
 			supprButton.setOnMouseClicked(new ControleurSupprimerTache(this.modele));
 
 			// On ajoute les composantes graphiques à la VBox
-			conteneur.getChildren().addAll(titreField, contenuArea, dateDeb, dateFin, supprButton);
+			conteneur.getChildren().addAll(labeltitre,titreField, labelcontenu, contenuArea, labelDateDeb, dateDeb, labelDateFin, dateFin, supprButton);
 
 			// On ajoute la VBox à la boîte de dialogue
 			dialog.getDialogPane().setContent(conteneur);

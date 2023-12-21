@@ -57,6 +57,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			Label labelcontenu = new Label("Contenu");
 			// On crée le TextArea qui va contenir la description de la tâche
 			TextArea contenuArea = new TextArea();
+			contenuArea.setText(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu());
 
 			Label labelDateDeb = new Label("Date début");
 			// On crée le DatePicker pour gérer la date de début
@@ -94,10 +95,19 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 				// On notifie les observateurs
 				this.modele.notifierObservateurs();
 				// On enregistre l'action dans les logs
-				Loggeur.enregistrer("Modification de titre d'une tâche");
+				Loggeur.enregistrer("Modification du titre de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
 			}
 			// Si le contenu n'est pas vide
-			//if()
+			if(contenuArea.getText() != ""){
+				// On récupère le nouveau contenu
+				String contenu = contenuArea.getText();
+				this.modele.getTaches().get(Modele.getTacheCourante() - 1).changerContenu(contenu);
+
+				// On notifie les observateurs
+				this.modele.notifierObservateurs();
+				// On enregistre l'action dans les logs
+				Loggeur.enregistrer("Modification du contenu de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
+			}
 		}
 	}
 }

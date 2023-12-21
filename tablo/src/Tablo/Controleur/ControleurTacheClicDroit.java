@@ -98,7 +98,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 				Loggeur.enregistrer("Modification du titre de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
 			}
 			// Si le contenu n'est pas vide
-			if(contenuArea.getText() != ""){
+			if(contenuArea.getText() != "" && contenuArea.getText() == this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu()){
 				// On récupère le nouveau contenu
 				String contenu = contenuArea.getText();
 				this.modele.getTaches().get(Modele.getTacheCourante() - 1).changerContenu(contenu);

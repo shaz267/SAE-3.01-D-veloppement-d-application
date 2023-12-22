@@ -4,7 +4,6 @@ import Tablo.Observateur;
 import Tablo.Sujet;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Modele implements Sujet {
@@ -105,54 +104,6 @@ public class Modele implements Sujet {
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.retirerTache(tache);
-                this.notifierObservateurs();
-            }
-        }
-    }
-
-    /**
-     * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
-     * @param nouveauTitre
-     */
-    public void changerTitreTache(String nouveauTitre) {
-
-        for (Tableau tableau : tableaux) {
-
-            if (tableau.getId() == tableauCourant) {
-
-                tableau.changerTitreTache(nouveauTitre);
-                this.notifierObservateurs();
-            }
-        }
-    }
-
-    /**
-     * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
-     * @param nouveauContenu
-     */
-    public void changerContenuTache(String nouveauContenu) {
-
-        for (Tableau tableau : tableaux) {
-
-            if (tableau.getId() == tableauCourant) {
-
-                tableau.changerContenuTache(nouveauContenu);
-                this.notifierObservateurs();
-            }
-        }
-    }
-
-    /**
-     * Méthode qui change le titre de la liste courante dans le tableau courant.
-     * @param dateLimite
-     */
-    public void modifierDateLimite(Date dateLimite) {
-
-        for (Tableau tableau : tableaux) {
-
-            if (tableau.getId() == tableauCourant) {
-
-                tableau.modifierDateLimite(dateLimite);
                 this.notifierObservateurs();
             }
         }

@@ -2,8 +2,8 @@ package Tablo.Modele;
 
 import Tablo.Loggeur;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -94,9 +94,22 @@ public class Liste {
 
 	/**
 	 * Permet de changer la date limite d'une tâche dans la liste des taches
+	 * @param dateDebut
+	 */
+	public void modifierDateDebut(LocalDate dateDebut) {
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				t.modifierDateDebut(dateDebut);
+			}
+		}
+	}
+
+	/**
+	 * Permet de changer la date limite d'une tâche dans la liste des taches
 	 * @param dateLimite
 	 */
-	public void modifierDateLimite(Date dateLimite) {
+	public void modifierDateLimite(LocalDate dateLimite) {
 
 		for (Tache t : this.taches) {
 			if (t.getId() == Modele.getTacheCourante()) {

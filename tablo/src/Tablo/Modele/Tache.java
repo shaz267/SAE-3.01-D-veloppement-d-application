@@ -2,7 +2,7 @@ package Tablo.Modele;
 
 import Tablo.Loggeur;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Tache {
 
@@ -24,12 +24,12 @@ public abstract class Tache {
     /**
      * Attribut dateLimite de la classe Tache qui est une date qui représente la date limite de la tâche.
      */
-    protected Date dateLimite;
+    protected LocalDate dateLimite;
 
     /**
      * Attribut dateDebut de la classe Tache qui est une date qui représente la date de début de la tâche.
      */
-    protected Date dateDebut;
+    protected LocalDate dateDebut;
 
     /**
      * Attribut estTerminee de la classe Tache qui est un booléen qui représente si la tâche est terminée ou non.
@@ -50,10 +50,9 @@ public abstract class Tache {
         this.titre = titre;
         this.contenu = "";
         this.estTerminee = false;
-        this.dateDebut = new Date();
 
-        //On initialise la date limite à la date du jour. Elle serra ensuite changée par la méthode modifierDateLimite.
-        this.dateLimite = new Date();
+	    this.dateDebut = LocalDate.now();
+	    this.dateLimite = LocalDate.now().plusDays(1);
     }
 
     /**
@@ -77,10 +76,20 @@ public abstract class Tache {
     }
 
     /**
-     * Méthode qui initialise la date limite de la tâche.
+     * Méthode qui set la date limite de la tâche.
+     * @param dateDebut
+     */
+    public void modifierDateDebut(LocalDate dateDebut) {
+
+        Loggeur.enregistrer("Changement de la date de début de la tâche " + this.titre + " en " + dateDebut);
+        this.dateDebut = dateDebut;
+    }
+
+    /**
+     * Méthode qui set la date limite de la tâche.
      * @param dateLimite
      */
-    public void modifierDateLimite(Date dateLimite) {
+    public void modifierDateLimite(LocalDate dateLimite) {
 
         Loggeur.enregistrer("Changement de la date limite de la tâche " + this.titre + " en " + dateLimite);
         this.dateLimite = dateLimite;
@@ -130,4 +139,20 @@ public abstract class Tache {
      * @return contenu
      */
     public String getContenu() { return this.contenu; }
+
+    /**
+     * Getter qui retourne l'attribut dateLimite de la tache
+     * @return LocalDate
+     */
+    public LocalDate getDateLimite() {
+        return dateLimite;
+    }
+
+    /**
+     * Getter qui retourne l'attribut dateDebut de la tache
+     * @return LocalDate
+     */
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
 }

@@ -2,13 +2,18 @@ package Tablo.Controleur;
 
 import Tablo.Loggeur;
 import Tablo.Modele.Modele;
+import Tablo.Modele.Tache;
 import Tablo.Vue.VueTache;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
 
 public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 
@@ -69,7 +74,26 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			DatePicker dateFin = new DatePicker();
 			dateDeb.setShowWeekNumbers(false);
 
+			Label labelsoustache = new Label("Choisir une sous tâche");
 			// On crée la comboBox qui contiendra la liste des tâches qu'on pourra
+			ComboBox listeSousTache = new ComboBox();
+			listeSousTache.setPromptText("Liste des sous-tâches");
+
+			// On crée l'objet qui sera contenu dans notre ComboBox, une ObservableList
+			ObservableList<String> observableList = FXCollections.observableList(new ArrayList<>());
+
+			// Pour éviter de créer des méthodes dans les classes Listes, Tableau, Modele et Tache pour un usage quasi unique
+			// alors je récupère ici le titre des tâches pour la liste des tâches existances et je l'ajoute dans
+			// mon ObservableList
+			for(Tache tache : this.modele.getTaches()){
+				// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches
+				if(tache != this.modele.getTaches().get(numTache-1)){
+					observableList.add(tache.getTitre());
+				}
+			}
+			// On ajoute l'observableList à la ComboBox
+			listeSousTache.setItems(observableList);
+
 
 			// On crée le bouton supprimer pour supprimer la liste
 			Button supprButton = new Button("Supprimer");
@@ -78,7 +102,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			supprButton.setOnMouseClicked(new ControleurSupprimerTache(this.modele));
 
 			// On ajoute les composantes graphiques à la VBox
-			conteneur.getChildren().addAll(labeltitre,titreField, labelcontenu, contenuArea, labelDateDeb, dateDeb, labelDateFin, dateFin, supprButton);
+			conteneur.getChildren().addAll(labeltitre,titreField, labelcontenu, contenuArea, labelDateDeb, dateDeb, labelDateFin, dateFin, labelsoustache, listeSousTache, supprButton);
 
 			// On ajoute la VBox à la boîte de dialogue
 			dialog.getDialogPane().setContent(conteneur);

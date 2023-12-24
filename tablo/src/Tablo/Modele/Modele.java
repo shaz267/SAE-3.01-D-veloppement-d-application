@@ -272,6 +272,10 @@ public class Modele implements Sujet {
         }
     }
 
+    /**
+     * Méthode qui retourne la liste de tâches filles de la tâche courante
+     * @return
+     */
     public List<Tache> getSousTaches() {
 
         for (Tableau tableau : tableaux) {
@@ -281,6 +285,24 @@ public class Modele implements Sujet {
                 return tableau.getSousTaches();
             }
         }
+        return null;
+    }
+
+    /**
+     * Méthode qui retourne la tache associé au titre passé en paramètre dans la liste courante et le tableau courant.
+     * @param titre
+     * @return
+     */
+    public Tache getTache(String titre) {
+
+        for (Tache tache : this.getTaches()) {
+
+            if (tache.getTitre().equals(titre)) {
+
+                return tache;
+            }
+        }
+
         return null;
     }
 }

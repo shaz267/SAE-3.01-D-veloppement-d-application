@@ -6,6 +6,7 @@ import Tablo.Vue.VueListe;
 import Tablo.Vue.VueTache;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 
@@ -54,12 +55,23 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
         // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
         dialog.showAndWait().ifPresent(titre -> {
 
+            //Si une tache qui a le même titre existe déjà alors on ne l'ajoute pas
+            for (Tache t : modele.getTaches()) {
+                if (t.getTitre().equals(titre)) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Erreur de titre");
+                    alert.setContentText("Une tâche avec le même titre existe déjà.");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+
             // Création de la liste
             Tache tache = new TacheSimple(numTache, titre);
 
             //On ajoute la liste au modele
             modele.ajouterTache(tache);
-
         });
     }
 }

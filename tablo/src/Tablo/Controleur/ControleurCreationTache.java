@@ -1,10 +1,7 @@
 package Tablo.Controleur;
 
 
-import Tablo.Modele.Liste;
-import Tablo.Modele.Modele;
-import Tablo.Modele.Tache;
-import Tablo.Modele.TacheMere;
+import Tablo.Modele.*;
 import Tablo.Vue.VueListe;
 import Tablo.Vue.VueTache;
 import javafx.event.ActionEvent;
@@ -58,7 +55,7 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
         dialog.showAndWait().ifPresent(titre -> {
 
             // Création de la liste
-            Tache tache = new TacheMere(numTache, titre);
+            Tache tache = new TacheSimple(numTache, titre);
 
             //On ajoute la liste au modele
             modele.ajouterTache(tache);

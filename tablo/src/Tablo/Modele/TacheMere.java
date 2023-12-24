@@ -3,6 +3,7 @@ package Tablo.Modele;
 import Tablo.Loggeur;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TacheMere extends Tache{
 
@@ -24,14 +25,29 @@ public class TacheMere extends Tache{
     }
 
     /**
+     * Constructeur qui prend un Objet TacheSimple en paramètre.
+     */
+    public TacheMere(Tache tache) {
+
+        super(tache.getNumTache(), tache.getTitre());
+        this.taches = new ArrayList<Tache>();
+    }
+
+    /**
      * Méthode qui ajoute une tâche fille à la tâche mère.
      *
      * @param tache
      */
     public boolean ajouterTache(Tache tache) {
 
-        Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
-        return this.taches.add(tache);
+        //Si la tâche est déjà dans la liste on ne l'ajoute pas.
+        if (this.taches.contains(tache)) {
+            return false;
+        }
+        else {
+            Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
+            return this.taches.add(tache);
+        }
     }
 
     /**
@@ -67,6 +83,12 @@ public class TacheMere extends Tache{
             }
         }
         return s;
+    }
+
+
+    public List<Tache> getSousTaches() {
+
+        return this.taches;
     }
 
 }

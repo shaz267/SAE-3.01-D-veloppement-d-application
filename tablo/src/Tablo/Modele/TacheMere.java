@@ -40,8 +40,10 @@ public class TacheMere extends Tache{
      */
     public boolean ajouterTache(Tache tache) {
 
-        //Si la tâche est déjà dans la liste on ne l'ajoute pas.
-        if (this.taches.contains(tache)) {
+        //System.out.println("Tache : " + tache.hashCode() + " TacheMere : " + this.hashCode());
+
+        //Si la tâche est déjà dans la liste on ne l'ajoute pas. ou si la tâche est la tâche mère.
+        if (this.taches.contains(tache) || tache.hashCode() == this.hashCode()) {
             return false;
         }
         else {

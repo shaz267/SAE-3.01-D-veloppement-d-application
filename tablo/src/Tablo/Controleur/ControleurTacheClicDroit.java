@@ -4,6 +4,7 @@ import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
 import Tablo.Modele.TacheMere;
+import Tablo.Vue.VueListe;
 import Tablo.Vue.VueSousTaches;
 import Tablo.Vue.VueTache;
 import javafx.collections.FXCollections;
@@ -38,6 +39,14 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 
 		//On change la tache courante
 		modele.changerTacheCourante(((VueTache) mouseEvent.getSource()).getNumTache());
+
+		//On récupère la liste qui a été cliquée c'est à dire le parent de la source
+		VueListe vl = (VueListe) ((Button) mouseEvent.getSource()).getParent();
+		//On récupère le numéro de la liste
+		int numListe = vl.getNumListe();
+		//On change la liste courante
+		modele.changerListeCourante(numListe);
+
 
 		// Si le clique effectué est un clique droit alors
 		if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
@@ -93,8 +102,8 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			// alors je récupère ici le titre des tâches pour la liste des tâches existances et je l'ajoute dans
 			// mon ObservableList
 			for(Tache tache : this.modele.getTaches()){
-				// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches
-				if(tache != this.modele.getTaches().get(numTache-1)){
+				// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches. On vérifie aussi qu'on ajoute pas une tâche qui est déjà une sous tâche
+				if(tache != this.modele.getTaches().get(numTache-1) && !modele.getSousTaches().contains(tache)){
 					observableList.add(tache.getTitre());
 				}
 			}
@@ -122,7 +131,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			// Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
 			dialog.showAndWait();
 
-			// Aucune tache n'a été supprimée
+			// Si Aucune tache n'a été supprimée
 			if (numTacheCourante == Modele.getTacheCourante()) {
 
 				// Si le titre n'est pas vide
@@ -183,7 +192,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 					String titre = listeSousTache.getValue();
 
 					// On récupère la tâche choisie
-					Tache tacheFille = this.modele.getTaches().get(observableList.indexOf(titre));
+					Tache tacheFille = this.modele.getTache(titre);
 
 					// On ajoute la tâche fille à la tâche mère. Si le résultat est false on change la tache courante en TacheMere
 					if (!this.modele.ajouterSousTache(tacheFille)) {

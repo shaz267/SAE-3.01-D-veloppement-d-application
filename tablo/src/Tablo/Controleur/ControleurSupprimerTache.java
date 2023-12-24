@@ -12,7 +12,10 @@ public class ControleurSupprimerTache implements EventHandler<MouseEvent> {
 	 */
 	private Modele modele;
 
-	public ControleurSupprimerTache(Modele m){ this.modele = m; }
+	public ControleurSupprimerTache(Modele m){
+
+		this.modele = m;
+	}
 
 	@Override
 	public void handle(MouseEvent mouseEvent) {

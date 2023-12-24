@@ -1587,3 +1587,1411 @@
 14:34,59s -- Ajout d'un tableau
 14:35,12s -- Ajout de la liste FZRDS au tableau TABLEAU SIMON
 14:35,13s -- Ajout de la tâche ZRfs à la liste FZRDS
+14:56,19s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+14:56,20s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+14:56,21s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+14:56,22s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+14:56,26s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:56,26s -- Modification du titre de la tâche Nouvelle Tache
+14:56,26s -- Changement du contenu de la tâche Nouvelle Tache en 
+14:56,26s -- Modification du contenu de la tâche Nouvelle Tache
+14:56,26s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+14:56,26s -- Modification de la date de début de la tâche Nouvelle Tache
+14:56,26s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+14:56,26s -- Modification de la date de fin de la tâche Nouvelle Tache
+14:56,26s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+14:56,28s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:56,28s -- Modification du titre de la tâche Nouvelle Tache
+14:56,28s -- Changement du contenu de la tâche Nouvelle Tache en 
+14:56,28s -- Modification du contenu de la tâche Nouvelle Tache
+14:56,28s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+14:56,28s -- Modification de la date de début de la tâche Nouvelle Tache
+14:56,28s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+14:56,28s -- Modification de la date de fin de la tâche Nouvelle Tache
+14:56,31s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:56,31s -- Modification du titre de la tâche Nouvelle Tache
+14:56,31s -- Changement du contenu de la tâche Nouvelle Tache en 
+14:56,31s -- Modification du contenu de la tâche Nouvelle Tache
+14:56,31s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+14:56,31s -- Modification de la date de début de la tâche Nouvelle Tache
+14:56,31s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+14:56,31s -- Modification de la date de fin de la tâche Nouvelle Tache
+14:56,33s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:56,33s -- Modification du titre de la tâche Nouvelle Tache
+14:56,33s -- Changement du contenu de la tâche Nouvelle Tache en 
+14:56,33s -- Modification du contenu de la tâche Nouvelle Tache
+14:56,33s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+14:56,33s -- Modification de la date de début de la tâche Nouvelle Tache
+14:56,33s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+14:56,33s -- Modification de la date de fin de la tâche Nouvelle Tache
+14:56,48s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+14:56,49s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+14:56,49s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+14:56,59s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:57,17s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:58,46s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+14:58,47s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+14:58,53s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+14:58,53s -- Modification du titre de la tâche Nouvelle Tache
+14:58,53s -- Changement du contenu de la tâche Nouvelle Tache en 
+14:58,53s -- Modification du contenu de la tâche Nouvelle Tache
+14:58,53s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+14:58,53s -- Modification de la date de début de la tâche Nouvelle Tache
+14:58,53s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+14:58,53s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:0,2s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:0,2s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:0,5s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:0,5s -- Modification du titre de la tâche Nouvelle Tache
+15:0,5s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:0,5s -- Modification du contenu de la tâche Nouvelle Tache
+15:0,5s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:0,5s -- Modification de la date de début de la tâche Nouvelle Tache
+15:0,5s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:0,5s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:1,47s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:1,48s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:1,49s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:1,52s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:1,52s -- Modification du titre de la tâche Nouvelle Tache
+15:1,52s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:1,52s -- Modification du contenu de la tâche Nouvelle Tache
+15:1,52s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:1,52s -- Modification de la date de début de la tâche Nouvelle Tache
+15:1,52s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:1,52s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:1,52s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:2,3s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:2,3s -- Modification du titre de la tâche Nouvelle Tache
+15:2,3s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:2,3s -- Modification du contenu de la tâche Nouvelle Tache
+15:2,3s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:2,3s -- Modification de la date de début de la tâche Nouvelle Tache
+15:2,3s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:2,3s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:2,20s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:2,21s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:2,24s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:2,24s -- Modification du titre de la tâche Nouvelle Tache
+15:2,24s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:2,24s -- Modification du contenu de la tâche Nouvelle Tache
+15:2,24s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:2,24s -- Modification de la date de début de la tâche Nouvelle Tache
+15:2,24s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:2,24s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:2,25s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:2,29s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:2,29s -- Modification du titre de la tâche Nouvelle Tache
+15:2,29s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:2,29s -- Modification du contenu de la tâche Nouvelle Tache
+15:2,29s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:2,29s -- Modification de la date de début de la tâche Nouvelle Tache
+15:2,29s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:2,29s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:2,29s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:2,38s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:2,38s -- Modification du titre de la tâche Nouvelle Tache
+15:2,38s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:2,38s -- Modification du contenu de la tâche Nouvelle Tache
+15:2,38s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:2,38s -- Modification de la date de début de la tâche Nouvelle Tache
+15:2,38s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:2,38s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:2,40s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:2,41s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:2,45s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:2,45s -- Modification du titre de la tâche Nouvelle Tache
+15:2,45s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:2,45s -- Modification du contenu de la tâche Nouvelle Tache
+15:2,45s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:2,45s -- Modification de la date de début de la tâche Nouvelle Tache
+15:2,45s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:2,45s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:2,45s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:2,50s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:2,53s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:2,55s -- Ajout de la tâche 3 à la liste Nouvelle liste
+15:2,57s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:3,1s -- Changement du titre de la tâche 1 en 1
+15:3,1s -- Modification du titre de la tâche 1
+15:3,1s -- Changement du contenu de la tâche 1 en 
+15:3,1s -- Modification du contenu de la tâche 1
+15:3,1s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:3,1s -- Modification de la date de début de la tâche 1
+15:3,1s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:3,1s -- Modification de la date de fin de la tâche 1
+15:3,1s -- Ajout de la tâche 3 à la tâche mère 1
+15:3,5s -- Changement du titre de la tâche 1 en 1
+15:3,5s -- Modification du titre de la tâche 1
+15:3,5s -- Changement du contenu de la tâche 1 en 
+15:3,5s -- Modification du contenu de la tâche 1
+15:3,5s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:3,5s -- Modification de la date de début de la tâche 1
+15:3,5s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:3,5s -- Modification de la date de fin de la tâche 1
+15:3,5s -- Ajout de la tâche 1 à la tâche mère 1
+15:3,40s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:3,41s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:3,41s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:3,42s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:3,44s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:3,44s -- Modification du titre de la tâche Nouvelle Tache
+15:3,44s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:3,44s -- Modification du contenu de la tâche Nouvelle Tache
+15:3,44s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:3,44s -- Modification de la date de début de la tâche Nouvelle Tache
+15:3,44s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:3,44s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:3,44s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:3,47s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:3,47s -- Modification du titre de la tâche Nouvelle Tache
+15:3,47s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:3,47s -- Modification du contenu de la tâche Nouvelle Tache
+15:3,47s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:3,47s -- Modification de la date de début de la tâche Nouvelle Tache
+15:3,47s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:3,47s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:3,47s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:3,53s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:3,53s -- Modification du titre de la tâche Nouvelle Tache
+15:3,53s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:3,53s -- Modification du contenu de la tâche Nouvelle Tache
+15:3,53s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:3,53s -- Modification de la date de début de la tâche Nouvelle Tache
+15:3,53s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:3,53s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:3,53s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:3,57s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:3,57s -- Modification du titre de la tâche Nouvelle Tache
+15:3,57s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:3,57s -- Modification du contenu de la tâche Nouvelle Tache
+15:3,57s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:3,57s -- Modification de la date de début de la tâche Nouvelle Tache
+15:3,57s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:3,57s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:3,59s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:3,59s -- Modification du titre de la tâche Nouvelle Tache
+15:3,59s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:3,59s -- Modification du contenu de la tâche Nouvelle Tache
+15:3,59s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:3,59s -- Modification de la date de début de la tâche Nouvelle Tache
+15:3,59s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:3,59s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:3,59s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:4,2s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:4,2s -- Modification du titre de la tâche Nouvelle Tache
+15:4,2s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:4,2s -- Modification du contenu de la tâche Nouvelle Tache
+15:4,2s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:4,2s -- Modification de la date de début de la tâche Nouvelle Tache
+15:4,2s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:4,2s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:4,2s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:4,5s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:4,5s -- Modification du titre de la tâche Nouvelle Tache
+15:4,5s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:4,5s -- Modification du contenu de la tâche Nouvelle Tache
+15:4,5s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:4,5s -- Modification de la date de début de la tâche Nouvelle Tache
+15:4,5s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:4,5s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:4,12s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:4,13s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:4,15s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:4,17s -- Ajout de la tâche 3 à la liste Nouvelle liste
+15:4,20s -- Changement du titre de la tâche 1 en 1
+15:4,20s -- Modification du titre de la tâche 1
+15:4,20s -- Changement du contenu de la tâche 1 en 
+15:4,20s -- Modification du contenu de la tâche 1
+15:4,20s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:4,20s -- Modification de la date de début de la tâche 1
+15:4,20s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:4,20s -- Modification de la date de fin de la tâche 1
+15:4,20s -- Ajout de la tâche 1 à la tâche mère 1
+15:4,26s -- Changement du titre de la tâche 1 en 1
+15:4,26s -- Modification du titre de la tâche 1
+15:4,26s -- Changement du contenu de la tâche 1 en 
+15:4,26s -- Modification du contenu de la tâche 1
+15:4,26s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:4,26s -- Modification de la date de début de la tâche 1
+15:4,26s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:4,26s -- Modification de la date de fin de la tâche 1
+15:4,26s -- Ajout de la tâche 1 à la tâche mère 1
+15:4,34s -- Changement du titre de la tâche 1 en 1
+15:4,34s -- Modification du titre de la tâche 1
+15:4,34s -- Changement du contenu de la tâche 1 en 
+15:4,34s -- Modification du contenu de la tâche 1
+15:4,34s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:4,34s -- Modification de la date de début de la tâche 1
+15:4,34s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:4,34s -- Modification de la date de fin de la tâche 1
+15:4,36s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:4,39s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:4,40s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:4,42s -- Ajout de la tâche 3 à la liste Nouvelle liste
+15:5,17s -- Ajout de la liste 1 au tableau Tableau 1
+15:5,21s -- Ajout de la liste 2 au tableau Tableau 1
+15:5,25s -- Ajout de la tâche 1 à la liste 2
+15:5,27s -- Ajout de la tâche 2 à la liste 2
+15:5,29s -- Changement du titre de la tâche 1 en 1
+15:5,29s -- Modification du titre de la tâche 1
+15:5,29s -- Changement du contenu de la tâche 1 en 
+15:5,29s -- Modification du contenu de la tâche 1
+15:5,29s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:5,29s -- Modification de la date de début de la tâche 1
+15:5,29s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:5,29s -- Modification de la date de fin de la tâche 1
+15:5,31s -- Ajout de la tâche 1 à la liste 1
+15:5,33s -- Ajout de la tâche 2 à la liste 1
+15:7,58s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:7,59s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:8,0s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:8,1s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:8,2s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:8,4s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:8,16s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:8,16s -- Modification du titre de la tâche Nouvelle Tache
+15:8,16s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:8,16s -- Modification du contenu de la tâche Nouvelle Tache
+15:8,16s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:8,16s -- Modification de la date de début de la tâche Nouvelle Tache
+15:8,16s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:8,16s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:8,21s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:8,21s -- Modification du titre de la tâche Nouvelle Tache
+15:8,21s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:8,21s -- Modification du contenu de la tâche Nouvelle Tache
+15:8,21s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:8,21s -- Modification de la date de début de la tâche Nouvelle Tache
+15:8,21s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:8,21s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:8,29s -- Ajout de la liste 1 au tableau Tableau 1
+15:8,31s -- Ajout de la tâche 1 à la liste 1
+15:8,32s -- Ajout de la tâche 2 à la liste 1
+15:8,46s -- Changement du titre de la tâche 1 en 1
+15:8,46s -- Modification du titre de la tâche 1
+15:8,46s -- Changement du contenu de la tâche 1 en 
+15:8,46s -- Modification du contenu de la tâche 1
+15:8,46s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:8,46s -- Modification de la date de début de la tâche 1
+15:8,46s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:8,46s -- Modification de la date de fin de la tâche 1
+15:8,47s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:8,50s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:8,52s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:8,52s -- Modification du titre de la tâche Nouvelle Tache
+15:8,52s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:8,52s -- Modification du contenu de la tâche Nouvelle Tache
+15:8,52s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:8,52s -- Modification de la date de début de la tâche Nouvelle Tache
+15:8,52s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:8,52s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:8,54s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:8,54s -- Modification du titre de la tâche Nouvelle Tache
+15:8,54s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:8,54s -- Modification du contenu de la tâche Nouvelle Tache
+15:8,54s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:8,54s -- Modification de la date de début de la tâche Nouvelle Tache
+15:8,54s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:8,54s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:8,56s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:8,57s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:8,57s -- Modification du titre de la tâche Nouvelle Tache
+15:8,57s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:8,57s -- Modification du contenu de la tâche Nouvelle Tache
+15:8,57s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:8,57s -- Modification de la date de début de la tâche Nouvelle Tache
+15:8,57s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:8,57s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:9,13s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:9,17s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:9,19s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:9,20s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:9,22s -- Changement du titre de la tâche 1 en 1
+15:9,22s -- Modification du titre de la tâche 1
+15:9,22s -- Changement du contenu de la tâche 1 en 
+15:9,22s -- Modification du contenu de la tâche 1
+15:9,22s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:9,22s -- Modification de la date de début de la tâche 1
+15:9,22s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:9,22s -- Modification de la date de fin de la tâche 1
+15:9,25s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:9,27s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:9,28s -- Changement du titre de la tâche 1 en 1
+15:9,28s -- Modification du titre de la tâche 1
+15:9,28s -- Changement du contenu de la tâche 1 en 
+15:9,28s -- Modification du contenu de la tâche 1
+15:9,28s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:9,28s -- Modification de la date de début de la tâche 1
+15:9,28s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:9,28s -- Modification de la date de fin de la tâche 1
+15:9,30s -- Changement du titre de la tâche 2 en 2
+15:9,30s -- Modification du titre de la tâche 2
+15:9,30s -- Changement du contenu de la tâche 2 en 
+15:9,30s -- Modification du contenu de la tâche 2
+15:9,30s -- Changement de la date de début de la tâche 2 en 2023-12-24
+15:9,30s -- Modification de la date de début de la tâche 2
+15:9,30s -- Changement de la date limite de la tâche 2 en 2023-12-25
+15:9,30s -- Modification de la date de fin de la tâche 2
+15:9,33s -- Changement du titre de la tâche 1 en 1
+15:9,33s -- Modification du titre de la tâche 1
+15:9,33s -- Changement du contenu de la tâche 1 en 
+15:9,33s -- Modification du contenu de la tâche 1
+15:9,33s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:9,33s -- Modification de la date de début de la tâche 1
+15:9,33s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:9,33s -- Modification de la date de fin de la tâche 1
+15:9,36s -- Changement du titre de la tâche 1 en 1
+15:9,36s -- Modification du titre de la tâche 1
+15:9,36s -- Changement du contenu de la tâche 1 en 
+15:9,36s -- Modification du contenu de la tâche 1
+15:9,36s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:9,36s -- Modification de la date de début de la tâche 1
+15:9,36s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:9,36s -- Modification de la date de fin de la tâche 1
+15:9,39s -- Changement du titre de la tâche 1 en 1
+15:9,39s -- Modification du titre de la tâche 1
+15:9,39s -- Changement du contenu de la tâche 1 en 
+15:9,39s -- Modification du contenu de la tâche 1
+15:9,39s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:9,39s -- Modification de la date de début de la tâche 1
+15:9,39s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:9,39s -- Modification de la date de fin de la tâche 1
+15:10,9s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:10,9s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:10,10s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:10,11s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:10,11s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:10,12s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:10,15s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,15s -- Modification du titre de la tâche Nouvelle Tache
+15:10,15s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,15s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,15s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,15s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,15s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,15s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,16s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,16s -- Modification du titre de la tâche Nouvelle Tache
+15:10,16s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,16s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,16s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,16s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,16s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,16s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,21s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,21s -- Modification du titre de la tâche Nouvelle Tache
+15:10,21s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,21s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,21s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,21s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,21s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,21s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,25s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,25s -- Modification du titre de la tâche Nouvelle Tache
+15:10,25s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,25s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,25s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,25s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,25s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,25s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,27s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,27s -- Modification du titre de la tâche Nouvelle Tache
+15:10,27s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,27s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,27s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,27s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,27s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,27s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,30s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,30s -- Modification du titre de la tâche Nouvelle Tache
+15:10,30s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,30s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,30s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,30s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,30s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,30s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,32s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,32s -- Modification du titre de la tâche Nouvelle Tache
+15:10,32s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,32s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,32s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,32s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,32s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,32s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,33s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:10,36s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,36s -- Modification du titre de la tâche Nouvelle Tache
+15:10,36s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,36s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,36s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,36s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,36s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,36s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,38s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,38s -- Modification du titre de la tâche Nouvelle Tache
+15:10,38s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,38s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,38s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,38s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,38s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,38s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,39s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:10,42s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,42s -- Modification du titre de la tâche Nouvelle Tache
+15:10,42s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,42s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,42s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,42s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,42s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,42s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,44s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:10,46s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,46s -- Modification du titre de la tâche Nouvelle Tache
+15:10,46s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,46s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,46s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,46s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,46s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,46s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,48s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,48s -- Modification du titre de la tâche Nouvelle Tache
+15:10,48s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,48s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,48s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,48s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,48s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,48s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,54s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,54s -- Modification du titre de la tâche Nouvelle Tache
+15:10,54s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,54s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,54s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,54s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,54s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,54s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:10,56s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:10,56s -- Modification du titre de la tâche Nouvelle Tache
+15:10,56s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:10,56s -- Modification du contenu de la tâche Nouvelle Tache
+15:10,56s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:10,56s -- Modification de la date de début de la tâche Nouvelle Tache
+15:10,56s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:10,56s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,17s -- Ajout de la liste 1 au tableau Tableau 1
+15:12,19s -- Ajout de la liste 2 au tableau Tableau 1
+15:12,20s -- Ajout de la liste 3 au tableau Tableau 1
+15:12,28s -- Ajout de la tâche Nouvelle Tache à la liste 3
+15:12,29s -- Ajout de la tâche Nouvelle Tache à la liste 2
+15:12,30s -- Ajout de la tâche Nouvelle Tache à la liste 1
+15:12,32s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,32s -- Modification du titre de la tâche Nouvelle Tache
+15:12,32s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,32s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,32s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,32s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,32s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,32s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,34s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,34s -- Modification du titre de la tâche Nouvelle Tache
+15:12,34s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,34s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,34s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,34s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,34s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,34s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,36s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,36s -- Modification du titre de la tâche Nouvelle Tache
+15:12,36s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,36s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,36s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,36s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,36s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,36s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,38s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,38s -- Modification du titre de la tâche Nouvelle Tache
+15:12,38s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,38s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,38s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,38s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,38s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,38s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,44s -- Ajout de la tâche s à la liste 1
+15:12,46s -- Ajout de la tâche s à la liste 2
+15:12,47s -- Ajout de la tâche s à la liste 3
+15:12,51s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,51s -- Modification du titre de la tâche Nouvelle Tache
+15:12,51s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,51s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,51s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,51s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,51s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,51s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,53s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,53s -- Modification du titre de la tâche Nouvelle Tache
+15:12,53s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,53s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,53s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,53s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,53s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,53s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,56s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,56s -- Modification du titre de la tâche Nouvelle Tache
+15:12,56s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,56s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,56s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,56s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,56s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,56s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,57s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,57s -- Modification du titre de la tâche Nouvelle Tache
+15:12,57s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,57s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,57s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,57s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,57s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,57s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:12,59s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:12,59s -- Modification du titre de la tâche Nouvelle Tache
+15:12,59s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:12,59s -- Modification du contenu de la tâche Nouvelle Tache
+15:12,59s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:12,59s -- Modification de la date de début de la tâche Nouvelle Tache
+15:12,59s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:12,59s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:13,1s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:13,1s -- Modification du titre de la tâche Nouvelle Tache
+15:13,1s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:13,1s -- Modification du contenu de la tâche Nouvelle Tache
+15:13,1s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:13,1s -- Modification de la date de début de la tâche Nouvelle Tache
+15:13,1s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:13,1s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:13,3s -- Changement du titre de la tâche s en s
+15:13,3s -- Modification du titre de la tâche s
+15:13,3s -- Changement du contenu de la tâche s en 
+15:13,3s -- Modification du contenu de la tâche s
+15:13,3s -- Changement de la date de début de la tâche s en 2023-12-24
+15:13,3s -- Modification de la date de début de la tâche s
+15:13,3s -- Changement de la date limite de la tâche s en 2023-12-25
+15:13,3s -- Modification de la date de fin de la tâche s
+15:13,29s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:13,30s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:13,32s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:13,34s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:13,36s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:13,41s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:13,41s -- Modification du titre de la tâche Nouvelle Tache
+15:13,41s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:13,41s -- Modification du contenu de la tâche Nouvelle Tache
+15:13,41s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:13,41s -- Modification de la date de début de la tâche Nouvelle Tache
+15:13,41s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:13,41s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:13,41s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:13,45s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:13,45s -- Modification du titre de la tâche Nouvelle Tache
+15:13,45s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:13,45s -- Modification du contenu de la tâche Nouvelle Tache
+15:13,45s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:13,45s -- Modification de la date de début de la tâche Nouvelle Tache
+15:13,45s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:13,45s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:13,48s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:13,48s -- Modification du titre de la tâche Nouvelle Tache
+15:13,48s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:13,48s -- Modification du contenu de la tâche Nouvelle Tache
+15:13,48s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:13,48s -- Modification de la date de début de la tâche Nouvelle Tache
+15:13,48s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:13,48s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:13,48s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:13,56s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:13,56s -- Modification du titre de la tâche Nouvelle Tache
+15:13,56s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:13,56s -- Modification du contenu de la tâche Nouvelle Tache
+15:13,56s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:13,56s -- Modification de la date de début de la tâche Nouvelle Tache
+15:13,56s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:13,56s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:13,56s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:14,1s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,1s -- Modification du titre de la tâche Nouvelle Tache
+15:14,1s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,1s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,1s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,1s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,1s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,1s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,13s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:14,14s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:14,18s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,18s -- Modification du titre de la tâche Nouvelle Tache
+15:14,18s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,18s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,18s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,18s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,18s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,18s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,20s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:14,23s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,23s -- Modification du titre de la tâche Nouvelle Tache
+15:14,23s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,23s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,23s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,23s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,23s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,23s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,23s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:14,25s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,25s -- Modification du titre de la tâche Nouvelle Tache
+15:14,25s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,25s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,25s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,25s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,25s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,25s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,29s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,29s -- Modification du titre de la tâche Nouvelle Tache
+15:14,29s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,29s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,29s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,29s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,29s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,29s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,29s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:14,32s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,32s -- Modification du titre de la tâche Nouvelle Tache
+15:14,32s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,32s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,32s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,32s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,32s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,32s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,37s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,37s -- Modification du titre de la tâche Nouvelle Tache
+15:14,37s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,37s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,37s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,37s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,37s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,37s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:14,40s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:14,40s -- Modification du titre de la tâche Nouvelle Tache
+15:14,40s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:14,40s -- Modification du contenu de la tâche Nouvelle Tache
+15:14,40s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:14,40s -- Modification de la date de début de la tâche Nouvelle Tache
+15:14,40s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:14,40s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:15,37s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:15,39s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:15,41s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:15,45s -- Changement du titre de la tâche 1 en 1
+15:15,45s -- Modification du titre de la tâche 1
+15:15,45s -- Changement du contenu de la tâche 1 en 
+15:15,45s -- Modification du contenu de la tâche 1
+15:15,45s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:15,45s -- Modification de la date de début de la tâche 1
+15:15,45s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:15,45s -- Modification de la date de fin de la tâche 1
+15:15,45s -- Ajout de la tâche 1 à la tâche mère 1
+15:15,50s -- Changement du titre de la tâche 1 en 1
+15:15,50s -- Modification du titre de la tâche 1
+15:15,50s -- Changement du contenu de la tâche 1 en 
+15:15,50s -- Modification du contenu de la tâche 1
+15:15,50s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:15,50s -- Modification de la date de début de la tâche 1
+15:15,50s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:15,50s -- Modification de la date de fin de la tâche 1
+15:15,56s -- Changement du titre de la tâche 2 en 2
+15:15,56s -- Modification du titre de la tâche 2
+15:15,56s -- Changement du contenu de la tâche 2 en 
+15:15,56s -- Modification du contenu de la tâche 2
+15:15,56s -- Changement de la date de début de la tâche 2 en 2023-12-24
+15:15,56s -- Modification de la date de début de la tâche 2
+15:15,56s -- Changement de la date limite de la tâche 2 en 2023-12-25
+15:15,56s -- Modification de la date de fin de la tâche 2
+15:15,56s -- Ajout de la tâche 1 à la tâche mère 2
+15:16,4s -- Changement du titre de la tâche 2 en 2
+15:16,4s -- Modification du titre de la tâche 2
+15:16,4s -- Changement du contenu de la tâche 2 en 
+15:16,4s -- Modification du contenu de la tâche 2
+15:16,4s -- Changement de la date de début de la tâche 2 en 2023-12-24
+15:16,4s -- Modification de la date de début de la tâche 2
+15:16,4s -- Changement de la date limite de la tâche 2 en 2023-12-25
+15:16,4s -- Modification de la date de fin de la tâche 2
+15:16,17s -- Changement du titre de la tâche 2 en 2
+15:16,17s -- Modification du titre de la tâche 2
+15:16,17s -- Changement du contenu de la tâche 2 en 
+15:16,17s -- Modification du contenu de la tâche 2
+15:16,17s -- Changement de la date de début de la tâche 2 en 2023-12-24
+15:16,17s -- Modification de la date de début de la tâche 2
+15:16,17s -- Changement de la date limite de la tâche 2 en 2023-12-25
+15:16,17s -- Modification de la date de fin de la tâche 2
+15:16,34s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:16,36s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:16,37s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:16,40s -- Changement du titre de la tâche 1 en 1
+15:16,40s -- Modification du titre de la tâche 1
+15:16,40s -- Changement du contenu de la tâche 1 en 
+15:16,40s -- Modification du contenu de la tâche 1
+15:16,40s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:16,40s -- Modification de la date de début de la tâche 1
+15:16,40s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:16,40s -- Modification de la date de fin de la tâche 1
+15:16,40s -- Ajout de la tâche 1 à la tâche mère 1
+15:16,50s -- Changement du titre de la tâche 1 en 1
+15:16,50s -- Modification du titre de la tâche 1
+15:16,50s -- Changement du contenu de la tâche 1 en 
+15:16,50s -- Modification du contenu de la tâche 1
+15:16,50s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:16,50s -- Modification de la date de début de la tâche 1
+15:16,50s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:16,50s -- Modification de la date de fin de la tâche 1
+15:16,50s -- Ajout de la tâche 1 à la tâche mère 1
+15:32,55s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:32,57s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:32,57s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:32,57s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:32,58s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:32,58s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:33,0s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:33,0s -- Modification du titre de la tâche Nouvelle Tache
+15:33,0s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:33,0s -- Modification du contenu de la tâche Nouvelle Tache
+15:33,0s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:33,0s -- Modification de la date de début de la tâche Nouvelle Tache
+15:33,0s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:33,0s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:33,0s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:33,38s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:33,38s -- Modification du titre de la tâche Nouvelle Tache
+15:33,38s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:33,38s -- Modification du contenu de la tâche Nouvelle Tache
+15:33,38s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:33,38s -- Modification de la date de début de la tâche Nouvelle Tache
+15:33,38s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:33,38s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:33,41s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:33,41s -- Modification du titre de la tâche Nouvelle Tache
+15:33,41s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:33,41s -- Modification du contenu de la tâche Nouvelle Tache
+15:33,41s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:33,41s -- Modification de la date de début de la tâche Nouvelle Tache
+15:33,41s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:33,41s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:33,41s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:33,49s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:33,49s -- Modification du titre de la tâche Nouvelle Tache
+15:33,49s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:33,49s -- Modification du contenu de la tâche Nouvelle Tache
+15:33,49s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:33,49s -- Modification de la date de début de la tâche Nouvelle Tache
+15:33,49s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:33,49s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:33,52s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:33,52s -- Modification du titre de la tâche Nouvelle Tache
+15:33,52s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:33,52s -- Modification du contenu de la tâche Nouvelle Tache
+15:33,52s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:33,52s -- Modification de la date de début de la tâche Nouvelle Tache
+15:33,52s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:33,52s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:33,52s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:34,38s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:34,39s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:34,42s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:34,43s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:34,46s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:34,46s -- Modification du titre de la tâche Nouvelle Tache
+15:34,46s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:34,46s -- Modification du contenu de la tâche Nouvelle Tache
+15:34,46s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:34,46s -- Modification de la date de début de la tâche Nouvelle Tache
+15:34,46s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:34,46s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:34,46s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:34,50s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:34,50s -- Modification du titre de la tâche Nouvelle Tache
+15:34,50s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:34,50s -- Modification du contenu de la tâche Nouvelle Tache
+15:34,50s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:34,50s -- Modification de la date de début de la tâche Nouvelle Tache
+15:34,50s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:34,50s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:34,52s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:34,52s -- Modification du titre de la tâche Nouvelle Tache
+15:34,52s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:34,52s -- Modification du contenu de la tâche Nouvelle Tache
+15:34,52s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:34,52s -- Modification de la date de début de la tâche Nouvelle Tache
+15:34,52s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:34,52s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:34,52s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:34,55s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:34,55s -- Modification du titre de la tâche Nouvelle Tache
+15:34,55s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:34,55s -- Modification du contenu de la tâche Nouvelle Tache
+15:34,55s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:34,55s -- Modification de la date de début de la tâche Nouvelle Tache
+15:34,55s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:34,55s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:34,58s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:34,58s -- Modification du titre de la tâche Nouvelle Tache
+15:34,58s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:34,58s -- Modification du contenu de la tâche Nouvelle Tache
+15:34,58s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:34,58s -- Modification de la date de début de la tâche Nouvelle Tache
+15:34,58s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:34,58s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:34,58s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:35,2s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:35,2s -- Modification du titre de la tâche Nouvelle Tache
+15:35,2s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:35,2s -- Modification du contenu de la tâche Nouvelle Tache
+15:35,2s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:35,2s -- Modification de la date de début de la tâche Nouvelle Tache
+15:35,2s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:35,2s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:35,2s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:36,15s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:36,15s -- Modification du titre de la tâche Nouvelle Tache
+15:36,15s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:36,15s -- Modification du contenu de la tâche Nouvelle Tache
+15:36,15s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:36,15s -- Modification de la date de début de la tâche Nouvelle Tache
+15:36,15s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:36,15s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:36,15s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:36,21s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:36,21s -- Modification du titre de la tâche Nouvelle Tache
+15:36,21s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:36,21s -- Modification du contenu de la tâche Nouvelle Tache
+15:36,21s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:36,21s -- Modification de la date de début de la tâche Nouvelle Tache
+15:36,21s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:36,21s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:36,21s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:36,31s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:36,34s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:36,35s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:36,37s -- Changement du titre de la tâche 1 en 1
+15:36,37s -- Modification du titre de la tâche 1
+15:36,37s -- Changement du contenu de la tâche 1 en 
+15:36,37s -- Modification du contenu de la tâche 1
+15:36,37s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:36,37s -- Modification de la date de début de la tâche 1
+15:36,37s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:36,37s -- Modification de la date de fin de la tâche 1
+15:36,37s -- Ajout de la tâche 1 à la tâche mère 1
+15:36,39s -- Changement du titre de la tâche 1 en 1
+15:36,39s -- Modification du titre de la tâche 1
+15:36,39s -- Changement du contenu de la tâche 1 en 
+15:36,39s -- Modification du contenu de la tâche 1
+15:36,39s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:36,39s -- Modification de la date de début de la tâche 1
+15:36,39s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:36,39s -- Modification de la date de fin de la tâche 1
+15:36,42s -- Changement du titre de la tâche 1 en 1
+15:36,42s -- Modification du titre de la tâche 1
+15:36,42s -- Changement du contenu de la tâche 1 en 
+15:36,42s -- Modification du contenu de la tâche 1
+15:36,42s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:36,42s -- Modification de la date de début de la tâche 1
+15:36,42s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:36,42s -- Modification de la date de fin de la tâche 1
+15:36,42s -- Ajout de la tâche 1 à la tâche mère 1
+15:36,48s -- Changement du titre de la tâche 1 en 1
+15:36,48s -- Modification du titre de la tâche 1
+15:36,48s -- Changement du contenu de la tâche 1 en 
+15:36,48s -- Modification du contenu de la tâche 1
+15:36,48s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:36,48s -- Modification de la date de début de la tâche 1
+15:36,48s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:36,48s -- Modification de la date de fin de la tâche 1
+15:36,48s -- Ajout de la tâche 1 à la tâche mère 1
+15:37,53s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:37,54s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:37,56s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:37,59s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:37,59s -- Modification du titre de la tâche Nouvelle Tache
+15:37,59s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:37,59s -- Modification du contenu de la tâche Nouvelle Tache
+15:37,59s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:37,59s -- Modification de la date de début de la tâche Nouvelle Tache
+15:37,59s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:37,59s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:37,59s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:39,59s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:40,0s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:40,1s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:40,4s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:40,4s -- Modification du titre de la tâche Nouvelle Tache
+15:40,4s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:40,4s -- Modification du contenu de la tâche Nouvelle Tache
+15:40,4s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:40,4s -- Modification de la date de début de la tâche Nouvelle Tache
+15:40,4s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:40,4s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:40,4s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:40,13s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:40,13s -- Modification du titre de la tâche Nouvelle Tache
+15:40,13s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:40,13s -- Modification du contenu de la tâche Nouvelle Tache
+15:40,13s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:40,13s -- Modification de la date de début de la tâche Nouvelle Tache
+15:40,13s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:40,13s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:40,13s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:40,46s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:40,47s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:40,47s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:40,53s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:40,53s -- Modification du titre de la tâche Nouvelle Tache
+15:40,53s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:40,53s -- Modification du contenu de la tâche Nouvelle Tache
+15:40,53s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:40,53s -- Modification de la date de début de la tâche Nouvelle Tache
+15:40,53s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:40,53s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:40,53s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:40,58s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:40,58s -- Modification du titre de la tâche Nouvelle Tache
+15:40,58s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:40,58s -- Modification du contenu de la tâche Nouvelle Tache
+15:40,58s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:40,58s -- Modification de la date de début de la tâche Nouvelle Tache
+15:40,58s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:40,58s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:40,58s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:41,13s -- Changement du titre de la tâche Nouvelle Tache en 1
+15:41,13s -- Modification du titre de la tâche 1
+15:41,13s -- Changement du contenu de la tâche 1 en 
+15:41,13s -- Modification du contenu de la tâche 1
+15:41,13s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:41,13s -- Modification de la date de début de la tâche 1
+15:41,13s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:41,13s -- Modification de la date de fin de la tâche 1
+15:41,16s -- Changement du titre de la tâche 1 en 1
+15:41,16s -- Modification du titre de la tâche 1
+15:41,16s -- Changement du contenu de la tâche 1 en 
+15:41,16s -- Modification du contenu de la tâche 1
+15:41,16s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:41,16s -- Modification de la date de début de la tâche 1
+15:41,16s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:41,16s -- Modification de la date de fin de la tâche 1
+15:41,20s -- Changement du titre de la tâche Nouvelle Tache en 2
+15:41,20s -- Modification du titre de la tâche 2
+15:41,20s -- Changement du contenu de la tâche 2 en 
+15:41,20s -- Modification du contenu de la tâche 2
+15:41,20s -- Changement de la date de début de la tâche 2 en 2023-12-24
+15:41,20s -- Modification de la date de début de la tâche 2
+15:41,20s -- Changement de la date limite de la tâche 2 en 2023-12-25
+15:41,20s -- Modification de la date de fin de la tâche 2
+15:44,32s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:44,33s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:44,35s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:44,39s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:44,39s -- Modification du titre de la tâche Nouvelle Tache
+15:44,39s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:44,39s -- Modification du contenu de la tâche Nouvelle Tache
+15:44,39s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:44,39s -- Modification de la date de début de la tâche Nouvelle Tache
+15:44,39s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:44,39s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:44,39s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:46,33s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:46,35s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:46,47s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:46,47s -- Modification du titre de la tâche Nouvelle Tache
+15:46,47s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:46,47s -- Modification du contenu de la tâche Nouvelle Tache
+15:46,47s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:46,47s -- Modification de la date de début de la tâche Nouvelle Tache
+15:46,47s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:46,47s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:46,51s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:46,56s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:46,56s -- Modification du titre de la tâche Nouvelle Tache
+15:46,56s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:46,56s -- Modification du contenu de la tâche Nouvelle Tache
+15:46,56s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:46,56s -- Modification de la date de début de la tâche Nouvelle Tache
+15:46,56s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:46,56s -- Modification de la date de fin de la tâche Nouvelle Tache
+15:46,56s -- Ajout de la tâche Nouvelle Tache à la tâche mère Nouvelle Tache
+15:47,41s -- Ajout de la liste 1 au tableau Tableau 1
+15:47,42s -- Ajout de la tâche 1 à la liste 1
+15:47,43s -- Ajout de la tâche 2 à la liste 1
+15:47,46s -- Changement du titre de la tâche 1 en 1
+15:47,46s -- Modification du titre de la tâche 1
+15:47,46s -- Changement du contenu de la tâche 1 en 
+15:47,46s -- Modification du contenu de la tâche 1
+15:47,46s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:47,46s -- Modification de la date de début de la tâche 1
+15:47,46s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:47,46s -- Modification de la date de fin de la tâche 1
+15:47,46s -- Ajout de la tâche 1 à la tâche mère 1
+15:48,32s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:48,36s -- Ajout de la tâche 1 à la liste Nouvelle liste
+15:48,37s -- Ajout de la tâche 2 à la liste Nouvelle liste
+15:48,40s -- Changement du titre de la tâche 1 en 1
+15:48,40s -- Modification du titre de la tâche 1
+15:48,40s -- Changement du contenu de la tâche 1 en 
+15:48,40s -- Modification du contenu de la tâche 1
+15:48,40s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:48,40s -- Modification de la date de début de la tâche 1
+15:48,40s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:48,40s -- Modification de la date de fin de la tâche 1
+15:48,40s -- Ajout de la tâche 1 à la tâche mère 1
+15:48,52s -- Ajout de la tâche 3 à la liste Nouvelle liste
+15:48,55s -- Changement du titre de la tâche 1 en 1
+15:48,55s -- Modification du titre de la tâche 1
+15:48,55s -- Changement du contenu de la tâche 1 en 
+15:48,55s -- Modification du contenu de la tâche 1
+15:48,55s -- Changement de la date de début de la tâche 1 en 2023-12-24
+15:48,55s -- Modification de la date de début de la tâche 1
+15:48,55s -- Changement de la date limite de la tâche 1 en 2023-12-25
+15:48,55s -- Modification de la date de fin de la tâche 1
+15:48,55s -- Ajout de la tâche 2 à la tâche mère 1
+15:57,38s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:57,38s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:57,40s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:58,3s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+15:58,4s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+15:58,17s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+15:58,17s -- Modification du titre de la tâche Nouvelle Tache
+15:58,17s -- Changement du contenu de la tâche Nouvelle Tache en 
+15:58,17s -- Modification du contenu de la tâche Nouvelle Tache
+15:58,17s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+15:58,17s -- Modification de la date de début de la tâche Nouvelle Tache
+15:58,17s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+15:58,17s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:1,53s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:1,54s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:1,57s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:2,0s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:2,0s -- Modification du titre de la tâche Nouvelle Tache
+16:2,0s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:2,0s -- Modification du contenu de la tâche Nouvelle Tache
+16:2,0s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:2,0s -- Modification de la date de début de la tâche Nouvelle Tache
+16:2,0s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:2,0s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:2,0s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:2,6s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:2,6s -- Modification du titre de la tâche Nouvelle Tache
+16:2,6s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:2,6s -- Modification du contenu de la tâche Nouvelle Tache
+16:2,6s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:2,6s -- Modification de la date de début de la tâche Nouvelle Tache
+16:2,6s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:2,6s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:2,6s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:2,11s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:2,11s -- Modification du titre de la tâche Nouvelle Tache
+16:2,11s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:2,11s -- Modification du contenu de la tâche Nouvelle Tache
+16:2,11s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:2,11s -- Modification de la date de début de la tâche Nouvelle Tache
+16:2,11s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:2,11s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:2,11s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:2,16s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:2,16s -- Modification du titre de la tâche Nouvelle Tache
+16:2,16s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:2,16s -- Modification du contenu de la tâche Nouvelle Tache
+16:2,16s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:2,16s -- Modification de la date de début de la tâche Nouvelle Tache
+16:2,16s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:2,16s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:2,16s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:2,18s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:2,18s -- Modification du titre de la tâche Nouvelle Tache
+16:2,18s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:2,18s -- Modification du contenu de la tâche Nouvelle Tache
+16:2,18s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:2,18s -- Modification de la date de début de la tâche Nouvelle Tache
+16:2,18s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:2,18s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:2,18s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:5,39s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:5,41s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:5,44s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:5,48s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:5,48s -- Modification du titre de la tâche Nouvelle Tache
+16:5,48s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:5,48s -- Modification du contenu de la tâche Nouvelle Tache
+16:5,48s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:5,48s -- Modification de la date de début de la tâche Nouvelle Tache
+16:5,48s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:5,48s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:5,48s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:5,51s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:5,51s -- Modification du titre de la tâche Nouvelle Tache
+16:5,51s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:5,51s -- Modification du contenu de la tâche Nouvelle Tache
+16:5,51s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:5,51s -- Modification de la date de début de la tâche Nouvelle Tache
+16:5,51s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:5,51s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:5,51s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:5,54s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:5,54s -- Modification du titre de la tâche Nouvelle Tache
+16:5,54s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:5,54s -- Modification du contenu de la tâche Nouvelle Tache
+16:5,54s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:5,54s -- Modification de la date de début de la tâche Nouvelle Tache
+16:5,54s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:5,54s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:5,54s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:5,56s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:5,56s -- Modification du titre de la tâche Nouvelle Tache
+16:5,56s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:5,56s -- Modification du contenu de la tâche Nouvelle Tache
+16:5,56s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:5,56s -- Modification de la date de début de la tâche Nouvelle Tache
+16:5,56s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:5,56s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:5,56s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:6,0s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:6,0s -- Modification du titre de la tâche Nouvelle Tache
+16:6,0s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:6,0s -- Modification du contenu de la tâche Nouvelle Tache
+16:6,0s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:6,0s -- Modification de la date de début de la tâche Nouvelle Tache
+16:6,0s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:6,0s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:6,22s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:6,23s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:6,26s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:6,29s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:6,29s -- Modification du titre de la tâche Nouvelle Tache
+16:6,29s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:6,29s -- Modification du contenu de la tâche Nouvelle Tache
+16:6,29s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:6,29s -- Modification de la date de début de la tâche Nouvelle Tache
+16:6,29s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:6,29s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:6,29s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:6,32s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:6,32s -- Modification du titre de la tâche Nouvelle Tache
+16:6,32s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:6,32s -- Modification du contenu de la tâche Nouvelle Tache
+16:6,32s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:6,32s -- Modification de la date de début de la tâche Nouvelle Tache
+16:6,32s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:6,32s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:6,35s -- Changement du titre de la tâche 1 en 1
+16:6,35s -- Modification du titre de la tâche 1
+16:6,35s -- Changement du contenu de la tâche 1 en 
+16:6,35s -- Modification du contenu de la tâche 1
+16:6,35s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:6,35s -- Modification de la date de début de la tâche 1
+16:6,35s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:6,35s -- Modification de la date de fin de la tâche 1
+16:6,35s -- Ajout de la tâche Nouvelle Tache à la tâche mère 1
+16:6,52s -- Changement du titre de la tâche 1 en 1
+16:6,52s -- Modification du titre de la tâche 1
+16:6,52s -- Changement du contenu de la tâche 1 en 
+16:6,52s -- Modification du contenu de la tâche 1
+16:6,52s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:6,52s -- Modification de la date de début de la tâche 1
+16:6,52s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:6,52s -- Modification de la date de fin de la tâche 1
+16:6,56s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:6,56s -- Modification du titre de la tâche Nouvelle Tache
+16:6,56s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:6,56s -- Modification du contenu de la tâche Nouvelle Tache
+16:6,56s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:6,56s -- Modification de la date de début de la tâche Nouvelle Tache
+16:6,56s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:6,56s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:6,56s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:30,55s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:30,57s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:30,59s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:31,3s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:31,3s -- Modification du titre de la tâche Nouvelle Tache
+16:31,3s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:31,3s -- Modification du contenu de la tâche Nouvelle Tache
+16:31,3s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:31,3s -- Modification de la date de début de la tâche Nouvelle Tache
+16:31,3s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:31,3s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:31,3s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:31,5s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:31,5s -- Modification du titre de la tâche Nouvelle Tache
+16:31,5s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:31,5s -- Modification du contenu de la tâche Nouvelle Tache
+16:31,5s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:31,5s -- Modification de la date de début de la tâche Nouvelle Tache
+16:31,5s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:31,5s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:31,7s -- Changement du titre de la tâche 1 en 1
+16:31,7s -- Modification du titre de la tâche 1
+16:31,7s -- Changement du contenu de la tâche 1 en 
+16:31,7s -- Modification du contenu de la tâche 1
+16:31,7s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:31,7s -- Modification de la date de début de la tâche 1
+16:31,7s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:31,7s -- Modification de la date de fin de la tâche 1
+16:31,7s -- Ajout de la tâche Nouvelle Tache à la tâche mère 1
+16:31,11s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:31,11s -- Modification du titre de la tâche Nouvelle Tache
+16:31,11s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:31,11s -- Modification du contenu de la tâche Nouvelle Tache
+16:31,11s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:31,11s -- Modification de la date de début de la tâche Nouvelle Tache
+16:31,11s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:31,11s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:31,11s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:31,58s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:32,1s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:32,2s -- Ajout de la tâche 2 à la liste Nouvelle liste
+16:32,11s -- Changement du titre de la tâche 1 en 1
+16:32,11s -- Modification du titre de la tâche 1
+16:32,11s -- Changement du contenu de la tâche 1 en 
+16:32,11s -- Modification du contenu de la tâche 1
+16:32,11s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:32,11s -- Modification de la date de début de la tâche 1
+16:32,11s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:32,11s -- Modification de la date de fin de la tâche 1
+16:32,11s -- Ajout de la tâche 2 à la tâche mère 1
+16:32,13s -- Changement du titre de la tâche 1 en 1
+16:32,13s -- Modification du titre de la tâche 1
+16:32,13s -- Changement du contenu de la tâche 1 en 
+16:32,13s -- Modification du contenu de la tâche 1
+16:32,13s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:32,13s -- Modification de la date de début de la tâche 1
+16:32,13s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:32,13s -- Modification de la date de fin de la tâche 1
+16:32,14s -- Changement du titre de la tâche 2 en 2
+16:32,14s -- Modification du titre de la tâche 2
+16:32,14s -- Changement du contenu de la tâche 2 en 
+16:32,14s -- Modification du contenu de la tâche 2
+16:32,14s -- Changement de la date de début de la tâche 2 en 2023-12-24
+16:32,14s -- Modification de la date de début de la tâche 2
+16:32,14s -- Changement de la date limite de la tâche 2 en 2023-12-25
+16:32,14s -- Modification de la date de fin de la tâche 2
+16:32,16s -- Changement du titre de la tâche 2 en 2
+16:32,16s -- Modification du titre de la tâche 2
+16:32,16s -- Changement du contenu de la tâche 2 en 
+16:32,16s -- Modification du contenu de la tâche 2
+16:32,16s -- Changement de la date de début de la tâche 2 en 2023-12-24
+16:32,16s -- Modification de la date de début de la tâche 2
+16:32,16s -- Changement de la date limite de la tâche 2 en 2023-12-25
+16:32,16s -- Modification de la date de fin de la tâche 2
+16:32,16s -- Ajout de la tâche 1 à la tâche mère 2
+16:32,18s -- Changement du titre de la tâche 1 en 1
+16:32,18s -- Modification du titre de la tâche 1
+16:32,18s -- Changement du contenu de la tâche 1 en 
+16:32,18s -- Modification du contenu de la tâche 1
+16:32,18s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:32,18s -- Modification de la date de début de la tâche 1
+16:32,18s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:32,18s -- Modification de la date de fin de la tâche 1
+16:32,18s -- Ajout de la tâche 2 à la tâche mère 1
+16:32,21s -- Changement du titre de la tâche 2 en 2
+16:32,21s -- Modification du titre de la tâche 2
+16:32,21s -- Changement du contenu de la tâche 2 en 
+16:32,21s -- Modification du contenu de la tâche 2
+16:32,21s -- Changement de la date de début de la tâche 2 en 2023-12-24
+16:32,21s -- Modification de la date de début de la tâche 2
+16:32,21s -- Changement de la date limite de la tâche 2 en 2023-12-25
+16:32,21s -- Modification de la date de fin de la tâche 2
+16:32,23s -- Changement du titre de la tâche 1 en 1
+16:32,23s -- Modification du titre de la tâche 1
+16:32,23s -- Changement du contenu de la tâche 1 en 
+16:32,23s -- Modification du contenu de la tâche 1
+16:32,23s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:32,23s -- Modification de la date de début de la tâche 1
+16:32,23s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:32,23s -- Modification de la date de fin de la tâche 1
+16:32,29s -- Changement du titre de la tâche 2 en 2
+16:32,29s -- Modification du titre de la tâche 2
+16:32,29s -- Changement du contenu de la tâche 2 en 
+16:32,29s -- Modification du contenu de la tâche 2
+16:32,29s -- Changement de la date de début de la tâche 2 en 2023-12-24
+16:32,29s -- Modification de la date de début de la tâche 2
+16:32,29s -- Changement de la date limite de la tâche 2 en 2023-12-25
+16:32,29s -- Modification de la date de fin de la tâche 2
+16:32,37s -- Changement du titre de la tâche 1 en 1
+16:32,37s -- Modification du titre de la tâche 1
+16:32,37s -- Changement du contenu de la tâche 1 en 
+16:32,37s -- Modification du contenu de la tâche 1
+16:32,37s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:32,37s -- Modification de la date de début de la tâche 1
+16:32,38s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:32,38s -- Modification de la date de fin de la tâche 1
+16:39,31s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:39,32s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:39,34s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:39,36s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:39,36s -- Modification du titre de la tâche Nouvelle Tache
+16:39,36s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:39,36s -- Modification du contenu de la tâche Nouvelle Tache
+16:39,36s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:39,36s -- Modification de la date de début de la tâche Nouvelle Tache
+16:39,36s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:39,36s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:39,36s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:39,39s -- Changement du titre de la tâche 1 en 1
+16:39,39s -- Modification du titre de la tâche 1
+16:39,39s -- Changement du contenu de la tâche 1 en 
+16:39,39s -- Modification du contenu de la tâche 1
+16:39,39s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:39,39s -- Modification de la date de début de la tâche 1
+16:39,39s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:39,39s -- Modification de la date de fin de la tâche 1
+16:39,39s -- Ajout de la tâche Nouvelle Tache à la tâche mère 1
+16:39,45s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:39,45s -- Modification du titre de la tâche Nouvelle Tache
+16:39,45s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:39,45s -- Modification du contenu de la tâche Nouvelle Tache
+16:39,45s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:39,45s -- Modification de la date de début de la tâche Nouvelle Tache
+16:39,45s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:39,45s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:39,47s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:39,47s -- Modification du titre de la tâche Nouvelle Tache
+16:39,47s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:39,47s -- Modification du contenu de la tâche Nouvelle Tache
+16:39,47s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:39,47s -- Modification de la date de début de la tâche Nouvelle Tache
+16:39,47s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:39,47s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:40,12s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:40,33s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:40,34s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:40,35s -- Ajout de la tâche 1 à la liste Nouvelle liste
+16:40,39s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:40,39s -- Modification du titre de la tâche Nouvelle Tache
+16:40,39s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:40,39s -- Modification du contenu de la tâche Nouvelle Tache
+16:40,39s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:40,39s -- Modification de la date de début de la tâche Nouvelle Tache
+16:40,39s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:40,39s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:40,39s -- Ajout de la tâche 1 à la tâche mère Nouvelle Tache
+16:40,41s -- Changement du titre de la tâche 1 en 1
+16:40,41s -- Modification du titre de la tâche 1
+16:40,41s -- Changement du contenu de la tâche 1 en 
+16:40,41s -- Modification du contenu de la tâche 1
+16:40,41s -- Changement de la date de début de la tâche 1 en 2023-12-24
+16:40,41s -- Modification de la date de début de la tâche 1
+16:40,41s -- Changement de la date limite de la tâche 1 en 2023-12-25
+16:40,41s -- Modification de la date de fin de la tâche 1
+16:40,41s -- Ajout de la tâche Nouvelle Tache à la tâche mère 1
+16:40,43s -- Changement du titre de la tâche Nouvelle Tache en Nouvelle Tache
+16:40,43s -- Modification du titre de la tâche Nouvelle Tache
+16:40,43s -- Changement du contenu de la tâche Nouvelle Tache en 
+16:40,43s -- Modification du contenu de la tâche Nouvelle Tache
+16:40,43s -- Changement de la date de début de la tâche Nouvelle Tache en 2023-12-24
+16:40,43s -- Modification de la date de début de la tâche Nouvelle Tache
+16:40,43s -- Changement de la date limite de la tâche Nouvelle Tache en 2023-12-25
+16:40,43s -- Modification de la date de fin de la tâche Nouvelle Tache
+16:46,52s -- Ajout de la liste Nouvelle liste au tableau Tableau 1
+16:46,53s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+16:46,55s -- Ajout de la tâche sd à la liste Nouvelle liste

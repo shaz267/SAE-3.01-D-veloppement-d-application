@@ -65,6 +65,7 @@ public abstract class Tache {
     public void changerTitre(String titre) {
 
         Loggeur.enregistrer("Changement du titre de la tâche " + this.titre + " en " + titre);
+        //TODO : changer le titre des sous tâches également.
         this.titre = titre;
     }
 
@@ -164,4 +165,24 @@ public abstract class Tache {
     }
 
     public abstract List<Tache> getSousTaches();
+
+    /**
+     * On redéfinit la méthode equals pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+
+    	return this.titre.equals(((Tache) o).getTitre());
+    }
+
+    /**
+     * On redéfinit la méthode hashCode pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.
+     * @return
+     */
+    @Override
+    public int hashCode() {
+    	return this.titre.hashCode();
+    }
 }

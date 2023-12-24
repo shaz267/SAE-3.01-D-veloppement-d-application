@@ -25,7 +25,9 @@ public class ControleurSupprimerTache implements EventHandler<MouseEvent> {
 		//On récupère le numéro de la liste qui a été cliquée
 		int numTache = Modele.getTacheCourante();
 
-		//On retire la liste courante
+		//System.out.println(modele.getTaches().get(numTache - 1).getTitre());
+
+		//On retire la tache courante
 		modele.retirerTache(modele.getTaches().get(numTache - 1));
 		modele.changerTacheCourante(numTache-1);
 	}

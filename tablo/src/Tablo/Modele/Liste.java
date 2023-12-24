@@ -73,7 +73,7 @@ public class Liste {
 	public void changerTitreTache(String nouveauTitre){
 
 		for (Tache t : this.taches) {
-			if (t.getId() == Modele.getTacheCourante()) {
+			if (t.getNumTache() == Modele.getTacheCourante()) {
 				t.changerTitre(nouveauTitre);
 			}
 		}
@@ -131,6 +131,22 @@ public class Liste {
 	}
 
 	/**
+	 * Permet de rajouter une sous tâche à la tache courante
+	 */
+	public boolean ajouterSousTache(Tache t){
+
+		boolean res = false;
+
+		for (Tache tache : this.taches) {
+			if (tache.getNumTache() == Modele.getTacheCourante()) {
+				res = tache.ajouterTache(t);
+			}
+		}
+
+		return res;
+	}
+
+	/**
 	 * Permet de récupérer l'attribut titre
 	 * @return titre de l'objet Liste
 	 */
@@ -159,4 +175,29 @@ public class Liste {
 	}
 
 
+	/**
+	 * Méthode qui convertie la tache courante en tache mère.
+	 */
+	public void tacheCouranteEnMere() {
+
+		//On appele le constructeur de la classe TacheMere. Qui prend une tache en paramètre. Pour la tache courante.
+		for (Tache t : this.taches) {
+
+			if (t.getNumTache() == Modele.getTacheCourante()) {
+
+				TacheMere tacheMere = new TacheMere(t);
+				this.taches.set(this.taches.indexOf(t), tacheMere);
+			}
+		}
+	}
+
+	public List<Tache> getSousTaches() {
+
+		for (Tache t : this.taches) {
+			if (t.getNumTache() == Modele.getTacheCourante()) {
+				return t.getSousTaches();
+			}
+		}
+		return null;
+	}
 }

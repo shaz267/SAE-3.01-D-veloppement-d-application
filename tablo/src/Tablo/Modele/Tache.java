@@ -3,6 +3,7 @@ package Tablo.Modele;
 import Tablo.Loggeur;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public abstract class Tache {
 
@@ -46,6 +47,8 @@ public abstract class Tache {
 
         //On initialise l'id à -1 car il n'est pas encore défini selon le patron Active Record.
         this.id = -1;
+
+        this.numTache = numTache;
 
         this.titre = titre;
         this.contenu = "";
@@ -155,4 +158,10 @@ public abstract class Tache {
     public LocalDate getDateDebut() {
         return dateDebut;
     }
+
+    public int getNumTache() {
+    	return this.numTache;
+    }
+
+    public abstract List<Tache> getSousTaches();
 }

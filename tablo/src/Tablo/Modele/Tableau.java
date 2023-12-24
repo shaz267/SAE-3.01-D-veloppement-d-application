@@ -185,6 +185,22 @@ public class Tableau {
     }
 
     /**
+     * Permet de rajouter une sous tâche à la tache courante
+     */
+    public boolean ajouterSousTache(Tache t){
+
+        boolean res = false;
+
+        for (Liste l : this.listes) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
+                res = l.ajouterSousTache(t);
+            }
+        }
+
+        return res;
+    }
+
+    /**
      * Retourne le titre du tableau
      * @return titre
      */
@@ -194,5 +210,27 @@ public class Tableau {
 
     public int getNumTableauMax() {
         return numTableauMax;
+    }
+
+    /**
+     * Méthode qui convertie la tache courante en tache mère.
+     */
+    public void tacheCouranteEnMere() {
+
+        for (Liste l : this.listes) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
+                l.tacheCouranteEnMere();
+            }
+        }
+    }
+
+    public List<Tache> getSousTaches() {
+
+        for (Liste l : this.listes) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
+                return l.getSousTaches();
+            }
+        }
+        return null;
     }
 }

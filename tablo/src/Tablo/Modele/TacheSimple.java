@@ -1,5 +1,8 @@
 package Tablo.Modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TacheSimple extends Tache{
     /**
      * Constructeur de la classe TacheSimple qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
@@ -35,5 +38,9 @@ public class TacheSimple extends Tache{
     public String toString() {
 
         return "> " + this.titre;
+    }
+
+    public List<Tache> getSousTaches() {
+        return new ArrayList<Tache>();
     }
 }

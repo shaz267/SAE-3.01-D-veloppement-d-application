@@ -125,6 +125,25 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Permet de rajouter une sous tâche à la tache courante
+     */
+    public boolean ajouterSousTache(Tache t){
+
+        boolean res = false;
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                res = tableau.ajouterSousTache(t);
+                this.notifierObservateurs();
+            }
+        }
+
+        return res;
+    }
+
+    /**
      * Méthode qui ajoute une liste au tableau courant.
      * @param l
      */
@@ -236,5 +255,32 @@ public class Modele implements Sujet {
 
     public static void setListeCourante(int numListe) {
         listeCourante = numListe;
+    }
+
+    /**
+     * Méthode qui convertie la tache courante en tache mère.
+     */
+    public void tacheCouranteEnMere() {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.tacheCouranteEnMere();
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    public List<Tache> getSousTaches() {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.getSousTaches();
+            }
+        }
+        return null;
     }
 }

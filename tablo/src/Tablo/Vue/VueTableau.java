@@ -69,7 +69,7 @@ public class VueTableau extends ScrollPane implements Observateur {
 
             VueListe vueListe = new VueListe(liste.getTitre(), numListe, m);
             vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
-//            vueListe.setOnMouseClicked(new ControleurSupprimerListe(m));
+            //vueListe.setOnMouseClicked(new ControleurSupprimerListe(m));
             listeContainer.getChildren().add(vueListe);
             numListe++;
         }

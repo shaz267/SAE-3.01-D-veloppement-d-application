@@ -48,8 +48,6 @@ public class VueSousTaches extends ScrollPane implements Observateur {
             }
         }
 
-
-
         this.setContent(sousTachesContainer);
 
     }

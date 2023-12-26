@@ -42,7 +42,7 @@ public class ControleurListeClicDroit implements EventHandler<MouseEvent> {
             int numListe = vl.getNumListe();
 
             //On change la liste courante
-            modele.changerListeCourante(numListe);
+            Modele.setListeCourante(numListe);
 
             //On créé la boîte de dialogue
             ChoiceDialog<VBox> dialog = new ChoiceDialog<>();

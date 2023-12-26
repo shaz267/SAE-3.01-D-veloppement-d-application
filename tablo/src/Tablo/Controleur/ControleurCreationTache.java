@@ -22,14 +22,6 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        int numTache;
-
-        if (this.modele.getTaches() == null) {
-            numTache = 1;
-        }
-        else {
-            numTache = this.modele.getTaches().size() + 1;
-        }
 
         //On change la liste courante
 
@@ -41,7 +33,19 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
         int numListe = vl.getNumListe();
 
         //On change la liste courante
-        modele.changerListeCourante(numListe);
+        Modele.setListeCourante(numListe);
+
+
+        //On récupère le numéro de la tâche
+        int numTache;
+
+        if (this.modele.getTaches() == null) {
+            numTache = 1;
+        }
+        else {
+            numTache = this.modele.getTaches().size() + 1;
+        }
+
 
         //String titre = "Nouvelle tâche";
         //String contenu = "Contenu de la tâche";

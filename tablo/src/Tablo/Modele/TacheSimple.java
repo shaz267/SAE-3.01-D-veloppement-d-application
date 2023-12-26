@@ -40,7 +40,11 @@ public class TacheSimple extends Tache{
         return "> " + this.titre;
     }
 
+    /**
+     * Retourne null car une tâche simple ne peut pas avoir de tâche fille.
+     * @return
+     */
     public List<Tache> getSousTaches() {
-        return new ArrayList<Tache>();
+        return null;
     }
 }

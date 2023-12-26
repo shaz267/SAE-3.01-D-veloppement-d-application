@@ -1,18 +1,15 @@
 package Tablo.Vue;
 
 import Tablo.Controleur.ControleurCreationTache;
-import Tablo.Controleur.ControleurListeClicDroit;
+import Tablo.Controleur.ControleurListeCliquee;
 import Tablo.Controleur.ControleurTacheCliquee;
 import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
-import Tablo.Observateur;
-import Tablo.Sujet;
 import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 
 public class VueListe extends VBox {
 
@@ -73,40 +70,8 @@ public class VueListe extends VBox {
         this.getChildren().add(b);
         b.setOnAction(new ControleurCreationTache(modele));
         // On associe un évènement pour gérer le clic droit sur une liste
-        this.setOnMousePressed(new ControleurListeClicDroit(modele));
+        this.setOnMousePressed(new ControleurListeCliquee(modele));
     }
-
-
-    /**
-     * Méthode qui permet de mettre à jour la vue
-     * //@param s Objet qui implémente l'interface Sujet et qui va être actualisé
-     */
-    /*@Override
-    public void actualiser(Sujet s) {
-
-
-        //On efface tout
-        this.getChildren().clear();
-
-        Modele m = (Modele) s;
-
-
-        //On récupère la liste courante
-        Liste l = m.getListes().get(this.numListe - 1);
-
-        for (Tache tache : l.getTaches()) {
-
-            Button text = new Button(tache.getTitre());
-            text.setOnMouseClicked(new ControleurTacheCliquee(m));
-            this.getChildren().add(text);
-        }
-
-        System.out.println(this.getChildren());
-
-        Button b = new Button("Ajouter une tache");
-
-        this.getChildren().add(b);
-    }*/
 
     public int getNumListe() {
         return numListe;

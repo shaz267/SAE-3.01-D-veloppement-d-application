@@ -23,11 +23,11 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
         String titre = b.getText();
 
         //On récupère l'id du tableau
-        int idTableau = this.modele.getNumTableaux(titre);
+        int numTableau = this.modele.getNumTableaux(titre);
 
         //On change le tableau courant
-        if (idTableau != -1){
-            this.modele.changerTableauCourant(idTableau);
+        if (numTableau != -1){
+            Modele.setTableauCourant(numTableau);
 //            this.modele.changerListeCourante(0);
 //            this.modele.changerTacheCourante(0);
         }

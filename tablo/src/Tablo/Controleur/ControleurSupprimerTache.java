@@ -32,6 +32,6 @@ public class ControleurSupprimerTache implements EventHandler<MouseEvent> {
 
 		//On retire la tache courante
 		modele.retirerTache(modele.getTaches().get(numTache - 1));
-		modele.changerTacheCourante(numTache-1);
+		Modele.setTacheCourante(numTache-1);
 	}
 }

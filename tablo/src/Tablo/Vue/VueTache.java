@@ -1,6 +1,6 @@
 package Tablo.Vue;
 
-import Tablo.Controleur.ControleurTacheClicDroit;
+import Tablo.Controleur.ControleurTacheCliquee;
 import Tablo.Modele.Modele;
 import Tablo.Observateur;
 import Tablo.Sujet;
@@ -33,7 +33,7 @@ public class VueTache extends Button implements Observateur {
         this.setFont(javafx.scene.text.Font.font("Verdana", 15));
 
         // On associe un évènement pour gérer le clic droit sur une liste
-        this.setOnMousePressed(new ControleurTacheClicDroit(modele));
+        this.setOnMousePressed(new ControleurTacheCliquee(modele));
     }
 
     /**

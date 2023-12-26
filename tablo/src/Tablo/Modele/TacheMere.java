@@ -86,6 +86,10 @@ public class TacheMere extends Tache{
     }
 
 
+    /**
+     * Méthode qui retourne la liste de tâches filles de la tâche mère.
+     * @return
+     */
     public List<Tache> getSousTaches() {
 
         return this.taches;

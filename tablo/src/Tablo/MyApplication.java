@@ -91,15 +91,16 @@ public class MyApplication extends Application {
         Text text = new Text("A");
         text.setStyle("-fx-font-weight: bold;");
         text.setStyle("-fx-font-size: 30px;");
-        text.setX(90);
+        text.setX(80);
         text.setY(110);
 
         StackPane stack = new StackPane();
         // On crée un padding pour décaler le StackPane à droite (on voulait le bouton du compte sur la droite)
-        stack.setPadding(new Insets(0, 0, 0, 855));
+        stack.setPadding(new Insets(0, 0, 0, 755));
         stack.getChildren().addAll(circle, text);
 
         //TODO : mettre le StackPane à droite
+
 
         //On ajoute les composantes graphiques à la racine
         top.getChildren().addAll(view, espaceTravail, templates,titreTableau , stack);

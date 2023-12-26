@@ -1,9 +1,13 @@
 package Tablo.Controleur;
 
+import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import Tablo.Vue.VueListe;
 import javafx.event.EventHandler;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 public class ControleurListeCliquee implements EventHandler<MouseEvent> {
 
@@ -20,6 +24,10 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
         this.modele = m;
     }
 
+    /**
+     * Méthode qui permet de gérer la modification d'une liste
+     * @param mouseEvent
+     */
     @Override
     public void handle(MouseEvent mouseEvent) {
 
@@ -33,5 +41,46 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
 
         //On change la liste courante
         Modele.setListeCourante(numListe);
+
+        if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+
+            //On créé la boîte de dialogue
+            ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
+            dialog.setTitle("Modifier Liste");
+            dialog.setHeaderText("Modifier une liste");
+
+            // On crée une VBox qui va contenir les choix de l'utilisateur
+            VBox conteneur = new VBox();
+
+            // On crée le TextArea qui va contenir le nouveau titre de la liste
+            TextField champ_saisie = new TextField();
+
+            // On crée le bouton supprimer pour supprimer la liste
+            Button supprimer = new Button("Supprimer");
+
+            // On ajoute le controleur pour supprimer la liste
+            supprimer.setOnMouseClicked(new ControleurSupprimerListe(this.modele));
+
+            // On ajoute les composantes graphiques à la VBox
+            conteneur.getChildren().addAll(champ_saisie, supprimer);
+
+            // On ajoute la VBox à la boîte de dialogue
+            dialog.getDialogPane().setContent(conteneur);
+
+            // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
+            dialog.showAndWait();
+
+            // Si le champ de saisie n'est pas vide
+            if(champ_saisie.getText() != ""){
+                // On récupère le nouveau titre de la liste
+                String titre = champ_saisie.getText();
+                this.modele.getListes().get(Modele.getListeCourante() - 1).changerTitre(titre);
+
+                // On notifie les observateurs
+                this.modele.notifierObservateurs();
+                // On enregistre l'action dans les logs
+                Loggeur.enregistrer("Modification de titre d'une liste");
+            }
+        }
     }
 }

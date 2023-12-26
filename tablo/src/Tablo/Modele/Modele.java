@@ -39,24 +39,23 @@ public class Modele implements Sujet {
     public Modele() {
 
         this.tableaux = new ArrayList<Tableau>();
-        //this.tableaux.add(new Tableau("Tableau 1"));
         this.observateurs = new ArrayList<Observateur>();
     }
 
     /**
      * Méthode qui permet de changer le tableau courant.
      */
-    public void changerTableauCourant(int id) {
+    public static void setTableauCourant(int numTableau) {
 
-        tableauCourant = id;
+        tableauCourant = numTableau;
     }
 
     /**
      * Méthode qui permet de changer la tâche courante.
      */
-    public void changerTacheCourante(int id) {
+    public static void setTacheCourante(int numTache) {
 
-        tacheCourante = id;
+        tacheCourante = numTache;
     }
 
     /**

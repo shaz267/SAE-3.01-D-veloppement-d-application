@@ -297,4 +297,16 @@ public class Modele implements Sujet {
 
         return null;
     }
+
+    public String getTitreTableau() {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.getTitre();
+            }
+        }
+        return null;
+    }
 }

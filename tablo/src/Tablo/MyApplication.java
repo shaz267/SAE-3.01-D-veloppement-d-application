@@ -6,6 +6,7 @@ import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
 import Tablo.Vue.VueDifferentTableaux;
 import Tablo.Vue.VueTableau;
+import Tablo.Vue.VueTitreTableau;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -72,6 +73,12 @@ public class MyApplication extends Application {
 
         templates.getItems().add("Template 1");
 
+        //Titre du tableau
+        VueTitreTableau titreTableau = new VueTitreTableau();
+        modele.enregistrerObservateur(titreTableau);
+
+        //On met le titre du tableau au centre
+        titreTableau.setTranslateX(300);
 
         //Circle
         Circle circle = new Circle();
@@ -95,7 +102,7 @@ public class MyApplication extends Application {
         //TODO : mettre le StackPane à droite
 
         //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, espaceTravail, templates, stack);
+        top.getChildren().addAll(view, espaceTravail, templates,titreTableau , stack);
         root.setTop(top);
 
         VBox left = new VBox();

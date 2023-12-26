@@ -45,7 +45,7 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 		//On récupère le numéro de la liste
 		int numListe = vl.getNumListe();
 		//On change la liste courante
-		modele.changerListeCourante(numListe);
+		Modele.setListeCourante(numListe);
 
 
 		// Si le clique effectué est un clique droit alors
@@ -102,8 +102,8 @@ public class ControleurTacheClicDroit implements EventHandler<MouseEvent> {
 			// alors je récupère ici le titre des tâches pour la liste des tâches existances et je l'ajoute dans
 			// mon ObservableList
 			for(Tache tache : this.modele.getTaches()){
-				// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches. On vérifie aussi qu'on ajoute pas une tâche qui est déjà une sous tâche
-				if(tache != this.modele.getTaches().get(numTache-1) && !modele.getSousTaches().contains(tache)){
+				// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches. On vérifie aussi qu'on ajoute pas une tâche qui est déjà une sous tâche. Enfin on vérifie que la tâche qu'on ajoute au sous taches n'est pas une sous tâche de la tâche courante.
+				if(tache != this.modele.getTaches().get(numTache-1) && !modele.getSousTaches().contains(tache) && !tache.getSousTaches().contains(this.modele.getTaches().get(numTache-1))){
 					observableList.add(tache.getTitre());
 				}
 			}

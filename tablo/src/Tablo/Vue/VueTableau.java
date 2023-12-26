@@ -38,6 +38,9 @@ public class VueTableau extends ScrollPane implements Observateur {
         ajouterListe.setStyle("-fx-background-color: #b6f5b6;");
         ajouterListe.setPrefSize(200, 50);
 
+        //On masque le bouton
+        ajouterListe.setVisible(false);
+
         listeContainer = new HBox();
         listeContainer.setSpacing(10);
         listeContainer.setFillHeight(true);
@@ -59,6 +62,14 @@ public class VueTableau extends ScrollPane implements Observateur {
         listeContainer.getChildren().clear();
 
         Modele m = (Modele) s;
+
+        if (!m.getTableaux().isEmpty()) {
+            //On affiche le bouton
+            ajouterListe.setVisible(true);
+        } else {
+            //On masque le bouton
+            ajouterListe.setVisible(false);
+        }
 
         //On récupère le tableau courant
         Tableau t = m.getTableaux().get(Modele.getTableauCourant());

@@ -174,7 +174,7 @@ public abstract class Tache {
     @Override
     public boolean equals(Object o) {
 
-    	return this.titre.equals(((Tache) o).getTitre());
+    	return this.numTache == ((Tache) o).getNumTache();
     }
 
     /**
@@ -183,6 +183,7 @@ public abstract class Tache {
      */
     @Override
     public int hashCode() {
-    	return this.titre.hashCode();
+
+    	return this.numTache;
     }
 }

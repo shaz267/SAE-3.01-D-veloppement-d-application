@@ -32,6 +32,6 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
         int numListe = vl.getNumListe();
 
         //On change la liste courante
-        modele.changerListeCourante(numListe);
+        Modele.setListeCourante(numListe);
     }
 }

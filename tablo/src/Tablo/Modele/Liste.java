@@ -194,7 +194,9 @@ public class Liste {
 	public List<Tache> getSousTaches() {
 
 		for (Tache t : this.taches) {
+
 			if (t.getNumTache() == Modele.getTacheCourante()) {
+
 				return t.getSousTaches();
 			}
 		}

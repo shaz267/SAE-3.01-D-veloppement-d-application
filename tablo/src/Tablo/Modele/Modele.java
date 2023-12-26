@@ -39,7 +39,7 @@ public class Modele implements Sujet {
     public Modele() {
 
         this.tableaux = new ArrayList<Tableau>();
-        this.tableaux.add(new Tableau("Tableau 1"));
+        //this.tableaux.add(new Tableau("Tableau 1"));
         this.observateurs = new ArrayList<Observateur>();
     }
 
@@ -49,14 +49,6 @@ public class Modele implements Sujet {
     public void changerTableauCourant(int id) {
 
         tableauCourant = id;
-    }
-
-    /**
-     * Méthode qui permet de changer la liste courante.
-     */
-    public void changerListeCourante(int num) {
-
-        listeCourante = num;
     }
 
     /**

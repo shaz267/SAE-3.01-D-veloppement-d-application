@@ -1,13 +1,10 @@
 package Tablo.Vue;
 
-import Tablo.Controleur.ControleurListeClicDroit;
 import Tablo.Controleur.ControleurTacheClicDroit;
-import Tablo.Controleur.ControleurTacheCliquee;
 import Tablo.Modele.Modele;
 import Tablo.Observateur;
 import Tablo.Sujet;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 
 public class VueTache extends Button implements Observateur {
 
@@ -18,6 +15,7 @@ public class VueTache extends Button implements Observateur {
 
     /**
      * Constructeur de la classe VueTache
+     *
      * @param titre
      */
     public VueTache(int numTache, String titre, Modele modele) {
@@ -40,6 +38,7 @@ public class VueTache extends Button implements Observateur {
 
     /**
      * Méthode qui permet de mettre à jour la vue
+     *
      * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
      */
     @Override

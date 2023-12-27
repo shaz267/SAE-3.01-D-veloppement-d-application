@@ -3,6 +3,7 @@ package Tablo.Controleur;
 import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -29,23 +30,39 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         this.numTableau = numTableau;
     }
 
+    /**
+     * Méthode qui permet de gérer la suppression d'un tableau
+     * @param mouseEvent Evènement qui permet de gérer la suppression d'un tableau
+     */
     @Override
     public void handle(MouseEvent mouseEvent) {
 
+        //Si on supprime le tableau courant on change le tableau courant
         if (Modele.getTableauCourant() == this.numTableau) {
             this.modele.changerTableauCourant(this.modele.getTableaux().get(0).getNumTableauMax());
         }
 
-        System.out.println("Tableau à supprimer : " + this.numTableau);
-        System.out.println("Tableau courant : " + Modele.getTableauCourant());
-        //On retire le tableau
-        this.modele.retirerTableau(this.numTableau);
+        //Si on essaye de supprimer le dernier tableau on affiche une erreur
+        if (Modele.getTableauCourant() == 1){
 
-        //On notifie les observateurs
-        this.modele.notifierObservateurs();
+            //On affiche une erreur
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Vous ne pouvez pas supprimer le dernier tableau");
+            alert.showAndWait();
 
-        //On informe le logger
-        Loggeur.enregistrer("Suppression du tableau " + this.numTableau);
+            //sinon on supprime le tableau
+        }else {
+            //On retire le tableau
+            this.modele.retirerTableau(this.numTableau);
+
+            //On notifie les observateurs
+            this.modele.notifierObservateurs();
+
+            //On informe le logger
+            Loggeur.enregistrer("Suppression du tableau " + this.numTableau);
+        }
 
     }
 }

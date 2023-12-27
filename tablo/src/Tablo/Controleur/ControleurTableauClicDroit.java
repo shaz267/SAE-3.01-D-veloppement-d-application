@@ -13,14 +13,28 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
+/**
+ * Classe ControleurTableauClicDroit qui implémente l'interface EventHandler et qui permet de gérer le clic droit sur un tableau
+ */
 public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
 
+    /**
+     * Modele de l'application
+     */
     private Modele modele;
 
+    /**
+     * Constructeur de la classe ControleurTableauClicDroit
+     * @param m Modele de l'application
+     */
     public ControleurTableauClicDroit(Modele m) {
         this.modele = m;
     }
 
+    /**
+     * Méthode qui permet de gérer le clic droit sur un tableau
+     * @param mouseEvent Evènement qui permet de gérer le clic droit sur un tableau
+     */
     @Override
     public void handle(MouseEvent mouseEvent) {
 
@@ -85,19 +99,8 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
                 //On change le titre du tableau
                 this.modele.getTableaux().get(numTableau).changerTitre(titreTableau);
 
-                //On informe le loggeur
-                Loggeur.enregistrer("Modification du titre du tableau : " + titreTableau + "Numéro du tableau : " + numTableau);
-
                 //On met à jour la vue
                 this.modele.notifierObservateurs();
-
-                //sinon on affiche une erreur et on quitte la méthode
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText("Erreur");
-                alert.setContentText("Le nouveau titre du tableau ne peut pas être vide");
-                alert.showAndWait();
             }
 
         }

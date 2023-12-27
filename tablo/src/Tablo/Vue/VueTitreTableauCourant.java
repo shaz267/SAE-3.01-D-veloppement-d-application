@@ -5,10 +5,20 @@ import Tablo.Observateur;
 import Tablo.Sujet;
 import javafx.scene.text.Text;
 
+/**
+ * Classe VueTitreTableauCourant qui hérite de Text et qui implémente l'interface Observateur
+ */
 public class VueTitreTableauCourant extends Text implements Observateur {
 
+    /**
+     * Modele de l'application
+     */
     private Modele modele;
 
+    /**
+     * Constructeur de la classe VueTitreTableauCourant
+     * @param titre Titre du tableau courant
+     */
     public VueTitreTableauCourant(String titre) {
         super(titre);
 
@@ -17,6 +27,10 @@ public class VueTitreTableauCourant extends Text implements Observateur {
         this.setStyle("-fx-font-size: 20px;");
     }
 
+    /**
+     * Méthode qui permet de mettre à jour la vue
+     * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
+     */
     @Override
     public void actualiser(Sujet s) {
         this.modele = (Modele) s;

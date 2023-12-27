@@ -61,18 +61,27 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
                 Loggeur.enregistrer("Ajout du tableau : " + titre + " dans l'application");
             }
 
-            // Création du tableau
-            Tableau t = new Tableau(titre);
+            // Si le titre ne dépasse pas 15 caractères, on affiche une erreur et on quitte la méthode
+            if (titre.length() > 15) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Erreur");
+                alert.setContentText("Le titre du tableau ne doit pas dépasser 15 caractères");
+                alert.showAndWait();
+                return;
+            } else {
+                // Création du tableau
+                Tableau t = new Tableau(titre);
 
-            //On ajoute la liste au modele
-            this.modele.ajouterTableau(t);
+                //On ajoute la liste au modele
+                this.modele.ajouterTableau(t);
 
-            // On ajoute la vue du tableau au modele
-            this.modele.enregistrerObservateur(new VueTableau(t.getNumTableauMax(), titre));
+                // On ajoute la vue du tableau au modele
+                this.modele.enregistrerObservateur(new VueTableau(t.getNumTableauMax(), titre));
 
-            // On notifie les observateurs
-            this.modele.notifierObservateurs();
-
+                // On notifie les observateurs
+                this.modele.notifierObservateurs();
+            }
         });
     }
 }

@@ -25,6 +25,7 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
 
     /**
      * Constructeur de la classe ControleurTableauClicDroit
+     *
      * @param m Modele de l'application
      */
     public ControleurTableauClicDroit(Modele m) {
@@ -33,6 +34,7 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
 
     /**
      * Méthode qui permet de gérer le clic droit sur un tableau
+     *
      * @param mouseEvent Evènement qui permet de gérer le clic droit sur un tableau
      */
     @Override
@@ -90,17 +92,27 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
                 }
             }
 
-            //Si le champ de saisie n'est pas vide on modifie le titre du tableau
+            //Si le champ de saisie n'est pas vide et s'il ne dépasse pas 15 caractères on modifie le titre du tableau
             if (!champ_saisie.getText().isEmpty()) {
+                if (champ_saisie.getText().length() > 15) {
 
-                //On récupère le nouveau titre du tableau
-                String titreTableau = champ_saisie.getText();
+                    //On affiche une erreur
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Erreur");
+                    alert.setContentText("Le titre du tableau ne doit pas dépasser 15 caractères");
+                    alert.showAndWait();
 
-                //On change le titre du tableau
-                this.modele.getTableaux().get(numTableau).changerTitre(titreTableau);
+                } else {
+                    //On récupère le nouveau titre du tableau
+                    String titreTableau = champ_saisie.getText();
 
-                //On met à jour la vue
-                this.modele.notifierObservateurs();
+                    //On change le titre du tableau
+                    this.modele.getTableaux().get(numTableau).changerTitre(titreTableau);
+
+                    //On met à jour la vue
+                    this.modele.notifierObservateurs();
+                }
             }
 
         }

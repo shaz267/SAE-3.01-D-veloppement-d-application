@@ -43,7 +43,7 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         }
 
         //Si on essaye de supprimer le dernier tableau on affiche une erreur
-        if (Modele.getTableauCourant() == 1){
+        if (this.modele.getTableaux().size() == 1){
 
             //On affiche une erreur
             Alert alert = new Alert(Alert.AlertType.ERROR);

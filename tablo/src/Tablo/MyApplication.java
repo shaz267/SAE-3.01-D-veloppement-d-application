@@ -6,6 +6,7 @@ import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
 import Tablo.Vue.VueDifferentTableaux;
 import Tablo.Vue.VueTableau;
+import Tablo.Vue.VueTitreTableauCourant;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -87,15 +88,22 @@ public class MyApplication extends Application {
         text.setX(90);
         text.setY(110);
 
+        VueTitreTableauCourant titreTableauCourant = new VueTitreTableauCourant(modele.getTableaux().get(Modele.getTableauCourant()).getTitre());
+        modele.enregistrerObservateur(titreTableauCourant);
+
+        StackPane TitreTableauCourant = new StackPane();
+        TitreTableauCourant.setPadding(new Insets(0, 0, 0, 400));
+        TitreTableauCourant.getChildren().add(titreTableauCourant);
+
         StackPane stack = new StackPane();
         // On crée un padding pour décaler le StackPane à droite (on voulait le bouton du compte sur la droite)
-        stack.setPadding(new Insets(0, 0, 0, 855));
+        stack.setPadding(new Insets(0, 0, 0, 300));
         stack.getChildren().addAll(circle, text);
 
         //TODO : mettre le StackPane à droite
 
         //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, espaceTravail, templates, stack);
+        top.getChildren().addAll(view, espaceTravail, templates,TitreTableauCourant, stack);
         root.setTop(top);
 
         VBox left = new VBox();

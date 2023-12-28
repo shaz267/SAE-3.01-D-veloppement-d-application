@@ -16,7 +16,6 @@ public class TacheMere extends Tache{
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
      *
      * @param titre
-     * @param contenu
      */
     public TacheMere(int numTache, String titre) {
         //On appelle le constructeur de la classe mère.
@@ -40,8 +39,15 @@ public class TacheMere extends Tache{
      */
     public boolean ajouterTache(Tache tache) {
 
+        //On crée une condition qui vérifie si la tache contient des sous taches afin d'éviter une Exception lors de l'appel de la méthode contains.
+        boolean tacheEstUneSousTacheDeLaTacheMere = false;
+        if (tache.getSousTaches() != null) {
+
+            tacheEstUneSousTacheDeLaTacheMere = tache.getSousTaches().contains(this);
+        }
+
         //Si la tâche est déjà dans la liste on ne l'ajoute pas. ou si c'est la meme tache qui à été changé en tache mère. Ou encore si la tache courante est une sous tache de la tache mère.
-        if (this.taches.contains(tache) || tache.hashCode() == this.hashCode() || tache.getSousTaches().contains(this)) {
+        if (this.taches.contains(tache) || tache.hashCode() == this.hashCode() || tacheEstUneSousTacheDeLaTacheMere) {
             return false;
         }
         else {

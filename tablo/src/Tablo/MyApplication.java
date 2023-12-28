@@ -173,9 +173,9 @@ public class MyApplication extends Application {
 
 
         VueTableau tableauCentre = new VueTableau(1, "Tableau 1");
+        //On enregistre le centre comme observateur du modèle
         modele.enregistrerObservateur(tableauCentre);
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
-        //On enregistre le centre comme observateur du modèle
 
 
 

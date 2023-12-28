@@ -71,7 +71,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
             dialog.showAndWait();
 
             // Si le champ de saisie n'est pas vide
-            if(champ_saisie.getText() != ""){
+            if(!champ_saisie.getText().isEmpty()){
                 // On récupère le nouveau titre de la liste
                 String titre = champ_saisie.getText();
                 this.modele.changerTitreListe(titre);

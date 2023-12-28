@@ -149,6 +149,14 @@ public class Tableau {
         Modele.setListeCourante(0);
     }
 
+    public void changerTitreListe(String nouveauTitre){
+        for (Liste l : this.listes) {
+            if (l.getNumListe() == Modele.getListeCourante()) {
+                l.changerTitreListe(nouveauTitre);
+            }
+        }
+    }
+
     /**
      * Retire l'Id de la liste de l'objet Tableau
      * @return id

@@ -201,6 +201,7 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 					alert.showAndWait();
 				}
 
+				//Si la comboBox n'est pas vide
 				if (listeSousTache.getValue() != null) {
 
 					// On récupère le titre de la tâche choisie

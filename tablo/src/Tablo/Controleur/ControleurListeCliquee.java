@@ -74,7 +74,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
             if(champ_saisie.getText() != ""){
                 // On récupère le nouveau titre de la liste
                 String titre = champ_saisie.getText();
-                this.modele.getListes().get(Modele.getListeCourante() - 1).changerTitre(titre);
+                this.modele.changerTitreListe(titre);
 
                 // On notifie les observateurs
                 this.modele.notifierObservateurs();

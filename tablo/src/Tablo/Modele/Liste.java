@@ -40,7 +40,7 @@ public class Liste {
 	 * Setter pour l'attribut titre
 	 * @param titre nouvelle valeur de l'attribut
 	 */
-	public void changerTitre(String titre) {
+	public void changerTitreListe(String titre) {
 
 		Loggeur.enregistrer("Changement du titre de la liste " + this.titre + " en " + titre);
 		this.titre = titre;

@@ -134,10 +134,10 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 			if (numTacheCourante == Modele.getTacheCourante()) {
 
 				// Si le titre n'est pas vide
-				if(titreField.getText() != "" || titreField.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre())){
+				if(!titreField.getText().isEmpty() || titreField.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre())){
 					// On récupère le nouveau titre de la tâche
 					String titre = titreField.getText();
-					this.modele.getTaches().get(Modele.getTacheCourante() - 1).changerTitre(titre);
+					this.modele.changerTitreTache(titre);
 
 					// On notifie les observateurs
 					this.modele.notifierObservateurs();
@@ -145,10 +145,10 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 					Loggeur.enregistrer("Modification du titre de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
 				}
 				// Si le contenu n'est pas vide
-				if(contenuArea.getText() != "" || contenuArea.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu())){
+				if(!contenuArea.getText().isEmpty() || contenuArea.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu())){
 					// On récupère le nouveau contenu
 					String contenu = contenuArea.getText();
-					this.modele.getTaches().get(Modele.getTacheCourante() - 1).changerContenu(contenu);
+					this.modele.changerContenuTache(contenu);
 
 					// On notifie les observateurs
 					this.modele.notifierObservateurs();
@@ -159,7 +159,7 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 				if((dateDeb.getValue() != null || dateDeb.getValue().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateDebut())) && dateDeb.getValue().isBefore(dateFin.getValue())){
 					// On récupère la date du datePicker
 					LocalDate date = dateDeb.getValue();
-					this.modele.getTaches().get(Modele.getTacheCourante() - 1).modifierDateDebut(date);
+					this.modele.modifierDateDebut(date);
 
 					// On notifie les observateurs
 					this.modele.notifierObservateurs();
@@ -170,7 +170,7 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 				if((dateFin.getValue() != null || dateFin.getValue().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateLimite())) && !dateFin.getValue().isBefore(dateDeb.getValue())){
 					// On récupère la date du datePicker
 					LocalDate date = dateFin.getValue();
-					this.modele.getTaches().get(Modele.getTacheCourante() - 1).modifierDateLimite(date);
+					this.modele.modifierDateLimite(date);
 
 					// On notifie les observateurs
 					this.modele.notifierObservateurs();

@@ -57,7 +57,7 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 
 
 		// Si le clique effectué est un clique droit alors
-		if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+		//if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
 
 			//On créé la boîte de dialogue
 			ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
@@ -101,8 +101,24 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 			// alors je récupère ici le titre des tâches pour la liste des tâches existances et je l'ajoute dans
 			// mon ObservableList
 			for(Tache tache : this.modele.getTaches()){
+
+				boolean ajouterTacheQuiEstSousTache = false;
+
+				if (modele.getSousTaches() != null){
+
+					ajouterTacheQuiEstSousTache = modele.getSousTaches().contains(tache);
+				}
+
+				boolean ajouterTacheQuiEstSousTacheDeLaTacheCourante = false;
+
+				if (tache.getSousTaches() != null){
+
+					ajouterTacheQuiEstSousTacheDeLaTacheCourante = tache.getSousTaches().contains(this.modele.getTaches().get(numTache-1));
+				}
+
+
 				// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches. On vérifie aussi qu'on ajoute pas une tâche qui est déjà une sous tâche. Enfin on vérifie que la tâche qu'on ajoute au sous taches n'est pas une sous tâche de la tâche courante.
-				if(tache != this.modele.getTaches().get(numTache-1) && !modele.getSousTaches().contains(tache) && !tache.getSousTaches().contains(this.modele.getTaches().get(numTache-1))){
+				if(tache != this.modele.getTaches().get(numTache-1) && !ajouterTacheQuiEstSousTache && !ajouterTacheQuiEstSousTacheDeLaTacheCourante){
 					observableList.add(tache.getTitre());
 				}
 			}
@@ -203,7 +219,7 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 						this.modele.ajouterSousTache(tacheFille);
 					}
 				}
-			}
+			//}
 		}
 	}
 }

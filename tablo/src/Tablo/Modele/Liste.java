@@ -4,6 +4,7 @@ import Tablo.Loggeur;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -58,12 +59,18 @@ public class Liste {
 
 	/**
 	 * Permet de supprimer une tâche de l'attribut taches
-	 * @param t tâche à supprimer
 	 */
-	public void retirerTache(Tache t){
+	public boolean archiverTache(){
 
-		Loggeur.enregistrer("Suppression de la tâche " + t.getTitre() + " de la liste " + this.titre);
-		this.taches.remove(t);
+		for (Tache tache : this.taches) {
+
+			if (tache.getNumTache() == Modele.getTacheCourante()) {
+				tache.archiver(true);
+				Loggeur.enregistrer("Archivage de la tâche " + tache.getTitre() + " de la liste " + this.titre);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -201,5 +208,20 @@ public class Liste {
 			}
 		}
 		return null;
+	}
+
+	public Collection<? extends Tache> getTachesArchivees() {
+
+		ArrayList<Tache> tachesArchivees = new ArrayList<Tache>();
+
+		for (Tache t : this.taches) {
+
+			if (t.isArchivee()) {
+
+				tachesArchivees.add(t);
+			}
+		}
+
+		return tachesArchivees;
 	}
 }

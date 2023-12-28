@@ -86,18 +86,17 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une tache du tableau courant de la liste courante.
-     * @param tache
      */
-    public void retirerTache(Tache tache) {
+    public boolean archiverTache() {
 
         for (Tableau tableau : tableaux) {
 
             if (tableau.getNumTableau() == tableauCourant) {
 
-                tableau.retirerTache(tache);
-                this.notifierObservateurs();
+                return tableau.archiverTache();
             }
         }
+        return false;
     }
 
     /**
@@ -379,6 +378,18 @@ public class Modele implements Sujet {
             if (tableau.getNumTableau() == tableauCourant) {
 
                 return tableau.getTitre();
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Tache> getTachesArchivees() {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.getTachesArchivees();
             }
         }
         return null;

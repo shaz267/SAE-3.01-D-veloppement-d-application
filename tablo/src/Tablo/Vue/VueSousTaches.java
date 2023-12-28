@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 
 import java.util.List;
 
-public class VueSousTaches extends ScrollPane implements Observateur {
+public class VueSousTaches extends ScrollPane {
 
     /**
      * Modele de l'application
@@ -49,11 +49,6 @@ public class VueSousTaches extends ScrollPane implements Observateur {
         }
 
         this.setContent(sousTachesContainer);
-
-    }
-
-    @Override
-    public void actualiser(Sujet s) {
 
     }
 }

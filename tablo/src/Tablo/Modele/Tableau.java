@@ -54,15 +54,16 @@ public class Tableau {
 
     /**
      * Retire une tâche de la liste courante
-     * @param t
      */
-    public void retirerTache(Tache t){
+    public boolean archiverTache(){
+
         for (Liste l : this.listes) {
             if (l.getNumListe() == Modele.getListeCourante()) {
 
-                l.retirerTache(t);
+                return l.archiverTache();
             }
         }
+        return false;
     }
 
     /**
@@ -240,5 +241,16 @@ public class Tableau {
             }
         }
         return null;
+    }
+
+    public ArrayList<Tache> getTachesArchivees() {
+
+        ArrayList<Tache> tachesArchivees = new ArrayList<>();
+
+        for (Liste l : this.listes) {
+            tachesArchivees.addAll(l.getTachesArchivees());
+        }
+
+        return tachesArchivees;
     }
 }

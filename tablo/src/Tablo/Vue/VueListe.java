@@ -61,9 +61,13 @@ public class VueListe extends VBox {
         int numTache = 1;
         for (Tache tache : l.getTaches()) {
 
-            VueTache text = new VueTache(numTache, tache.getTitre(),modele);
-            text.setOnMouseClicked(new ControleurTacheCliquee(modele));
-            this.getChildren().add(text);
+            //Si la tache n'est pas archivée, on l'affiche
+            if (!tache.isArchivee()) {
+                VueTache text = new VueTache(numTache, tache.getTitre());
+                text.setOnMouseClicked(new ControleurTacheCliquee(modele));
+                this.getChildren().add(text);
+            }
+            //On incrémente le numéro de la tache quand meme, car on veut que le numéro de la tache soit le meme que l'index de la tache dans la liste
             numTache++;
         }
 

@@ -24,11 +24,18 @@ public class TacheMere extends Tache{
     }
 
     /**
-     * Constructeur qui prend un Objet TacheSimple en paramètre.
+     * Constructeur qui prend un Objet TacheSimple en paramètre. Et le transforme en TacheMere.
      */
     public TacheMere(Tache tache) {
-
         super(tache.getNumTache(), tache.getTitre());
+
+        this.id = tache.getId();
+        this.contenu = tache.getContenu();
+        this.dateDebut = tache.getDateDebut();
+        this.estTerminee = tache.isEstTerminee();
+        this.dateDebut = tache.getDateDebut();
+        this.dateLimite = tache.getDateLimite();
+
         this.taches = new ArrayList<Tache>();
     }
 

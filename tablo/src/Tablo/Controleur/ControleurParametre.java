@@ -2,6 +2,7 @@ package Tablo.Controleur;
 
 import Tablo.Loggeur;
 import Tablo.Modele.Modele;
+import Tablo.Vue.VueTachesArchivees;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -36,7 +37,7 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
 
         //On créé une nouvelle VBox qui va contenir les paramètres
         VBox VBoxParametres = new VBox();
-        VBoxParametres.setSpacing(50);
+        VBoxParametres.setSpacing(20);
 
         //On créé une nouvelle HBox qui va contenir le bouton pour changer le mode sombre et le texte qui va avec
         HBox HBoxModeSombre = new HBox();
@@ -72,8 +73,17 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
         //On ajoute les composantes graphiques à la VBoxLog
         VBoxLog.getChildren().addAll(logText, log);
 
+        //On créé une séparation entre les deux zones
+        Separator separator2 = new Separator();
+
+        Text titreTachesArchivees = new Text("Tâches archivées : ");
+        titreTachesArchivees.setStyle("-fx-font-size: 20px;");
+
+        //On ajoute la liste des taches archivées
+        VueTachesArchivees vueTachesArchivees = new VueTachesArchivees(modele);
+
         //On ajoute les composantes graphiques à la VBoxParametres
-        VBoxParametres.getChildren().addAll(HBoxModeSombre,separator, VBoxLog);
+        VBoxParametres.getChildren().addAll(HBoxModeSombre,separator, VBoxLog, separator2, titreTachesArchivees, vueTachesArchivees);
 
         //On créé la boîte de dialogue
         ChoiceDialog<VBox> dialog = new ChoiceDialog<>();

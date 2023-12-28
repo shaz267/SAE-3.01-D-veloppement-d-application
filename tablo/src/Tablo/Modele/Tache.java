@@ -37,6 +37,11 @@ public abstract class Tache {
      */
     protected boolean estTerminee;
 
+    /**
+     * Attribut estArchivee de la classe Tache qui est un booléen qui représente si la tâche est archivée ou non.
+     */
+    protected boolean estArchivee;
+
     protected int numTache;
 
     /**
@@ -56,6 +61,8 @@ public abstract class Tache {
 
 	    this.dateDebut = LocalDate.now();
 	    this.dateLimite = LocalDate.now().plusDays(1);
+
+        this.estArchivee = false;
     }
 
     /**
@@ -138,6 +145,10 @@ public abstract class Tache {
         return this.id;
     }
 
+    public boolean isEstTerminee() {
+        return estTerminee;
+    }
+
     /**
      * Getter qui retourne l'attribut contenu de la tâche
      * @return contenu
@@ -185,5 +196,15 @@ public abstract class Tache {
     public int hashCode() {
 
     	return this.numTache;
+    }
+
+    public void archiver(boolean estArchivee) {
+
+        this.estArchivee = estArchivee;
+    }
+
+    public boolean isArchivee() {
+
+        return this.estArchivee;
     }
 }

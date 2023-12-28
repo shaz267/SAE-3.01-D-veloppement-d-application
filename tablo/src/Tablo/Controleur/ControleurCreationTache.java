@@ -71,10 +71,10 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
                 }
             }
 
-            // Création de la liste
+            // Création de la tache
             Tache tache = new TacheSimple(numTache, titre);
 
-            //On ajoute la liste au modele
+            //On ajoute la tache au modele
             modele.ajouterTache(tache);
         });
     }

@@ -2,7 +2,7 @@ package Tablo.Modele;
 
 import Tablo.Observateur;
 import Tablo.Sujet;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,9 +107,73 @@ public class Modele implements Sujet {
 
         for (Tableau tableau : tableaux) {
 
-            if (tableau.getId() == tableauCourant) {
+            if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.fini();
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
+     * @param nouveauTitre
+     */
+    public void changerTitreTache(String nouveauTitre) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.changerTitreTache(nouveauTitre);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
+     * @param nouveauContenu
+     */
+    public void changerContenuTache(String nouveauContenu) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.changerContenuTache(nouveauContenu);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui change la date de début de la tâche courante
+     * @param dateDebut
+     */
+    public void modifierDateDebut(LocalDate dateDebut) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.modifierDateDebut(dateDebut);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui change la date de fin de la tâche courante
+     * @param dateLimite
+     */
+    public void modifierDateLimite(LocalDate dateLimite) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.modifierDateLimite(dateLimite);
                 this.notifierObservateurs();
             }
         }
@@ -161,6 +225,17 @@ public class Modele implements Sujet {
             // Quand on a trouvé le tableau courant alors on retire la liste et on notifie les observateurs
             if(tableau.getNumTableau() == tableauCourant){
                 tableau.retirerListe(l);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    public void changerTitreListe(String nouveauTitre){
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.changerTitreListe(nouveauTitre);
                 this.notifierObservateurs();
             }
         }

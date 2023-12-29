@@ -17,17 +17,13 @@ public class ControleurSupprimerListe implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent mouseEvent) {
 
-		// On récupère le bouton supprimer
-		Button supprimer = (Button) mouseEvent.getSource();
+		//On retire la liste courante, si on a pu la retirer on désactive le bouton
+		if (modele.retirerListe()){
 
-		// On ferme la fenêtre
-		supprimer.getScene().getWindow().hide();
-
-		//On récupère le numéro de la liste qui a été cliquée
-		int numListe = Modele.getListeCourante();
-
-		//On retire la liste courante
-		modele.retirerListe(modele.getListes().get(numListe - 1));
-		//Modele.setTacheCourante(numListe-1);
+			// On récupère le bouton supprimer
+			Button supprimer = (Button) mouseEvent.getSource();
+            // On ferme la fenêtre
+            supprimer.getScene().getWindow().hide();
+		}
 	}
 }

@@ -60,7 +60,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute un tableau à l'application.
-     *
      * @param tableau
      */
     public void ajouterTableau(Tableau tableau) {
@@ -102,6 +101,7 @@ public class Modele implements Sujet {
 
         for (Tableau tableau : tableaux) {
 
+            // Si le tableau est le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
 
                 return tableau.archiverTache();
@@ -127,16 +127,17 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
-     *
      * @param nouveauTitre
      */
     public void changerTitreTache(String nouveauTitre) {
 
         for (Tableau tableau : tableaux) {
 
+            // Si le tableau est le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.changerTitreTache(nouveauTitre);
+                // On notifie les observateurs
                 this.notifierObservateurs();
             }
         }
@@ -144,13 +145,13 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
-     *
      * @param nouveauContenu
      */
     public void changerContenuTache(String nouveauContenu) {
 
         for (Tableau tableau : tableaux) {
 
+            // Si le tableau est le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.changerContenuTache(nouveauContenu);
@@ -167,9 +168,12 @@ public class Modele implements Sujet {
 
         for (Tableau tableau : tableaux) {
 
+            // Si le tableau est le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
 
+                //On appel la méthode modifierDateDebut de la classe Tableau
                 tableau.modifierDateDebut(dateDebut);
+                // On notifie les observateurs
                 this.notifierObservateurs();
             }
         }
@@ -183,6 +187,7 @@ public class Modele implements Sujet {
 
         for (Tableau tableau : tableaux) {
 
+            // Si le tableau est le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.modifierDateLimite(dateLimite);
@@ -212,7 +217,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une liste au tableau courant.
-     *
      * @param l
      */
     public void ajouterListe(Liste l) {
@@ -230,18 +234,21 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une liste au tableau courant
-     *
-     * @param l Liste à retirer
+     * @return true si la liste a été retirée, false sinon
      */
-    public void retirerListe(Liste l) {
+    public boolean retirerListe(){
         // On parcourt les tableaux
-        for (Tableau tableau : tableaux) {
+        for(Tableau tableau : tableaux){
             // Quand on a trouvé le tableau courant alors on retire la liste et on notifie les observateurs
-            if (tableau.getNumTableau() == tableauCourant) {
-                tableau.retirerListe(l);
-                this.notifierObservateurs();
+            if(tableau.getNumTableau() == tableauCourant){
+                if (tableau.retirerListe()) {
+                    this.notifierObservateurs();
+                    return true;
+                }
             }
         }
+
+        return false;
     }
 
     public void changerTitreListe(String nouveauTitre){

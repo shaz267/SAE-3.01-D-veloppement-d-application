@@ -58,6 +58,7 @@ public class Tableau {
     public boolean archiverTache(){
 
         for (Liste l : this.listes) {
+            //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
 
                 return l.archiverTache();
@@ -72,6 +73,7 @@ public class Tableau {
      */
     public void changerTitreTache(String nouveauTitre){
         for (Liste l : this.listes) {
+            //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.changerTitreTache(nouveauTitre);
@@ -84,9 +86,12 @@ public class Tableau {
      * @param nouveauContenu
      */
     public void changerContenuTache(String nouveauContenu){
+
         for (Liste l : this.listes) {
+            //On vérifie que la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
 
+                //On change le contenu de la tâche
                 l.changerContenuTache(nouveauContenu);
             }
         }
@@ -98,8 +103,10 @@ public class Tableau {
      */
     public void modifierDateDebut(LocalDate date){
         for (Liste l : this.listes) {
+            //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
 
+                //On change la date de début de la tâche
                 l.modifierDateDebut(date);
             }
         }
@@ -111,6 +118,7 @@ public class Tableau {
      */
     public void modifierDateLimite(LocalDate date){
         for (Liste l : this.listes) {
+            //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
 
                 l.modifierDateLimite(date);
@@ -142,12 +150,44 @@ public class Tableau {
 
     /**
      * Retire une liste de l'objet Tableau
-     * @param l
+     * @return true si on a supprimé la liste courante, false sinon
      */
-    public void retirerListe(Liste l){
-        Loggeur.enregistrer("Suppression de la liste " + l.getTitre() + " du tableau " + this.titre);
-        this.listes.remove(l);
-        Modele.setListeCourante(0);
+    public boolean retirerListe(){
+
+        //int qui permet de savoir si on a supprimé la liste courante et à partir de là on décrémente les numéros des listes suivantes
+        int rangSuppr = -1;
+
+        //On parcourt les listes du tableau pour trouver la liste à supprimer et on décrémente les numéros des listes suivantes
+        for (int i = 0; i < this.listes.size() ; i++) {
+
+            //On récupère la liste
+            Liste liste = this.listes.get(i);
+
+            //Si on a trouvé la liste à supprimer
+            if (liste.getNumListe() == Modele.getListeCourante()) {
+                if (this.listes.remove(liste)) {
+                    //On enregistre l'action dans les logs
+                    Loggeur.enregistrer("Suppression de la liste " + liste.getTitre() + " du tableau " + this.titre);
+                    //On récupère le rang de la liste à supprimer
+                    rangSuppr = i;
+                    //On décrémente la liste courante
+                    Modele.setListeCourante(Modele.getListeCourante() - 1);
+                }
+            }
+        }
+
+        //On décrémente les numéros des listes suivantes si on a supprimé la liste courante
+        if (rangSuppr != -1) {
+            for (int i = rangSuppr; i < this.listes.size(); i++) {
+                Liste liste = this.listes.get(i);
+                liste.setNumListe(liste.getNumListe() - 1);
+            }
+
+            //On retourne true si on a supprimé la liste courante
+            return true;
+        }
+        //On retourne false si on n'a pas supprimé la liste courante
+        return false;
     }
 
     public void changerTitreListe(String nouveauTitre){
@@ -185,6 +225,7 @@ public class Tableau {
     public List<Tache> getTaches() {
 
         for (Liste l : this.listes) {
+
             if (l.getNumListe() == Modele.getListeCourante()) {
 
                 return l.getTaches();

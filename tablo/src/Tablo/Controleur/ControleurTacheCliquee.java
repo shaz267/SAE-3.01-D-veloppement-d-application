@@ -89,7 +89,86 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 		dateFin.setValue(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateLimite());
 
 		Label labelsoustache = new Label("Choisir une sous tâche");
-		// On crée la comboBox qui contiendra la liste des tâches qu'on pourra
+		// On crée la comboBox qui contiendra la liste des tâches qu'on pourra ajouter en sous tâche
+		ComboBox<String> listeSousTache = getStringComboBox(numTache);
+
+		// On crée le bouton supprimer pour supprimer la liste
+		Button archButton = new Button("Archiver la tâche");
+
+		// On ajoute le controleur pour supprimer la liste
+		archButton.setOnMouseClicked(new ControleurArchiverTache(this.modele));
+
+		VueSousTaches vueSousTaches = new VueSousTaches(this.modele);
+
+		// On ajoute les composantes graphiques à la VBox
+		conteneur.getChildren().addAll(labeltitre,titreField, labelcontenu, contenuArea, labelDateDeb, dateDeb, labelDateFin, dateFin, labelsoustache, listeSousTache, vueSousTaches, archButton);
+
+		// On ajoute la VBox à la boîte de dialogue
+		dialog.getDialogPane().setContent(conteneur);
+
+		// Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
+		dialog.showAndWait();
+
+		// si le titre n'est pas vide et le titre n'est pas le meme que celui enregistré
+		if(!titreField.getText().isEmpty() && !titreField.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre())){
+
+			// On récupère le nouveau titre de la tâche
+			String titre = titreField.getText();
+			this.modele.changerTitreTache(titre);
+		}
+		// Si le contenu n'est pas vide ou que le contenu n'est pas le même que celui enregistré
+		if(!contenuArea.getText().isEmpty() && !contenuArea.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu())){
+
+			// On récupère le nouveau contenu
+			String contenu = contenuArea.getText();
+			this.modele.changerContenuTache(contenu);
+		}
+		// Si la date de début n'est pas vide et que la date n'est pas la même que celle enregistrée et que la date choisie est bien avant la date de fin
+		if((dateDeb.getValue() != null && !dateDeb.getValue().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateDebut())) && dateDeb.getValue().isBefore(dateFin.getValue())){
+
+			// On récupère la date du datePicker
+			LocalDate date = dateDeb.getValue();
+			this.modele.modifierDateDebut(date);
+		}
+		// Si la date de fin n'est pas vide et que la date n'est pas la même que celle enregistrée et que la date choisie est bien après la date de début
+		if((dateFin.getValue() != null && !dateFin.getValue().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateLimite())) && !dateFin.getValue().isBefore(dateDeb.getValue())){
+
+			// On récupère la date du datePicker
+			LocalDate date = dateFin.getValue();
+			this.modele.modifierDateLimite(date);
+		}
+		//Si la date de début n'est pas antérieure à la date de fin On affiche une erreur
+		if(!dateDeb.getValue().isBefore(dateFin.getValue())){
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Erreur de date");
+			alert.setContentText("La date de début doit être antérieure à la date de fin.");
+			alert.showAndWait();
+		}
+
+		//Si la comboBox n'est pas vide
+		if (listeSousTache.getValue() != null) {
+
+			// On récupère le titre de la tâche choisie
+			String titre = listeSousTache.getValue();
+
+			// On récupère la tâche choisie
+			Tache tacheFille = this.modele.getTache(titre);
+
+			// On ajoute la tâche fille à la tâche mère. Si le résultat est false on change la tache courante en TacheMere
+			if (!this.modele.ajouterSousTache(tacheFille)) {
+
+				// On change la tâche courante en tâche mère
+				this.modele.tacheCouranteEnMere();
+
+				// On ajoute la tâche fille à la tâche mère
+				this.modele.ajouterSousTache(tacheFille);
+			}
+		}
+
+	}
+
+	private ComboBox<String> getStringComboBox(int numTache) {
 		ComboBox<String> listeSousTache = new ComboBox<String>();
 		listeSousTache.setPromptText("Liste des sous-tâches");
 
@@ -112,112 +191,17 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 
 			if (tache.getSousTaches() != null){
 
-				ajouterTacheQuiEstSousTacheDeLaTacheCourante = tache.getSousTaches().contains(this.modele.getTaches().get(numTache-1));
+				ajouterTacheQuiEstSousTacheDeLaTacheCourante = tache.getSousTaches().contains(this.modele.getTaches().get(numTache -1));
 			}
 
 
 			// On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches. On vérifie aussi qu'on ajoute pas une tâche qui est déjà une sous tâche. Enfin on vérifie que la tâche qu'on ajoute au sous taches n'est pas une sous tâche de la tâche courante. Et la tache n'est pas archivée
-			if(tache != this.modele.getTaches().get(numTache-1) && !ajouterTacheQuiEstSousTache && !ajouterTacheQuiEstSousTacheDeLaTacheCourante && !tache.isArchivee()){
+			if(tache != this.modele.getTaches().get(numTache -1) && !ajouterTacheQuiEstSousTache && !ajouterTacheQuiEstSousTacheDeLaTacheCourante && !tache.isArchivee()){
 				observableList.add(tache.getTitre());
 			}
 		}
 		// On ajoute l'observableList à la ComboBox
 		listeSousTache.setItems(observableList);
-
-		// On récupère la tâche courante avant de la modifier ce qui nous permettra de savoir si la tâche a été supprimée
-		int numTacheCourante = Modele.getTacheCourante();
-
-		// On crée le bouton supprimer pour supprimer la liste
-		Button archButton = new Button("Archiver la tâche");
-
-		// On ajoute le controleur pour supprimer la liste
-		archButton.setOnMouseClicked(new ControleurArchiverTache(this.modele));
-
-		VueSousTaches vueSousTaches = new VueSousTaches(this.modele);
-
-		// On ajoute les composantes graphiques à la VBox
-		conteneur.getChildren().addAll(labeltitre,titreField, labelcontenu, contenuArea, labelDateDeb, dateDeb, labelDateFin, dateFin, labelsoustache, listeSousTache, vueSousTaches, archButton);
-
-		// On ajoute la VBox à la boîte de dialogue
-		dialog.getDialogPane().setContent(conteneur);
-
-		// Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
-		dialog.showAndWait();
-
-		// Si Aucune tache n'a été supprimée
-		if (numTacheCourante == Modele.getTacheCourante()) {
-
-			// Si le titre n'est pas vide
-			if(!titreField.getText().isEmpty() || titreField.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre())){
-				// On récupère le nouveau titre de la tâche
-				String titre = titreField.getText();
-				this.modele.changerTitreTache(titre);
-
-				// On notifie les observateurs
-				this.modele.notifierObservateurs();
-				// On enregistre l'action dans les logs
-				Loggeur.enregistrer("Modification du titre de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
-			}
-			// Si le contenu n'est pas vide
-			if(!contenuArea.getText().isEmpty() || contenuArea.getText().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu())){
-				// On récupère le nouveau contenu
-				String contenu = contenuArea.getText();
-				this.modele.changerContenuTache(contenu);
-
-				// On notifie les observateurs
-				this.modele.notifierObservateurs();
-				// On enregistre l'action dans les logs
-				Loggeur.enregistrer("Modification du contenu de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
-			}
-			// Si la date de début n'est pas vide ou que la date n'est pas la même que celle enregistrée et que la date choisie est bien avant la date de fin
-			if((dateDeb.getValue() != null || dateDeb.getValue().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateDebut())) && dateDeb.getValue().isBefore(dateFin.getValue())){
-				// On récupère la date du datePicker
-				LocalDate date = dateDeb.getValue();
-				this.modele.modifierDateDebut(date);
-
-				// On notifie les observateurs
-				this.modele.notifierObservateurs();
-				// On enregistre l'action dans les logs
-				Loggeur.enregistrer("Modification de la date de début de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
-			}
-			// Si la date de fin n'est pas vide ou que la date n'est pas la même que celle enregistrée et que la date choisie est bien après la date de début
-			if((dateFin.getValue() != null || dateFin.getValue().equals(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateLimite())) && !dateFin.getValue().isBefore(dateDeb.getValue())){
-				// On récupère la date du datePicker
-				LocalDate date = dateFin.getValue();
-				this.modele.modifierDateLimite(date);
-
-				// On notifie les observateurs
-				this.modele.notifierObservateurs();
-				// On enregistre l'action dans les logs
-				Loggeur.enregistrer("Modification de la date de fin de la tâche "+this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
-			}
-			if(!dateDeb.getValue().isBefore(dateFin.getValue())){
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Erreur");
-				alert.setHeaderText("Erreur de date");
-				alert.setContentText("La date de début doit être antérieure à la date de fin.");
-				alert.showAndWait();
-			}
-
-			//Si la comboBox n'est pas vide
-			if (listeSousTache.getValue() != null) {
-
-				// On récupère le titre de la tâche choisie
-				String titre = listeSousTache.getValue();
-
-				// On récupère la tâche choisie
-				Tache tacheFille = this.modele.getTache(titre);
-
-				// On ajoute la tâche fille à la tâche mère. Si le résultat est false on change la tache courante en TacheMere
-				if (!this.modele.ajouterSousTache(tacheFille)) {
-
-					// On change la tâche courante en tâche mère
-					this.modele.tacheCouranteEnMere();
-
-					// On ajoute la tâche fille à la tâche mère
-					this.modele.ajouterSousTache(tacheFille);
-				}
-			}
-		}
+		return listeSousTache;
 	}
 }

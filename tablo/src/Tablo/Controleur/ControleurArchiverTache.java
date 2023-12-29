@@ -24,9 +24,6 @@ public class ControleurArchiverTache implements EventHandler<MouseEvent> {
 		Button supprimer = (Button) mouseEvent.getSource();
 
 
-		//On récupère le numéro de la liste qui a été cliquée
-		int numTache = Modele.getTacheCourante();
-
 		//On archive la tache courante. Si la tache est archivée, on désactive le bouton supprimer
 		if (modele.archiverTache()){
 
@@ -34,6 +31,5 @@ public class ControleurArchiverTache implements EventHandler<MouseEvent> {
 			// On ferme la fenêtre
 			supprimer.getScene().getWindow().hide();
 		}
-		//Modele.setTacheCourante(numTache - 1);
 	}
 }

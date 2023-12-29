@@ -2,6 +2,7 @@ package Tablo.Modele;
 
 import Tablo.Loggeur;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,19 @@ public class TacheMere extends Tache{
         }
         else {
             Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
+
+            LocalDate dureeTache = tache.getDateLimite().minusDays(tache.getDateDebut().getDayOfYear());
+
+            //Si la date de début de la tache fille est inférieure à la date de fin de la tache mère.
+            if (tache.getDateDebut().isBefore(this.dateLimite)) {
+
+                //On modifie la date de la tache fille pour qu'elle soit la même que la tache mère + 1 jour.
+                tache.modifierDateDebut(this.dateLimite.plusDays(1));
+
+                //On modifie la date de fin de la tache fille pour que la durée de la tache fille ne change pas.
+                tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
+            }
+
             return this.taches.add(tache);
         }
     }

@@ -82,6 +82,7 @@ public abstract class Tache {
      */
     public void changerContenu(String contenu) {
 
+        //On enregistre l'action dans les logs et on change le contenu de la tâche.
         Loggeur.enregistrer("Changement du contenu de la tâche " + this.titre + " en " + contenu);
         this.contenu = contenu;
     }
@@ -102,6 +103,7 @@ public abstract class Tache {
      */
     public void modifierDateLimite(LocalDate dateLimite) {
 
+        //On enregistre l'action dans les logs et on change la date limite de la tâche.
         Loggeur.enregistrer("Changement de la date limite de la tâche " + this.titre + " en " + dateLimite);
         this.dateLimite = dateLimite;
     }

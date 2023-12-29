@@ -1,6 +1,7 @@
 package Tablo.Modele;
 
 import Tablo.Loggeur;
+import javafx.scene.control.Alert;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -64,7 +65,27 @@ public class Liste {
 
 		for (Tache tache : this.taches) {
 
+			//Si la tache est la tache courante
 			if (tache.getNumTache() == Modele.getTacheCourante()) {
+
+				//Si la tache a des sous taches
+				if (tache.getSousTaches() != null) {
+
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setTitle("Erreur");
+					alert.setHeaderText("Erreur de Sous Tâches");
+					alert.setContentText("Vous ne pouvez pas archiver une tâche qui a des sous tâches.");
+					alert.showAndWait();
+					return false;
+				}
+
+				//On supprime toutes les sous taches de chaques taches de cette liste étant la tache courante
+				for (Tache tache2 : this.taches) {
+					if (tache2.getSousTaches() != null) {
+						tache2.getSousTaches().remove(tache);
+					}
+				}
+
 				tache.archiver(true);
 				Loggeur.enregistrer("Archivage de la tâche " + tache.getTitre() + " de la liste " + this.titre);
 				return true;
@@ -80,6 +101,7 @@ public class Liste {
 	public void changerTitreTache(String nouveauTitre){
 
 		for (Tache t : this.taches) {
+			//Si la tache est la tache courante
 			if (t.getNumTache() == Modele.getTacheCourante()) {
 				t.changerTitre(nouveauTitre);
 			}
@@ -93,7 +115,10 @@ public class Liste {
 	public void changerContenuTache(String nouveauContenu){
 
 		for (Tache t : this.taches) {
-			if (t.getId() == Modele.getTacheCourante()) {
+
+			// Si la tâche est la tâche courante
+			if (t.getNumTache() == Modele.getTacheCourante()) {
+				// On change le contenu de la tâche
 				t.changerContenu(nouveauContenu);
 			}
 		}
@@ -106,7 +131,8 @@ public class Liste {
 	public void modifierDateDebut(LocalDate dateDebut) {
 
 		for (Tache t : this.taches) {
-			if (t.getId() == Modele.getTacheCourante()) {
+			// Si la tâche est la tâche courante
+			if (t.getNumTache() == Modele.getTacheCourante()) {
 				t.modifierDateDebut(dateDebut);
 			}
 		}
@@ -119,7 +145,8 @@ public class Liste {
 	public void modifierDateLimite(LocalDate dateLimite) {
 
 		for (Tache t : this.taches) {
-			if (t.getId() == Modele.getTacheCourante()) {
+			// Si la tâche est la tâche courante
+			if (t.getNumTache() == Modele.getTacheCourante()) {
 				t.modifierDateLimite(dateLimite);
 			}
 		}
@@ -223,5 +250,13 @@ public class Liste {
 		}
 
 		return tachesArchivees;
+	}
+
+	/**
+	 * Permet de changer le numéro de la liste
+	 * @param i
+	 */
+	public void setNumListe(int i) {
+		this.numListe = i;
 	}
 }

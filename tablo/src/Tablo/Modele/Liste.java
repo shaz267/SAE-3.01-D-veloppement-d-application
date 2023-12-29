@@ -103,6 +103,19 @@ public class Liste {
 		for (Tache t : this.taches) {
 			//Si la tache est la tache courante
 			if (t.getNumTache() == Modele.getTacheCourante()) {
+
+				//Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On change le titre de la sous tache en nouveauTitre
+				for (Tache tache : this.taches) {
+					if (tache.getSousTaches() != null) {
+						for (Tache sousTache : tache.getSousTaches()) {
+							if (sousTache.getTitre().equals(t.getTitre())) {
+								sousTache.changerTitre(nouveauTitre);
+							}
+						}
+					}
+				}
+
+				//On change le titre de la tâche
 				t.changerTitre(nouveauTitre);
 			}
 		}
@@ -118,6 +131,18 @@ public class Liste {
 
 			// Si la tâche est la tâche courante
 			if (t.getNumTache() == Modele.getTacheCourante()) {
+
+				//Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On change le contenu de la sous tache en nouveauContenu
+				for (Tache tache : this.taches) {
+					if (tache.getSousTaches() != null) {
+						for (Tache sousTache : tache.getSousTaches()) {
+							if (sousTache.getTitre().equals(t.getTitre())) {
+								sousTache.changerContenu(nouveauContenu);
+							}
+						}
+					}
+				}
+
 				// On change le contenu de la tâche
 				t.changerContenu(nouveauContenu);
 			}
@@ -133,6 +158,19 @@ public class Liste {
 		for (Tache t : this.taches) {
 			// Si la tâche est la tâche courante
 			if (t.getNumTache() == Modele.getTacheCourante()) {
+
+				//Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On change la date de début de la sous tache en dateDebut
+				for (Tache tache : this.taches) {
+					if (tache.getSousTaches() != null) {
+						for (Tache sousTache : tache.getSousTaches()) {
+							if (sousTache.getTitre().equals(t.getTitre())) {
+								sousTache.modifierDateDebut(dateDebut);
+							}
+						}
+					}
+				}
+
+				// On change la date de début de la tâche
 				t.modifierDateDebut(dateDebut);
 			}
 		}
@@ -147,6 +185,19 @@ public class Liste {
 		for (Tache t : this.taches) {
 			// Si la tâche est la tâche courante
 			if (t.getNumTache() == Modele.getTacheCourante()) {
+
+				//Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On change la date limite de la sous tache en dateLimite
+				for (Tache tache : this.taches) {
+					if (tache.getSousTaches() != null) {
+						for (Tache sousTache : tache.getSousTaches()) {
+							if (sousTache.getTitre().equals(t.getTitre())) {
+								sousTache.modifierDateLimite(dateLimite);
+							}
+						}
+					}
+				}
+
+				// On change la date limite de la tâche
 				t.modifierDateLimite(dateLimite);
 			}
 		}
@@ -158,7 +209,20 @@ public class Liste {
 	public void fini(){
 
 		for (Tache t : this.taches) {
-			if (t.getId() == Modele.getTacheCourante()) {
+			if (t.getNumTache() == Modele.getTacheCourante()) {
+
+				//Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On met la sous tache en terminée
+				for (Tache tache : this.taches) {
+					if (tache.getSousTaches() != null) {
+						for (Tache sousTache : tache.getSousTaches()) {
+							if (sousTache.getTitre().equals(t.getTitre())) {
+								sousTache.fini();
+							}
+						}
+					}
+				}
+
+				// On met la tâche en terminée
 				t.fini();
 			}
 		}
@@ -172,6 +236,8 @@ public class Liste {
 		boolean res = false;
 
 		for (Tache tache : this.taches) {
+
+			//Si la tache est la tache courante
 			if (tache.getNumTache() == Modele.getTacheCourante()) {
 				res = tache.ajouterTache(t);
 			}
@@ -225,6 +291,10 @@ public class Liste {
 		}
 	}
 
+	/**
+	 * Permet de récupérer les sous taches de la tache courante
+	 * @return
+	 */
 	public List<Tache> getSousTaches() {
 
 		for (Tache t : this.taches) {
@@ -237,12 +307,18 @@ public class Liste {
 		return null;
 	}
 
+	/**
+	 * Permet de récupérer les taches archivées de la liste
+	 * @return
+	 */
 	public Collection<? extends Tache> getTachesArchivees() {
 
 		ArrayList<Tache> tachesArchivees = new ArrayList<Tache>();
 
+		//On parcours toutes les taches de la liste
 		for (Tache t : this.taches) {
 
+			//Si la tache est archivée
 			if (t.isArchivee()) {
 
 				tachesArchivees.add(t);

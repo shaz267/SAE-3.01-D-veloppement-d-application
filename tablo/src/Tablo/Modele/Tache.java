@@ -72,7 +72,6 @@ public abstract class Tache {
     public void changerTitre(String titre) {
 
         Loggeur.enregistrer("Changement du titre de la tâche " + this.titre + " en " + titre);
-        //TODO : changer le titre des sous tâches également.
         this.titre = titre;
     }
 

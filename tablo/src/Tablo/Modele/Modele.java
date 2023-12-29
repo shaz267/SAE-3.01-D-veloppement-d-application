@@ -251,6 +251,10 @@ public class Modele implements Sujet {
         return false;
     }
 
+    /**
+     * Méthode qui change le titre de la liste dans le tableau courant.
+     * @param nouveauTitre
+     */
     public void changerTitreListe(String nouveauTitre){
         for (Tableau tableau : tableaux) {
 

@@ -4,6 +4,7 @@ import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -37,6 +38,9 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
+        //On récupère le bouton supprimer
+        Button supprimer = (Button) mouseEvent.getSource();
+
         //Si on supprime le tableau courant on change le tableau courant
         if (Modele.getTableauCourant() == this.numTableau) {
             this.modele.changerTableauCourant(this.modele.getTableaux().get(0).getNumTableauMax());
@@ -52,6 +56,9 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
             alert.setContentText("Vous ne pouvez pas supprimer le dernier tableau");
             alert.showAndWait();
 
+            //On ferme la fenêtre
+            supprimer.getScene().getWindow().hide();
+
             //sinon on supprime le tableau
         }else {
             //On retire le tableau
@@ -62,6 +69,9 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
 
             //On informe le logger
             Loggeur.enregistrer("Suppression du tableau " + this.numTableau);
+
+            //On ferme la fenêtre
+            supprimer.getScene().getWindow().hide();
         }
 
     }

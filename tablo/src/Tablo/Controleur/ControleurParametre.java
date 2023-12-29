@@ -87,7 +87,6 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
 
         //On créé la boîte de dialogue
         ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
-
         dialog.setTitle("Paramètres");
         dialog.setHeaderText("Paramètres de l'application");
 

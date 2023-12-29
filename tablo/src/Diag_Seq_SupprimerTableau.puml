@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor User
+participant "VueDifferentTableau" as VDT
+participant "ControleurTableauClicDroit" as CTC
+participant "Modele" as M
+
+
+
+User -> VDT: clic droit
+VDT -> CTC: clic droit
+CTC -> CTC: afficher menu contextuel
+alt appuyer sur "supprimer"
+    CTC -> M: RetirerTableau(titre)
+    M -> M: retirer le tableau
+    CTC --> VDT: tableau retiré
+end
+@enduml

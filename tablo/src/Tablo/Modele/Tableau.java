@@ -217,6 +217,10 @@ public class Tableau {
         return titre;
     }
 
+    /**
+     * Retourne le numéro des tableaux créés
+     * @return numTableauMax
+     */
     public int getNumTableauMax() {
         return numTableauMax;
     }

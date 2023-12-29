@@ -19,8 +19,9 @@ public class ControleurSupprimerListe implements EventHandler<MouseEvent> {
 
 		// On récupère le bouton supprimer
 		Button supprimer = (Button) mouseEvent.getSource();
-		// On le désactive
-		supprimer.setDisable(true);
+
+		// On ferme la fenêtre
+		supprimer.getScene().getWindow().hide();
 
 		//On récupère le numéro de la liste qui a été cliquée
 		int numListe = Modele.getListeCourante();

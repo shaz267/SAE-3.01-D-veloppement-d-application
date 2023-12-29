@@ -32,7 +32,7 @@ public class ControleurArchiverTache implements EventHandler<MouseEvent> {
 
 			modele.notifierObservateurs();
 			// On désactive le bouton supprimer
-			supprimer.setDisable(true);
+			supprimer.getScene().getWindow().hide();
 		}
 		//Modele.setTacheCourante(numTache - 1);
 	}

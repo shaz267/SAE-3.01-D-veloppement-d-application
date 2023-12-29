@@ -70,6 +70,14 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Méthode qui permet de changer le tableau courant.
+     */
+    public void changerTableauCourant(int id) {
+
+        tableauCourant = id;
+    }
+
+    /**
      * Méthode qui ajoute une tache à la liste courante. et au tableau courant
      *
      * @param tache
@@ -89,7 +97,6 @@ public class Modele implements Sujet {
     /**
      * Méthode qui retire une tache du tableau courant de la liste courante.
      *
-     * @param tache
      */
     public boolean archiverTache() {
 
@@ -403,5 +410,32 @@ public class Modele implements Sujet {
             }
         }
         return null;
+    }
+
+    /**
+     * Methode qui permet de supprimer un tableau
+     * @param numTableau Numéro du tableau à supprimer
+     */
+    public void retirerTableau(int numTableau) {
+
+        if (this.tableaux.size() > 1) {
+
+            //On retire le tableau
+            this.tableaux.remove(numTableau);
+
+            //On change le tableau courant
+            this.changerTableauCourant(0);
+
+            //On change le numéro des tableaux
+            for (int i = 0; i < this.tableaux.size(); i++) {
+                this.tableaux.get(i).setNumTableau(i);
+            }
+
+            //On change le numéro des tableauxMax et on notifie les observateurs
+            this.getTableaux().get(0).setNumTableauMax(this.getTableaux().size());
+            this.notifierObservateurs();
+
+
+        }
     }
 }

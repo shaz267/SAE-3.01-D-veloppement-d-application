@@ -25,7 +25,6 @@ public class VueListe extends VBox {
     /**
      * Modele de l'application
      */
-    private Modele modele;
 
     /**
      * Constructeur de la classe VueListe
@@ -69,7 +68,7 @@ public class VueListe extends VBox {
         int numTache = 1;
         for (Tache tache : l.getTaches()) {
 
-            VueTache text = new VueTache(numTache, tache.getTitre());
+            VueTache text = new VueTache(numTache, tache.getTitre(), modele);
             text.setOnMouseClicked(new ControleurTacheCliquee(modele));
             this.getChildren().add(text);
             numTache++;

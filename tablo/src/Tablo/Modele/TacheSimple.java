@@ -28,6 +28,11 @@ public class TacheSimple extends Tache{
         return false;
     }
 
+    @Override
+    public void deplacerTache(Tache tache) {
+
+    }
+
     /**
      * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.
      * @return

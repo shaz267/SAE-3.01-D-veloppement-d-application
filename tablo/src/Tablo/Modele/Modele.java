@@ -1,6 +1,6 @@
 package Tablo.Modele;
 
-import Tablo.MyApplication;
+//import Tablo.MyApplication;
 import Tablo.Observateur;
 import Tablo.Sujet;
 
@@ -35,7 +35,7 @@ public class Modele implements Sujet {
      */
     private ArrayList<Observateur> observateurs;
 
-    private MyApplication application;
+    //private MyApplication application;
 
     /**
      * Constructeur de la classe Modele qui initialise les attributs tableauCourant, listeCourante et tacheCourante à -1.

@@ -12,10 +12,10 @@ public class TacheMere extends Tache{
     private ArrayList<Tache> taches;
 
     /**
-     * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
+     * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre
      *
      * @param titre
-     * @param contenu
+     * @param numTache
      */
     public TacheMere(int numTache, String titre) {
         //On appelle le constructeur de la classe mère.
@@ -43,6 +43,11 @@ public class TacheMere extends Tache{
 
         Loggeur.enregistrer("Suppression de la tâche " + tache.getTitre() + " de la tâche mère " + this.titre);
         return this.taches.remove(tache);
+    }
+
+    @Override
+    public void deplacerTache(Tache tache) {
+
     }
 
     /**

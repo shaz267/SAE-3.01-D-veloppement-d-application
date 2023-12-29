@@ -1,5 +1,6 @@
 package Tablo.Vue;
 
+import Tablo.Controleur.ControleurDeplacerTache;
 import Tablo.Modele.Modele;
 import Tablo.Observateur;
 import Tablo.Sujet;
@@ -17,7 +18,7 @@ public class VueTache extends Button implements Observateur {
      * Constructeur de la classe VueTache
      * @param titre
      */
-    public VueTache(int numTache, String titre) {
+    public VueTache(int numTache, String titre, Modele modele) {
         super(titre);
 
         this.numTache = numTache;
@@ -30,6 +31,11 @@ public class VueTache extends Button implements Observateur {
 
         //Le texte en gras
         this.setFont(javafx.scene.text.Font.font("Verdana", 15));
+
+        // Deplacement de taches
+        ControleurDeplacerTache cdt = new ControleurDeplacerTache(modele);
+        this.setOnDragDetected(cdt);
+
     }
 
     /**

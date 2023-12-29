@@ -28,9 +28,10 @@ public class VueDifferentTableaux extends VBox implements Observateur {
 
     /**
      * Constructeur de la classe VueDifferentTableaux
+     *
      * @param modele Modele de l'application
      */
-    public VueDifferentTableaux(Modele modele){
+    public VueDifferentTableaux(Modele modele) {
         super();
 
         // On récupère le modele
@@ -50,6 +51,7 @@ public class VueDifferentTableaux extends VBox implements Observateur {
 
     /**
      * Méthode qui permet de mettre à jour la vue
+     *
      * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
      */
     @Override

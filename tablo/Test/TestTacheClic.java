@@ -6,6 +6,7 @@ public class TestTacheClic {
 
 
     Modele modele = new Modele();
+
     @BeforeEach
     public void setUp() {
 

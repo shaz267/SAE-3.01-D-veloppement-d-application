@@ -10,11 +10,12 @@ public class Loggeur {
 
     /**
      * Enregistre un message dans un fichier
+     *
      * @param message Message à enregistrer
      */
-    public static void enregistrer(String message){
+    public static void enregistrer(String message) {
 
-        try{
+        try {
             //Creation d'un BufferedReader qui va lire le fichier log.txt
             BufferedReader reader = new BufferedReader(new FileReader("log.txt"));
 
@@ -32,17 +33,16 @@ public class Loggeur {
                 writer.write("");
 
                 // Sinon on écrit le message sur une nouvelle ligne
-            }else {
+            } else {
                 writer.write("\n");
             }
 
             // Écriture du message dans le fichier
-            writer.write(date.getHours() + ":" + date.getMinutes()+ "," + date.getSeconds() + "s" + " -- " + message);
+            writer.write(date.getHours() + ":" + date.getMinutes() + "," + date.getSeconds() + "s" + " -- " + message);
 
             // Fermeture du fichier
             writer.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
 
             System.out.println("Erreur lors de l'écriture du fichier log.txt");
         }
@@ -51,22 +51,22 @@ public class Loggeur {
 
     /**
      * Affiche le contenu du fichier log.txt du plus récent au plus ancien
+     *
      * @return Le contenu du fichier log.txt
      */
     public static String afficherLog() {
-    	StringBuilder log = new StringBuilder();
-    	try {
-    		BufferedReader reader = new BufferedReader(new FileReader("log.txt"));
-    		String line = reader.readLine();
-    		while (line != null) {
-    			log.insert(0, line + "\n");
-    			line = reader.readLine();
-    		}
-    		reader.close();
-    	}
-    	catch (IOException e) {
-    		System.out.println("Erreur lors de la lecture du fichier log.txt");
-    	}
-    	return log.toString();
+        StringBuilder log = new StringBuilder();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("log.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                log.insert(0, line + "\n");
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Erreur lors de la lecture du fichier log.txt");
+        }
+        return log.toString();
     }
 }

@@ -22,14 +22,16 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
 
     /**
      * Constructeur de la classe ControleurParametre
+     *
      * @param m Modele de l'application
      */
-    public ControleurParametre(Modele m){
+    public ControleurParametre(Modele m) {
         this.modele = m;
     }
 
     /**
      * Méthode qui permet de gérer les paramètres de l'application
+     *
      * @param mouseEvent Evènement qui permet de gérer les paramètres de l'application
      */
     @Override
@@ -83,7 +85,7 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
         VueTachesArchivees vueTachesArchivees = new VueTachesArchivees(modele);
 
         //On ajoute les composantes graphiques à la VBoxParametres
-        VBoxParametres.getChildren().addAll(HBoxModeSombre,separator, VBoxLog, separator2, titreTachesArchivees, vueTachesArchivees);
+        VBoxParametres.getChildren().addAll(HBoxModeSombre, separator, VBoxLog, separator2, titreTachesArchivees, vueTachesArchivees);
 
         //On créé la boîte de dialogue
         ChoiceDialog<VBox> dialog = new ChoiceDialog<>();

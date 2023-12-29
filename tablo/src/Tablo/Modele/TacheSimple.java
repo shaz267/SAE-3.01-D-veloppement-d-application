@@ -1,9 +1,11 @@
 package Tablo.Modele;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TacheSimple extends Tache{
+/**
+ * Classe qui représente une tâche simple. C'est à dire une tâche qui ne peut pas contenir de sous tâches.
+ */
+public class TacheSimple extends Tache {
     /**
      * Constructeur de la classe TacheSimple qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
      *
@@ -24,6 +26,7 @@ public class TacheSimple extends Tache{
 
     /**
      * Méthode qui retourne uniquement false car une tâche simple ne peut pas avoir de tâche fille.
+     *
      * @param tache
      * @return
      */
@@ -33,6 +36,7 @@ public class TacheSimple extends Tache{
 
     /**
      * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.
+     *
      * @return
      */
     public String toString() {
@@ -42,6 +46,7 @@ public class TacheSimple extends Tache{
 
     /**
      * Retourne null car une tâche simple ne peut pas avoir de tâche fille.
+     *
      * @return
      */
     public List<Tache> getSousTaches() {

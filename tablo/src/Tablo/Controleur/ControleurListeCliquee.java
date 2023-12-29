@@ -9,6 +9,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
+/**
+ * Classe ControleurListeCliquee qui permet de gérer la modification d'une liste
+ */
 public class ControleurListeCliquee implements EventHandler<MouseEvent> {
 
     /**
@@ -18,14 +21,16 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
 
     /**
      * Constructeur de la classe ControleurListeCliquee
+     *
      * @param m Modele de l'application
      */
-    public ControleurListeCliquee(Modele m){
+    public ControleurListeCliquee(Modele m) {
         this.modele = m;
     }
 
     /**
      * Méthode qui permet de gérer la modification d'une liste
+     *
      * @param mouseEvent
      */
     @Override
@@ -34,6 +39,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
         //On récupère la liste qui a été cliquée
         VueListe vl = (VueListe) mouseEvent.getSource();
 
+        //On change la couleur de la liste
         vl.setStyle("-fx-background-color: #666666;");
 
         //On récupère le numéro de la liste
@@ -42,7 +48,8 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
         //On change la liste courante
         Modele.setListeCourante(numListe);
 
-        if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+        //Si l'utilisateur a cliqué sur le bouton droit de la souris
+        if (mouseEvent.getButton().equals(MouseButton.SECONDARY)) {
 
             //On créé la boîte de dialogue
             ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
@@ -71,7 +78,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
             dialog.showAndWait();
 
             // Si le champ de saisie n'est pas vide
-            if(!champ_saisie.getText().isEmpty()) {
+            if (!champ_saisie.getText().isEmpty()) {
                 // On récupère le nouveau titre de la liste
                 String titre = champ_saisie.getText();
                 this.modele.changerTitreListe(titre);

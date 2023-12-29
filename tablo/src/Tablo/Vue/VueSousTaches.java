@@ -2,27 +2,16 @@ package Tablo.Vue;
 
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
-import Tablo.Modele.TacheMere;
-import Tablo.Observateur;
-import Tablo.Sujet;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.util.List;
 
+/**
+ * Classe VueSousTaches qui hérite de ScrollPane et qui permet de gérer l'affichage des sous taches
+ */
 public class VueSousTaches extends ScrollPane {
-
-    /**
-     * Modele de l'application
-     */
-    private Modele modele;
-
-    /**
-     * Conteneur des sous taches
-     */
-    private VBox sousTachesContainer;
 
     /**
      * Constructeur de la classe VueSousTaches
@@ -32,9 +21,8 @@ public class VueSousTaches extends ScrollPane {
     public VueSousTaches(Modele modele) {
         super();
 
-        this.modele = modele;
-
-        this.sousTachesContainer = new VBox();
+        //On initialise le conteneur des sous taches
+        VBox sousTachesContainer = new VBox();
 
         List<Tache> sousTaches = modele.getSousTaches();
 
@@ -48,7 +36,7 @@ public class VueSousTaches extends ScrollPane {
             }
         }
 
+        //On ajoute le conteneur des sous taches dans le ScrollPane
         this.setContent(sousTachesContainer);
-
     }
 }

@@ -49,7 +49,7 @@ public class TestLoggeur {
         line = Files.readAllLines(new File("log.txt").toPath()).get(compteur);
 
         // Vérification de la dernière ligne du fichier
-        assertEquals(date.getHours() + ":" + date.getMinutes()+ "," + date.getSeconds() + "s" + " -- " + "test de la classe Loggeur", line);
+        assertEquals(date.getHours() + ":" + date.getMinutes() + "," + date.getSeconds() + "s" + " -- " + "test de la classe Loggeur", line);
 
     }
 

@@ -17,14 +17,16 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
 
     /**
      * Constructeur de la classe ControleurChangementTableau
+     *
      * @param m Modele de l'application
      */
-    public ControleurChangementTableau(Modele m){
+    public ControleurChangementTableau(Modele m) {
         this.modele = m;
     }
 
     /**
      * Méthode qui permet de gérer le changement de tableau
+     *
      * @param mouseEvent Evenement qui va déclencher le changement de tableau
      */
     @Override
@@ -36,16 +38,10 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
         //On récupère le titre du bouton
         String titre = b.getText();
 
-        //On récupère l'id du tableau
-        int idTableau = this.modele.getNumTableaux(titre);
+        //On récupère le numéro du tableau
+        int numTableau = this.modele.getNumTableaux(titre);
 
         //On change le tableau courant
-        if (idTableau != -1){
-            this.modele.changerTableauCourant(idTableau);
-        }
-
-        //On notifie les observateurs
-        this.modele.notifierObservateurs();
-
+        this.modele.changerTableauCourant(numTableau);
     }
 }

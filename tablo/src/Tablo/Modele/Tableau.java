@@ -27,9 +27,10 @@ public class Tableau {
 
     /**
      * Constructeur de l'objet Tableau
+     *
      * @param t titre du tableau
      */
-    public Tableau(String t){
+    public Tableau(String t) {
         this.id = -1;
         this.titre = t;
         this.numTableau = numTableauMax;
@@ -39,9 +40,10 @@ public class Tableau {
 
     /**
      * Ajoute une tâche à la liste courante
+     *
      * @param t tâche à ajouter
      */
-    public void ajouterTache(Tache t){
+    public void ajouterTache(Tache t) {
 
         for (Liste l : this.listes) {
 
@@ -55,7 +57,7 @@ public class Tableau {
     /**
      * Retire une tâche de la liste courante
      */
-    public boolean archiverTache(){
+    public boolean archiverTache() {
 
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
@@ -69,9 +71,10 @@ public class Tableau {
 
     /**
      * Change le titre de la tache dans la liste courante
-     * @param nouveauTitre
+     *
+     * @param nouveauTitre nouveau titre de la tache
      */
-    public void changerTitreTache(String nouveauTitre){
+    public void changerTitreTache(String nouveauTitre) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
@@ -83,9 +86,10 @@ public class Tableau {
 
     /**
      * Change le titre de la liste courante
-     * @param nouveauContenu
+     *
+     * @param nouveauContenu nouveau contenu de la tache
      */
-    public void changerContenuTache(String nouveauContenu){
+    public void changerContenuTache(String nouveauContenu) {
 
         for (Liste l : this.listes) {
             //On vérifie que la liste est la liste courante
@@ -99,9 +103,10 @@ public class Tableau {
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     * @param date
+     *
+     * @param date date de début de la tache
      */
-    public void modifierDateDebut(LocalDate date){
+    public void modifierDateDebut(LocalDate date) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
@@ -114,9 +119,10 @@ public class Tableau {
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     * @param date
+     *
+     * @param date date limite de la tache
      */
-    public void modifierDateLimite(LocalDate date){
+    public void modifierDateLimite(LocalDate date) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
@@ -129,7 +135,7 @@ public class Tableau {
     /**
      * Appelle la méthode fini() de la liste courante
      */
-    public void fini(){
+    public void fini() {
 
         for (Liste l : this.listes) {
             if (l.getNumListe() == Modele.getListeCourante()) {
@@ -141,6 +147,7 @@ public class Tableau {
 
     /**
      * Ajoute une liste à l'objet Tableau
+     *
      * @param l liste à ajouter
      */
     public void ajouterListe(Liste l) {
@@ -150,15 +157,16 @@ public class Tableau {
 
     /**
      * Retire une liste de l'objet Tableau
+     *
      * @return true si on a supprimé la liste courante, false sinon
      */
-    public boolean retirerListe(){
+    public boolean retirerListe() {
 
         //int qui permet de savoir si on a supprimé la liste courante et à partir de là on décrémente les numéros des listes suivantes
         int rangSuppr = -1;
 
         //On parcourt les listes du tableau pour trouver la liste à supprimer et on décrémente les numéros des listes suivantes
-        for (int i = 0; i < this.listes.size() ; i++) {
+        for (int i = 0; i < this.listes.size(); i++) {
 
             //On récupère la liste
             Liste liste = this.listes.get(i);
@@ -190,7 +198,7 @@ public class Tableau {
         return false;
     }
 
-    public void changerTitreListe(String nouveauTitre){
+    public void changerTitreListe(String nouveauTitre) {
         for (Liste l : this.listes) {
             if (l.getNumListe() == Modele.getListeCourante()) {
                 l.changerTitreListe(nouveauTitre);
@@ -200,6 +208,7 @@ public class Tableau {
 
     /**
      * Retire l'Id de la liste de l'objet Tableau
+     *
      * @return id
      */
     public int getId() {
@@ -208,6 +217,7 @@ public class Tableau {
 
     /**
      * Retourne la liste des listes de l'objet Tableau
+     *
      * @return listes
      */
     public ArrayList<Liste> getListes() {
@@ -216,6 +226,7 @@ public class Tableau {
 
     /**
      * Retourne le numéro du tableau
+     *
      * @return numTableau
      */
     public int getNumTableau() {
@@ -237,7 +248,7 @@ public class Tableau {
     /**
      * Permet de rajouter une sous tâche à la tache courante
      */
-    public boolean ajouterSousTache(Tache t){
+    public boolean ajouterSousTache(Tache t) {
 
         boolean res = false;
 
@@ -252,6 +263,7 @@ public class Tableau {
 
     /**
      * Retourne le titre du tableau
+     *
      * @return titre
      */
     public String getTitre() {
@@ -260,6 +272,7 @@ public class Tableau {
 
     /**
      * Retourne le numéro des tableaux créés
+     *
      * @return numTableauMax
      */
     public int getNumTableauMax() {
@@ -301,6 +314,7 @@ public class Tableau {
 
     /**
      * Change le numéro des tableaux créés
+     *
      * @param numTableauMax nouveau numéro des tableaux créés
      */
     public void setNumTableauMax(int numTableauMax) {
@@ -309,6 +323,7 @@ public class Tableau {
 
     /**
      * Change le titre du tableau
+     *
      * @param nouveauTitre nouveau titre du tableau
      */
     public void changerTitre(String nouveauTitre) {
@@ -318,6 +333,7 @@ public class Tableau {
 
     /**
      * Change le numéro du tableau
+     *
      * @param numTableau nouveau numéro du tableau
      */
     public void setNumTableau(int numTableau) {

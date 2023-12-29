@@ -5,6 +5,9 @@ import Tablo.Loggeur;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Classe abstraite qui permet de gérer les tâches de notre application.
+ */
 public abstract class Tache {
 
     /**
@@ -46,6 +49,7 @@ public abstract class Tache {
 
     /**
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
+     *
      * @param titre
      */
     public Tache(int numTache, String titre) {
@@ -59,14 +63,15 @@ public abstract class Tache {
         this.contenu = "";
         this.estTerminee = false;
 
-	    this.dateDebut = LocalDate.now();
-	    this.dateLimite = LocalDate.now().plusDays(1);
+        this.dateDebut = LocalDate.now();
+        this.dateLimite = LocalDate.now().plusDays(1);
 
         this.estArchivee = false;
     }
 
     /**
      * Méthode qui change le titre de la tâche.
+     *
      * @param titre
      */
     public void changerTitre(String titre) {
@@ -77,6 +82,7 @@ public abstract class Tache {
 
     /**
      * Méthode qui change le contenu de la tâche.
+     *
      * @param contenu
      */
     public void changerContenu(String contenu) {
@@ -88,6 +94,7 @@ public abstract class Tache {
 
     /**
      * Méthode qui set la date limite de la tâche.
+     *
      * @param dateDebut
      */
     public void modifierDateDebut(LocalDate dateDebut) {
@@ -98,6 +105,7 @@ public abstract class Tache {
 
     /**
      * Méthode qui set la date limite de la tâche.
+     *
      * @param dateLimite
      */
     public void modifierDateLimite(LocalDate dateLimite) {
@@ -109,6 +117,7 @@ public abstract class Tache {
 
     /**
      * Méthode qui ajoute une tâche fille à la tâche mère. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
+     *
      * @param tache
      * @return
      */
@@ -117,6 +126,7 @@ public abstract class Tache {
 
     /**
      * Méthode qui supprime une tâche fille de la tâche mère. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
+     *
      * @param tache
      * @return
      */
@@ -124,18 +134,19 @@ public abstract class Tache {
 
     /**
      * Méthode qui met la tâche en terminée.
+     *
      * @return titre
      */
-    public void fini(){
+    public void fini() {
 
         Loggeur.enregistrer("La tâche " + this.titre + " est terminée");
         this.estTerminee = true;
     }
 
 
-
     /**
      * Méthode qui retourne l'attribut titre de la tâche.
+     *
      * @return titre
      */
     public String getTitre() {
@@ -152,12 +163,16 @@ public abstract class Tache {
 
     /**
      * Getter qui retourne l'attribut contenu de la tâche
+     *
      * @return contenu
      */
-    public String getContenu() { return this.contenu; }
+    public String getContenu() {
+        return this.contenu;
+    }
 
     /**
      * Getter qui retourne l'attribut dateLimite de la tache
+     *
      * @return LocalDate
      */
     public LocalDate getDateLimite() {
@@ -166,6 +181,7 @@ public abstract class Tache {
 
     /**
      * Getter qui retourne l'attribut dateDebut de la tache
+     *
      * @return LocalDate
      */
     public LocalDate getDateDebut() {
@@ -173,30 +189,32 @@ public abstract class Tache {
     }
 
     public int getNumTache() {
-    	return this.numTache;
+        return this.numTache;
     }
 
     public abstract List<Tache> getSousTaches();
 
     /**
      * On redéfinit la méthode equals pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.
+     *
      * @param o
      * @return
      */
     @Override
     public boolean equals(Object o) {
 
-    	return this.numTache == ((Tache) o).getNumTache();
+        return this.numTache == ((Tache) o).getNumTache();
     }
 
     /**
      * On redéfinit la méthode hashCode pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.
+     *
      * @return
      */
     @Override
     public int hashCode() {
 
-    	return this.numTache;
+        return this.numTache;
     }
 
     public void archiver(boolean estArchivee) {

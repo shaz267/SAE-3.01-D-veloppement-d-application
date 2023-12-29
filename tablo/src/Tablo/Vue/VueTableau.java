@@ -10,28 +10,29 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 
+/**
+ * Classe VueTableau qui hérite de ScrollPane et qui implémente l'interface Observateur
+ */
 public class VueTableau extends ScrollPane implements Observateur {
 
     /**
-     * Attribut qui permet de reconnaitre un tableau
+     * Bouton qui permet d'ajouter une liste
      */
-    private int numTableau;
-
-    private String titre;
-
     private Button ajouterListe;
+
+    /**
+     * Conteneur des listes
+     */
     private HBox listeContainer;
 
     /**
      * Constructeur de la classe VueTableau
-     * @param titre
      */
-    public VueTableau(int numTableau, String titre) {
+    public VueTableau() {
+        // On appelle le constructeur de la classe mère
         super();
 
-        this.titre = titre;
-        this.numTableau = numTableau;
-
+        //On initialise le bouton et on lui donne un style
         ajouterListe = new Button("Ajouter une liste");
         ajouterListe.setStyle("-fx-font-weight: bold;");
         ajouterListe.setStyle("-fx-font-size: 20px;");
@@ -41,6 +42,7 @@ public class VueTableau extends ScrollPane implements Observateur {
         //On masque le bouton
         ajouterListe.setVisible(false);
 
+        //On initialise le conteneur des listes
         listeContainer = new HBox();
         listeContainer.setSpacing(10);
         listeContainer.setFillHeight(true);
@@ -53,6 +55,7 @@ public class VueTableau extends ScrollPane implements Observateur {
 
     /**
      * Méthode qui permet de mettre à jour la vue
+     *
      * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
      */
     @Override
@@ -61,8 +64,10 @@ public class VueTableau extends ScrollPane implements Observateur {
         //On efface tout
         listeContainer.getChildren().clear();
 
+        //On récupère le modele
         Modele m = (Modele) s;
 
+        //Si il y a au moins un tableau
         if (!m.getTableaux().isEmpty()) {
             //On affiche le bouton
             ajouterListe.setVisible(true);
@@ -85,6 +90,11 @@ public class VueTableau extends ScrollPane implements Observateur {
         }
     }
 
+    /**
+     * Getter de l'attribut AjouterListe
+     *
+     * @return ajouterListe
+     */
     public Button getAjouterListe() {
         return ajouterListe;
     }

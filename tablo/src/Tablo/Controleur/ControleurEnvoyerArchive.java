@@ -11,7 +11,7 @@ public class ControleurEnvoyerArchive implements EventHandler<MouseEvent> {
      */
     private Modele modele;
 
-    public ControleurEnvoyerArchive(Modele m){
+    public ControleurEnvoyerArchive(Modele m) {
 
         this.modele = m;
     }
@@ -19,5 +19,6 @@ public class ControleurEnvoyerArchive implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
+        //TODO : Envoyer l'archive
     }
 }

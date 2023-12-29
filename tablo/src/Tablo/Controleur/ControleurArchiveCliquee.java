@@ -1,7 +1,6 @@
 package Tablo.Controleur;
 
 import Tablo.Modele.Modele;
-import Tablo.Vue.VueListe;
 import Tablo.Vue.VueTache;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -9,6 +8,9 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
+/**
+ * Classe qui gère le clic sur une tâche archivée
+ */
 public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
 
     /**
@@ -16,7 +18,7 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
      */
     private Modele modele;
 
-    public ControleurArchiveCliquee(Modele m){
+    public ControleurArchiveCliquee(Modele m) {
 
         this.modele = m;
     }
@@ -30,7 +32,7 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
 
         vT.setStyle("-fx-background-color: #666666;");
 
-        //On récupère l'id de la liste
+        //On récupère le numéro de la liste
         int numTache = vT.getNumTache();
 
         //On change la tache courante
@@ -44,6 +46,7 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
         // On crée une VBox qui va contenir les choix de l'utilisateur
         VBox conteneur = new VBox();
 
+        //On crée les boutons
         Button supr = new Button("Supprimer la tâche");
         supr.setOnMouseClicked(new ControleurSupprimerTache(modele));
 

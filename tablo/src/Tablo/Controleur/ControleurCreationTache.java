@@ -1,9 +1,10 @@
 package Tablo.Controleur;
 
 
-import Tablo.Modele.*;
+import Tablo.Modele.Modele;
+import Tablo.Modele.Tache;
+import Tablo.Modele.TacheSimple;
 import Tablo.Vue.VueListe;
-import Tablo.Vue.VueTache;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -14,7 +15,7 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
 
     private Modele modele;
 
-    public ControleurCreationTache(Modele m){
+    public ControleurCreationTache(Modele m) {
         this.modele = m;
     }
 
@@ -22,12 +23,8 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-
-        //On change la liste courante
-
         //On récupère la liste qui a été cliquée c'est à dire le parent de la source
         VueListe vl = (VueListe) ((Button) actionEvent.getSource()).getParent();
-
 
         //On récupère le numéro de la liste
         int numListe = vl.getNumListe();
@@ -39,16 +36,12 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
         //On récupère le numéro de la tâche
         int numTache;
 
+        //Si la liste est vide alors on initialise le numéro de la tache à 1 sinon on l'initialise à la taille de la liste + 1
         if (this.modele.getTaches() == null) {
             numTache = 1;
-        }
-        else {
+        } else {
             numTache = this.modele.getTaches().size() + 1;
         }
-
-
-        //String titre = "Nouvelle tâche";
-        //String contenu = "Contenu de la tâche";
 
         // Création d'une nouvelle liste
         TextInputDialog dialog = new TextInputDialog("Nouvelle Tache");
@@ -59,6 +52,7 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
         // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
         dialog.showAndWait().ifPresent(titre -> {
 
+            //Si la liste n'est pas vide alors on vérifie que la tache n'existe pas déjà
             if (modele.getTaches() != null) {
                 //Si une tache qui a le même titre existe déjà alors on ne l'ajoute pas
                 for (Tache t : modele.getTaches()) {

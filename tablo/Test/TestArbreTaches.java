@@ -18,9 +18,9 @@ public class TestArbreTaches {
     @BeforeEach
     public void avantTest() throws IOException {
 
-        Tache tacheSimpleB = new TacheSimple(1, "Tache Simple B" );
-        Tache tacheSimpleD = new TacheSimple(2,"Tache Simple D" );
-        Tache tacheSimpleE = new TacheSimple(3,"Tache Simple E" );
+        Tache tacheSimpleB = new TacheSimple(1, "Tache Simple B");
+        Tache tacheSimpleD = new TacheSimple(2, "Tache Simple D");
+        Tache tacheSimpleE = new TacheSimple(3, "Tache Simple E");
 
         Tache tacheMereC = new TacheMere(4, "Contenu de la tâche mère 1");
         tacheMereC.ajouterTache(tacheSimpleD);

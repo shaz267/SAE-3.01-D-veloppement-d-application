@@ -24,6 +24,7 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
 
     /**
      * Constructeur de la classe ControleurSupprimerTableau
+     *
      * @param modele Modele de l'application
      */
     public ControleurSupprimerTableau(Modele modele, int numTableau) {
@@ -33,6 +34,7 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
 
     /**
      * Méthode qui permet de gérer la suppression d'un tableau
+     *
      * @param mouseEvent Evènement qui permet de gérer la suppression d'un tableau
      */
     @Override
@@ -47,7 +49,7 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         }
 
         //Si on essaye de supprimer le dernier tableau on affiche une erreur
-        if (this.modele.getTableaux().size() == 1){
+        if (this.modele.getTableaux().size() == 1) {
 
             //On affiche une erreur
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -60,12 +62,9 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
             supprimer.getScene().getWindow().hide();
 
             //sinon on supprime le tableau
-        }else {
+        } else {
             //On retire le tableau
             this.modele.retirerTableau(this.numTableau);
-
-            //On notifie les observateurs
-            this.modele.notifierObservateurs();
 
             //On informe le logger
             Loggeur.enregistrer("Suppression du tableau " + this.numTableau);

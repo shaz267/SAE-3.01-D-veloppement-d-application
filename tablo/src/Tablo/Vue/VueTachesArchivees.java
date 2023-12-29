@@ -6,13 +6,10 @@ import Tablo.Modele.Tache;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Classe VueTachesArchivees qui hérite de ScrollPane et qui permet de gérer l'affichage des taches archivées
+ */
 public class VueTachesArchivees extends ScrollPane {
-
-
-    /**
-     * Modele de l'application
-     */
-    private Modele modele;
 
     /**
      * Conteneur tacges
@@ -26,8 +23,6 @@ public class VueTachesArchivees extends ScrollPane {
     public VueTachesArchivees(Modele modele) {
         super();
         this.setPrefSize(200, 200);
-
-        this.modele = modele;
 
         this.tachesContainer = new VBox();
 

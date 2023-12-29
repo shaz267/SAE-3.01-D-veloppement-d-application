@@ -2,6 +2,7 @@ package Tablo.Modele;
 
 import Tablo.Observateur;
 import Tablo.Sujet;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute un tableau à l'application.
+     *
      * @param tableau
      */
     public void ajouterTableau(Tableau tableau) {
@@ -74,6 +76,8 @@ public class Modele implements Sujet {
     public void changerTableauCourant(int id) {
 
         tableauCourant = id;
+        //On Notifie les observateurs
+        this.notifierObservateurs();
     }
 
     /**
@@ -95,7 +99,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une tache du tableau courant de la liste courante.
-     *
      */
     public boolean archiverTache() {
 
@@ -127,7 +130,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
-     * @param nouveauTitre
+     *
+     * @param nouveauTitre nouveau titre de la tache
      */
     public void changerTitreTache(String nouveauTitre) {
 
@@ -145,7 +149,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
-     * @param nouveauContenu
+     *
+     * @param nouveauContenu le nouveau contenu de la tâche
      */
     public void changerContenuTache(String nouveauContenu) {
 
@@ -162,7 +167,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change la date de début de la tâche courante
-     * @param dateDebut
+     *
+     * @param dateDebut Date de début de la tâche
      */
     public void modifierDateDebut(LocalDate dateDebut) {
 
@@ -181,7 +187,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change la date de fin de la tâche courante
-     * @param dateLimite
+     *
+     * @param dateLimite la nouvelle date de fin
      */
     public void modifierDateLimite(LocalDate dateLimite) {
 
@@ -199,7 +206,7 @@ public class Modele implements Sujet {
     /**
      * Permet de rajouter une sous tâche à la tache courante
      */
-    public boolean ajouterSousTache(Tache t){
+    public boolean ajouterSousTache(Tache t) {
 
         boolean res = false;
 
@@ -217,7 +224,8 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une liste au tableau courant.
-     * @param l
+     *
+     * @param l la liste à ajouter
      */
     public void ajouterListe(Liste l) {
 
@@ -234,13 +242,14 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une liste au tableau courant
+     *
      * @return true si la liste a été retirée, false sinon
      */
-    public boolean retirerListe(){
+    public boolean retirerListe() {
         // On parcourt les tableaux
-        for(Tableau tableau : tableaux){
+        for (Tableau tableau : tableaux) {
             // Quand on a trouvé le tableau courant alors on retire la liste et on notifie les observateurs
-            if(tableau.getNumTableau() == tableauCourant){
+            if (tableau.getNumTableau() == tableauCourant) {
                 if (tableau.retirerListe()) {
                     this.notifierObservateurs();
                     return true;
@@ -253,9 +262,10 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le titre de la liste dans le tableau courant.
-     * @param nouveauTitre
+     *
+     * @param nouveauTitre nouveau titre de la liste
      */
-    public void changerTitreListe(String nouveauTitre){
+    public void changerTitreListe(String nouveauTitre) {
         for (Tableau tableau : tableaux) {
 
             if (tableau.getNumTableau() == tableauCourant) {
@@ -367,6 +377,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne la liste de tâches filles de la tâche courante
+     *
      * @return
      */
     public List<Tache> getSousTaches() {
@@ -383,6 +394,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne la tache associé au titre passé en paramètre dans la liste courante et le tableau courant.
+     *
      * @param titre
      * @return
      */
@@ -425,6 +437,7 @@ public class Modele implements Sujet {
 
     /**
      * Methode qui permet de supprimer un tableau
+     *
      * @param numTableau Numéro du tableau à supprimer
      */
     public void retirerTableau(int numTableau) {
@@ -444,9 +457,9 @@ public class Modele implements Sujet {
 
             //On change le numéro des tableauxMax et on notifie les observateurs
             this.getTableaux().get(0).setNumTableauMax(this.getTableaux().size());
+
+            //On notifie les observateurs
             this.notifierObservateurs();
-
-
         }
     }
 }

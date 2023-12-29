@@ -1,11 +1,10 @@
 package Tablo.Vue;
 
-import Tablo.Controleur.ControleurTacheCliquee;
-import Tablo.Modele.Modele;
-import Tablo.Observateur;
-import Tablo.Sujet;
 import javafx.scene.control.Button;
 
+/**
+ * Classe VueTache qui hérite de Button et permet de gérer l'affichage d'une tache
+ */
 public class VueTache extends Button{
 
     /**
@@ -21,6 +20,7 @@ public class VueTache extends Button{
     public VueTache(int numTache, String titre) {
         super(titre);
 
+        // On initialise l'attribut numTache
         this.numTache = numTache;
 
         //On change  le style de la tache
@@ -31,6 +31,10 @@ public class VueTache extends Button{
         this.setFont(javafx.scene.text.Font.font("Verdana", 15));
     }
 
+    /**
+     * Méthode qui permet de récupérer le numéro de la tache
+     * @return numTache
+     */
     public int getNumTache() {
         return numTache;
     }

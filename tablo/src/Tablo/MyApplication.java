@@ -103,7 +103,7 @@ public class MyApplication extends Application {
 
 
         //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, espaceTravail, templates,titreTableau , stack);
+        top.getChildren().addAll(view, espaceTravail, templates, titreTableau, stack);
         root.setTop(top);
 
         VBox left = new VBox();
@@ -153,8 +153,6 @@ public class MyApplication extends Application {
         boutonParametre.setOnMouseClicked(new ControleurParametre(modele));
 
 
-
-
         //On ajoute les composantes graphiques à la racine
 //        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
         boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
@@ -162,7 +160,7 @@ public class MyApplication extends Application {
 //        boutonTableaux.setSpacing(70);
         boutonCollaborateurs.setSpacing(20);
 
-        left.getChildren().addAll(boutonTableaux,vueDifferentTableaux, boutonCollaborateurs, parametre);
+        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, boutonCollaborateurs, parametre);
 
         left.setSpacing(20);
 
@@ -172,11 +170,10 @@ public class MyApplication extends Application {
         root.setLeft(left);
 
 
-        VueTableau tableauCentre = new VueTableau(1, "Tableau 1");
+        VueTableau tableauCentre = new VueTableau();
         //On enregistre le centre comme observateur du modèle
         modele.enregistrerObservateur(tableauCentre);
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
-
 
 
         //On ajoute les composantes graphiques à la racine

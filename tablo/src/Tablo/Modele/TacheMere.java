@@ -6,7 +6,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TacheMere extends Tache{
+/**
+ * Classe qui représente une tâche mère. C'est à dire une tâche qui peut contenir des sous tâches.
+ */
+public class TacheMere extends Tache {
 
     /**
      * Attribut taches de la classe TacheMere qui est un tableau de tâches qui représente les tâches filles de la tâche mère.
@@ -57,8 +60,7 @@ public class TacheMere extends Tache{
         //Si la tâche est déjà dans la liste on ne l'ajoute pas. ou si c'est la meme tache qui à été changé en tache mère. Ou encore si la tache courante est une sous tache de la tache mère.
         if (this.taches.contains(tache) || tache.hashCode() == this.hashCode() || tacheEstUneSousTacheDeLaTacheMere) {
             return false;
-        }
-        else {
+        } else {
             Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
 
             LocalDate dureeTache = tache.getDateLimite().minusDays(tache.getDateDebut().getDayOfYear());
@@ -90,6 +92,7 @@ public class TacheMere extends Tache{
 
     /**
      * Méthode qui retourne le tableau de tâches filles de la tâche mère.
+     *
      * @return
      */
     public ArrayList<Tache> getTaches() {
@@ -98,6 +101,7 @@ public class TacheMere extends Tache{
 
     /**
      * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.
+     *
      * @return
      */
     public String toString() {
@@ -115,6 +119,7 @@ public class TacheMere extends Tache{
 
     /**
      * Méthode qui retourne la liste de tâches filles de la tâche mère.
+     *
      * @return
      */
     public List<Tache> getSousTaches() {

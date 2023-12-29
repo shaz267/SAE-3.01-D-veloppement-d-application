@@ -34,8 +34,7 @@ public class VueTache extends Button implements Observateur {
 
         // Deplacement de taches
         ControleurDeplacerTache cdt = new ControleurDeplacerTache(modele);
-        this.setOnDragDetected(cdt);
-
+        this.setOnDragDetected(event -> cdt.handle(event));
     }
 
     /**

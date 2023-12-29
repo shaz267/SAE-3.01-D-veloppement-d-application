@@ -151,7 +151,7 @@ public class Modele implements Sujet {
      * Méthode qui change une tache de liste dans le tableau courant.
      * @param tache
      */
-    public void deplacerTache(Tache tache) {
+    public void deplacerTache(Tache tache, int idListe) {
 
         for (Tableau tableau : tableaux) {
 

@@ -1,10 +1,13 @@
 package Tablo.Controleur;
 
+import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
 import Tablo.Vue.VueTache;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
+
+import java.util.List;
 
 public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
 
@@ -19,10 +22,9 @@ public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
      * @param mouseEvent
      */
     @Override
-    public void handle(MouseEvent mouseEvent) {
-        if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
-            handleMousePressed(mouseEvent);
-        } else if (mouseEvent.getEventType() == MouseEvent.DRAG_DETECTED) {
+    public void handle(MouseEvent mouseEvent)
+    {
+        if (mouseEvent.getEventType() == MouseEvent.DRAG_DETECTED) {
             handleDragDetected(mouseEvent);
         } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
             handleMouseDragged(mouseEvent);
@@ -31,18 +33,19 @@ public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
         }
     }
 
-    private void handleMousePressed(MouseEvent event) {
-        vueTacheDragged = (VueTache) event.getSource();
-    }
+
 
     private void handleDragDetected(MouseEvent event) {
-        Dragboard dragboard = vueTacheDragged.startDragAndDrop(TransferMode.MOVE);
+        if (event.getSource() instanceof VueTache) vueTacheDragged = (VueTache) event.getSource();
+        System.out.println("Mouse pressed on " + vueTacheDragged.getNumTache());
+            Dragboard dragboard = vueTacheDragged.startDragAndDrop(TransferMode.MOVE);
 
-        ClipboardContent content = new ClipboardContent();
-        content.putString("test");
-        dragboard.setContent(content);
+            ClipboardContent content = new ClipboardContent();
+            content.putString("test");
+            dragboard.setContent(content);
 
-        event.consume();
+            event.consume();
+
     }
 
     private void handleMouseDragged(MouseEvent event) {
@@ -51,7 +54,25 @@ public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
     }
 
     private void handleMouseReleased(MouseEvent event) {
-        Tache tache = modele.getTaches().get(vueTacheDragged.getNumTache() - 1);
-        modele.deplacerTache(tache);
+        int taskNumber = vueTacheDragged.getNumTache() - 1;
+
+        if (taskNumber >= 0 && taskNumber < modele.getTaches().size()) {
+            Tache tache = modele.getTaches().get(taskNumber);
+            Liste listeDestination = determinerListeDestination();
+            modele.deplacerTache(tache, listeDestination.getNumListe());
+        }
     }
+
+    private Liste determinerListeDestination() {
+        Liste listeDestination = null;
+
+        for (Liste liste : modele.getListes()) {
+            if (liste.getTaches().contains(vueTacheDragged.getNumTache())) {
+                listeDestination = liste;
+            }
+        }
+
+        return listeDestination;
+    }
+
 }

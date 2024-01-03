@@ -72,7 +72,7 @@ public class Liste {
             if (tache.getNumTache() == Modele.getTacheCourante()) {
 
                 //Si la tache a des sous taches
-                if (tache.getSousTaches() != null) {
+                if (tache.getSousTaches() != null && !tache.getSousTaches().isEmpty()) {
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Erreur");

@@ -1,6 +1,5 @@
 package Tablo.Controleur;
 
-import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
 import Tablo.Vue.VueListe;

@@ -1,6 +1,7 @@
 package Tablo.Vue;
 
 import Tablo.Controleur.ControleurCreationTache;
+import Tablo.Controleur.ControleurDeplacerTacheListe;
 import Tablo.Controleur.ControleurListeClicDroit;
 import Tablo.Controleur.ControleurTacheCliquee;
 import Tablo.Modele.Liste;
@@ -78,6 +79,10 @@ public class VueListe extends VBox {
         b.setOnAction(new ControleurCreationTache(modele));
         // On associe un évènement pour gérer le clic droit sur une liste
         this.setOnMousePressed(new ControleurListeClicDroit(modele));
+
+        // On associe un évènement pour gérer le déplacement de tâches
+        this.setOnDragOver(new ControleurDeplacerTacheListe(modele));
+
     }
 
     /**

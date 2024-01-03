@@ -1,6 +1,7 @@
 package Tablo.Vue;
 
 import Tablo.Controleur.ControleurDeplacerTache;
+import Tablo.Controleur.ControleurDeplacerTacheListe;
 import Tablo.Modele.Modele;
 import Tablo.Observateur;
 import Tablo.Sujet;
@@ -34,7 +35,8 @@ public class VueTache extends Button implements Observateur {
 
         // Deplacement de taches
         ControleurDeplacerTache cdt = new ControleurDeplacerTache(modele);
-        this.setOnDragDetected(event -> cdt.handle(event));
+        this.setOnDragDetected(cdt);
+
     }
 
     /**

@@ -11,7 +11,8 @@ import javafx.scene.input.TransferMode;
 
 public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
     private Modele modele;
-    private VueTache vueTacheADeplacer;
+    private static VueTache vueTacheADeplacer;
+    private Dragboard db;
 
     public ControleurDeplacerTache(Modele m) {
         this.modele = m;
@@ -21,10 +22,15 @@ public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         this.vueTacheADeplacer = (VueTache) mouseEvent.getSource();
-        Dragboard db = this.vueTacheADeplacer.startDragAndDrop(TransferMode.MOVE);
+        db = this.vueTacheADeplacer.startDragAndDrop(TransferMode.MOVE);
         ClipboardContent content = new ClipboardContent();
         content.putImage(this.vueTacheADeplacer.snapshot(new SnapshotParameters(), null));
         db.setContent(content);
         mouseEvent.consume();
     }
+
+    public static VueTache getVueTacheADeplacer() {
+        return vueTacheADeplacer;
+    }
+
 }

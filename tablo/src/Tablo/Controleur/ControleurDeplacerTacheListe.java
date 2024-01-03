@@ -1,8 +1,9 @@
 package Tablo.Controleur;
 
 import Tablo.Modele.Modele;
+import Tablo.Modele.Tache;
 import Tablo.Vue.VueListe;
-import Tablo.Vue.VueTache;
+import Tablo.Controleur.ControleurDeplacerTache;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
 
@@ -23,10 +24,6 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         {
             this.listeDragOver(dragEvent);
         }
-        else if (dragEvent.getEventType() == DragEvent.DRAG_ENTERED)
-        {
-            this.ListeDragEntered(dragEvent);
-        }
         else if (dragEvent.getEventType() == DragEvent.DRAG_EXITED)
         {
             this.ListeDragExited(dragEvent);
@@ -35,10 +32,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         {
             this.ListeDragDropped(dragEvent);
         }
-        else if (dragEvent.getEventType() == DragEvent.DRAG_DONE)
-        {
-           // this.ListeDragDone(dragEvent);
-        }
+        System.out.println("DragEvent : " + dragEvent.getEventType());
 
     }
 
@@ -47,16 +41,6 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getDragboard().hasString())
         {
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-        }
-        dragEvent.consume();
-    }
-
-    private void ListeDragEntered(DragEvent dragEvent)
-    {
-        if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getDragboard().hasString())
-        {
-           this.vueListeDestination = (VueListe) dragEvent.getTarget();
-            this.vueListeDestination.setStyle("-fx-background-color: #f9e9a9;");
         }
         dragEvent.consume();
     }
@@ -73,16 +57,16 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
 
     private void ListeDragDropped(DragEvent dragEvent)
     {
-        Dragboard db = dragEvent.getDragboard();
         boolean success = false;
-        if (db.hasString())
-        {
+        int numTache = ControleurDeplacerTache.getVueTacheADeplacer().getNumTache();
+            Tache tache = this.modele.getTaches().get(numTache);
+            this.modele.deplacerTache(tache, this.vueListeDestination.getNumListe());
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
-            this.vueListeDestination.setStyle("-fx-background-color: #f4a8f6;");
             success = true;
-        }
+
         dragEvent.setDropCompleted(success);
         dragEvent.consume();
+        System.out.println("DragEvent : " + dragEvent.getEventType());
     }
 
 

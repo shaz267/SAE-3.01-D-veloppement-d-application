@@ -243,6 +243,7 @@ public class Modele implements Sujet {
         for (Tableau tableau : tableaux) {
             // Quand on a trouvé le tableau courant alors on retire la liste et on notifie les observateurs
             if (tableau.getNumTableau() == tableauCourant) {
+
                 if (tableau.retirerListe()) {
                     this.notifierObservateurs();
                     return true;

@@ -43,11 +43,6 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         //On récupère le bouton supprimer
         Button supprimer = (Button) mouseEvent.getSource();
 
-        //Si on supprime le tableau courant on change le tableau courant
-        if (Modele.getTableauCourant() == this.numTableau) {
-            this.modele.changerTableauCourant(this.modele.getTableaux().get(0).getNumTableauMax());
-        }
-
         //Si on essaye de supprimer le dernier tableau on affiche une erreur
         if (this.modele.getTableaux().size() == 1) {
 
@@ -68,6 +63,11 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
 
             //On informe le logger
             Loggeur.enregistrer("Suppression du tableau " + this.numTableau);
+
+            //Si on supprime le tableau courant on change le tableau courant
+            if (Modele.getTableauCourant() == this.numTableau) {
+                this.modele.changerTableauCourant(this.modele.getTableaux().get(0).getNumTableauMax());
+            }
 
             //On ferme la fenêtre
             supprimer.getScene().getWindow().hide();

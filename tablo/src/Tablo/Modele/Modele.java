@@ -43,13 +43,6 @@ public class Modele implements Sujet {
         this.observateurs = new ArrayList<Observateur>();
     }
 
-    /**
-     * Méthode qui permet de changer le tableau courant.
-     */
-    public static void setTableauCourant(int numTableau) {
-
-        tableauCourant = numTableau;
-    }
 
     /**
      * Méthode qui permet de changer la tâche courante.
@@ -73,9 +66,9 @@ public class Modele implements Sujet {
     /**
      * Méthode qui permet de changer le tableau courant.
      */
-    public void changerTableauCourant(int id) {
+    public void changerTableauCourant(int numTableau) {
 
-        tableauCourant = id;
+        tableauCourant = numTableau;
         //On Notifie les observateurs
         this.notifierObservateurs();
     }
@@ -258,6 +251,24 @@ public class Modele implements Sujet {
         }
 
         return false;
+    }
+
+    /**
+     * Méthode qui permet de changer le titre d'un tableau
+     * @param titreTableau
+     */
+    public void changerTitreTableau(String titreTableau) {
+
+        // On parcourt les tableaux
+        for (Tableau tableau : tableaux){
+
+            // Quand on a trouvé le tableau courant alors on change le titre du tableau et on notifie les observateurs
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.changerTitre(titreTableau);
+                this.notifierObservateurs();
+            }
+        }
     }
 
     /**

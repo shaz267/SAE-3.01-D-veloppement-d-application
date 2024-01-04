@@ -29,7 +29,9 @@ public class ControleurArchiverTache implements EventHandler<MouseEvent> {
         //On archive la tache courante. Si la tache est archivée, on ferme la fenêtre
         if (modele.archiverTache()) {
 
+            //On notifie les observateurs
             modele.notifierObservateurs();
+
             // On ferme la fenêtre
             supprimer.getScene().getWindow().hide();
         }

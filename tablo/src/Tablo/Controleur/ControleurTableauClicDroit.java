@@ -108,10 +108,7 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
                     String titreTableau = champ_saisie.getText();
 
                     //On change le titre du tableau
-                    this.modele.getTableaux().get(numTableau).changerTitre(titreTableau);
-
-                    //On met à jour la vue
-                    this.modele.notifierObservateurs();
+                    this.modele.changerTitreTableau(titreTableau);
                 }
             }
 

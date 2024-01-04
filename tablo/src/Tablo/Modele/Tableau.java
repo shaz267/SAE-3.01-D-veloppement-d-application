@@ -49,6 +49,7 @@ public class Tableau {
 
             if (l.getNumListe() == Modele.getListeCourante()) {
 
+                //On ajoute la tâche à la liste courante
                 l.ajouterTache(t);
             }
         }

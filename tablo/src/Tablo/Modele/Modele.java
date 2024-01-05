@@ -21,6 +21,12 @@ public class Modele implements Sujet {
     private static int listeCourante = 0;
 
     /**
+     * Attribut listeDestination de la classe Modele qui est un entier qui représente l'id de la liste de destination.
+     * Cette liste est utilisée lors du déplacement d'une tâche.
+     */
+    private static int listeDestination = 0;
+
+    /**
      * Attribut tacheCourante de la classe Modele qui est un entier qui représente l'id de la tâche courante.
      */
     private static int tacheCourante = 0;
@@ -157,7 +163,7 @@ public class Modele implements Sujet {
 
             if (tableau.getId() == tableauCourant) {
 
-                tableau.deplacerTache(tache);
+                tableau.deplacerTache(tache, idListe);
                 this.notifierObservateurs();
             }
         }
@@ -306,5 +312,8 @@ public class Modele implements Sujet {
 
     public static void setListeCourante(int numListe) {
         listeCourante = numListe;
+    }
+    public static void setListeDestination(int numListe) {
+        listeDestination = numListe;
     }
 }

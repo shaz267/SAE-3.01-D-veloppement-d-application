@@ -82,6 +82,8 @@ public class VueListe extends VBox {
 
         // On associe un évènement pour gérer le déplacement de tâches
         this.setOnDragOver(new ControleurDeplacerTacheListe(modele));
+        this.setOnDragExited(new ControleurDeplacerTacheListe(modele));
+        this.setOnDragDropped(new ControleurDeplacerTacheListe(modele));
 
     }
 

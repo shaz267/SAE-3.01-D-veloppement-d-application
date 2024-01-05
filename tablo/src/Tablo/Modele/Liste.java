@@ -109,11 +109,11 @@ public class Liste {
 	 * Permet de déplacer une tâche dans une autre liste
 	 * @param tache
 	 */
-	public void deplacerTache(Tache tache) {
+	public void deplacerTache(Tache tache, int idListeDestination) {
 
 		for (Tache t : this.taches) {
 			if (t.getId() == Modele.getTacheCourante()) {
-				t.deplacerTache(tache);
+				retirerTache(t);
 			}
 		}
 	}

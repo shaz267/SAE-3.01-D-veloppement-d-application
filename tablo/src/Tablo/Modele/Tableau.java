@@ -59,7 +59,6 @@ public class Tableau {
     public void retirerTache(Tache t){
         for (Liste l : this.listes) {
             if (l.getId() == Modele.getListeCourante()) {
-
                 l.retirerTache(t);
             }
         }
@@ -94,13 +93,16 @@ public class Tableau {
     /**
      * Deplacer une tache dans une autre liste
      * @param tache
+     * @param idListeDestination
+     * retirer la tache de la liste courante
+     * ajouter la tache à la liste de destination
      */
-    public void deplacerTache(Tache tache){
+    public void deplacerTache(Tache tache, int idListeDestination) {
         for (Liste l : this.listes) {
             if (l.getId() == Modele.getListeCourante()) {
-
-                l.deplacerTache(tache);
+                l.retirerTache(tache);
             }
+
         }
     }
 

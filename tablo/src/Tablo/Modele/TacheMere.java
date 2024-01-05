@@ -45,10 +45,7 @@ public class TacheMere extends Tache{
         return this.taches.remove(tache);
     }
 
-    @Override
-    public void deplacerTache(Tache tache) {
 
-    }
 
     /**
      * Méthode qui retourne le tableau de tâches filles de la tâche mère.

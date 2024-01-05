@@ -41,6 +41,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getDragboard().hasString())
         {
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            Modele.setListeDestination(this.vueListeDestination.getNumListe());
         }
         dragEvent.consume();
     }
@@ -50,7 +51,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         if (!dragEvent.isAccepted())
         {
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
-            this.vueListeDestination.setStyle("-fx-background-color: #f4a8f6;");
+            //this.vueListeDestination.setStyle("-fx-background-color: #f4a8f6;");
         }
         dragEvent.consume();
     }
@@ -60,7 +61,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         boolean success = false;
         int numTache = ControleurDeplacerTache.getVueTacheADeplacer().getNumTache();
             Tache tache = this.modele.getTaches().get(numTache);
-            this.modele.deplacerTache(tache, this.vueListeDestination.getNumListe());
+            this.modele.retirerTache(tache);
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
             success = true;
 

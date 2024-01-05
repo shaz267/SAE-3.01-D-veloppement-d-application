@@ -32,7 +32,7 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
     /**
      * Méthode qui permet de gérer l'ajout d'un tableau
      *
-     * @param mouseEvent
+     * @param mouseEvent Evènement qui va déclencher l'ajout d'un tableau
      */
     @Override
     public void handle(MouseEvent mouseEvent) {
@@ -68,10 +68,12 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
                 alert.setHeaderText("Erreur");
                 alert.setContentText("Le titre du tableau ne doit pas dépasser 15 caractères");
                 alert.showAndWait();
-                return;
+
+                //sinon on ajoute le tableau
             } else {
+
                 // Création du tableau
-                Tableau t = new Tableau(titre);
+                Tableau t = new Tableau(this.modele.getTableaux().size() + 1,titre);
 
                 //On ajoute la liste au modele
                 this.modele.ajouterTableau(t);

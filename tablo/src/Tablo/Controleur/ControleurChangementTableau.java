@@ -1,6 +1,7 @@
 package Tablo.Controleur;
 
 import Tablo.Modele.Modele;
+import Tablo.Vue.VueDifferentTableaux;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -38,10 +39,22 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
         //On récupère le titre du bouton
         String titre = b.getText();
 
-        //On récupère le numéro du tableau
-        int numTableau = this.modele.getNumTableaux(titre);
+        int numTableau = -1;
 
-        //On change le tableau courant
-        this.modele.changerTableauCourant(numTableau);
+        //On récupère le numéro du tableau en fonction du titre du bouton
+        for (int i = 0; i < this.modele.getTableaux().size(); i++) {
+
+            //Si le titre du tableau correspond au titre du bouton on récupère le numéro du tableau
+            if (this.modele.getTableaux().get(i).getTitre().equals(titre)) {
+                numTableau = this.modele.getTableaux().get(i).getNumTableau();
+            }
+        }
+
+        //Si le numéro du tableau est différent de -1 (ce qui veut dire qu'on a trouvé le tableau)
+        if (numTableau != -1) {
+
+            //On change le tableau courant
+            this.modele.changerTableauCourant(numTableau);
+        }
     }
 }

@@ -56,22 +56,13 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
             //On ferme la fenêtre
             supprimer.getScene().getWindow().hide();
 
-            //sinon on supprime le tableau
-        } else {
-            //On retire le tableau
-            this.modele.retirerTableau(this.numTableau);
-
-            //On informe le logger
-            Loggeur.enregistrer("Suppression du tableau " + this.numTableau);
-
-            //Si on supprime le tableau courant on change le tableau courant
-            if (Modele.getTableauCourant() == this.numTableau) {
-                this.modele.changerTableauCourant(this.modele.getTableaux().get(0).getNumTableauMax());
-            }
-
+            //Sinon si le tableau est supprimé on ferme la fenêtre
+        } else if (this.modele.retirerTableau()) {
             //On ferme la fenêtre
             supprimer.getScene().getWindow().hide();
+
         }
+
 
     }
 }

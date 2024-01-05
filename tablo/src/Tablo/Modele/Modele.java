@@ -1,5 +1,6 @@
 package Tablo.Modele;
 
+import Tablo.Loggeur;
 import Tablo.Observateur;
 import Tablo.Sujet;
 
@@ -55,11 +56,17 @@ public class Modele implements Sujet {
     /**
      * Méthode qui ajoute un tableau à l'application.
      *
-     * @param tableau
+     * @param tableau le tableau à ajouter
      */
     public void ajouterTableau(Tableau tableau) {
 
+        //On ajoute le tableau à la liste des tableaux
         this.tableaux.add(tableau);
+
+        //On change le tableau courant
+        this.changerTableauCourant(tableau.getNumTableau());
+
+        //On notifie les observateurs
         this.notifierObservateurs();
     }
 
@@ -256,12 +263,13 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui permet de changer le titre d'un tableau
+     *
      * @param titreTableau
      */
     public void changerTitreTableau(String titreTableau) {
 
         // On parcourt les tableaux
-        for (Tableau tableau : tableaux){
+        for (Tableau tableau : tableaux) {
 
             // Quand on a trouvé le tableau courant alors on change le titre du tableau et on notifie les observateurs
             if (tableau.getNumTableau() == tableauCourant) {
@@ -423,6 +431,11 @@ public class Modele implements Sujet {
         return null;
     }
 
+    /**
+     * Méthode qui retourne le titre du tableau courant
+     *
+     * @return titre
+     */
     public String getTitreTableau() {
 
         for (Tableau tableau : tableaux) {
@@ -435,6 +448,11 @@ public class Modele implements Sujet {
         return null;
     }
 
+    /**
+     * Méthode qui retourne les tâches archivées du tableau courant
+     *
+     * @return tachesArchivées
+     */
     public ArrayList<Tache> getTachesArchivees() {
 
         for (Tableau tableau : tableaux) {
@@ -450,28 +468,62 @@ public class Modele implements Sujet {
     /**
      * Methode qui permet de supprimer un tableau
      *
-     * @param numTableau Numéro du tableau à supprimer
+     * @return true si on a supprimé le tableau courant, false sinon
      */
-    public void retirerTableau(int numTableau) {
+    public boolean retirerTableau() {
 
-        if (this.tableaux.size() > 1) {
+        //On initialise le rang du tableau à supprimer
+        int rangSuppr = -1;
 
-            //On retire le tableau
-            this.tableaux.remove(numTableau);
+        //On parcourt les tableaux
+        for (int i = 0; i < this.tableaux.size(); i++) {
 
-            //On change le tableau courant
-            this.changerTableauCourant(0);
+            //On récupère le tableau
+            Tableau tab = this.tableaux.get(i);
 
-            //On change le numéro des tableaux
-            for (int i = 0; i < this.tableaux.size(); i++) {
-                this.tableaux.get(i).setNumTableau(i);
+            //Si le numéro du tableau est le même que le tableau courant
+            if (tab.getNumTableau() == Modele.getTableauCourant()) {
+
+                //Si on a supprimé le tableau
+                if (this.tableaux.remove(tab)) {
+
+                    //On enregistre l'action dans les logs
+                    Loggeur.enregistrer("Suppression du tableau " + tab.getTitre());
+
+                    //On récupère le rang du tableau à supprimer
+                    rangSuppr = i;
+
+                    //Si on a supprimé le tableau 1 alors on change le tableau courant au nouveau tableau 1
+                    if (Modele.getTableauCourant() == 1) {
+                        this.changerTableauCourant(1);
+
+                        //Sinon on décrémente le numéro du tableau courant
+                    } else {
+                        this.changerTableauCourant(Modele.getTableauCourant() - 1);
+                    }
+
+                }
             }
 
-            //On change le numéro des tableauxMax et on notifie les observateurs
-            this.getTableaux().get(0).setNumTableauMax(this.getTableaux().size());
+        }
+
+        //On décrémente les numéros des tableaux suivants si on a supprimé le tableau courant
+        if (rangSuppr != -1) {
+
+            //On décrémente les numéros des tableaux suivants
+            for (int i = rangSuppr; i < this.tableaux.size(); i++) {
+                Tableau tab = this.tableaux.get(i);
+                tab.setNumTableau(tab.getNumTableau() - 1);
+            }
 
             //On notifie les observateurs
             this.notifierObservateurs();
+
+            //On retourne true si on a supprimé le tableau courant
+            return true;
         }
+
+        //On retourne false si on n'a pas supprimé le tableau courant
+        return false;
     }
 }

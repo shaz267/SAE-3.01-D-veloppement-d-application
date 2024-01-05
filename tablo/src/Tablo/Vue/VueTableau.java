@@ -76,17 +76,30 @@ public class VueTableau extends ScrollPane implements Observateur {
             ajouterListe.setVisible(false);
         }
 
+        //On initialise le tableau
+        Tableau t = null;
+
         //On récupère le tableau courant
-        Tableau t = m.getTableaux().get(Modele.getTableauCourant());
+        for (int i = 0; i < m.getTableaux().size(); i++) {
+
+            //Si le numéro du tableau est le même que le tableau courant
+            if (m.getTableaux().get(i).getNumTableau() == Modele.getTableauCourant()) {
+
+                //On récupère le tableau
+                t = m.getTableaux().get(i);
+            }
+        }
 
         int numListe = 1;
-        //On parcourt les listes du tableau
-        for (Liste liste : t.getListes()) {
+        //On parcourt les listes du tableau si le tableau n'est pas null
+        if (t != null) {
+            for (Liste liste : t.getListes()) {
 
-            VueListe vueListe = new VueListe(liste.getTitre(), numListe, m);
-            vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
-            listeContainer.getChildren().add(vueListe);
-            numListe++;
+                VueListe vueListe = new VueListe(liste.getTitre(), numListe, m);
+                vueListe.setOnMouseClicked(new ControleurListeCliquee(m));
+                listeContainer.getChildren().add(vueListe);
+                numListe++;
+            }
         }
     }
 

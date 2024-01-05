@@ -20,21 +20,19 @@ public class Tableau {
     // Correspond à l'ensemble des listes dans un objet Tableau
     private List<Liste> listes;
 
-    private static int numTableauMax = 0;
-
-
+    // Correspond au numéro du tableau
     private int numTableau;
 
     /**
      * Constructeur de l'objet Tableau
      *
      * @param t titre du tableau
+     * @param numTab numéro du tableau
      */
-    public Tableau(String t) {
+    public Tableau(int numTab, String t) {
         this.id = -1;
         this.titre = t;
-        this.numTableau = numTableauMax;
-        numTableauMax++;
+        this.numTableau = numTab;
         this.listes = new ArrayList<>();
     }
 
@@ -289,15 +287,6 @@ public class Tableau {
     }
 
     /**
-     * Retourne le numéro des tableaux créés
-     *
-     * @return numTableauMax
-     */
-    public int getNumTableauMax() {
-        return numTableauMax;
-    }
-
-    /**
      * Méthode qui convertie la tache courante en tache mère.
      */
     public void tacheCouranteEnMere() {
@@ -328,15 +317,6 @@ public class Tableau {
         }
 
         return tachesArchivees;
-    }
-
-    /**
-     * Change le numéro des tableaux créés
-     *
-     * @param numTableauMax nouveau numéro des tableaux créés
-     */
-    public void setNumTableauMax(int numTableauMax) {
-        Tableau.numTableauMax = numTableauMax;
     }
 
     /**

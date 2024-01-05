@@ -1,6 +1,8 @@
 package Tablo.Vue;
 
+import Tablo.Modele.Modele;
 import javafx.scene.control.Button;
+import Tablo.Controleur.ControleurDeplacerTache;
 
 /**
  * Classe VueTache qui hérite de Button et permet de gérer l'affichage d'une tache
@@ -17,7 +19,7 @@ public class VueTache extends Button{
      *
      * @param titre
      */
-    public VueTache(int numTache, String titre) {
+    public VueTache(int numTache, String titre, Modele modele) {
         super(titre);
 
         // On initialise l'attribut numTache
@@ -29,6 +31,7 @@ public class VueTache extends Button{
         this.setStyle("-fx-background-color: #f8b9a7;");
         this.setPrefSize(200, 50);
         this.setFont(javafx.scene.text.Font.font("Verdana", 15));
+        this.setOnDragDetected(new ControleurDeplacerTache(modele));
     }
 
     /**

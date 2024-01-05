@@ -41,7 +41,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getDragboard().hasString())
         {
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-            Modele.setListeDestination(this.vueListeDestination.getNumListe());
+            //Modele.setListeDestination(this.vueListeDestination.getNumListe());
         }
         dragEvent.consume();
     }
@@ -61,7 +61,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         boolean success = false;
         int numTache = ControleurDeplacerTache.getVueTacheADeplacer().getNumTache();
             Tache tache = this.modele.getTaches().get(numTache);
-            this.modele.retirerTache(tache);
+            //this.modele.retirerTache(tache);
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
             success = true;
 

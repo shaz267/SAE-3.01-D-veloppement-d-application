@@ -81,7 +81,7 @@ public class VueListe extends VBox {
 
             //Si la tache n'est pas archivée, on l'affiche
             if (!tache.isArchivee()) {
-                VueTache text = new VueTache(numTache, tache.getTitre());
+                VueTache text = new VueTache(numTache, tache.getTitre(), modele);
                 text.setOnMouseClicked(new ControleurTacheCliquee(modele));
                 this.getChildren().add(text);
             }

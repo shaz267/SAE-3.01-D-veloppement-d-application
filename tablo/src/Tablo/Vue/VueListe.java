@@ -2,10 +2,13 @@ package Tablo.Vue;
 
 import Tablo.Controleur.ControleurCreationTache;
 import Tablo.Controleur.ControleurListeCliquee;
+import Tablo.Controleur.ControleurDeplacerTacheListe;
 import Tablo.Controleur.ControleurTacheCliquee;
 import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
+import Tablo.Observateur;
+import Tablo.Sujet;
 import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
@@ -91,13 +94,15 @@ public class VueListe extends VBox {
         btnAjouterTache.setOnAction(new ControleurCreationTache(modele));
         // On associe un évènement pour gérer le clic droit sur une liste
         this.setOnMousePressed(new ControleurListeCliquee(modele));
+
+        // On associe un évènement pour gérer le déplacement de tâches
+        this.setOnDragOver(new ControleurDeplacerTacheListe(modele));
+        this.setOnDragExited(new ControleurDeplacerTacheListe(modele));
+        this.setOnDragDropped(new ControleurDeplacerTacheListe(modele));
+
     }
 
-    /**
-     * Méthode qui permet de récupérer le numéro de la liste
-     *
-     * @return le numéro de la liste
-     */
+
     public int getNumListe() {
         return numListe;
     }

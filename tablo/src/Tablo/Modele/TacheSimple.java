@@ -34,6 +34,7 @@ public class TacheSimple extends Tache {
         return false;
     }
 
+
     /**
      * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.
      *

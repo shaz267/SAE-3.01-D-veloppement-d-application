@@ -103,6 +103,23 @@ public class Tableau {
     }
 
     /**
+     * Deplacer une tache dans une autre liste
+     * @param tache
+     * @param idListeDestination
+     * retirer la tache de la liste courante
+     * ajouter la tache à la liste de destination
+     */
+    public void deplacerTache(Tache tache, int idListeDestination) {
+        for (Liste l : this.listes) {
+            if (l.getId() == Modele.getListeCourante()) {
+               // l.retirerTache(tache);
+            }
+
+        }
+    }
+
+
+    /**
      * Modifie la date limite de la tache dans la liste courante
      *
      * @param date date de début de la tache
@@ -136,10 +153,10 @@ public class Tableau {
     /**
      * Appelle la méthode fini() de la liste courante
      */
-    public void fini() {
+    public void fini(){
 
         for (Liste l : this.listes) {
-            if (l.getNumListe() == Modele.getListeCourante()) {
+            if (l.getId() == Modele.getListeCourante()) {
 
                 l.fini();
             }

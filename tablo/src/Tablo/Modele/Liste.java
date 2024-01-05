@@ -210,10 +210,23 @@ public class Liste {
         }
     }
 
-    /**
-     * Permet de mettre une tâche en terminée
-     */
-    public void fini() {
+	/**
+	 * Permet de déplacer une tâche dans une autre liste
+	 * @param tache
+	 */
+	public void deplacerTache(Tache tache, int idListeDestination) {
+
+		for (Tache t : this.taches) {
+			if (t.getId() == Modele.getTacheCourante()) {
+				//retirerTache(t);
+			}
+		}
+	}
+
+	/**
+	 * Permet de mettre une tâche en terminée
+	 */
+	public void fini(){
 
         for (Tache t : this.taches) {
             if (t.getNumTache() == Modele.getTacheCourante()) {

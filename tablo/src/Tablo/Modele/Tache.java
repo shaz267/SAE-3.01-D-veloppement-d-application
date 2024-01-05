@@ -132,6 +132,8 @@ public abstract class Tache {
      */
     public abstract boolean supprimerTache(Tache tache);
 
+
+
     /**
      * Méthode qui met la tâche en terminée.
      *

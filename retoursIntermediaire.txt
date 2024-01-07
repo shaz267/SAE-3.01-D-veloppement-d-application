@@ -1,0 +1,31 @@
+GROUPE 1 - ASSAL BOURDON DELCOURT GRANDJEAN KONÉ
+
+(a) depot git (B)
+- structure git => repertoire de config intellij
+- readme => pas de bilan V2
+- analyse => doc presents
+
+(b) fonctionnalité et itérations (D)
+- pas d'itération 1 dans les documents
+- les fonctionnalités sont élémentaires (il n'y a pas de critère de validation), on ne comprend pas leur objectif et on ne sait pas ce que l'application doit faire
+- le bilan donne l'impression que la validation et le sens des fonctionnalités est attribué a posteriori
+- il n'y a pas de bilan de l'itération 3
+- il n'y a pas de répartition des taches entre les membres du projet
+- le trello n'est pas correctement utilisé : pas d'affectation de certains taches, les taches faites ne sont pas réparties par itération, les taches ne sont pas décrites ....
+
+(c) conception
+- diagramme de classe par iteration
+- diagrammes de séquence
+- organisation de l'application
+
+(d) code
+- commentaires
+- organisation du code
+
+(e) tests
+- structure des tests
+- couverture des tests
+
+(f) demonstration
+- validation des fonctionnalités
+- valeur ajoutée de l'application

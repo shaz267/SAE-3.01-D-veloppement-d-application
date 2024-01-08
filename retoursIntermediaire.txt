@@ -13,19 +13,16 @@ GROUPE 1 - ASSAL BOURDON DELCOURT GRANDJEAN KONÉ
 - il n'y a pas de répartition des taches entre les membres du projet
 - le trello n'est pas correctement utilisé : pas d'affectation de certains taches, les taches faites ne sont pas réparties par itération, les taches ne sont pas décrites ....
 
-(c) conception
-- diagramme de classe par iteration
-- diagrammes de séquence
-- organisation de l'application
-
-(d) code
-- commentaires
-- organisation du code
-
-(e) tests
-- structure des tests
-- couverture des tests
-
-(f) demonstration
-- validation des fonctionnalités
-- valeur ajoutée de l'application
+(c) conception (D)
+- pas d'iteration 1.
+- **iteration 2**
+	- votre diagramme de classe a été fait aprés-coup. Ce n'est pas le but de la conception et vous passez complétement à côté d'une partie du travail. De ce fait, il est assez illisible et ne rend pas compte de la structure de votre application.
+	- il n'y a qu'un seul diagramme de séquence. Il en faudrait un par fonctionnalité.
+	- votre diagramme de séquence est faux (cf methode handle)
+- **iteration 3**
+	- pas de diagramme de classe de la nouvelle application. pourquoi ?
+	- depachertache => la destination de la tache n'apparait jamais, c'est etrange
+	- modifiertableur : il manque les periodes d'activité, methode changertitre est mal placée
+	- supprimertableau : manque fleche retour
+	- ajoutersoustache : pourquoi pas plantuml ? ajoutersoustache est pas clair. il faudrait deux taches non ? la tache à ajouter et la tache mere ?
+	- modifiertache : le diagramme me semble plus correct et exprime un peu mieux les choses : on passe par une selection et un loggueur logue les choses.

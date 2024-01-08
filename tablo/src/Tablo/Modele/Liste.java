@@ -1,8 +1,13 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 import javafx.scene.control.Alert;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,8 +40,132 @@ public class Liste {
         this.id = -1;
         this.titre = t;
         this.taches = new ArrayList<>();
-
         this.numListe = numListe;
+    }
+
+    /**
+     * Constructeur de l'objet Liste
+     * @param t
+     */
+    public Liste(String t) {
+        // l'id est initialisé à -1 conformément au patron activeRecord
+        this.id = -1;
+        this.titre = t;
+        this.taches = new ArrayList<>();
+    }
+
+    /**
+     * Méthode findAll permettant de récupérer toutes les listes de la base de données
+     * @return ArrayList de Liste
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findAll() throws SQLException {
+        String SQLPrep = "SELECT * FROM `LISTE`;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        ArrayList<Liste> listP = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = new Liste(rs.getString("titre"));
+            l.id = rs.getInt("id");
+            listP.add(l);
+        }
+        return listP;
+    }
+
+    /**
+     * Méthode findById permettant de récupérer une liste de la base de données en fonction de son id
+     * @param id id de la liste à récupérer
+     * @return Liste
+     * @throws SQLException
+     */
+    public static Liste findById(int id) throws SQLException {
+        String SQLPrep = "SELECT * FROM `LISTE` WHERE id = ?;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        if(rs.next() == false){
+            return null;
+        }
+        Liste l = new Liste(rs.getString("titre"));
+        l.id = rs.getInt("id");
+        return l;
+    }
+
+    /**
+     * Méthode findByName permettant de récupérer une liste de la base de données en fonction de son titre
+     * @param titre
+     * @return
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findByName(String titre) throws SQLException {
+        String SQLPrep = "SELECT * FROM `LISTE` WHERE nom = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setString(1,titre);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Liste> listP = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = new Liste(rs.getString("titre"));
+            l.id = rs.getInt("id");
+            listP.add(l);
+        }
+        return listP;
+    }
+
+    /**
+     * Méthode delete permettant de supprimer une liste de la base de données
+     * @throws SQLException
+     */
+    public void delete() throws SQLException {
+        String SQLDel = "DELETE FROM `LISTE` WHERE titre = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLDel);
+        prep1.setString(1,titre);
+        prep1.executeUpdate();
+        id = -1;
+    }
+
+    /**
+     * Méthode save permettant de sauvegarder une liste dans la base de données
+     * @throws SQLException
+     */
+    public void save() throws SQLException {
+        if(id == -1){
+            saveNew();
+        } else {
+            update();
+        }
+    }
+
+    /**
+     * Méthode saveNew permettant de sauvegarder une nouvelle liste dans la base de données
+     * @throws SQLException
+     */
+    public void saveNew() throws SQLException {
+        String SQLPrep = "INSERT INTO `LISTE` (`titre`) VALUES (?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
+        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car
+        // auto-increment)
+        prep.setString(1, titre);
+        prep.execute();
+
+        ResultSet generatedKeys = prep.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int id = generatedKeys.getInt(1);
+            this.id = id;
+        }
+    }
+
+    /**
+     * Méthode update permettant de mettre à jour une liste dans la base de données
+     * @throws SQLException
+     */
+    public void update() throws SQLException {
+        String SQLsave = "UPDATE `PERSONNE` SET `titre` = ? WHERE `id_liste` = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLsave);
+        prep.setString(1,titre);
+        prep.setInt(2,id);
+        prep.executeUpdate();
     }
 
     /**

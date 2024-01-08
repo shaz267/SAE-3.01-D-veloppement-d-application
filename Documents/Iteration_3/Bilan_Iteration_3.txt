@@ -1,0 +1,14 @@
+Lors de cette itération nous avons implémenter les fonctionnalités suivantes : 
+- Modifier une tâche
+- Attribuer une date de début et de fin à une tâche
+- Attribuer des sous-tâches
+- Archiver une tâche
+- Modifier un tableau
+- Supprimer un tableau
+
+Nous avons aussi commencer à la fonctionnalité pour déplacer les tâches, elle fonctionne partiellement mais provoque encore quelques
+erreurs qui seront corrigées lors de l'itération 4. En dehors de ça, d'un point de vue organisation, les tâches ont bien été reparties
+entre chaque membre et chacun savait clairement ce qu'il devait faire. Nous avons fait un effort pour réaliser correctement nos différents
+diagrammes en temps voulu, afin de réaliser une itération des plus propres possibles.
+
+Pour lancer l'application, il faut utiliser le main de la classe MyApplication.

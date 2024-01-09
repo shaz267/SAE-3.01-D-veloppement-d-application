@@ -2,6 +2,7 @@ package Tablo.Modele;
 
 import Tablo.DBConnection;
 import Tablo.Loggeur;
+import javafx.scene.control.Alert;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -252,18 +253,59 @@ public class Tableau {
     /**
      * Deplacer une tache dans une autre liste
      * @param tache
-     * @param idListeDestination
+     * @param numListeDestination
+     *
+     * Vérifier que le nom de la tache n'existe pas dans la liste de destination
+     * Vérifier que la liste de destination n'est pas la liste courante
+     * Vérifier que la liste de destination existe
+     * Vérifier que la tache existe
+     * Si la tache possède des sous tâches, on les déplace aussi
      * retirer la tache de la liste courante
      * ajouter la tache à la liste de destination
+     *
      */
-    public void deplacerTache(Tache tache, int idListeDestination) {
-        for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
-               // l.retirerTache(tache);
-            }
+    public boolean deplacerTache(Tache tache, int numListeDestination) {
+        boolean res = false;
+        System.out.println("deplacerTache");
+        //On récupère la liste de destination
+        Liste listeDestination = this.listes.get(numListeDestination);
+        Modele.setListeDestination(numListeDestination);
 
+        //On vérifie que la liste de destination n'est pas la liste courante
+        if (listeDestination.getNumListe() != Modele.getListeCourante()) {
+
+            //On vérifie que la liste de destination existe
+            if (listeDestination != null) {
+
+                //On vérifie que la tache existe
+                if (tache != null) {
+
+                    //Si la tache possède des sous tâches, on les déplace aussi
+                    if (tache.getSousTaches() != null) {
+
+                        //On parcourt les sous tâches de la tache
+                        for (Tache sousTache : tache.getSousTaches()) {
+
+                            //On déplace la sous tâche
+                            this.deplacerTache(sousTache, numListeDestination);
+                        }
+                    }
+                    //On ajoute la tache à la liste de destination
+                    listeDestination.ajouterTache(tache);
+                    System.out.println("tache ajoutée à la liste de destination");
+                    //On retire la tache de la liste courante
+                    listes.get(Modele.getListeCourante()).retirerTache(tache, listes.get(Modele.getListeDestination()));
+
+                    //On change la liste courante
+                    Modele.setListeCourante(numListeDestination);
+                    System.out.println("Tache déplacée " + tache.getTitre() + " dans la liste " + numListeDestination);
+                    res = true;
+                }
+            }
         }
+        return res;
     }
+
 
 
     /**

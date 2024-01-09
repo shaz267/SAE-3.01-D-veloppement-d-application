@@ -1,0 +1,12 @@
+Lors de cette itération, nous avons principalement poursuivi les fonctionnalités commencées dans les itérations précédentes, plus
+particulièrement les suivantes : 
+  - Diagramme de Gantt
+  - Drag N Drop
+  - Implémentation d'activeRecord et de la BDD
+
+Cependant, 2 fonctionnalités ont malgré tout était additionnées au reste :
+  - Choix d'un Template
+
+Cette fonctionnalité implique la création au préalable de ces Templates. Notre objectif est de terminer les 3 fonctionnalités citées
+précédemments d'ici la fin de la 6ème itération. Ces dernières fonctionnalités sont complexes et demande un grand nombre de modification
+du code, expliquant aussi pourquoi elles demandent plusieurs itérations afin d'être réalisées.

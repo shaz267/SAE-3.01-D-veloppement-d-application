@@ -95,9 +95,8 @@ public class MyApplication extends Application {
                 //TODO : relier la connexion à la base de données
                 // On vérifie que le mail et le mdp correspondent à un utilisateur de la base
                 // On commence par sélectionner l'utilisateur de la base qui correspond au mail entré pour la connexion
-                Utilisateur user = null;
                 try {
-                    user = Utilisateur.findByEmail(emailRecup);
+                    Modele.setUser(Utilisateur.findByEmail(emailRecup));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -110,7 +109,7 @@ public class MyApplication extends Application {
                 // On récupère le mdp de l'utilisateur de la base
                 String mdpUser = "";
                 try {
-                    mdpUser += user.getMdp();
+                    mdpUser += Modele.user.getMdp();
                     System.out.println("Mdp recup de la base:"+mdpUser+"Correct?");
                 } catch (SQLException e) {
                     throw new RuntimeException(e);

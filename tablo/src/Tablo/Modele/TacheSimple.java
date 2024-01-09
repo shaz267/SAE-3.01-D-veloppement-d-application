@@ -1,5 +1,7 @@
 package Tablo.Modele;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +15,18 @@ public class TacheSimple extends Tache {
      */
     public TacheSimple(int numTache, String titre) {
         super(numTache, titre);
+    }
+
+    /**
+     * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
+     * @param titre
+     * @param contenu
+     * @param dateDebut
+     * @param dateLimite
+     * @param estArchivee
+     */
+    public TacheSimple(String titre, String contenu, LocalDate dateDebut, LocalDate dateLimite, boolean estArchivee){
+        super(titre, contenu, dateDebut, dateLimite, estArchivee);
     }
 
     /**

@@ -1,0 +1,1 @@
+Lors de cette itération nous nous sommes rendus compte qu'il existait une meilleure façon d'utiliser les templates, Hugo a donc légèrement modifié ce que Mathéo avait fini sans utiliser le Patron Stratégie

@@ -1,9 +1,9 @@
 package Tablo.Modele;
 
 import Tablo.Loggeur;
+import Tablo.Modele.Templates.TemplatesStrategie;
 import Tablo.Observateur;
 import Tablo.Sujet;
-import Tablo.Vue.VueTableau;
 import javafx.scene.control.Alert;
 
 import java.time.LocalDate;
@@ -42,13 +42,20 @@ public class Modele implements Sujet {
     private ArrayList<Observateur> observateurs;
 
     /**
+     * Attribut template de la classe Modele qui est un objet de type TemplatesStrategie qui représente le template de l'application.
+     */
+    private TemplatesStrategie template;
+
+    /**
      * Constructeur de la classe Modele qui initialise les attributs tableauCourant, listeCourante et tacheCourante à -1.
      */
     public Modele() {
 
         this.tableaux = new ArrayList<Tableau>();
         this.observateurs = new ArrayList<Observateur>();
+        this.template = null;
     }
+
 
 
     /**
@@ -386,6 +393,11 @@ public class Modele implements Sujet {
         return tacheCourante;
     }
 
+    /**
+     * Méthode qui retourne la liste de tâches du tableau courant. et de la liste courante
+     *
+     * @return les taches
+     */
     public List<Tache> getTaches() {
 
         for (Tableau tableau : tableaux) {
@@ -398,7 +410,12 @@ public class Modele implements Sujet {
         return null;
     }
 
-    public int getNumTableaux(String titre) {
+    /**
+     * Méthode qui retourne le numéro du tableau associé au titre passé en paramètre.
+     * @param titre
+     * @return
+     */
+    public int getNumTableau(String titre) {
 
         for (Tableau tableau : this.getTableaux()) {
             if (tableau.getTitre().equals(titre)) {
@@ -410,6 +427,10 @@ public class Modele implements Sujet {
 
     }
 
+    /**
+     * Méthode qui retourne le numéro de la liste associé au titre passé en paramètre.
+     * @param numListe
+     */
     public static void setListeCourante(int numListe) {
         listeCourante = numListe;
     }
@@ -696,7 +717,7 @@ public class Modele implements Sujet {
      * @param titre titre du tableau
      * @return true si le tableau n'existe pas, false sinon
      */
-    public boolean VerifTableauExistant(String titre) {
+    public boolean verifTableauExistant(String titre) {
 
 
         for (Tableau t : this.getTableaux()) {
@@ -714,411 +735,22 @@ public class Modele implements Sujet {
         return true;
     }
 
+
     /**
-     * Methode qui crée le template 'Conduite de projet'
-     * @param titre titre du template
+     * Méthode qui permet de changer le template de l'application.
+     * @param template
      */
-    public void templateConduiteProjet(String titre){
-
-        //On vérifie que le titre n'est pas déjà utilisé
-        if (VerifTableauExistant(titre)) {
-
-            // Création du tableau
-            Tableau t = new Tableau(this.getTableaux().size() + 1, titre);
-
-            //On ajoute la liste au modele
-            this.ajouterTableau(t);
-
-            // On ajoute la vue du tableau au modele
-            this.enregistrerObservateur(new VueTableau());
-
-            // Création des différentes listes qui composent le template
-            this.ajouterListe("Project Structure");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache = new TacheSimple(this.getTaches().size() + 1, "Parties prenantes");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache);
-
-                // Création de la tache
-                Tache tache2 = new TacheSimple(this.getTaches().size() + 1, "Revue hebdomadaire");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache2);
-
-
-            this.ajouterListe("Sujet de la prochaine réunion");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache3 = new TacheSimple(this.getTaches().size() + 1, "Problèmes HTML !");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache3);
-
-                // Création de la tache
-                Tache tache4 = new TacheSimple(this.getTaches().size() + 1, "Activer les cookies !");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache4);
-
-                // Création de la tache
-                Tache tache5 = new TacheSimple(this.getTaches().size() + 1, "Répartition des tâches");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache5);
-
-
-            this.ajouterListe("Tâches à faire");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache6 = new TacheSimple(this.getTaches().size() + 1, "Création bannière du site");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache6);
-
-                // Création de la tache
-                Tache tache7 = new TacheSimple(this.getTaches().size() + 1, "Création page de remerciement");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache7);
-
-                // Création de la tache
-                Tache tache8 = new TacheSimple(this.getTaches().size() + 1, "Création cahier des charges");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache8);
-
-
-            this.ajouterListe("Tâches en cours");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache9 = new TacheSimple(this.getTaches().size() + 1, "Création page d'annexe");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache9);
-
-
-            this.ajouterListe("Tâches terminées");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache10 = new TacheSimple(this.getTaches().size() + 1, "Création page de contact");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache10);
-
-                // Création de la tache
-                Tache tache11 = new TacheSimple(this.getTaches().size() + 1, "Création page d'accueil");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache11);
-
-        }
+    public void setTemplate(TemplatesStrategie template) {
+        this.template = template;
     }
 
     /**
-     * Methode qui crée le template 'Modèle Kanban'
-     * @param titre titre du template
+     * Méthode qui permet de créer un tableau. en fonction du template
      */
-    public void templateModeleKanban(String titre){
-
-        //On vérifie que le titre n'est pas déjà utilisé
-        if (VerifTableauExistant(titre)) {
-
-            // Création du tableau
-            Tableau t = new Tableau(this.getTableaux().size() + 1, titre);
-
-            //On ajoute la liste au modele
-            this.ajouterTableau(t);
-
-            // On ajoute la vue du tableau au modele
-            this.enregistrerObservateur(new VueTableau());
-
-            // Création des différentes listes qui composent le template
-            this.ajouterListe("Backlog");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache = new TacheSimple(this.getTaches().size() + 1, "Backlog");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache);
-
-                // Création de la tache
-                Tache tache2 = new TacheSimple(this.getTaches().size() + 1, "[Exemple de tâche]");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache2);
-
-
-            this.ajouterListe("Conception");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache3 = new TacheSimple(this.getTaches().size() + 1, "Conception & Recherche");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache3);
-
-                // Création de la tache
-                Tache tache4 = new TacheSimple(this.getTaches().size() + 1, "[Exemple de tâche de conception]");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache4);
-
-
-            this.ajouterListe("A faire");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache5 = new TacheSimple(this.getTaches().size() + 1, "A faire");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache5);
-
-
-            this.ajouterListe("En cours");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache6 = new TacheSimple(this.getTaches().size() + 1, "En cours");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache6);
-
-
-            this.ajouterListe("Revision du code");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache7 = new TacheSimple(this.getTaches().size() + 1, "Revision du code");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache7);
-
-                // Création de la tache
-                Tache tache8 = new TacheSimple(this.getTaches().size() + 1, "[Exemple de tâche de révision du code]");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache8);
-
-
-            this.ajouterListe("Test");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache9 = new TacheSimple(this.getTaches().size() + 1, "Test");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache9);
-
-
-            this.ajouterListe("Terminé");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache10 = new TacheSimple(this.getTaches().size() + 1, "Terminé");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache10);
-
-                // Création de la tache
-                Tache tache11 = new TacheSimple(this.getTaches().size() + 1, "[Tâche terminée]");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache11);
-        }
-    }
-
-    /**
-     * Methode qui crée le template 'Réunion hebdomadaire'
-     * @param titre titre du template
-     */
-    public void templateReuHebdo(String titre){
-
-        //On vérifie que le titre n'est pas déjà utilisé
-        if (VerifTableauExistant(titre)){
-            // Création du tableau
-            Tableau t = new Tableau(this.getTableaux().size() + 1, titre);
-
-            //On ajoute le tableau au modele
-            this.ajouterTableau(t);
-
-            // On ajoute la vue du tableau au modele
-            this.enregistrerObservateur(new VueTableau());
-
-            // Création des différentes listes qui composent le template
-            this.ajouterListe("Sujet de la prochaine réunion");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache = new TacheSimple(this.getTaches().size() + 1, "Nouveau projet Circuit WEB");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache);
-
-
-            this.ajouterListe("Sujet des dernières réunions");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache2 = new TacheSimple(this.getTaches().size() + 1, "------>");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache2);
-
-
-            this.ajouterListe("13 Décembre");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache3 = new TacheSimple(this.getTaches().size() + 1, "15min : Présentation du projet par Marin");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache3);
-
-                // Création de la tache
-                Tache tache4 = new TacheSimple(this.getTaches().size() + 1, "Affectation des tâches");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache4);
-
-
-            this.ajouterListe("30 Février");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache5 = new TacheSimple(this.getTaches().size() + 1, "Brainstorming sur le design du site");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache5);
-
-                // Création de la tache
-                Tache tache6 = new TacheSimple(this.getTaches().size() + 1, "Démonstration du site");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache6);
-        }
-    }
-
-    /**
-     * Methode qui crée le template 'Tableau Agile'
-     * @param titre titre du template
-     */
-    public void templateTableauAgile(String titre){
-
-        //On vérifie que le titre n'est pas déjà utilisé
-        if(VerifTableauExistant(titre)){
-
-            // Création du tableau
-            Tableau t = new Tableau(this.getTableaux().size() + 1, titre);
-
-            //On ajoute le tableau au modele
-            this.ajouterTableau(t);
-
-            // On ajoute la vue du tableau au modele
-            this.enregistrerObservateur(new VueTableau());
-
-            // Création des différentes listes qui composent le template
-            this.ajouterListe("Fait");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache = new TacheSimple(this.getTaches().size() + 1, "Reunion Nancy");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache);
-
-                // Création de la tache
-                Tache tache2 = new TacheSimple(this.getTaches().size() + 1, "Tendances de l'application");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache2);
-
-            this.ajouterListe("Sprint en cours");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache3 = new TacheSimple(this.getTaches().size() + 1, "Campagne de communication");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache3);
-
-                // Création de la tache
-                Tache tache4 = new TacheSimple(this.getTaches().size() + 1, "Deploiemment serveur");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache4);
-
-                // Création de la tache
-                Tache tache5 = new TacheSimple(this.getTaches().size() + 1, "Deploiement de la base de données");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache5);
-
-
-            this.ajouterListe("En cours");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache6 = new TacheSimple(this.getTaches().size() + 1, "Données");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache6);
-
-                // Création de la tache
-                Tache tache7 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page de lancement");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache7);
-
-
-            this.ajouterListe("En attente");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache8 = new TacheSimple(this.getTaches().size() + 1, "Règles CSS");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache8);
-
-
-            this.ajouterListe("A venir");
-            Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache9 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page de connexion");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache9);
-
-                // Création de la tache
-                Tache tache10 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page d'inscription");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache10);
-
-                // Création de la tache
-                Tache tache11 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page de profil");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache11);
-
-                // Création de la tache
-                Tache tache12 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page de contact");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache12);
-
-                // Création de la tache
-                Tache tache13 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page de remerciement");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache13);
-
-                // Création de la tache
-                Tache tache14 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page d'annexe");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache14);
-
-                // Création de la tache
-                Tache tache15 = new TacheSimple(this.getTaches().size() + 1, "Nouvelle page d'accueil");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache15);
-
-
-                this.ajouterListe("Questions");
-                Modele.setListeCourante(this.getListes().get(this.getListes().size() - 1).getNumListe());
-
-                // Création de la tache
-                Tache tache17 = new TacheSimple(this.getTaches().size() + 1, "Comment faire pour créer une tâches ?");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache17);
-
-                // Création de la tache
-                Tache tache18 = new TacheSimple(this.getTaches().size() + 1, "Comment faire pour créer une liste ?");
-                //On ajoute la tache au modele
-                this.ajouterTache(tache18);
-
-
-            this.ajouterListe("Boite à idées Marketing");
-
-            this.ajouterListe("Tiroir à débarras");
-
-            this.ajouterListe("Peut mieux faire");
-
-            this.ajouterListe("Boite à idées Contenus");
-
-            this.ajouterListe("Les Vainqueurs - WINS !");
-
-            this.ajouterListe("J'adorerais le faire");
-
-            this.ajouterListe("Ressources");
-
-        }
+    public void creerTableau() {
+        //SI le template n'est pas null
+        if (this.template != null)
+            //On crée le tableau avec le template choisi
+            this.template.creerTableau();
     }
 }

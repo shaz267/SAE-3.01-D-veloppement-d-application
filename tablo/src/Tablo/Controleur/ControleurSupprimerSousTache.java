@@ -29,8 +29,9 @@ public class ControleurSupprimerSousTache implements EventHandler<MouseEvent> {
         //On récupère le bouton supprimer
         Button supprimer = (Button) mouseEvent.getSource();
 
-        this.modele.supprimerSousTache(this.numTache);
+        if (this.modele.supprimerSousTache(this.numTache)){
 
-        supprimer.getScene().getWindow().hide();
+            supprimer.getScene().getWindow().hide();
+        }
     }
 }

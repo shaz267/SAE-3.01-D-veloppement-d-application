@@ -1,6 +1,10 @@
 package Tablo.Controleur;
 
 import Tablo.Modele.*;
+import Tablo.Modele.Templates.TemplateConduiteProjet;
+import Tablo.Modele.Templates.TemplateKanban;
+import Tablo.Modele.Templates.TemplateReuHebdo;
+import Tablo.Modele.Templates.TemplateTableauAgile;
 import Tablo.Vue.VueTableau;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -36,30 +40,32 @@ public class ControleurAjoutTemplates implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
 
         //On récupère la ComboBox
-        ComboBox comboBox = (ComboBox) actionEvent.getSource();
+        ComboBox<String> comboBox = (ComboBox<String>)actionEvent.getSource();
 
         //On récupère le titre du template
-        String titre = (String) comboBox.getValue();
+        String titre = comboBox.getValue();
 
         //On fait un switch sur le titre du template
         switch (titre) {
             case "Conduite de projet":
-                this.modele.templateConduiteProjet(titre);
+                //On modifie le template du modele
+                this.modele.setTemplate(new TemplateConduiteProjet(this.modele));
                 break;
-
             case "Modèle Kanban":
-                //On ajoute le template 2
-                this.modele.templateModeleKanban(titre);
+                //On modifie le template du modele
+                this.modele.setTemplate(new TemplateKanban(this.modele));
                 break;
             case "Réunion hebdomadaire":
-                //On ajoute le template 3
-                this.modele.templateReuHebdo(titre);
+                //On modifie le template du modele
+                this.modele.setTemplate(new TemplateReuHebdo(this.modele));
                 break;
             case "Tableau Agile":
-                //On ajoute le template 4
-                this.modele.templateTableauAgile(titre);
+                //On modifie le template du modele
+                this.modele.setTemplate(new TemplateTableauAgile(this.modele));
                 break;
         }
+        //On crée le tableau avec le template choisi
+        this.modele.creerTableau();
     }
 
 }

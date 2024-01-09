@@ -1,9 +1,7 @@
 package Tablo.Controleur;
 
-import Tablo.Loggeur;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tableau;
-import Tablo.Vue.VueDifferentTableaux;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -50,7 +48,7 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
             String TitreTableauChercher = b.getText();
 
             //On récupère l'id du tableau
-            int numTableau = this.modele.getNumTableaux(TitreTableauChercher);
+            int numTableau = this.modele.getNumTableau(TitreTableauChercher);
 
             //On créé la boîte de dialogue
             ChoiceDialog<VBox> dialog = new ChoiceDialog<>();

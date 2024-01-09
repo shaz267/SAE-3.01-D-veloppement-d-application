@@ -67,7 +67,7 @@ public class Liste {
         ArrayList<Liste> listP = new ArrayList<>();
         while (rs.next()) {
             Liste l = new Liste(rs.getString("titre"));
-            l.id = rs.getInt("id");
+            l.id = rs.getInt("id_liste");
             listP.add(l);
         }
         return listP;
@@ -80,7 +80,7 @@ public class Liste {
      * @throws SQLException
      */
     public static Liste findById(int id) throws SQLException {
-        String SQLPrep = "SELECT * FROM `LISTE` WHERE id = ?;";
+        String SQLPrep = "SELECT * FROM `LISTE` WHERE `id_liste` = ?;";
         PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep1.setInt(1,id);
         prep1.execute();
@@ -89,7 +89,7 @@ public class Liste {
             return null;
         }
         Liste l = new Liste(rs.getString("titre"));
-        l.id = rs.getInt("id");
+        l.id = rs.getInt("id_liste");
         return l;
     }
 
@@ -100,14 +100,14 @@ public class Liste {
      * @throws SQLException
      */
     public static ArrayList<Liste> findByName(String titre) throws SQLException {
-        String SQLPrep = "SELECT * FROM `LISTE` WHERE nom = ?";
+        String SQLPrep = "SELECT * FROM `LISTE` WHERE `titre` = ?";
         PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep1.setString(1,titre);
         ResultSet rs = prep1.executeQuery();
         ArrayList<Liste> listP = new ArrayList<>();
         while (rs.next()) {
             Liste l = new Liste(rs.getString("titre"));
-            l.id = rs.getInt("id");
+            l.id = rs.getInt("id_liste");
             listP.add(l);
         }
         return listP;
@@ -118,9 +118,10 @@ public class Liste {
      * @throws SQLException
      */
     public void delete() throws SQLException {
-        String SQLDel = "DELETE FROM `LISTE` WHERE titre = ?";
+        String SQLDel = "DELETE FROM `LISTE` WHERE titre = ? AND id_liste = ?";
         PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLDel);
         prep1.setString(1,titre);
+        prep1.setInt(2,id);
         prep1.executeUpdate();
         id = -1;
     }
@@ -161,11 +162,33 @@ public class Liste {
      * @throws SQLException
      */
     public void update() throws SQLException {
-        String SQLsave = "UPDATE `PERSONNE` SET `titre` = ? WHERE `id_liste` = ?";
+        String SQLsave = "UPDATE `LISTE` SET `titre` = ? WHERE `id_liste` = ?";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLsave);
         prep.setString(1,titre);
         prep.setInt(2,id);
         prep.executeUpdate();
+    }
+
+    /**
+     * Méthode createTable permettant de créer la table LISTE dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void createTable() throws SQLException {
+        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT AUTO_INCREMENT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_liste`))";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        stmt.executeUpdate(SQLPrep);
+    }
+
+    /**
+     * Méthode deleteTable permettant de supprimer la table LISTE dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void deleteTable() throws SQLException {
+        String SQLPrep = "DROP TABLE `LISTE`";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        //try {
+            stmt.executeUpdate(SQLPrep);
+        //}
     }
 
     /**
@@ -484,10 +507,17 @@ public class Liste {
 
     /**
      * Permet de changer le numéro de la liste
-     *
      * @param i
      */
     public void setNumListe(int i) {
         this.numListe = i;
+    }
+
+    /**
+     * Permet de changer le titre de la liste
+     * @param titre
+     */
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 }

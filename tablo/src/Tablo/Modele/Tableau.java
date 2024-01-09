@@ -182,9 +182,7 @@ public class Tableau {
     public static void deleteTable() throws SQLException {
         String SQLPrep = "DROP TABLE `TABLEAU`";
         Statement stmt = DBConnection.getConnection().createStatement();
-        //try {
         stmt.executeUpdate(SQLPrep);
-        //}
     }
 
     /**

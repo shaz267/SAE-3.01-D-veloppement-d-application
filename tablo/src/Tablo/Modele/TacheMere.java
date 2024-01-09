@@ -123,6 +123,17 @@ public class TacheMere extends Tache {
         this.dateLimite = dateLimite;
     }
 
+    public boolean supprimerSousTache(int sousTache){
+
+        //Pour chaques sous taches de la tache courante
+        for (Tache tache : this.taches) {
+            if(tache.getNumTache() == sousTache){
+                return this.taches.remove(tache);
+            }
+        }
+        return false;
+    }
+
     /**
      * Méthode qui retourne le tableau de tâches filles de la tâche mère.
      *

@@ -546,4 +546,22 @@ public class Liste {
 
             return tachesSelectionnees;
     }
+
+    /**
+     * Méthode qui permet de supprimer une sous tache
+     * @return
+     */
+    public boolean supprimerSousTache(int sousTache) {
+
+        for (Tache t : this.taches) {
+
+            //Si la tache est la tache courante
+            if (t.getNumTache() == Modele.getTacheCourante()) {
+
+                //On supprime la sous tache
+                return t.supprimerSousTache(sousTache);
+            }
+        }
+        return false;
+    }
 }

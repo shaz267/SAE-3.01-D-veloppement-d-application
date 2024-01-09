@@ -582,6 +582,23 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Méthode qui permet de supprimer une sous tache
+     * @return
+     */
+    public boolean supprimerSousTache(int sousTache) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.supprimerSousTache(sousTache);
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Méthode qui permet de savoir si la tache courante est selectionnée
      * @return true si la tache est selectionnée, false sinon
      */

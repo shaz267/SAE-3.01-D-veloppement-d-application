@@ -256,4 +256,12 @@ public abstract class Tache {
     public boolean isSelectionnee() {
         return this.selectionnee;
     }
+
+    /**
+     * Méthode qui permet de supprimer une sous tâche de la tâche courante.
+     *
+     * @param sousTache
+     * @return
+     */
+    public abstract boolean supprimerSousTache(int sousTache);
 }

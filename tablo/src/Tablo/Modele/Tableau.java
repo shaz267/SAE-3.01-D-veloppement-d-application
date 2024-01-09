@@ -485,4 +485,23 @@ public class Tableau {
 
         return tachesSelectionnees;
     }
+
+    /**
+     * Méthode qui permet de supprimer une sous tache
+     * @return
+     */
+    public boolean supprimerSousTache(int sousTache) {
+
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            //Si la liste est la liste courante
+            if (l.getNumListe() == Modele.getListeCourante()) {
+
+                //On supprime la sous tache
+                return l.supprimerSousTache(sousTache);
+            }
+        }
+        return false;
+    }
 }

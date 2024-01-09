@@ -95,12 +95,12 @@ public class Liste {
     }
 
     /**
-     * Méthode findByName permettant de récupérer une liste de la base de données en fonction de son titre
+     * Méthode findByTitre permettant de récupérer une liste de la base de données en fonction de son titre
      * @param titre
      * @return
      * @throws SQLException
      */
-    public static ArrayList<Liste> findByName(String titre) throws SQLException {
+    public static ArrayList<Liste> findByTitre(String titre) throws SQLException {
         String SQLPrep = "SELECT * FROM `LISTE` WHERE `titre` = ?";
         PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep1.setString(1,titre);
@@ -184,9 +184,7 @@ public class Liste {
     public static void deleteTable() throws SQLException {
         String SQLPrep = "DROP TABLE `LISTE`";
         Statement stmt = DBConnection.getConnection().createStatement();
-        //try {
-            stmt.executeUpdate(SQLPrep);
-        //}
+        stmt.executeUpdate(SQLPrep);
     }
 
     /**
@@ -231,12 +229,12 @@ public class Liste {
         System.out.println("Liste : " + this.taches);
         this.taches.add(t);
 
-        // On insère la tâche avec l'id, le titre, le contenu, la date de début, la date de fin, et les attributs estarchivee et estterminee à false par defaut
-        try {
-            // On insère la tache dans la base de données
-            t.save();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

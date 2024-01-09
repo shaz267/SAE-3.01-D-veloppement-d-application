@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Classe abstraite qui permet de gérer les tâches de notre application.
  */
-public abstract class Tache {
+public abstract class   Tache {
 
     /**
      * Attribut id de la classe Tache qui est un entier qui représente l'identifiant de la tâche.
@@ -183,6 +183,10 @@ public abstract class Tache {
      */
     public void save() throws SQLException {
         if(id == -1){
+            // On récupère l'id de la tâche qui vient d'être créée
+            ArrayList<Tache> tasks = Tache.findAll();
+            int id = tasks.size() + 1;
+            this.id = id;
             saveNew();
         } else {
             update();
@@ -194,23 +198,18 @@ public abstract class Tache {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `TACHE` (`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`,`type`) VALUES (?,?,?,?,?,?);";
-        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
-        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car auto-increment)
-        prep.setString(1, titre);
-        prep.setString(2, contenu);
-        prep.setString(3, dateDebut.toString());
-        prep.setString(4, dateLimite.toString());
-        prep.setBoolean(5, estArchivee);
-        prep.setString(6, this.getClass().getSimpleName());
+        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`,`estterminee`, `type`) VALUES (?,?,?,?,?,?,?,?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1, id);
+        prep.setString(2, titre);
+        prep.setString(3, contenu);
+        prep.setString(4, dateDebut.toString());
+        prep.setString(5, dateLimite.toString());
+        prep.setBoolean(6, estArchivee);
+        prep.setBoolean(7, estTerminee);
+        prep.setString(8, this.getClass().getSimpleName());
         prep.execute();
 
-        // On récupère l'id de la tâche qui vient d'être créée.
-        ResultSet generatedKeys = prep.getGeneratedKeys();
-        if (generatedKeys.next()) {
-            int id = generatedKeys.getInt(1);
-            this.id = id;
-        }
     }
 
     /**
@@ -230,7 +229,7 @@ public abstract class Tache {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT AUTO_INCREMENT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1), `type` varchar(10), PRIMARY KEY (`id_tache`))";
+        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE,`estterminee` TINYINT(1) DEFAULT 0, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(10), PRIMARY KEY (`id_tache`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

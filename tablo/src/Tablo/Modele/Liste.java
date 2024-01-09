@@ -232,6 +232,14 @@ public class Liste {
         // afficher la liste en question
         System.out.println("Liste : " + this.taches);
         this.taches.add(t);
+
+        // On insère la tâche avec l'id, le titre, le contenu, la date de début, la date de fin, et les attributs estarchivee et estterminee à false par defaut
+        try {
+            // On insère la tache dans la base de données
+            t.save();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

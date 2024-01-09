@@ -20,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Classe MyApplication qui hérite de Application et qui permet de lancer l'application
@@ -92,14 +93,46 @@ public class MyApplication extends Application {
             } else if (emailVerif(emailRecup) && mdpVerif(mdpRecup)){
 
                 //TODO : relier la connexion à la base de données
-
-                //lancer l'application
+                // On vérifie que le mail et le mdp correspondent à un utilisateur de la base
+                // On commence par sélectionner l'utilisateur de la base qui correspond au mail entré pour la connexion
+                Utilisateur user = null;
                 try {
-                    // Appel de startApplication avec le nouveau stage
-                    startApplication(stage);
-                } catch (IOException e) {
-                    // On relance une exception en cas d'erreur
+                    user = Utilisateur.findByEmail(emailRecup);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                // On vérifie par la suite son mdp
+                // On hache le mdp entré
+                String mdpRecupHashe = Utilisateur.passwordHash(mdpRecup);
+                System.out.println("Mdp recup haché:"+mdpRecupHashe+"correct de sur");
+
+                // On récupère le mdp de l'utilisateur de la base
+                String mdpUser = "";
+                try {
+                    mdpUser += user.getMdp();
+                    System.out.println("Mdp recup de la base:"+mdpUser+"Correct?");
+                } catch (SQLException e) {
                     throw new RuntimeException(e);
+                }
+
+                // On vérifie que le mdp entré correspond bien au mdp de l'utilisateur de la base
+                if(mdpUser.equals(mdpRecupHashe)){
+                    //lancer l'application
+                    try {
+                        // Appel de startApplication avec le nouveau stage
+                        startApplication(stage);
+                    } catch (IOException e) {
+                        // On relance une exception en cas d'erreur
+                        throw new RuntimeException(e);
+                    }
+                }else{
+                    // On affiche une erreur si le mdp entré ne correspond pas au mdp de l'utilisateur de la base
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Erreur");
+                    alert.setContentText("Le mot de passe est incorrect, ou l'utilisateur n'existe pas");
+                    alert.showAndWait();
                 }
             }
         });
@@ -151,9 +184,6 @@ public class MyApplication extends Application {
                 String mdpRecup = mdp.getText();
                 String confirmationMdpRecup = confirmationMdp.getText();
 
-                //On crée une variable qui va contenir le mot de passe hasher
-                String mdpHash = "";
-
                 //On vérifie que les champs de saisie ne sont pas vides
                 if (nomUtilisateurRecup.isEmpty() || emailRecup.isEmpty() || mdpRecup.isEmpty() || confirmationMdpRecup.isEmpty()) {
 
@@ -168,16 +198,7 @@ public class MyApplication extends Application {
                 } else if (pseudoVerif(nomUtilisateurRecup) && emailVerif(emailRecup) && mdpVerif(mdpRecup)) {
 
                     //On vérifie que le mot de passe et la confirmation du mot de passe sont identiques
-                    if (!mdpRecup.equals(confirmationMdpRecup)) {
-
-                        //On affiche une erreur si le mot de passe et la confirmation du mot de passe ne sont pas identiques
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Erreur");
-                        alert.setHeaderText("Erreur");
-                        alert.setContentText("Le mot de passe et la confirmation du mot de passe ne sont pas identiques");
-                        alert.showAndWait();
-
-                    } else {
+                    if (mdpRecup.equals(confirmationMdpRecup)) {
                         // On insère l'utilisateur avec le mdp, mail et pseudo récupérés en sauvegardant un objet Utilisateur
                         Utilisateur user = new Utilisateur(nomUtilisateurRecup, emailRecup, mdpRecup);
                         try {
@@ -197,6 +218,13 @@ public class MyApplication extends Application {
                             // On relance une exception en cas d'erreur
                             throw new RuntimeException(e);
                         }
+                    } else {
+                        //On affiche une erreur si le mot de passe et la confirmation du mot de passe ne sont pas identiques
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText("Erreur");
+                        alert.setContentText("Le mot de passe et la confirmation du mot de passe ne sont pas identiques");
+                        alert.showAndWait();
                     }
                 }
 

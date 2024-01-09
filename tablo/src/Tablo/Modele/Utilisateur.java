@@ -22,13 +22,22 @@ public class Utilisateur {
      * mdp, attribut mot de passe hashé lors de la création de l'utilisateur
      */
     public String mdp;
-
+    /**
+     * estConnecte, attribut qui permet de savoir si l'utilisateur est connecté ou non
+     */
+    public boolean estConnecte = false;
     public Utilisateur(String ps, String email, String mdp){
         this.id_user = -1; // -1 de base car l'objet n'est pas enregistré dans la bd
         this.pseudo = ps;
         this.email = email;
         // On hashe le mot de passe
-        this.mdp = Utilisateur.passwordHash(mdp);
+        if(mdp.length() > 30){
+            this.mdp = mdp;
+        }
+        else{
+            this.mdp = Utilisateur.passwordHash(mdp);
+        }
+
     }
 
     /**
@@ -159,6 +168,35 @@ public class Utilisateur {
     }
 
     /**
+     *  Méthode permettant de selectionner un utilisateur par son email
+     * @param mail, email a chercher
+     * @return
+     */
+    public static Utilisateur findByEmail(String mail) throws SQLException {
+        // On crée la liste contenant tous les utilisateurs
+        ArrayList<Utilisateur> allUsers = Utilisateur.findAll();
+
+        // on verif qui a le bon email en parcourant allUsers
+        for(int i = 0; i < allUsers.size(); i++){
+            // si la personne a le bon email
+            if(allUsers.get(i).getEmail().equals(mail)){
+                // on retourne donc l'Utilisateur en question
+                return allUsers.get(i);
+            }
+        }
+        // Si aucun utilisateur ne correspond au pseudo demande
+        return null;
+    }
+
+    /**
+     * Méthode d'accès de l'attribut email
+     * @return
+     */
+    private Object getEmail() {
+        return this.email;
+    }
+
+    /**
      * Méthode findAll qui permet de retourner une liste des utilisateurs de la base
      * @return users, la liste des utilisateurs de la base
      * @throws SQLException
@@ -252,4 +290,13 @@ public class Utilisateur {
     public String getPseudo(){
         return this.pseudo;
     }
+
+    /**
+     * Méthode d'accès du mot de passe de l'utilisateur (hashé) directement dans la bd
+     * @return
+     */
+    public String getMdp() throws SQLException {
+        return this.mdp;
+    }
+
 }

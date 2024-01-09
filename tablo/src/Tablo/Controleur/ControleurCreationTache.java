@@ -43,7 +43,7 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
             numTache = this.modele.getTaches().size() + 1;
         }
 
-        // Création d'une nouvelle liste
+        // Création d'une nouvelle tâche
         TextInputDialog dialog = new TextInputDialog("Nouvelle Tache");
         dialog.setTitle("Ajouter une tache");
         dialog.setHeaderText("Ajouter une tache");
@@ -51,23 +51,6 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
 
         // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
         dialog.showAndWait().ifPresent(titre -> {
-
-            //Si la liste n'est pas vide alors on vérifie que la tache n'existe pas déjà
-            if (modele.getTaches() != null) {
-                //Si une tache qui a le même titre existe déjà alors on ne l'ajoute pas
-                for (Tache t : modele.getTaches()) {
-                    if (t.getTitre().equals(titre)) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Erreur");
-                        alert.setHeaderText("Erreur de titre");
-                        alert.setContentText("Une tâche avec le même titre existe déjà.");
-                        alert.showAndWait();
-                        return;
-                    }
-                }
-            }
-
-
             // Création de la tache
             Tache tache = new TacheSimple(numTache, titre);
 

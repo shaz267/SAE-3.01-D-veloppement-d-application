@@ -53,6 +53,7 @@ public abstract class Tache {
     protected boolean estArchivee;
 
     protected int numTache;
+    protected int numListe;
 
     /**
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
@@ -73,6 +74,7 @@ public abstract class Tache {
         this.dateLimite = LocalDate.now().plusDays(1);
 
         this.estArchivee = false;
+        setNumListe();
     }
 
     /**
@@ -368,7 +370,19 @@ public abstract class Tache {
         return this.numTache;
     }
 
+    public void setNumListe() {
+        this.numListe = Modele.getListeCourante();
+    }
+    public void setNumTache(int numTache) {
+        this.numTache = numTache;
+    }
+    public int getNumListe() {
+        return this.numListe;
+    }
+
     public abstract List<Tache> getSousTaches();
+
+
 
     /**
      * On redéfinit la méthode equals pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.

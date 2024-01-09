@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -207,8 +208,29 @@ public class Liste {
      * @param t tâche à ajouter
      */
     public void ajouterTache(Tache t) {
-
+        //Si la liste est vide alors on initialise le numéro de la tache à 1 sinon on l'initialise à la taille de la liste + 1
+        if (this.taches == null) {
+            t.setNumTache(1);
+        } else {
+            t.setNumTache(this.taches.size() + 1);
+        }
+        //Si la liste n'est pas vide alors on vérifie que la tache n'existe pas déjà
+        if (this.taches != null) {
+            //Si une tache qui a le même titre existe déjà alors on ne l'ajoute pas
+            for (Tache tache : this.taches) {
+                if (tache.getTitre().equals(t.getTitre())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Erreur de Tâche");
+                    alert.setContentText("Vous ne pouvez pas ajouter une tâche qui a le même titre qu'une autre tâche.");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+        }
         Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
+        // afficher la liste en question
+        System.out.println("Liste : " + this.taches);
         this.taches.add(t);
     }
 
@@ -247,6 +269,26 @@ public class Liste {
         }
         return false;
     }
+
+    /**
+     * Permet de supprimer une tâche de la liste passée en paramètre
+     * @param tache
+     * @param liste
+     */
+
+    public void retirerTache(Tache tache, Liste liste) {
+
+     	//On supprime la tache de la liste
+     	liste.getTaches().remove(tache);
+
+     	//On supprime la tache de toutes les sous taches de la liste
+     	for (Tache t : liste.getTaches()) {
+     		if (t.getSousTaches() != null) {
+     			t.getSousTaches().remove(tache);
+     		}
+     	}
+    }
+
 
     /**
      * Permet de changer le titre d'une tâche dans la liste des taches
@@ -361,20 +403,19 @@ public class Liste {
         }
     }
 
-	/**
-	 * Permet de déplacer une tâche dans une autre liste
-	 * @param tache
-	 */
-	public void deplacerTache(Tache tache, int idListeDestination) {
+    /**
+     * Permet de déplacer une tâche dans une autre liste.
+     *
+     * @param tache               La tâche à déplacer.
+     * @param idListeDestination  L'identifiant de la liste de destination.
+     * @return                    Vrai si la tâche a été déplacée avec succès, sinon faux.
+     */
 
-		for (Tache t : this.taches) {
-			if (t.getId() == Modele.getTacheCourante()) {
-				//retirerTache(t);
-			}
-		}
-	}
 
-	/**
+
+
+
+    /**
 	 * Permet de mettre une tâche en terminée
 	 */
 	public void fini(){

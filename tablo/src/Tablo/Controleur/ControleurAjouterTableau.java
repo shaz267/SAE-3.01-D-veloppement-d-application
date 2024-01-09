@@ -58,7 +58,6 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
                     alert.showAndWait();
                     return;
                 }
-                Loggeur.enregistrer("Ajout du tableau : " + titre + " dans l'application");
             }
 
             // Si le titre ne dépasse pas 15 caractères, on affiche une erreur et on quitte la méthode
@@ -77,6 +76,13 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
 
                 //On ajoute la liste au modele
                 this.modele.ajouterTableau(t);
+                Loggeur.enregistrer("Ajout du tableau : " + titre + " dans l'application");
+
+                try {
+                    t.save();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 // On ajoute la vue du tableau au modele
                 this.modele.enregistrerObservateur(new VueTableau());

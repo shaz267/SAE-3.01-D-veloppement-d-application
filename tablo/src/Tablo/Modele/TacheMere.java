@@ -2,6 +2,7 @@ package Tablo.Modele;
 
 import Tablo.Loggeur;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,13 @@ public class TacheMere extends Tache {
                 tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
             }
 
+            if(Modele.user != null){
+                try {
+                    this.save();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
             return this.taches.add(tache);
         }
     }

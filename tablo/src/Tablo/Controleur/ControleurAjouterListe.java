@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 
+import java.sql.SQLException;
+
 /**
  * Classe ControleurAjouterListe qui permet de gérer l'ajout d'une liste
  */
@@ -49,6 +51,11 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
 
             //On ajoute la liste au modele
             modele.ajouterListe(l);
+	        try {
+		        l.save();
+	        } catch (SQLException e) {
+		        throw new RuntimeException(e);
+	        }
         });
     }
 }

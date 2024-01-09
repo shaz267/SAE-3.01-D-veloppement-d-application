@@ -210,10 +210,15 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public void update() throws SQLException {
-        String SQLsave = "UPDATE `TACHE` SET `titre` = ? WHERE `id_tache` = ?";
+        String SQLsave = "UPDATE `TACHE` SET `titre` = ?, `contenu` = ?, `date_deb` = ?, `date_fin` = ?, `estarchivee` = ?, `type` = ? WHERE `id_tache` = ?;";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLsave);
         prep.setString(1,titre);
-        prep.setInt(2,id);
+        prep.setString(2,contenu);
+        prep.setString(3,dateDebut.toString());
+        prep.setString(4,dateLimite.toString());
+        prep.setBoolean(5,estArchivee);
+        prep.setString(6, this.getClass().getSimpleName());
+        prep.setInt(7,id);
         prep.executeUpdate();
     }
 
@@ -222,7 +227,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(10), PRIMARY KEY (`id_tache`))";
+        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(15), PRIMARY KEY (`id_tache`,`titre`));";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }
@@ -239,70 +244,91 @@ public abstract class   Tache {
 
     /**
      * Méthode qui change le titre de la tâche.
-     *
-     * @param titre
+     * @param titre titre de la tâche
      */
     public void changerTitre(String titre) {
-
         Loggeur.enregistrer("Changement du titre de la tâche " + this.titre + " en " + titre);
         this.titre = titre;
+        // Si l'utilisateur est connecté, on enregistre la tâche dans la base de données
+        if(Modele.user != null) {
+            try {
+                this.save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
      * Méthode qui change le contenu de la tâche.
-     *
-     * @param contenu
+     * @param contenu contenu de la tâche
      */
     public void changerContenu(String contenu) {
-
         //On enregistre l'action dans les logs et on change le contenu de la tâche.
         Loggeur.enregistrer("Changement du contenu de la tâche " + this.titre + " en " + contenu);
         this.contenu = contenu;
+        // Si l'utilisateur est connecté, on enregistre le contenu de la tâche dans la base de données
+        if(Modele.user != null) {
+            try {
+                this.save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
      * Méthode qui set la date limite de la tâche.
-     *
      * @param dateDebut
      */
     public void modifierDateDebut(LocalDate dateDebut) {
-
         Loggeur.enregistrer("Changement de la date de début de la tâche " + this.titre + " en " + dateDebut);
         this.dateDebut = dateDebut;
+        // Si l'utilisateur est connecté, on enregistre la date de début de la tâche dans la base de données
+        if(Modele.user != null) {
+            try {
+                this.save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
-     * Méthode qui set la date limite de la tâche.
-     *
+     * Méthode qui set la date limite de la tâche
      * @param dateLimite
      */
     public void modifierDateLimite(LocalDate dateLimite) {
-
         //On enregistre l'action dans les logs et on change la date limite de la tâche.
         Loggeur.enregistrer("Changement de la date limite de la tâche " + this.titre + " en " + dateLimite);
         this.dateLimite = dateLimite;
+        // Si l'utilisateur est connecté, on enregistre la date limite de la tâche dans la base de données
+        if(Modele.user != null) {
+            try {
+                this.save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
      * Méthode qui ajoute une tâche fille à la tâche mère. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
-     *
-     * @param tache
-     * @return
+     * @param tache tâche à ajouter
+     * @return true si la tâche a été ajoutée, false sinon
      */
     public abstract boolean ajouterTache(Tache tache);
 
 
     /**
      * Méthode qui supprime une tâche fille de la tâche mère. Elle serra redéfinie dans la classe TacheMere. Et dans la classe TacheSimple, elle retournera false.
-     *
-     * @param tache
-     * @return
+     * @param tache tâche à supprimer
+     * @return true si la tâche a été supprimée, false sinon
      */
     public abstract boolean supprimerTache(Tache tache);
 
     /**
      * Méthode qui retourne l'attribut titre de la tâche.
-     *
      * @return titre
      */
     public String getTitre() {
@@ -315,7 +341,6 @@ public abstract class   Tache {
 
     /**
      * Getter qui retourne l'attribut contenu de la tâche
-     *
      * @return contenu
      */
     public String getContenu() {
@@ -324,7 +349,6 @@ public abstract class   Tache {
 
     /**
      * Getter qui retourne l'attribut dateLimite de la tache
-     *
      * @return LocalDate
      */
     public LocalDate getDateLimite() {
@@ -333,23 +357,39 @@ public abstract class   Tache {
 
     /**
      * Getter qui retourne l'attribut dateDebut de la tache
-     *
      * @return LocalDate
      */
     public LocalDate getDateDebut() {
         return dateDebut;
     }
 
+    /**
+     * Getter qui retourne l'attribut numTache de la tache
+     * @return
+     */
     public int getNumTache() {
         return this.numTache;
     }
 
+    /**
+     * Setter qui set l'attribut numListe de la tache
+     */
     public void setNumListe() {
         this.numListe = Modele.getListeCourante();
     }
+
+    /**
+     * Setter qui set l'attribut numTache de la tache
+     * @param numTache numéro de la tâche
+     */
     public void setNumTache(int numTache) {
         this.numTache = numTache;
     }
+
+    /**
+     * Getter qui retourne l'attribut numListe de la tache
+     * @return numListe
+     */
     public int getNumListe() {
         return this.numListe;
     }
@@ -360,20 +400,17 @@ public abstract class   Tache {
 
     /**
      * On redéfinit la méthode equals pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.
-     *
-     * @param o
-     * @return
+     * @param o objet à comparer
+     * @return true si les deux tâches sont égales, false sinon
      */
     @Override
     public boolean equals(Object o) {
-
         return this.numTache == ((Tache) o).getNumTache();
     }
 
     /**
      * On redéfinit la méthode hashCode pour que deux tâches soient égales si elles ont le même titre. Ce qui nous permettra de les comparer dans les listes.
-     *
-     * @return
+     * @return numTache
      */
     @Override
     public int hashCode() {
@@ -381,13 +418,27 @@ public abstract class   Tache {
         return this.numTache;
     }
 
+    /**
+     * Méthode qui archive ou désarchive une tâche
+     * @param estArchivee true si on veut archiver la tâche, false sinon
+     */
     public void archiver(boolean estArchivee) {
-
         this.estArchivee = estArchivee;
+        // Si l'utilisateur est connecté, on enregistre l'etat d'achivage de la tâche dans la base de données
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
+    /**
+     * Getter qui retourne l'attribut estArchivee de la tache
+     * @return estArchivee
+     */
     public boolean isArchivee() {
-
         return this.estArchivee;
     }
 }

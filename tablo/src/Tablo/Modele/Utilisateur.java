@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class Utilisateur {
 
@@ -22,10 +21,7 @@ public class Utilisateur {
      * mdp, attribut mot de passe hashé lors de la création de l'utilisateur
      */
     private String mdp;
-    /**
-     * estConnecte, attribut qui permet de savoir si l'utilisateur est connecté ou non
-     */
-    public static boolean estConnecte = false;
+
     public Utilisateur(String ps, String email, String mdp){
         this.id_user = -1; // -1 de base car l'objet n'est pas enregistré dans la bd
         this.pseudo = ps;

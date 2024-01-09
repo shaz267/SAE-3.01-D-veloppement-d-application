@@ -43,11 +43,6 @@ public abstract class   Tache {
     protected LocalDate dateDebut;
 
     /**
-     * Attribut estTerminee de la classe Tache qui est un booléen qui représente si la tâche est terminée ou non.
-     */
-    protected boolean estTerminee;
-
-    /**
      * Attribut estArchivee de la classe Tache qui est un booléen qui représente si la tâche est archivée ou non.
      */
     protected boolean estArchivee;
@@ -68,7 +63,6 @@ public abstract class   Tache {
 
         this.titre = titre;
         this.contenu = "";
-        this.estTerminee = false;
 
         this.dateDebut = LocalDate.now();
         this.dateLimite = LocalDate.now().plusDays(1);
@@ -198,7 +192,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`,`estterminee`, `type`) VALUES (?,?,?,?,?,?,?,?);";
+        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`, `type`) VALUES (?,?,?,?,?,?,?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep.setInt(1, id);
         prep.setString(2, titre);
@@ -206,8 +200,7 @@ public abstract class   Tache {
         prep.setString(4, dateDebut.toString());
         prep.setString(5, dateLimite.toString());
         prep.setBoolean(6, estArchivee);
-        prep.setBoolean(7, estTerminee);
-        prep.setString(8, this.getClass().getSimpleName());
+        prep.setString(7, this.getClass().getSimpleName());
         prep.execute();
 
     }
@@ -307,20 +300,6 @@ public abstract class   Tache {
      */
     public abstract boolean supprimerTache(Tache tache);
 
-
-
-    /**
-     * Méthode qui met la tâche en terminée.
-     *
-     * @return titre
-     */
-    public void fini() {
-
-        Loggeur.enregistrer("La tâche " + this.titre + " est terminée");
-        this.estTerminee = true;
-    }
-
-
     /**
      * Méthode qui retourne l'attribut titre de la tâche.
      *
@@ -332,10 +311,6 @@ public abstract class   Tache {
 
     public int getId() {
         return this.id;
-    }
-
-    public boolean isEstTerminee() {
-        return estTerminee;
     }
 
     /**

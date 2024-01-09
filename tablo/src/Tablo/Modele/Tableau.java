@@ -340,19 +340,6 @@ public class Tableau {
     }
 
     /**
-     * Appelle la méthode fini() de la liste courante
-     */
-    public void fini(){
-
-        for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
-
-                l.fini();
-            }
-        }
-    }
-
-    /**
      * Ajoute une liste à l'objet Tableau
      *
      * @param l liste à ajouter

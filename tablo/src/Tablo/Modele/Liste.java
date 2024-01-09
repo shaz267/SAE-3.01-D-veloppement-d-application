@@ -412,43 +412,6 @@ public class Liste {
     }
 
     /**
-     * Permet de déplacer une tâche dans une autre liste.
-     *
-     * @param tache               La tâche à déplacer.
-     * @param idListeDestination  L'identifiant de la liste de destination.
-     * @return                    Vrai si la tâche a été déplacée avec succès, sinon faux.
-     */
-
-
-
-
-
-    /**
-	 * Permet de mettre une tâche en terminée
-	 */
-	public void fini(){
-
-        for (Tache t : this.taches) {
-            if (t.getNumTache() == Modele.getTacheCourante()) {
-
-                //Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On met la sous tache en terminée
-                for (Tache tache : this.taches) {
-                    if (tache.getSousTaches() != null) {
-                        for (Tache sousTache : tache.getSousTaches()) {
-                            if (sousTache.getTitre().equals(t.getTitre())) {
-                                sousTache.fini();
-                            }
-                        }
-                    }
-                }
-
-                // On met la tâche en terminée
-                t.fini();
-            }
-        }
-    }
-
-    /**
      * Permet de rajouter une sous tâche à la tache courante
      */
     public boolean ajouterSousTache(Tache t) {

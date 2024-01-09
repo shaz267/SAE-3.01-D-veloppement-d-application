@@ -7,14 +7,14 @@ import javafx.scene.input.MouseEvent;
 /**
  * Controleur permettant de supprimer totalement une tache une fois qu'elle est archivée
  */
-public class ControleurSupprimerTache implements EventHandler<MouseEvent> {
+public class ControleurSupprimerArchive implements EventHandler<MouseEvent> {
 
     /**
      * Modèle de l'application
      */
     private Modele modele;
 
-    public ControleurSupprimerTache(Modele m) {
+    public ControleurSupprimerArchive(Modele m) {
 
         this.modele = m;
     }

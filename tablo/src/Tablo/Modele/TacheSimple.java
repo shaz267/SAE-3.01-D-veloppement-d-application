@@ -34,6 +34,10 @@ public class TacheSimple extends Tache {
         return false;
     }
 
+    public boolean supprimerSousTache(int sousTache){
+        return false;
+    }
+
 
     /**
      * Affiche sous la forme d'un arbre les tâches filles de la tâche mère.

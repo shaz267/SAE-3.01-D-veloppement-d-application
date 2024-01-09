@@ -1,7 +1,9 @@
 package Tablo;
 
+import Tablo.Controleur.ControleurAjoutTemplates;
 import Tablo.Controleur.ControleurAjouterListe;
 import Tablo.Controleur.ControleurAjouterTableau;
+import Tablo.Controleur.ControleurCréerDiagramme;
 import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
 import Tablo.Vue.VueDifferentTableaux;
@@ -313,6 +315,10 @@ public class MyApplication extends Application {
         view.setFitHeight(40);
         view.setFitWidth(40);
 
+
+        //On utilise cette image pour l'image de l'application
+        stage.getIcons().add(logo);
+
         //Espace de travail comboBox
         ComboBox<String> espaceTravail = new ComboBox<>();
 
@@ -336,11 +342,19 @@ public class MyApplication extends Application {
         templates.setMinHeight(40);
 
         //On met le titre du comboBox en "Espace de travail"
-        templates.setValue("Templates");
+        templates.setPromptText("Templates");
+
         //On met en gras le titre du comboBox
         templates.setStyle("-fx-font-weight: bold;");
 
-        templates.getItems().add("Template 1");
+        //On ajoute les templates
+        templates.getItems().add("Conduite de projet");
+        templates.getItems().add("Modèle Kanban");
+        templates.getItems().add("Réunion hebdomadaire");
+        templates.getItems().add("Tableau Agile");
+
+        //On ajoute un évènement au comboBox
+        templates.setOnAction(new ControleurAjoutTemplates(modele));
 
         //Titre du tableau
         VueTitreTableau titreTableau = new VueTitreTableau();
@@ -350,7 +364,7 @@ public class MyApplication extends Application {
         titreTableau.setTranslateX(300);
 
         //Circle
-        Circle circle = new Circle();
+        /*Circle circle = new Circle();
         circle.setCenterX(100.0f);
         circle.setCenterY(100.0f);
         circle.setRadius(20.0f);
@@ -366,13 +380,13 @@ public class MyApplication extends Application {
         StackPane stack = new StackPane();
         // On crée un padding pour décaler le StackPane à droite (on voulait le bouton du compte sur la droite)
         stack.setPadding(new Insets(0, 0, 0, 755));
-        stack.getChildren().addAll(circle, text);
+        stack.getChildren().addAll(circle, text);*/
 
         //TODO : mettre le StackPane à droite
 
 
         //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, espaceTravail, templates, titreTableau, stack);
+        top.getChildren().addAll(view, espaceTravail, templates, titreTableau);
         root.setTop(top);
 
         VBox left = new VBox();
@@ -407,6 +421,14 @@ public class MyApplication extends Application {
 
         Button ajouterCollaborateur = new Button("+");
 
+
+        //On ajoute les composantes graphiques à la racine
+        boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
+
+        boutonCollaborateurs.setSpacing(20);
+
+
+
         HBox parametre = new HBox();
 
         Text titreParametres = new Text("Paramètres");
@@ -422,14 +444,16 @@ public class MyApplication extends Application {
         boutonParametre.setOnMouseClicked(new ControleurParametre(modele));
 
 
-        //On ajoute les composantes graphiques à la racine
-//        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
-        boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
 
-//        boutonTableaux.setSpacing(70);
-        boutonCollaborateurs.setSpacing(20);
+        //Diagramme de Gantt
+        Button boutonDiagGantt = new Button("Diagramme de Gantt");
+        boutonDiagGantt.setStyle("-fx-font-size: 18px;");
 
-        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, boutonCollaborateurs, parametre);
+        //On ajoute le controleur pour créer un diagramme de Gantt
+        boutonDiagGantt.setOnAction(new ControleurCréerDiagramme(modele));
+
+
+        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, boutonCollaborateurs, parametre, boutonDiagGantt);
 
         left.setSpacing(20);
 
@@ -445,14 +469,14 @@ public class MyApplication extends Application {
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
 
 
-        //On ajoute les composantes graphiques à la racine
-
+        //On ajoute le tableau au centre
         root.setCenter(tableauCentre);
 
-
+        //On ajoute les composants graphiques à la racine
         stage.setScene(scene);
         stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage
+//        stage.setFullScreen(true);
     }
 
     public static void main(String[] args) {
@@ -468,7 +492,7 @@ public class MyApplication extends Application {
         //On vérifie que le pseudo ne dépasse pas 30 caractères
         if (pseudoRecup.length() <= 30){
             return true;
-        }else{
+        } else {
             //On affiche une erreur si le pseudo dépasse 30 caractères
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -505,13 +529,13 @@ public class MyApplication extends Application {
      * @param mdpRecup Mot de passe à vérifier
      * @return Vrai si le mot de passe est valide, faux sinon
      */
-    public boolean mdpVerif(String mdpRecup){
+    public boolean mdpVerif(String mdpRecup) {
         //On vérifie que le mot de passe contient au moins 8 caractères et qu'il contient au moins une majuscule, une minuscule et un chiffre
         if (mdpRecup.length() >= 8 && mdpRecup.matches(".*[A-Z].*") && mdpRecup.matches(".*[a-z].*") && mdpRecup.matches(".*[0-9].*"))
             return true;
 
             //On limite le champs de saisie du mot de passe pour éviter les injections SQL
-        else if (mdpRecup.length() > 30 ){
+        else if (mdpRecup.length() > 30) {
             //On affiche une erreur si le mot de passe dépasse 30 caractères
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -519,8 +543,7 @@ public class MyApplication extends Application {
             alert.setContentText("Le mot de passe ne doit pas dépasser 30 caractères");
             alert.showAndWait();
             return false;
-        }
-        else {
+        } else {
             //On affiche une erreur si le mot de passe ne respecte pas les conditions
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");

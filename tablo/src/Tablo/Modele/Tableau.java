@@ -379,4 +379,129 @@ public class Tableau {
     public void setNumTableau(int numTableau) {
         this.numTableau = numTableau;
     }
+
+    /**
+     * Méthode qui permet de savoir si la tache courante est selectionnée
+     * @return true si la tache est selectionnée, false sinon
+     */
+    public boolean isSelectionnee() {
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            //Si la liste est la liste courante
+            if (l.getNumListe() == Modele.getListeCourante()) {
+
+                //On retourne si la tache est selectionnée
+                return l.isSelectionnee();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Méthode qui permet de rendre la tache courante selectionnée ou non
+     * @param b
+     */
+    public void setTacheCouranteSelectionnee(boolean b) {
+
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            //Si la liste est la liste courante
+            if (l.getNumListe() == Modele.getListeCourante()) {
+
+                //On change la selection de la tache courante
+                l.setTacheCouranteSelectionnee(b);
+            }
+        }
+    }
+
+    /**
+     * Méthode qui retourne la date de début des taches selectionnées
+     * @return
+     */
+    public LocalDate getDateDebutTachesSelectionnees() {
+
+        LocalDate dateDebut = null;
+
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            if (l.getDateDebutTachesSelectionnees() == null) {
+                continue;
+            }
+
+            if (dateDebut == null) {
+                dateDebut = l.getDateDebutTachesSelectionnees();
+            }
+            else if (l.getDateDebutTachesSelectionnees().isBefore(dateDebut)) {
+                dateDebut = l.getDateDebutTachesSelectionnees();
+            }
+        }
+
+        return dateDebut;
+    }
+
+    /**
+     * Méthode qui retourne la date de fin des taches selectionnées
+     * @return
+     */
+    public LocalDate getDateFinTachesSelectionnees() {
+
+        LocalDate dateFin = null;
+
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            if (l.getDateFinTachesSelectionnees() == null) {
+                continue;
+            }
+
+            if (dateFin == null) {
+                dateFin = l.getDateFinTachesSelectionnees();
+            }
+            else if (l.getDateFinTachesSelectionnees().isAfter(dateFin)) {
+                dateFin = l.getDateFinTachesSelectionnees();
+            }
+        }
+
+        return dateFin;
+    }
+
+    /**
+     * Méthode qui retourne les taches selectionnées
+     * @return
+     */
+    public List<Tache> getTachesSelectionnees() {
+
+        List<Tache> tachesSelectionnees = new ArrayList<>();
+
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            //On ajoute les taches selectionnées de la liste courante
+            tachesSelectionnees.addAll(l.getTachesSelectionnees());
+        }
+
+        return tachesSelectionnees;
+    }
+
+    /**
+     * Méthode qui permet de supprimer une sous tache
+     * @return
+     */
+    public boolean supprimerSousTache(int sousTache) {
+
+        //On parcourt les listes du tableau
+        for (Liste l : this.listes) {
+
+            //Si la liste est la liste courante
+            if (l.getNumListe() == Modele.getListeCourante()) {
+
+                //On supprime la sous tache
+                return l.supprimerSousTache(sousTache);
+            }
+        }
+        return false;
+    }
 }

@@ -12,11 +12,6 @@ import javafx.scene.layout.VBox;
 public class VueTachesArchivees extends ScrollPane {
 
     /**
-     * Conteneur tacges
-     */
-    private VBox tachesContainer;
-
-    /**
      * Constructeur de la classe VueTachesArchivees
      * @param modele
      */
@@ -24,9 +19,9 @@ public class VueTachesArchivees extends ScrollPane {
         super();
         this.setPrefSize(200, 200);
 
-        this.tachesContainer = new VBox();
+        VBox tachesContainer = new VBox();
 
-        this.tachesContainer.setSpacing(10);
+        tachesContainer.setSpacing(10);
 
         //Si la liste de taches archivées n'est pas vide
         if (modele.getTachesArchivees() != null) {

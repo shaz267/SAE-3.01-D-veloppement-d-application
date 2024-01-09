@@ -8,17 +8,14 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
-/**
- * Classe qui gère le clic sur une tâche archivée
- */
-public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
+public class ControleurSousTacheCLiquee  implements EventHandler<MouseEvent> {
 
     /**
      * Modèle de l'application
      */
     private Modele modele;
 
-    public ControleurArchiveCliquee(Modele m) {
+    public ControleurSousTacheCLiquee(Modele m) {
 
         this.modele = m;
     }
@@ -30,31 +27,20 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
         //On récupère la tache qui a été cliquée
         VueTache vT = (VueTache) mouseEvent.getSource();
 
-        vT.setStyle("-fx-background-color: #666666;");
-
-        //On récupère le numéro de la liste
-        int numTache = vT.getNumTache();
-
-        //On change la tache courante
-        Modele.setTacheCourante(numTache);
-
         //On créé la boîte de dialogue
         ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
-        dialog.setTitle("Modifier Tâche");
-        dialog.setHeaderText("Modifier une tâche");
+        dialog.setTitle("Supprimer Sous-Tâche");
+        dialog.setHeaderText("Cliquez sur le bouton pour supprimer la sous-tâche");
 
         // On crée une VBox qui va contenir les choix de l'utilisateur
         VBox conteneur = new VBox();
 
         //On crée les boutons
-        Button supr = new Button("Supprimer la tâche");
-        supr.setOnMouseClicked(new ControleurSupprimerArchive(modele));
-
-        Button envoyerArchive = new Button("Envoyer sur le tableau");
-        envoyerArchive.setOnMouseClicked(new ControleurEnvoyerArchive(modele));
+        Button supr = new Button("Supprimer la sous-tâche");
+        supr.setOnMouseClicked(new ControleurSupprimerSousTache(modele, vT.getNumTache()));
 
         //On ajoute les boutons à la VBox
-        conteneur.getChildren().addAll(supr, envoyerArchive);
+        conteneur.getChildren().add(supr);
 
         //On ajoute la VBox à la boîte de dialogue
         dialog.getDialogPane().setContent(conteneur);

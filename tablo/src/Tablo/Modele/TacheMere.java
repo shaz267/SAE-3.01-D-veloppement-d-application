@@ -39,6 +39,8 @@ public class TacheMere extends Tache {
         this.estTerminee = tache.isEstTerminee();
         this.dateDebut = tache.getDateDebut();
         this.dateLimite = tache.getDateLimite();
+        this.estArchivee = tache.isArchivee();
+        this.selectionnee = tache.isSelectionnee();
 
         this.taches = new ArrayList<Tache>();
     }
@@ -61,8 +63,10 @@ public class TacheMere extends Tache {
         if (this.taches.contains(tache) || tache.hashCode() == this.hashCode() || tacheEstUneSousTacheDeLaTacheMere) {
             return false;
         } else {
+
             Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
 
+            //On récupere la durée de la tache fille. C'est a dire la différence entre la date de début et la date de fin.
             LocalDate dureeTache = tache.getDateLimite().minusDays(tache.getDateDebut().getDayOfYear());
 
             //Si la date de début de la tache fille est inférieure à la date de fin de la tache mère.
@@ -88,6 +92,46 @@ public class TacheMere extends Tache {
 
         Loggeur.enregistrer("Suppression de la tâche " + tache.getTitre() + " de la tâche mère " + this.titre);
         return this.taches.remove(tache);
+    }
+
+    /**
+     * Méthode qui set la date limite de la tâche.
+     *
+     * @param dateLimite
+     */
+    @Override
+    public void modifierDateLimite(LocalDate dateLimite) {
+
+        //Pour chaque tache fille de la tache mère On modifie la date de début de la tache fille pour qu'elle soit la même que la date limite de la tache mère + 1 jour.
+        for (Tache tache : this.taches) {
+
+            LocalDate dureeTache = tache.getDateLimite().minusDays(tache.getDateDebut().getDayOfYear());
+
+            //Si la date de début de la tache fille est inférieure à la date de fin de la tache mère.
+            if (tache.getDateDebut().isBefore(dateLimite)) {
+
+                //On modifie la date de la tache fille pour qu'elle soit la même que la tache mère + 1 jour.
+                tache.modifierDateDebut(dateLimite.plusDays(1));
+
+                //On modifie la date de fin de la tache fille pour que la durée de la tache fille ne change pas.
+                tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
+            }
+        }
+
+        //On enregistre l'action dans les logs et on change la date limite de la tâche.
+        Loggeur.enregistrer("Changement de la date limite de la tâche " + this.titre + " en " + dateLimite);
+        this.dateLimite = dateLimite;
+    }
+
+    public boolean supprimerSousTache(int sousTache){
+
+        //Pour chaques sous taches de la tache courante
+        for (Tache tache : this.taches) {
+            if(tache.getNumTache() == sousTache){
+                return this.taches.remove(tache);
+            }
+        }
+        return false;
     }
 
     /**
@@ -126,5 +170,4 @@ public class TacheMere extends Tache {
 
         return this.taches;
     }
-
 }

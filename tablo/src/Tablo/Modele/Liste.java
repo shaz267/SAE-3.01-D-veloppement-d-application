@@ -207,6 +207,25 @@ public class Liste {
             // Si la tâche est la tâche courante
             if (t.getNumTache() == Modele.getTacheCourante()) {
 
+                //On regarde si la tache courante est une sous tache d'une autre tache Si oui, on vérifie que la date de début qu'on veut assigner à la tache courante n'est pas inférieure à la date de fin de la tache mère.
+                for (Tache tache : this.taches) {
+                    if (tache.getSousTaches() != null) {
+                        for (Tache sousTache : tache.getSousTaches()) {
+                            //Si la sous tache est la tache courante et que la date de début qu'on veut assigner à la tache courante est inférieure à la date de fin de la tache mère.
+                            if (sousTache.equals(t) && dateDebut.isBefore(tache.getDateLimite().plusDays(1))) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erreur");
+                                alert.setHeaderText("Erreur de Sous Tâches");
+                                alert.setContentText("La date de début de la tâche ne peut pas être inférieure ou égale,  à la date de fin de la tâche mère.");
+                                //On aggrandit la fenêtre
+                                alert.getDialogPane().setPrefSize(480, 200);
+                                alert.showAndWait();
+                                return;
+                            }
+                        }
+                    }
+                }
+
                 //Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On change la date de début de la sous tache en dateDebut
                 for (Tache tache : this.taches) {
                     if (tache.getSousTaches() != null) {
@@ -344,13 +363,33 @@ public class Liste {
      */
     public void tacheCouranteEnMere() {
 
+
+        Tache tacheCourante = null;
+        TacheMere tacheMere = null;
+
         //On appele le constructeur de la classe TacheMere. Qui prend une tache en paramètre. Pour la tache courante.
         for (Tache t : this.taches) {
 
             if (t.getNumTache() == Modele.getTacheCourante()) {
 
-                TacheMere tacheMere = new TacheMere(t);
+                tacheCourante = t;
+
+                //On crée une tache mère à partir de la tache courante
+                tacheMere = new TacheMere(t);
+                //On ajoute la tache mère à la liste
                 this.taches.set(this.taches.indexOf(t), tacheMere);
+            }
+        }
+
+        //Pour chaques taches de la liste on regarde si il possede une sous tache qui est la tache courante. Si oui, on la remplace par la tache mère.
+        for (Tache t : this.taches) {
+            if (t.getSousTaches() != null) {
+                for (Tache sousTache : t.getSousTaches()) {
+                    if (sousTache.equals(tacheCourante)) {
+                        System.out.println("Tache courante trouvée");
+                        t.getSousTaches().set(t.getSousTaches().indexOf(sousTache), tacheMere);
+                    }
+                }
             }
         }
     }
@@ -401,5 +440,128 @@ public class Liste {
      */
     public void setNumListe(int i) {
         this.numListe = i;
+    }
+
+    /**
+     * Méthode qui permet de savoir si la tache courante est selectionnée
+     * @return true si la tache est selectionnée, false sinon
+     */
+    public boolean isSelectionnee() {
+
+        //On parcourt les taches de la liste
+        for (Tache t : this.taches) {
+
+            //Si la tache est la tache courante
+            if (t.getNumTache() == Modele.getTacheCourante()) {
+
+                return t.isSelectionnee();
+            }
+        }
+        return false;
+    }
+    /**
+     * Méthode qui permet de rendre la tache courante selectionnée ou non
+     * @param b
+     */
+    public void setTacheCouranteSelectionnee(boolean b) {
+
+        //On parcourt les taches de la liste
+        for (Tache t : this.taches) {
+
+            //Si la tache est la tache courante
+            if (t.getNumTache() == Modele.getTacheCourante()) {
+
+                //On change la selection de la tache
+                t.setSelectionnee(b);
+            }
+        }
+    }
+
+    /**
+     * Retourne la date de début des taches selectionnées
+     * @return
+     */
+    public LocalDate getDateDebutTachesSelectionnees(){
+
+        LocalDate dateDebut = null;
+
+        //On parcourt les listes du tableau
+        for (Tache t : this.taches) {
+
+            if (t.isSelectionnee()) {
+
+                if (dateDebut == null)
+                    dateDebut = t.getDateDebut();
+                else if (t.getDateDebut().isBefore(dateDebut))
+                    dateDebut = t.getDateDebut();
+            }
+
+        }
+
+        return dateDebut;
+    }
+
+    /**
+     * Retourne la date de fin des taches selectionnées
+     * @return
+     */
+    public LocalDate getDateFinTachesSelectionnees() {
+
+        LocalDate dateFin = null;
+
+        //On parcourt les listes du tableau
+        for (Tache t : this.taches) {
+
+            if (t.isSelectionnee()) {
+
+                if (dateFin == null)
+                    dateFin = t.getDateLimite();
+                else if (t.getDateLimite().isAfter(dateFin))
+                    dateFin = t.getDateLimite();
+            }
+
+        }
+
+        return dateFin;
+    }
+
+    /**
+     * Méthode qui permet de récupérer les taches selectionnées
+     * @return
+     */
+    public ArrayList<Tache> getTachesSelectionnees() {
+
+            ArrayList<Tache> tachesSelectionnees = new ArrayList<Tache>();
+
+            //On parcourt les listes du tableau
+            for (Tache t : this.taches) {
+
+                //Si la tache est selectionnée et non archivée
+                if (t.isSelectionnee() && !t.isArchivee()) {
+
+                    tachesSelectionnees.add(t);
+                }
+
+            }
+
+            return tachesSelectionnees;
+    }
+
+    /**
+     * Méthode qui permet de supprimer une sous tache
+     * @return
+     */
+    public boolean supprimerSousTache(int sousTache) {
+
+        for (Tache t : this.taches) {
+
+            //Si la tache est la tache courante
+            if (t.getNumTache() == Modele.getTacheCourante()) {
+
+                //On supprime la sous tache
+                return t.supprimerSousTache(sousTache);
+            }
+        }
+        return false;
     }
 }

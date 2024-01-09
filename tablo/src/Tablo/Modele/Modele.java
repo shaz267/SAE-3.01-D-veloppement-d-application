@@ -42,7 +42,7 @@ public class Modele implements Sujet {
     /**
      * Attribut user de la classe Modele qui est un utilisateur qui représente l'utilisateur de l'application.
      */
-    private Utilisateur user = null;
+    public static Utilisateur user = null;
 
     /**
      * Constructeur de la classe Modele qui initialise les attributs tableauCourant, listeCourante et tacheCourante à -1.
@@ -411,6 +411,14 @@ public class Modele implements Sujet {
      */
     public static void setListeCourante(int numListe) {
         listeCourante = numListe;
+    }
+
+    /**
+     * Méthode qui set l'utilisateur
+     * @param u l'utilisateur à set
+     */
+    public static void setUser(Utilisateur u) {
+        user = u;
     }
 
     /**

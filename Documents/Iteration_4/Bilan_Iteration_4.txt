@@ -1,0 +1,7 @@
+Durant cette itération nous avons commencé les fonctionnalités de base de données supplémentaires aux fonctionnalités demandées. 
+Nous avons ainsi à régler quelques détails pour la fonctionnalité de génération de diagramme de Gantt qui sera certainement fini en itération 5.
+Durant l'itération 4 nous avons aussi créer et implémenter l'interface de connexion / d'incription qui sera reliée à la base de données pour pouvoir accéder à l'application ensuite,
+ce qui inclut la grande avancée de notre base de données et donc du patron active record qui seront totalement implémenté en itération 5.
+Enfin la possibilité de déplacer une tâche avec un système de clic and dropped n'est pas encore finalisé totalement et sera aussi implémenté en itération 5.
+
+Finalement nous n'avons pas finalisé l'implémentation de plusieurs des fonctionnalités que nous avions prévu pour cette itération mais celle-ci sont bien avancées voire presque fini pour certaines.

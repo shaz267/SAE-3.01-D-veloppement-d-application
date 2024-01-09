@@ -49,7 +49,6 @@ public class TacheMere extends Tache {
         this.id = tache.getId();
         this.contenu = tache.getContenu();
         this.dateDebut = tache.getDateDebut();
-        this.estTerminee = tache.isEstTerminee();
         this.dateDebut = tache.getDateDebut();
         this.dateLimite = tache.getDateLimite();
 

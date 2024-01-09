@@ -130,6 +130,10 @@ public class Tableau {
      */
     public void save() throws SQLException {
         if(id == -1){
+            // On récupère l'id de la tâche qui vient d'être créée
+            ArrayList<Tableau> tableaux = Tableau.findAll();
+            int id = tableaux.size() + 1;
+            this.id = id;
             saveNew();
         } else {
             update();
@@ -141,17 +145,11 @@ public class Tableau {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `TABLEAU` (`titre`) VALUES (?);";
-        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
-        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car auto-increment)
-        prep.setString(1, titre);
+        String SQLPrep = "INSERT INTO `TABLEAU` (`id_tableau`,`titre`) VALUES (?,?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,id);
+        prep.setString(2, titre);
         prep.execute();
-
-        ResultSet generatedKeys = prep.getGeneratedKeys();
-        if (generatedKeys.next()) {
-            int id = generatedKeys.getInt(1);
-            this.id = id;
-        }
     }
 
     /**
@@ -171,7 +169,7 @@ public class Tableau {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT AUTO_INCREMENT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_tableau`))";
+        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_tableau`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

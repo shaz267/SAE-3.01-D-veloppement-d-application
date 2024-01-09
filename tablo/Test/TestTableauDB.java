@@ -97,7 +97,7 @@ public class TestTableauDB {
 	}
 
 	/**
-	 * test sauvegarde nouvelle liste
+	 * test sauvegarde nouveau tableau
 	 */
 	@Test
 	public void testSaveNew() throws SQLException {
@@ -110,18 +110,18 @@ public class TestTableauDB {
 	}
 
 	/**
-	 * test sauvegarde liste existante
+	 * test sauvegarde tableau existante
 	 */
 	@Test
 	public void testSaveExistant() throws SQLException {
-		// on recupere la liste "test1" et on en modifie le titre
+		// on recupere le tableau "test1" et on en modifie le titre
 		Tableau t = Tableau.findById(1);
 		t.changerTitre("testFonctionnel1");
 		t.save();
-		// on verifie que la liste a bien ete modifiee sans que son id change
+		// on verifie que le tableau a bien ete modifiee sans que son id change
 		assertEquals(t.getId(), 1,"L'id doit être 1");
 		assertEquals(t.getTitre(), "testFonctionnel1","Le titre doit être testFonctionnel1");
-		// on verifie que la liste a bien ete modifiee dans la BD et que le reste de la BD n'a pas change
+		// on verifie que le tableau a bien ete modifiee dans la BD et que le reste de la BD n'a pas change
 		ArrayList<Tableau> t2 = Tableau.findAll();
 		assertEquals(5, t2.size(),"Il y a 5 enregistrements dans la BD");
 		assertEquals(t2.get(0).getId(), 1,"L'id doit être 1");
@@ -132,14 +132,14 @@ public class TestTableauDB {
 	}
 
 	/**
-	 * test suppression liste
+	 * test suppression tableau
 	 */
 	@Test
 	public void testDelete() throws SQLException {
-		// on supprime la liste "test1"
+		// on supprime la tableau "test1"
 		Tableau t = Tableau.findById(1);
 		t.delete();
-		// on verifie que la liste a bien ete supprimee
+		// on verifie que la tableau a bien ete supprimee
 		ArrayList<Tableau> t2 = Tableau.findAll();
 		assertEquals(4, t2.size(),"Il y a 4 enregistrements dans la BD");
 		assertEquals(t2.get(0).getId(), 2,"L'id doit être 2");

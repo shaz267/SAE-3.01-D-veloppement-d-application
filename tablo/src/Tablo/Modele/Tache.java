@@ -222,7 +222,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE,`estterminee` TINYINT(1) DEFAULT 0, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(10), PRIMARY KEY (`id_tache`))";
+        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(10), PRIMARY KEY (`id_tache`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

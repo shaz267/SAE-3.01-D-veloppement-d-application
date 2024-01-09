@@ -133,6 +133,10 @@ public class Liste {
      */
     public void save() throws SQLException {
         if(id == -1){
+            // On récupère l'id de la tâche qui vient d'être créée
+            ArrayList<Liste> lists = Liste.findAll();
+            int id = lists.size() + 1;
+            this.id = id;
             saveNew();
         } else {
             update();
@@ -144,17 +148,11 @@ public class Liste {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `LISTE` (`titre`) VALUES (?);";
-        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
-        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car auto-increment)
-        prep.setString(1, titre);
+        String SQLPrep = "INSERT INTO `LISTE` (`id_liste`,`titre`) VALUES (?,?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,id);
+        prep.setString(2, titre);
         prep.execute();
-
-        ResultSet generatedKeys = prep.getGeneratedKeys();
-        if (generatedKeys.next()) {
-            int id = generatedKeys.getInt(1);
-            this.id = id;
-        }
     }
 
     /**
@@ -174,7 +172,7 @@ public class Liste {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT AUTO_INCREMENT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_liste`))";
+        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_liste`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

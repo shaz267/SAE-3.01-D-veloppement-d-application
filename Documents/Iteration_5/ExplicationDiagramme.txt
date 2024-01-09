@@ -1,0 +1,1 @@
+Pour l'itération 5 nous avons prévu de rajouter la fonctionnalité des templates mais nous nous sommes rendus compte que nous devions finir les fonctionnalités de l'itération 4 non fini ainsi nous n'avons pas beaucoup de diagrammes à rajouter par rapport à l'itération 4. 

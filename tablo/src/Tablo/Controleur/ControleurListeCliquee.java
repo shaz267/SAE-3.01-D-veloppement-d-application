@@ -39,9 +39,6 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
         //On récupère la liste qui a été cliquée
         VueListe vl = (VueListe) mouseEvent.getSource();
 
-        //On change la couleur de la liste
-        vl.setStyle("-fx-background-color: #666666;");
-
         //On récupère le numéro de la liste
         int numListe = vl.getNumListe();
 

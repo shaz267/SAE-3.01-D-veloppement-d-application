@@ -77,9 +77,6 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
 
                 //On ajoute la liste au modele
                 this.modele.ajouterTableau(t);
-
-                // On ajoute la vue du tableau au modele
-                this.modele.enregistrerObservateur(new VueTableau());
             }
         });
     }

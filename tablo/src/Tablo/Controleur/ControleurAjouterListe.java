@@ -33,8 +33,6 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
-        int numListe = this.modele.getListes().size() + 1;
-
         // Création d'une boîte de dialogue pour demander le titre de la liste
         TextInputDialog dialog = new TextInputDialog("Nouvelle liste");
         dialog.setTitle("Ajouter une liste");
@@ -44,11 +42,8 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
         // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
         dialog.showAndWait().ifPresent(titre -> {
 
-            // Création de la liste
-            Liste l = new Liste(numListe, titre);
-
             //On ajoute la liste au modele
-            modele.ajouterListe(l);
+            modele.ajouterListe(titre);
         });
     }
 }

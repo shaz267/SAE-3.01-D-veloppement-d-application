@@ -49,6 +49,11 @@ public abstract class Tache {
     protected int numListe;
 
     /**
+     * Attribut selectionnee de la classe Tache qui est un booléen qui représente si la tâche est sélectionnée ou non.
+     */
+    protected boolean selectionnee;
+
+    /**
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
      *
      * @param titre
@@ -68,6 +73,7 @@ public abstract class Tache {
         this.dateLimite = LocalDate.now().plusDays(1);
 
         this.estArchivee = false;
+        this.selectionnee = false;
         setNumListe();
     }
 
@@ -241,5 +247,13 @@ public abstract class Tache {
     public boolean isArchivee() {
 
         return this.estArchivee;
+    }
+
+    public void setSelectionnee(boolean selectionnee) {
+        this.selectionnee = selectionnee;
+    }
+
+    public boolean isSelectionnee() {
+        return this.selectionnee;
     }
 }

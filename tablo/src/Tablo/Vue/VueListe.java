@@ -81,9 +81,9 @@ public class VueListe extends VBox {
 
             //Si la tache n'est pas archivée, on l'affiche
             if (!tache.isArchivee()) {
-                VueTache text = new VueTache(numTache, tache.getTitre(), modele);
-                text.setOnMouseClicked(new ControleurTacheCliquee(modele));
-                this.getChildren().add(text);
+                VueTache vtache = new VueTache(numTache, tache.getTitre(), modele);
+                vtache.setOnMouseClicked(new ControleurTacheCliquee(modele));
+                this.getChildren().add(vtache);
             }
             //On incrémente le numéro de la tache quand meme, car on veut que le numéro de la tache soit le meme que l'index de la tache dans la liste
             numTache++;
@@ -102,7 +102,11 @@ public class VueListe extends VBox {
 
     }
 
-
+    /**
+     * Méthode qui permet de récupérer le numéro de la liste
+     *
+     * @return le numéro de la liste
+     */
     public int getNumListe() {
         return numListe;
     }

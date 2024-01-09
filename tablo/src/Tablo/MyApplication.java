@@ -2,6 +2,7 @@ package Tablo;
 
 import Tablo.Controleur.ControleurAjouterListe;
 import Tablo.Controleur.ControleurAjouterTableau;
+import Tablo.Controleur.ControleurCréerDiagramme;
 import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
 import Tablo.Vue.VueDifferentTableaux;
@@ -313,6 +314,10 @@ public class MyApplication extends Application {
         view.setFitHeight(40);
         view.setFitWidth(40);
 
+
+        //On utilise cette image pour l'image de l'application
+        stage.getIcons().add(logo);
+
         //Espace de travail comboBox
         ComboBox<String> espaceTravail = new ComboBox<>();
 
@@ -350,7 +355,7 @@ public class MyApplication extends Application {
         titreTableau.setTranslateX(300);
 
         //Circle
-        Circle circle = new Circle();
+        /*Circle circle = new Circle();
         circle.setCenterX(100.0f);
         circle.setCenterY(100.0f);
         circle.setRadius(20.0f);
@@ -366,13 +371,13 @@ public class MyApplication extends Application {
         StackPane stack = new StackPane();
         // On crée un padding pour décaler le StackPane à droite (on voulait le bouton du compte sur la droite)
         stack.setPadding(new Insets(0, 0, 0, 755));
-        stack.getChildren().addAll(circle, text);
+        stack.getChildren().addAll(circle, text);*/
 
         //TODO : mettre le StackPane à droite
 
 
         //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, espaceTravail, templates, titreTableau, stack);
+        top.getChildren().addAll(view, espaceTravail, templates, titreTableau);
         root.setTop(top);
 
         VBox left = new VBox();
@@ -407,6 +412,14 @@ public class MyApplication extends Application {
 
         Button ajouterCollaborateur = new Button("+");
 
+
+        //On ajoute les composantes graphiques à la racine
+        boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
+
+        boutonCollaborateurs.setSpacing(20);
+
+
+
         HBox parametre = new HBox();
 
         Text titreParametres = new Text("Paramètres");
@@ -422,14 +435,16 @@ public class MyApplication extends Application {
         boutonParametre.setOnMouseClicked(new ControleurParametre(modele));
 
 
-        //On ajoute les composantes graphiques à la racine
-//        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
-        boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
 
-//        boutonTableaux.setSpacing(70);
-        boutonCollaborateurs.setSpacing(20);
+        //Diagramme de Gantt
+        Button boutonDiagGantt = new Button("Diagramme de Gantt");
+        boutonDiagGantt.setStyle("-fx-font-size: 18px;");
 
-        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, boutonCollaborateurs, parametre);
+        //On ajoute le controleur pour créer un diagramme de Gantt
+        boutonDiagGantt.setOnAction(new ControleurCréerDiagramme(modele));
+
+
+        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, boutonCollaborateurs, parametre, boutonDiagGantt);
 
         left.setSpacing(20);
 
@@ -445,11 +460,10 @@ public class MyApplication extends Application {
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
 
 
-        //On ajoute les composantes graphiques à la racine
-
+        //On ajoute le tableau au centre
         root.setCenter(tableauCentre);
 
-
+        //On ajoute les composants graphiques à la racine
         stage.setScene(scene);
         stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage

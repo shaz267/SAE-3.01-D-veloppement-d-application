@@ -32,6 +32,8 @@ public class VueTableau extends ScrollPane implements Observateur {
         // On appelle le constructeur de la classe mère
         super();
 
+        this.setPannable(true);
+
         //On initialise le bouton et on lui donne un style
         ajouterListe = new Button("Ajouter une liste");
         ajouterListe.setStyle("-fx-font-weight: bold;");

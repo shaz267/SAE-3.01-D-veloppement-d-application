@@ -252,13 +252,18 @@ public class Modele implements Sujet {
     /**
      * Méthode qui ajoute une liste au tableau courant.
      *
-     * @param l la liste à ajouter
+     * @param titre titre de la liste
      */
-    public void ajouterListe(Liste l) {
+    public void ajouterListe(String titre) {
 
         for (Tableau tableau : tableaux) {
 
             if (tableau.getNumTableau() == tableauCourant) {
+
+                int numListe = this.getListes().size() + 1;
+
+                // Création de la liste
+                Liste l = new Liste(numListe, titre);
 
                 tableau.ajouterListe(l);
 
@@ -572,5 +577,98 @@ public class Modele implements Sujet {
 
         //On retourne false si on n'a pas supprimé le tableau courant
         return false;
+    }
+
+    /**
+     * Méthode qui permet de savoir si la tache courante est selectionnée
+     * @return true si la tache est selectionnée, false sinon
+     */
+    public boolean isSelectionnee() {
+
+        //On parcourt les tableaux
+        for (Tableau tableau : this.tableaux) {
+
+            //Si le tableau est le tableau courant
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.isSelectionnee();
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Méthode qui permet de rendre la tache courante selectionnée ou non
+     * @param b
+     */
+    public void setTacheCouranteSelectionnee(boolean b) {
+
+        //On parcourt les tableaux
+        for (Tableau tableau : this.tableaux) {
+
+            //Si le tableau est le tableau courant
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.setTacheCouranteSelectionnee(b);
+            }
+        }
+    }
+
+    /**
+     * Méthode qui retourne la date de début des taches selectionnées
+     * @return
+     */
+    public LocalDate getDateDebutTachesSelectionnees() {
+
+        //On parcourt les tableaux
+        for (Tableau tableau : this.tableaux) {
+
+            //Si le tableau est le tableau courant
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.getDateDebutTachesSelectionnees();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Méthode qui retourne la date de fin des taches selectionnées
+     * @return
+     */
+    public LocalDate getDateFinTachesSelectionnees() {
+
+        //On parcourt les tableaux
+        for (Tableau tableau : this.tableaux) {
+
+            //Si le tableau est le tableau courant
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.getDateFinTachesSelectionnees();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Méthode qui retourne la liste des taches selectionnées
+     * @return
+     */
+    public List<Tache> getTachesSelectionnees() {
+
+        //On parcourt les tableaux
+        for (Tableau tableau : this.tableaux) {
+
+            //Si le tableau est le tableau courant
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                return tableau.getTachesSelectionnees();
+            }
+        }
+
+        return null;
     }
 }

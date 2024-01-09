@@ -116,7 +116,7 @@ public class TestListeDB {
 	public void testSaveExistant() throws SQLException {
 		// on recupere la liste "test1" et on en modifie le titre
 		Liste l = Liste.findById(1);
-		l.setTitre("testFonctionnel1");
+		l.changerTitreListe("testFonctionnel1");
 		l.save();
 		// on verifie que la liste a bien ete modifiee sans que son id change
 		assertEquals(l.getId(), 1,"L'id doit être 1");

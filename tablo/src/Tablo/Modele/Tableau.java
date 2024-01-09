@@ -1,7 +1,12 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,152 @@ public class Tableau {
         this.titre = t;
         this.numTableau = numTab;
         this.listes = new ArrayList<>();
+    }
+
+    /**
+     * Constructeur de l'objet Tableau
+     * @param t titre du tableau
+     */
+    public Tableau(String t) {
+        this.id = -1;
+        this.titre = t;
+        this.listes = new ArrayList<>();
+    }
+
+    /**
+     * Méthode findAll permettant de récupérer tout les tableaux de la base de données
+     * @return ArrayList de Tableau
+     * @throws SQLException
+     */
+    public static ArrayList<Tableau> findAll() throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAU`;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        ArrayList<Tableau> listT = new ArrayList<>();
+        while (rs.next()) {
+            Tableau t = new Tableau(rs.getString("titre"));
+            t.id = rs.getInt("id_tableau");
+            listT.add(t);
+        }
+        return listT;
+    }
+
+    /**
+     * Méthode findById permettant de récupérer un tableau de la base de données en fonction de son id
+     * @param id id du Tableau à récupérer
+     * @return Tableau
+     * @throws SQLException
+     */
+    public static Tableau findById(int id) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAU` WHERE `id_tableau` = ?;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        if(rs.next() == false){
+            return null;
+        }
+        Tableau t = new Tableau(rs.getString("titre"));
+        t.id = rs.getInt("id_tableau");
+        return t;
+    }
+
+    /**
+     * Méthode findByName permettant de récupérer un tableau de la base de données en fonction de son titre
+     * @param titre
+     * @return
+     * @throws SQLException
+     */
+    public static ArrayList<Tableau> findByName(String titre) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAU` WHERE `titre` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setString(1,titre);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Tableau> listT = new ArrayList<>();
+        while (rs.next()) {
+            Tableau t = new Tableau(rs.getString("titre"));
+            t.id = rs.getInt("id_tableau");
+            listT.add(t);
+        }
+        return listT;
+    }
+
+    /**
+     * Méthode delete permettant de supprimer un tableau de la base de données
+     * @throws SQLException
+     */
+    public void delete() throws SQLException {
+        String SQLDel = "DELETE FROM `TABLEAU` WHERE titre = ? AND id_tableau = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLDel);
+        prep1.setString(1,titre);
+        prep1.setInt(2,id);
+        prep1.executeUpdate();
+        id = -1;
+    }
+
+    /**
+     * Méthode save permettant de sauvegarder un tabeau dans la base de données
+     * @throws SQLException
+     */
+    public void save() throws SQLException {
+        if(id == -1){
+            saveNew();
+        } else {
+            update();
+        }
+    }
+
+    /**
+     * Méthode saveNew permettant de sauvegarder un nouveau tableau dans la base de données
+     * @throws SQLException
+     */
+    public void saveNew() throws SQLException {
+        String SQLPrep = "INSERT INTO `TABLEAU` (`titre`) VALUES (?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
+        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car auto-increment)
+        prep.setString(1, titre);
+        prep.execute();
+
+        ResultSet generatedKeys = prep.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int id = generatedKeys.getInt(1);
+            this.id = id;
+        }
+    }
+
+    /**
+     * Méthode update permettant de mettre à jour un tableau dans la base de données
+     * @throws SQLException
+     */
+    public void update() throws SQLException {
+        String SQLsave = "UPDATE `TABLEAU` SET `titre` = ? WHERE `id_tableau` = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLsave);
+        prep.setString(1,titre);
+        prep.setInt(2,id);
+        prep.executeUpdate();
+    }
+
+    /**
+     * Méthode createTable permettant de créer la table TABLEAU dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void createTable() throws SQLException {
+        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT AUTO_INCREMENT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_tableau`))";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        stmt.executeUpdate(SQLPrep);
+    }
+
+    /**
+     * Méthode deleteTable permettant de supprimer la table TABLEAU dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void deleteTable() throws SQLException {
+        String SQLPrep = "DROP TABLE `TABLEAU`";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        //try {
+        stmt.executeUpdate(SQLPrep);
+        //}
     }
 
     /**

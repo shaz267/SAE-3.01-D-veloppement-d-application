@@ -145,8 +145,7 @@ public class Liste {
     public void saveNew() throws SQLException {
         String SQLPrep = "INSERT INTO `LISTE` (`titre`) VALUES (?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
-        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car
-        // auto-increment)
+        // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car auto-increment)
         prep.setString(1, titre);
         prep.execute();
 
@@ -511,13 +510,5 @@ public class Liste {
      */
     public void setNumListe(int i) {
         this.numListe = i;
-    }
-
-    /**
-     * Permet de changer le titre de la liste
-     * @param titre
-     */
-    public void setTitre(String titre) {
-        this.titre = titre;
     }
 }

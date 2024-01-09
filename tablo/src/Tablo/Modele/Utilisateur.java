@@ -15,17 +15,17 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class Utilisateur {
 
-    public int id_user;
-    public String pseudo;
-    public String email;
+    private int id_user;
+    private String pseudo;
+    private String email;
     /**
      * mdp, attribut mot de passe hashé lors de la création de l'utilisateur
      */
-    public String mdp;
+    private String mdp;
     /**
      * estConnecte, attribut qui permet de savoir si l'utilisateur est connecté ou non
      */
-    public boolean estConnecte = false;
+    public static boolean estConnecte = false;
     public Utilisateur(String ps, String email, String mdp){
         this.id_user = -1; // -1 de base car l'objet n'est pas enregistré dans la bd
         this.pseudo = ps;
@@ -33,8 +33,7 @@ public class Utilisateur {
         // On hashe le mot de passe
         if(mdp.length() > 30){
             this.mdp = mdp;
-        }
-        else{
+        } else {
             this.mdp = Utilisateur.passwordHash(mdp);
         }
 
@@ -152,19 +151,19 @@ public class Utilisateur {
      * @return
      */
     public static Utilisateur findByPseudo(String psdo) throws SQLException {
-        // On crée la liste contenant tous les utilisateurs
-        ArrayList<Utilisateur> allUsers = Utilisateur.findAll();
-
-        // on verif qui a le bon nom name en parcourant allUsers
-        for(int i = 0; i < allUsers.size(); i++){
-            // si la personne a le bon pseudo
-            if(allUsers.get(i).getPseudo().equals(psdo)){
-                // on retourne donc l'Utilisateur en question
-                return allUsers.get(i);
-            }
+        String SQLPrep = "SELECT * FROM UTILISATEUR WHERE pseudo=?";
+        PreparedStatement ps = DBConnection.getConnection().prepareStatement(SQLPrep);
+        ps.setString(1, psdo);
+        ps.execute();
+        ResultSet rs = ps.getResultSet();
+        // S'il y a un resultat on crée l'objet et le retourne sinon on retourne null
+        if (rs.next() == false) {
+            return null;
         }
-        // Si aucun utilisateur ne correspond au pseudo demande
-        return null;
+        int id_a_set = rs.getInt("id_user");
+        Utilisateur user = new Utilisateur(rs.getString("pseudo"), rs.getString("email"), rs.getString("mdp"));
+        user.setId(id_a_set);
+        return user;
     }
 
     /**
@@ -173,19 +172,19 @@ public class Utilisateur {
      * @return
      */
     public static Utilisateur findByEmail(String mail) throws SQLException {
-        // On crée la liste contenant tous les utilisateurs
-        ArrayList<Utilisateur> allUsers = Utilisateur.findAll();
-
-        // on verif qui a le bon email en parcourant allUsers
-        for(int i = 0; i < allUsers.size(); i++){
-            // si la personne a le bon email
-            if(allUsers.get(i).getEmail().equals(mail)){
-                // on retourne donc l'Utilisateur en question
-                return allUsers.get(i);
-            }
+        String SQLPrep = "SELECT * FROM UTILISATEUR WHERE email=?";
+        PreparedStatement ps = DBConnection.getConnection().prepareStatement(SQLPrep);
+        ps.setString(1, mail);
+        ps.execute();
+        ResultSet rs = ps.getResultSet();
+        // S'il y a un resultat on crée l'objet et le retourne sinon on retourne null
+        if (rs.next() == false) {
+            return null;
         }
-        // Si aucun utilisateur ne correspond au pseudo demande
-        return null;
+        int id_a_set = rs.getInt("id_user");
+        Utilisateur user = new Utilisateur(rs.getString("pseudo"), rs.getString("email"), rs.getString("mdp"));
+        user.setId(id_a_set);
+        return user;
     }
 
     /**
@@ -231,14 +230,14 @@ public class Utilisateur {
      * @throws SQLException
      */
     public static void createTable() throws SQLException{
-        String createString = "CREATE TABLE `UTILISATEUR` (`id_user` INT NOT NULL, `pseudo` varchar(30), `email` varchar(254), `mdp` varchar(128), PRIMARY KEY (`id_user`))";
+        String createString = "CREATE TABLE `UTILISATEUR` (`id_user` INT NOT NULL, `pseudo` varchar(30), `email` varchar(254), `mdp` varchar(128), PRIMARY KEY (`id_user`,`pseudo`,`email`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(createString);
     }
 
     /**
      * Méthode pour suppr la table utilisateur
-     * @throws SQLException
+     * @throws SQLException si erreur dans la requête
      */
     public static void deleteTable() throws SQLException{
         String query = "DROP TABLE UTILISATEUR";

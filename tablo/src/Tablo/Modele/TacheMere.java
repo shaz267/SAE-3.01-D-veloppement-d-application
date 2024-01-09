@@ -28,6 +28,19 @@ public class TacheMere extends Tache {
     }
 
     /**
+     * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
+     * @param titre
+     * @param contenu
+     * @param dateDebut
+     * @param dateLimite
+     * @param estArchivee
+     */
+    public TacheMere(String titre, String contenu, LocalDate dateDebut, LocalDate dateLimite, boolean estArchivee){
+        super(titre, contenu, dateDebut, dateLimite, estArchivee);
+        this.taches = new ArrayList<Tache>();
+    }
+
+    /**
      * Constructeur qui prend un Objet TacheSimple en paramètre. Et le transforme en TacheMere.
      */
     public TacheMere(Tache tache) {

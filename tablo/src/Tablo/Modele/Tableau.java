@@ -92,12 +92,12 @@ public class Tableau {
     }
 
     /**
-     * Méthode findByName permettant de récupérer un tableau de la base de données en fonction de son titre
+     * Méthode findByTitre permettant de récupérer un tableau de la base de données en fonction de son titre
      * @param titre
      * @return
      * @throws SQLException
      */
-    public static ArrayList<Tableau> findByName(String titre) throws SQLException {
+    public static ArrayList<Tableau> findByTitre(String titre) throws SQLException {
         String SQLPrep = "SELECT * FROM `TABLEAU` WHERE `titre` = ?";
         PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep1.setString(1,titre);
@@ -345,6 +345,19 @@ public class Tableau {
     public void ajouterListe(Liste l) {
         this.listes.add(l);
         Loggeur.enregistrer("Ajout de la liste " + l.getTitre() + " au tableau " + this.titre);
+
+        if(Modele.user != null){
+            //On ajoute la liste à la base de données
+            String SQLPrep = "INSERT INTO `TABLEAULISTE` (`id_tableau`,`id_liste`) VALUES (?,?);";
+            try {
+                PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                prep.setInt(1, this.id);
+                prep.setInt(2, l.getId());
+                prep.execute();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**

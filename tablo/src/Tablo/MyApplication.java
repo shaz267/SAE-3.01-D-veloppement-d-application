@@ -4,6 +4,7 @@ import Tablo.Controleur.ControleurAjouterListe;
 import Tablo.Controleur.ControleurAjouterTableau;
 import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
+import Tablo.Modele.Utilisateur;
 import Tablo.Vue.VueDifferentTableaux;
 import Tablo.Vue.VueTableau;
 import Tablo.Vue.VueTitreTableau;
@@ -14,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -21,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.Base64;
 
 /**
@@ -180,8 +183,14 @@ public class MyApplication extends Application {
                         alert.showAndWait();
 
                     } else {
-
-                        //TODO : ajouter le mot de passe hasher à la base de données avec le nom d'utilisateur et l'email
+                        // On insère l'utilisateur avec le mdp, mail et pseudo récupérés en sauvegardant un objet Utilisateur
+                        Utilisateur user = new Utilisateur(nomUtilisateurRecup, emailRecup, mdpRecup);
+                        try {
+                            // On insère l'utilisateur dans la base de données
+                            user.save();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
 
                         //lancer l'application
                         try {
@@ -298,12 +307,12 @@ public class MyApplication extends Application {
     public void startApplication(Stage stage) throws IOException {
 
         BorderPane root = new BorderPane();
+
         // On crée la scène
         Scene scene = new Scene(root, 1200, 700); // Fenêtre 1200x700 pixels
 
         // On crée les composantes graphiques
         HBox top = new HBox();
-
 
         // On crée les composantes graphiques pour la zone 'top'
         Image logo = new Image("Logo_Tablo.png");
@@ -453,6 +462,9 @@ public class MyApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage
+
+        // On gère la connection à la bd
+
     }
 
     public static void main(String[] args) {

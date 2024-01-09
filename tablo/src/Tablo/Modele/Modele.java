@@ -24,6 +24,10 @@ public class Modele implements Sujet {
      * Attribut tacheCourante de la classe Modele qui est un entier qui représente l'id de la tâche courante.
      */
     private static int tacheCourante = 0;
+    /**
+     * Attribut listeDestination de la classe Modele qui est un entier qui représente l'id de la liste de destination.
+     */
+    private static int listeDestination = 0;
 
     /**
      * Attribut tableaux de la classe Modele qui est un tableau de tableaux qui représente les tableaux de l'application.
@@ -51,6 +55,14 @@ public class Modele implements Sujet {
     public static void setTacheCourante(int numTache) {
 
         tacheCourante = numTache;
+    }
+
+    public static void setListeDestination(int listeDestination) {
+        Modele.listeDestination = listeDestination;
+    }
+
+    public static int getListeDestination() {
+        return listeDestination;
     }
 
     /**
@@ -92,6 +104,21 @@ public class Modele implements Sujet {
             if (tableau.getNumTableau() == tableauCourant) {
 
                 tableau.ajouterTache(tache);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui permet de déplacer une tâche d'une liste à une autre.
+     */
+    public void deplacerTache(Tache tache, int listeDestination) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.deplacerTache(tache, listeDestination);
                 this.notifierObservateurs();
             }
         }
@@ -430,6 +457,26 @@ public class Modele implements Sujet {
 
         return null;
     }
+
+    /**
+     * Méthode qui retourne la tacge associé à l'ID passé en paramètre dans la liste courante et le tableau courant.
+     * @param idTache
+     * @return
+     */
+
+    public int getTacheByID(int idTache) {
+
+        for (Tache tache : this.getTaches()) {
+
+            if (tache.getId() == idTache) {
+
+                return tache.getNumTache();
+            }
+        }
+
+        return -1;
+    }
+
 
     /**
      * Méthode qui retourne le titre du tableau courant

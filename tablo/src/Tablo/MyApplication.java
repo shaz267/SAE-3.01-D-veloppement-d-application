@@ -1,5 +1,6 @@
 package Tablo;
 
+import Tablo.Controleur.ControleurAjoutTemplates;
 import Tablo.Controleur.ControleurAjouterListe;
 import Tablo.Controleur.ControleurAjouterTableau;
 import Tablo.Controleur.ControleurCréerDiagramme;
@@ -341,11 +342,19 @@ public class MyApplication extends Application {
         templates.setMinHeight(40);
 
         //On met le titre du comboBox en "Espace de travail"
-        templates.setValue("Templates");
+        templates.setPromptText("Templates");
+
         //On met en gras le titre du comboBox
         templates.setStyle("-fx-font-weight: bold;");
 
-        templates.getItems().add("Template 1");
+        //On ajoute les templates
+        templates.getItems().add("Conduite de projet");
+        templates.getItems().add("Modèle Kanban");
+        templates.getItems().add("Réunion hebdomadaire");
+        templates.getItems().add("Tableau Agile");
+
+        //On ajoute un évènement au comboBox
+        templates.setOnAction(new ControleurAjoutTemplates(modele));
 
         //Titre du tableau
         VueTitreTableau titreTableau = new VueTitreTableau();
@@ -467,6 +476,7 @@ public class MyApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage
+//        stage.setFullScreen(true);
     }
 
     public static void main(String[] args) {
@@ -482,7 +492,7 @@ public class MyApplication extends Application {
         //On vérifie que le pseudo ne dépasse pas 30 caractères
         if (pseudoRecup.length() <= 30){
             return true;
-        }else{
+        } else {
             //On affiche une erreur si le pseudo dépasse 30 caractères
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -519,13 +529,13 @@ public class MyApplication extends Application {
      * @param mdpRecup Mot de passe à vérifier
      * @return Vrai si le mot de passe est valide, faux sinon
      */
-    public boolean mdpVerif(String mdpRecup){
+    public boolean mdpVerif(String mdpRecup) {
         //On vérifie que le mot de passe contient au moins 8 caractères et qu'il contient au moins une majuscule, une minuscule et un chiffre
         if (mdpRecup.length() >= 8 && mdpRecup.matches(".*[A-Z].*") && mdpRecup.matches(".*[a-z].*") && mdpRecup.matches(".*[0-9].*"))
             return true;
 
             //On limite le champs de saisie du mot de passe pour éviter les injections SQL
-        else if (mdpRecup.length() > 30 ){
+        else if (mdpRecup.length() > 30) {
             //On affiche une erreur si le mot de passe dépasse 30 caractères
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -533,8 +543,7 @@ public class MyApplication extends Application {
             alert.setContentText("Le mot de passe ne doit pas dépasser 30 caractères");
             alert.showAndWait();
             return false;
-        }
-        else {
+        } else {
             //On affiche une erreur si le mot de passe ne respecte pas les conditions
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");

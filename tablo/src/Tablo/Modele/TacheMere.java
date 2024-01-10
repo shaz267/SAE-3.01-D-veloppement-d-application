@@ -91,6 +91,7 @@ public class TacheMere extends Tache {
             }
             if(Modele.user != null){
                 try {
+                    this.save();
                     String SQLPrep = "INSERT INTO `ESTSOUSTACHE` (`id_tachemere`, `id_tachefille`) VALUES (?, ?)";
                     PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
                     prep.setInt(1, this.getId());

@@ -472,9 +472,6 @@ public class MyApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage
-
-        // On gère la connection à la bd
-
     }
 
     public static void main(String[] args) {

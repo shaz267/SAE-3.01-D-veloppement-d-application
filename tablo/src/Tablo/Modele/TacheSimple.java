@@ -35,6 +35,13 @@ public class TacheSimple extends Tache {
      * @param tache
      */
     public boolean ajouterTache(Tache tache) {
+        if(Modele.user != null) {
+            try {
+                this.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return false;
     }
 

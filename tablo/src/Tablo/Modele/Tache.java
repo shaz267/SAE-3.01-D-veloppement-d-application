@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -244,7 +243,7 @@ public abstract class   Tache {
         prep.setString(4,dateLimite.toString());
         prep.setBoolean(5,estArchivee);
         prep.setString(6, this.getClass().getSimpleName());
-        prep.setInt(7, Modele.user.getId());
+        prep.setInt(7, id);
         prep.executeUpdate();
     }
 

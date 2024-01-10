@@ -87,14 +87,6 @@ public class TacheMere extends Tache {
                 //On modifie la date de fin de la tache fille pour que la durée de la tache fille ne change pas.
                 tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
             }
-
-            if(Modele.user != null){
-                try {
-                    this.save();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
             return this.taches.add(tache);
         }
     }

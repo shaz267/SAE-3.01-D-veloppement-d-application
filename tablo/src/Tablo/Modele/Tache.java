@@ -201,7 +201,7 @@ public abstract class   Tache {
         prep.setString(5, dateLimite.toString());
         prep.setBoolean(6, estArchivee);
         prep.setString(7, this.getClass().getSimpleName());
-        prep.setString(8, this.getClass().getSimpleName());
+        prep.setInt(8, Modele.user.getId());
         prep.execute();
 
     }

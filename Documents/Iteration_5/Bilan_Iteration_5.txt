@@ -5,6 +5,7 @@ particulièrement les suivantes :
   - Implémentation d'activeRecord et de la BDD
 
 Cependant, 2 fonctionnalités ont malgré tout était additionnées au reste :
+  - Création des templates
   - Choix d'un Template
 
 Cette fonctionnalité implique la création au préalable de ces Templates. Notre objectif est de terminer les 3 fonctionnalités citées

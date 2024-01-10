@@ -52,8 +52,9 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
         RadioButton ModeSombre = new RadioButton();
 
         //On ajoute un évènement au bouton
-        ModeSombre.setOnAction(e -> Modele.changerModeSombre());
+        ModeSombre.setOnAction(e -> this.modele.changerModeSombre());
 
+        //On laisse le bouton activé en fonction du mode sombre
         if (Modele.getModeSombre()) {
             ModeSombre.setSelected(true);
         }

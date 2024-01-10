@@ -15,7 +15,7 @@ public class VueTitreTableau extends Text implements Observateur {
         super("");
 
         //On change le style du titre du tableau
-        this.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 35px; -fx-fill: rgba(70,117,67,0.71); -fx-underline: true;");
+        this.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 35px; -fx-fill: rgba(187,108,87,0.71); -fx-underline: true;");
 
 
     }
@@ -34,5 +34,13 @@ public class VueTitreTableau extends Text implements Observateur {
         //On change le texte du titre du tableau
         this.setText(m.getTitreTableau());
 
+        //On change le style du titre du tableau en fonction du mode sombre
+        if (Modele.getModeSombre()){
+
+            // On change le style du titre du tableau en fonction du mode sombre
+            this.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 35px; -fx-fill: rgba(112,190,109,0.71); -fx-underline: true;");
+        } else {
+            this.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 35px; -fx-fill: rgba(187,108,87,0.71); -fx-underline: true;");
+        }
     }
 }

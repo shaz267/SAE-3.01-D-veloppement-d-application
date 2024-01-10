@@ -76,8 +76,15 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
 
                 this.modele.setTacheCouranteSelectionnee(true);
 
-                //On rend la tache grise
-                vT.setStyle("-fx-background-color: rgba(167,181,248,0.2); -fx-font-family: 'Roboto Light'; -fx-font-size: 15px; -fx-border-width: 1px; -fx-border-color: #000000; -fx-border-radius: 5px;");
+                //Si le mode sombre est activé on change la couleur de la tache quand elle est selectionnée
+                if (Modele.getModeSombre()){
+                    //On rend la tache grise quand elle est selectionnee
+                    vT.setStyle("-fx-background-color: rgba(203,203,203,0.71); -fx-font-family: 'Roboto Light'; -fx-font-size: 15px; -fx-border-width: 1px; -fx-border-color: #000000; -fx-border-radius: 3px;");
+                } else {
+                    //On rend la tache grise quand elle est selectionnee
+                    vT.setStyle("-fx-background-color: rgba(169,169,169,0.71); -fx-font-family: 'Roboto Light'; -fx-font-size: 15px; -fx-border-width: 1px; -fx-border-color: #000000; -fx-border-radius: 3px;");
+
+                }
             }
         }
 

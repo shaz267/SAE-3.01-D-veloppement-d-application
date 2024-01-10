@@ -6,9 +6,7 @@ import Tablo.Controleur.ControleurAjouterTableau;
 import Tablo.Controleur.ControleurCréerDiagramme;
 import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
-import Tablo.Vue.VueDifferentTableaux;
-import Tablo.Vue.VueTableau;
-import Tablo.Vue.VueTitreTableau;
+import Tablo.Vue.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -57,7 +55,7 @@ public class MyApplication extends Application {
         VBox root = new VBox();
 
         //On crée la scène
-        Scene scene = new Scene(root, 1200, 700); // Fenêtre 600x350 pixels
+        Scene scene = new Scene(root, 1200, 700); // Fenêtre 1200x700 pixels
 
         //On crée le titre Connexion
         Text titreConnexion = new Text("Connexion");
@@ -319,13 +317,10 @@ public class MyApplication extends Application {
      */
     public void startApplication(Stage stage) throws IOException {
 
+        // On crée la racine
         BorderPane root = new BorderPane();
         // On crée la scène
         Scene scene = new Scene(root, 1200, 700); // Fenêtre 1200x700 pixels
-
-        // On crée les composantes graphiques
-        HBox top = new HBox();
-
 
         // On crée les composantes graphiques pour la zone 'top'
         Image logo = new Image("Logo_Tablo.png");
@@ -335,111 +330,33 @@ public class MyApplication extends Application {
         view.setFitHeight(40);
         view.setFitWidth(40);
 
-
         //On utilise cette image pour l'image de l'application
         stage.getIcons().add(logo);
 
-        //Templates comboBox
-        ComboBox<String> templates = new ComboBox<>();
-        //On redimensionne le comboBox
-        templates.setMinWidth(110);
-        templates.setMinHeight(40);
+        // On crée les composantes graphiques
+        VueHboxTop top = new VueHboxTop(this.modele);
+        this.modele.enregistrerObservateur(top);
 
-        //On met le titre du comboBox en "Espace de travail"
-        templates.setPromptText("Templates");
-
-        //On met en gras le titre du comboBox
-        templates.setStyle("-fx-font-weight: bold;");
-
-        //On ajoute les templates
-        templates.getItems().add("Conduite de projet");
-        templates.getItems().add("Modèle Kanban");
-        templates.getItems().add("Réunion hebdomadaire");
-        templates.getItems().add("Tableau Agile");
-
-        //On ajoute un évènement au comboBox
-        templates.setOnAction(new ControleurAjoutTemplates(modele));
-
-        //Titre du tableau
-        VueTitreTableau titreTableau = new VueTitreTableau();
-        modele.enregistrerObservateur(titreTableau);
-
-        //On met le titre du tableau au centre
-        titreTableau.setTranslateX(300);
-
-        //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, templates, titreTableau);
-        templates.setTranslateX(30);
+        // On place les composantes graphiques dans la zone 'top'
         root.setTop(top);
 
-        VBox left = new VBox();
-
-        HBox boutonTableaux = new HBox();
-
         // On crée les composantes graphiques pour la zone 'left'
-        //Tableaux
-        Text tableaux = new Text("Tableaux");
-        tableaux.setStyle("-fx-font-weight: bold;-fx-font-family: 'Roboto Light';-fx-font-size: 20px;");
+        VueVboxLeft left = new VueVboxLeft(this.modele);
+        this.modele.enregistrerObservateur(left);
 
-        Button ajouterTableau = new Button("\uD83D\uDCC5");
-        ajouterTableau.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
-        ajouterTableau.setOnMouseEntered(e -> ajouterTableau.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
-        ajouterTableau.setOnMouseExited(e -> ajouterTableau.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
-        ajouterTableau.setOnMousePressed(e -> ajouterTableau.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
-
-
-        ajouterTableau.setOnMouseClicked(new ControleurAjouterTableau(modele));
-
-        boutonTableaux.setSpacing(70);
-
-        boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
-
-        VueDifferentTableaux vueDifferentTableaux = new VueDifferentTableaux(modele);
-        vueDifferentTableaux.setSpacing(10);
-        vueDifferentTableaux.setAlignment(javafx.geometry.Pos.CENTER);
-
-        modele.enregistrerObservateur(vueDifferentTableaux);
-
-        HBox parametre = new HBox();
-
-        Text titreParametres = new Text("Paramètres");
-        titreParametres.setStyle("-fx-font-weight: bold;-fx-font-size: 20px; -fx-font-family: 'Roboto Light'");
-
-        Button boutonParametre = new Button("⚙");
-        boutonParametre.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
-        boutonParametre.setOnMouseEntered(e -> boutonParametre.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
-        boutonParametre.setOnMouseExited(e -> boutonParametre.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
-        boutonParametre.setOnMousePressed(e -> boutonParametre.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
-
-        parametre.setSpacing(50);
-
-        parametre.getChildren().addAll(titreParametres, boutonParametre);
-
-        boutonParametre.setOnMouseClicked(new ControleurParametre(modele));
-
-        //Diagramme de Gantt
-        Button boutonDiagGantt = new Button("Diagramme de Gantt");
-        boutonDiagGantt.setStyle("-fx-background-color: #C0C0C0;-fx-font-size: 15px;"); // Couleur du bouton
-        boutonDiagGantt.setOnMouseEntered(e -> boutonDiagGantt.setStyle("-fx-background-color: #808080;-fx-font-size: 15px;")); // Changement de couleur au survol
-        boutonDiagGantt.setOnMouseExited(e -> boutonDiagGantt.setStyle("-fx-background-color: #C0C0C0;-fx-font-size: 15px;"));  // Changement de couleur à la sortie du survol
-        boutonDiagGantt.setOnMousePressed(e -> boutonDiagGantt.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-size: 15px;")); // Changement de couleur au clic
-
-        //On ajoute le controleur pour créer un diagramme de Gantt
-        boutonDiagGantt.setOnAction(new ControleurCréerDiagramme(modele));
-
-
-        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, parametre, boutonDiagGantt);
-        left.setPadding(new Insets(20));
-        left.setSpacing(20);
-
+        // On place les composantes graphiques dans la zone 'left'
         root.setLeft(left);
 
-
+        // On crée les composantes graphiques pour le centre
         VueTableau tableauCentre = new VueTableau();
+
         //On enregistre le centre comme observateur du modèle
         modele.enregistrerObservateur(tableauCentre);
+
+        // On ajoute un évènement pour le bouton ajouter une liste
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
 
+        // On définit les propriétés de la VBox
         tableauCentre.setPadding(new Insets(20));
 
         //On ajoute le tableau au centre
@@ -449,9 +366,15 @@ public class MyApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Tabl'o"); // Titre de la fenetre
         stage.show(); // On affiche le stage
+
+        //Si on veut mettre en plein écran il faut décommenter cette ligne :
 //        stage.setFullScreen(true);
     }
 
+    /**
+     * Méthode main qui permet de lancer l'application
+     * @param args Arguments
+     */
     public static void main(String[] args) {
         launch();
     }

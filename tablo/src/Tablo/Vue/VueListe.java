@@ -43,29 +43,47 @@ public class VueListe extends VBox {
         this.labelTitre = new Label(titre);
         this.labelTitre.setStyle("-fx-font-size: 15px;-fx-font-family: 'Roboto Light'; -fx-font-weight: bold;");
 
+        // On change le style de la liste en fonction du mode sombre
+        if (Modele.getModeSombre()){
+
+            // On change le fond de la liste en sombre si le mode sombre est activé
+            this.setStyle("-fx-background-color: #2b2b2b;");
+
+            // On change la couleur du texte en clair si le mode sombre est activé
+            this.labelTitre.setStyle("-fx-font-size: 15px;-fx-font-family: 'Roboto Light'; -fx-font-weight: bold; -fx-text-fill: #f2f2f2;");
+
+            // On associe un évènement pour gérer le survol de la liste
+            this.setOnMouseEntered(event -> setStyle("-fx-background-color: #232323;"));
+            this.setOnMouseExited(event -> setStyle("-fx-background-color: #2b2b2b;"));
+        } else {
+
+            // On change le fond de la liste en clair si le mode sombre est désactivé
+            this.setStyle("-fx-background-color: #e6e6e6;");
+
+            // On change la couleur du texte en sombre si le mode sombre est désactivé
+            this.labelTitre.setStyle("-fx-font-size: 15px;-fx-font-family: 'Roboto Light'; -fx-font-weight: bold; -fx-text-fill: #2b2b2b;");
+
+            // On associe un évènement pour gérer le survol de la liste
+            this.setOnMouseEntered(event -> setStyle("-fx-background-color: #d9d9d9;"));
+            this.setOnMouseExited(event -> setStyle("-fx-background-color: #e6e6e6;"));
+        }
+
+        // On ajoute le titre de la liste à la liste
         this.getChildren().add(this.labelTitre);
 
-        // Couleur de fond de la liste
-        this.setStyle("-fx-background-color: #e6e6e6;");
-
+        // On définit les propriétés de la VBox
         this.setMinHeight(700);
         this.setPadding(new Insets(10));
-
-        // On associe un évènement pour gérer le survol de la liste
-        this.setOnMouseEntered(event -> setStyle("-fx-background-color: #d9d9d9;"));
-        this.setOnMouseExited(event -> setStyle("-fx-background-color: #e6e6e6;"));
 
         // On initialise l'attribut numListe
         this.numListe = numListe;
 
         // On ajoute un bouton pour ajouter une tâche
         Button btnAjouterTache = new Button("Ajouter une tache");
-
         btnAjouterTache.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light'; ");
         btnAjouterTache.setOnMouseEntered(e -> btnAjouterTache.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(50,80,46,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';")); // Changement de couleur au survol
         btnAjouterTache.setOnMouseExited(e -> btnAjouterTache.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';"));  // Changement de couleur à la sortie du survol
         btnAjouterTache.setOnMousePressed(e -> btnAjouterTache.setStyle("-fx-border-width: 3px; -fx-border-color: rgba(70,117,67,0.71); -fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';")); // Changement de couleur au clic
-
         btnAjouterTache.setPrefSize(200, 50);
 
         //On récupère la liste courante

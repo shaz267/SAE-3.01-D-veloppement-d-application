@@ -807,8 +807,12 @@ public class Modele implements Sujet {
     /**
      * Méthode qui permet de changer l'attribut ModeSombre
      */
-    public static void changerModeSombre() {
+    public void changerModeSombre() {
+        //On change le mode sombre
         ModeSombre = !ModeSombre;
+
+        //On notifie les observateurs
+        this.notifierObservateurs();
     }
 
     /**

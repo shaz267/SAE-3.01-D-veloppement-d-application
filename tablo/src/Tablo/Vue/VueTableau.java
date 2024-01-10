@@ -26,11 +26,15 @@ public class VueTableau extends ScrollPane implements Observateur {
     private HBox listeContainer;
 
     /**
+     * conteneur des listes et du bouton ajouter liste
+     */
+    private HBox container = new HBox();
+
+
+    /**
      * Constructeur de la classe VueTableau
      */
     public VueTableau() {
-        // On appelle le constructeur de la classe mère
-        super();
 
         this.setPannable(true);
         this.setStyle("-fx-border-color: #b3b3b3; -fx-border-width: 1px; -fx-background-color: transparent;");
@@ -52,7 +56,6 @@ public class VueTableau extends ScrollPane implements Observateur {
         listeContainer.setSpacing(10);
         listeContainer.setFillHeight(true);
 
-        HBox container = new HBox();
         container.getChildren().addAll(listeContainer, ajouterListe);
         container.setSpacing(10);
 
@@ -66,6 +69,29 @@ public class VueTableau extends ScrollPane implements Observateur {
      */
     @Override
     public void actualiser(Sujet s) {
+
+        // On change le style de la vue en fonction du mode sombre
+        if (Modele.getModeSombre()) {
+
+            // On change le fond de la vue en sombre si le mode sombre est activé
+            this.setStyle("-fx-border-color: #b3b3b3; -fx-border-width: 1px; -fx-background-color: #2b2b2b;");
+
+            // On change le fond du conteneur des listes en sombre si le mode sombre est activé
+            listeContainer.setStyle("-fx-background-color: #2b2b2b;");
+
+            // On change le fond du conteneur des listes et du bouton ajouter liste en sombre si le mode sombre est activé
+            container.setStyle("-fx-background-color: #2b2b2b;");
+        } else {
+
+            // On change le fond de la vue en clair si le mode sombre est désactivé
+            this.setStyle("-fx-border-color: #b3b3b3; -fx-border-width: 1px; -fx-background-color: transparent;");
+
+            // On change le fond du conteneur des listes en clair si le mode sombre est désactivé
+            listeContainer.setStyle("-fx-background-color: transparent;");
+
+            // On change le fond du conteneur des listes et du bouton ajouter liste en clair si le mode sombre est désactivé
+            container.setStyle("-fx-background-color: transparent;");
+        }
 
         //On efface tout
         listeContainer.getChildren().clear();

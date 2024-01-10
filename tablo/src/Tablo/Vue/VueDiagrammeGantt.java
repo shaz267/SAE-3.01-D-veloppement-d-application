@@ -206,9 +206,6 @@ public class VueDiagrammeGantt extends ScrollPane{
 
                     ArrayList<Integer> coordonneesFinTacheMere = this.coordonneesFlechesTacheFilleFinXYDebutXY.get(t);
 
-                    System.out.println(j * 10 - coordonneesFinTacheMere.get(0) * 10 + 10);
-                    System.out.println((i + 1) * 30 - coordonneesFinTacheMere.get(1) * 30 + 30);
-
                     Line line = new Line(5, 15, j * 10 - coordonneesFinTacheMere.get(0) * 10 + 10, (i + 1) * 30 - coordonneesFinTacheMere.get(1) * 30 + 30);
                     line.setStrokeWidth(2);
                     line.setStroke(Color.BLACK);

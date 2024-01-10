@@ -3,8 +3,7 @@ package Tablo;
 import Tablo.Controleur.ControleurAjouterListe;
 import Tablo.Controleur.ControleurAjouterTableau;
 import Tablo.Controleur.ControleurParametre;
-import Tablo.Modele.Modele;
-import Tablo.Modele.Utilisateur;
+import Tablo.Modele.*;
 import Tablo.Vue.VueDifferentTableaux;
 import Tablo.Vue.VueTableau;
 import Tablo.Vue.VueTitreTableau;
@@ -21,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Classe MyApplication qui hérite de Application et qui permet de lancer l'application
@@ -28,7 +28,7 @@ import java.sql.SQLException;
 public class MyApplication extends Application {
 
     // On crée le modèle
-    private Modele modele = new Modele();
+    private static Modele modele = new Modele();
 
     /**
      * Méthode qui permet de lancer l'écran de connexion d'inscription et de mode invité et qui permet de lancer l'application principale
@@ -92,7 +92,6 @@ public class MyApplication extends Application {
                 //On limite le champs de saisie du mot de passe pour éviter les injections SQL
             } else if (emailVerif(emailRecup) && mdpVerif(mdpRecup)){
 
-                //TODO : relier la connexion à la base de données
                 // On vérifie que le mail et le mdp correspondent à un utilisateur de la base
                 // On commence par sélectionner l'utilisateur de la base qui correspond au mail entré pour la connexion
                 try {
@@ -131,6 +130,12 @@ public class MyApplication extends Application {
                     } catch (IOException e) {
                         // On relance une exception en cas d'erreur
                         throw new RuntimeException(e);
+                    }
+                    // On importe les données correspondant au user connecte depuis la bd
+                    try {
+                        MyApplication.importerDonnees();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
                 }else{
                     // On affiche une erreur si le mdp entré ne correspond pas au mdp de l'utilisateur de la base
@@ -545,6 +550,39 @@ public class MyApplication extends Application {
             alert.setContentText("Le mot de passe doit contenir au moins 8 caractères, au moins une majuscule, une minuscule et un chiffre");
             alert.showAndWait();
             return false;
+        }
+    }
+
+    /**
+     * Méthode qui permet d'importer les données d'un user (tableaux, listes, taches..) depuis la bd lors de la connexion
+     */
+    public static void importerDonnees() throws SQLException {
+        // On récupère tous les tableaux de l'utilisateur
+        ArrayList<Tableau> tableaux = Tableau.findAllByUserId(Modele.user.getId());
+        // Pour chaque tableau
+        for (Tableau tableau : tableaux) {
+            // On met à jour le tableau courant
+            modele.changerTableauCourant(tableau.getNumTableau());
+            // On insère le tableau
+            modele.ajouterTableau(tableau);
+            // On récupère toutes les listes du tableau
+            ArrayList<Liste> listes = Liste.findAllByTabId(tableau.getId());
+            // Pour chaque liste
+            for (Liste liste : listes) {
+                // On met à jour la liste courante
+                Modele.setListeCourante(liste.getNumListe());
+                // On insère la liste dans le tableau
+                modele.ajouterListe(liste);
+                // On récupère toutes les tâches de la liste
+                ArrayList<Tache> taches = Tache.findAllByListeId(liste.getId());
+                // Pour chaque tâche
+                for (Tache tache : taches) {
+                    // On met à jour le numéro de la tâche courante
+                    Modele.setTacheCourante(tache.getNumTache());
+                    // On ajoute la tâche à la liste
+                    modele.ajouterTache(tache);
+                }
+            }
         }
     }
 }

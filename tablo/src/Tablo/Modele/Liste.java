@@ -74,6 +74,29 @@ public class Liste {
     }
 
     /**
+     * Méthode permettatnt de récupérer toutes les listes d'un tableau donné
+     * @param id, id du tableau
+     * @return retourne la liste de ses listes
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findAllByTabId(int id) throws SQLException {
+String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOIN TABLEAULISTE tl ON l.id_liste = tl.id_liste\n" +
+        "WHERE tl.id_tableau = ?;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        ArrayList<Liste> listes = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = new Liste(rs.getString("titre"));
+            l.id = rs.getInt("id_liste");
+            l.numListe = rs.getInt("num_liste");
+            listes.add(l);
+        }
+        return listes;
+    }
+
+    /**
      * Méthode findById permettant de récupérer une liste de la base de données en fonction de son id
      * @param id id de la liste à récupérer
      * @return Liste
@@ -147,11 +170,12 @@ public class Liste {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `LISTE` (`id_liste`,`titre`, `id_user`) VALUES (?,?,?);";
+        String SQLPrep = "INSERT INTO `LISTE` (`id_liste`,`titre`, `id_user`, `num_liste`) VALUES (?,?,?,?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep.setInt(1,id);
         prep.setString(2, titre);
         prep.setInt(3,Modele.user.getId());
+        prep.setInt(4,numListe);
         prep.execute();
     }
 
@@ -172,7 +196,7 @@ public class Liste {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT NOT NULL, `titre` varchar(30), `id_user` int NOT NULL, PRIMARY KEY (`id_liste`))";
+        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT NOT NULL, `titre` varchar(30), `id_user` int NOT NULL, `num_liste` int NOT NULL, PRIMARY KEY (`id_liste`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }
@@ -533,5 +557,25 @@ public class Liste {
      */
     public void setNumListe(int i) {
         this.numListe = i;
+    }
+
+    /**
+     * Méthode qui permet de savoir si une liste appartient à un tableau
+     * @param t le tableau à tester
+     * @return true si la liste appartient au tableau, false sinon
+     */
+    public boolean appartientA(Tableau t) throws SQLException {
+        String SQLPrep = "SELECT * FROM TABLEAULISTE WHERE id_liste = ? AND id_tableau = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,this.id);
+        prep.setInt(2,t.getId());
+        prep.execute();
+
+        ResultSet rs = prep.getResultSet();
+        // S'il y a un resultat
+        if (rs.next()) {
+            return true;
+        }
+        return false;
     }
 }

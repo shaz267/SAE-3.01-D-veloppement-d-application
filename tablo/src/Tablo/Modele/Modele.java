@@ -4,6 +4,7 @@ import Tablo.Loggeur;
 import Tablo.Observateur;
 import Tablo.Sujet;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +92,6 @@ public class Modele implements Sujet {
      * Méthode qui permet de changer le tableau courant.
      */
     public void changerTableauCourant(int numTableau) {
-
         tableauCourant = numTableau;
         //On Notifie les observateurs
         this.notifierObservateurs();

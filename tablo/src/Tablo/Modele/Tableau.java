@@ -112,6 +112,27 @@ public class Tableau {
     }
 
     /**
+     * Méthode permettatnt de récupérer tout les tableaux d'un utilisateur
+     * @param id, id de l'utilisateur
+     * @return retourne la liste de ses tableaux
+     * @throws SQLException
+     */
+    public static ArrayList<Tableau> findAllByUserId(int id) throws SQLException {
+        String SQLPrep = "SELECT `titre`, `id_tableau`, `num_tab` FROM `TABLEAU` WHERE `id_user` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Tableau> listTabs = new ArrayList<>();
+        while (rs.next()) {
+            Tableau t = new Tableau(rs.getString("titre"));
+            t.id = rs.getInt("id_tableau");
+            t.numTableau = rs.getInt("num_tab");
+            listTabs.add(t);
+        }
+        return listTabs;
+    }
+
+    /**
      * Méthode delete permettant de supprimer un tableau de la base de données
      * @throws SQLException
      */
@@ -145,11 +166,12 @@ public class Tableau {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `TABLEAU` (`id_tableau`,`titre`, `id_user`) VALUES (?,?,?);";
+        String SQLPrep = "INSERT INTO `TABLEAU` (`id_tableau`,`titre`, `id_user`, `num_tab`) VALUES (?,?,?,?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep.setInt(1,id);
         prep.setString(2, titre);
         prep.setInt(3, Modele.user.getId());
+        prep.setInt(4, numTableau);
         prep.execute();
     }
 
@@ -170,7 +192,7 @@ public class Tableau {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT NOT NULL, `titre` varchar(30), `id_user` INT NOT NULL, PRIMARY KEY (`id_tableau`))";
+        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT NOT NULL, `titre` varchar(30), `id_user` INT NOT NULL, `num_tab` INT NOT NULL, PRIMARY KEY (`id_tableau`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }
@@ -348,13 +370,23 @@ public class Tableau {
         Loggeur.enregistrer("Ajout de la liste " + l.getTitre() + " au tableau " + this.titre);
 
         if(Modele.user != null){
-            //On ajoute la liste à la base de données
-            String SQLPrep = "INSERT INTO `TABLEAULISTE` (`id_tableau`,`id_liste`) VALUES (?,?);";
+            // On veut vérifier que la liste n'est pas déjà dans la table TABLEAULISTE
+            String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?;";
             try {
                 PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
                 prep.setInt(1, this.id);
                 prep.setInt(2, l.getId());
                 prep.execute();
+                ResultSet rs = prep.getResultSet();
+                //Si la liste n'est pas dans la table TABLEAULISTE
+                if(rs.next() == false){
+                    //On ajoute le lien entre la liste et le tableau à la base de données
+                    SQLPrep = "INSERT INTO `TABLEAULISTE` (`id_tableau`,`id_liste`) VALUES (?,?);";
+                    prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                    prep.setInt(1, this.id);
+                    prep.setInt(2, l.getId());
+                    prep.execute();
+                }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

@@ -159,6 +159,30 @@ public abstract class   Tache {
     }
 
     /**
+     * Méthode findAllByListeId permettant de récupérer toutes les tâches d'une liste depuis la bd
+     * @param id, id de la liste
+     * @return retourne une liste des tâches de la liste
+     */
+    public static ArrayList<Tache> findAllByListeId(int id) {
+        ArrayList<Tache> listT = new ArrayList<>();
+        try {
+            String SQLPrep = "SELECT t.id_tache, t.num_tache FROM TACHE t INNER JOIN tacheliste tl ON t.id_tache = tl.id_tache\n" +
+                    "WHERE tl.id_liste = ?;";
+            PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep1.setInt(1, id);
+            ResultSet rs = prep1.executeQuery();
+            while (rs.next()) {
+                Tache t = Tache.findById(rs.getInt("id_tache"));
+                t.numTache = rs.getInt("num_tache");
+                listT.add(t);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listT;
+    }
+
+    /**
      * Méthode delete permettant de supprimer une tache de la base de données
      * @throws SQLException
      */
@@ -192,7 +216,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`, `type`, `id_user`) VALUES (?,?,?,?,?,?,?,?);";
+        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`, `type`, `id_user`, `num_tache`) VALUES (?,?,?,?,?,?,?,?,?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep.setInt(1, id);
         prep.setString(2, titre);
@@ -202,6 +226,7 @@ public abstract class   Tache {
         prep.setBoolean(6, estArchivee);
         prep.setString(7, this.getClass().getSimpleName());
         prep.setInt(8, Modele.user.getId());
+        prep.setInt(9, numTache);
         prep.execute();
 
     }
@@ -228,7 +253,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(15), `id_user` int NOT NULL, PRIMARY KEY (`id_tache`,`titre`));";
+        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(15), `id_user` int NOT NULL, `num_tache` INT NOT NULL, PRIMARY KEY (`id_tache`,`titre`));";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }
@@ -441,5 +466,25 @@ public abstract class   Tache {
      */
     public boolean isArchivee() {
         return this.estArchivee;
+    }
+
+    /**
+     * Méthode qui permet de savoir si une tache appartient à une liste
+     * @param l la liste à tester
+     * @return true si la tache appartient a la liste, false sinon
+     */
+    public boolean appartientA(Liste l) throws SQLException {
+        String SQLPrep = "SELECT * FROM TACHELISTE WHERE id_liste = ? AND id_tache = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,l.getId());
+        prep.setInt(2,this.id);
+        prep.execute();
+
+        ResultSet rs = prep.getResultSet();
+        // S'il y a un resultat
+        if (rs.next()) {
+            return true;
+        }
+        return false;
     }
 }

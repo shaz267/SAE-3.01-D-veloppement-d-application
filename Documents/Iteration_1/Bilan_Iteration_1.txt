@@ -1,7 +1,6 @@
 Lors de cette itération nous avons implémenter les fonctionnalités suivantes :
 - Implémentation du squelette de l'application
 - Créer des listes.
-- Sélectionner une taches.
 
 Cette itération a été faite pour être honnete, sans une réelle compréhension des consignes, les diagrammes de séquences n'ont donc pas étés fais avant le développement mais après. 
 Le diagramme de classe par contre, a bien été réalisé avant le développement. 

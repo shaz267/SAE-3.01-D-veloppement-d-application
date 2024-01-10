@@ -248,15 +248,11 @@ public class Tableau {
 
     /**
      * Ajoute une tâche à la liste courante
-     *
      * @param t tâche à ajouter
      */
     public void ajouterTache(Tache t) {
-
         for (Liste l : this.listes) {
-
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 //On ajoute la tâche à la liste courante
                 l.ajouterTache(t);
             }
@@ -267,11 +263,9 @@ public class Tableau {
      * Retire une tâche de la liste courante
      */
     public boolean archiverTache() {
-
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 return l.archiverTache();
             }
         }
@@ -280,14 +274,12 @@ public class Tableau {
 
     /**
      * Change le titre de la tache dans la liste courante
-     *
      * @param nouveauTitre nouveau titre de la tache
      */
     public void changerTitreTache(String nouveauTitre) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 l.changerTitreTache(nouveauTitre);
             }
         }
@@ -295,7 +287,6 @@ public class Tableau {
 
     /**
      * Change le titre de la liste courante
-     *
      * @param nouveauContenu nouveau contenu de la tache
      */
     public void changerContenuTache(String nouveauContenu) {
@@ -303,7 +294,6 @@ public class Tableau {
         for (Liste l : this.listes) {
             //On vérifie que la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 //On change le contenu de la tâche
                 l.changerContenuTache(nouveauContenu);
             }
@@ -312,8 +302,8 @@ public class Tableau {
 
     /**
      * Deplacer une tache dans une autre liste
-     * @param tache
-     * @param numListeDestination
+     * @param tache tache à déplacer
+     * @param numListeDestination numéro de la liste de destination
      *
      * Vérifier que le nom de la tache n'existe pas dans la liste de destination
      * Vérifier que la liste de destination n'est pas la liste courante
@@ -345,7 +335,6 @@ public class Tableau {
 
                         //On parcourt les sous tâches de la tache
                         for (Tache sousTache : tache.getSousTaches()) {
-
                             //On déplace la sous tâche
                             this.deplacerTache(sousTache, numListeDestination);
                         }
@@ -370,14 +359,12 @@ public class Tableau {
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     *
      * @param date date de début de la tache
      */
     public void modifierDateDebut(LocalDate date) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 //On change la date de début de la tâche
                 l.modifierDateDebut(date);
             }
@@ -386,14 +373,12 @@ public class Tableau {
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     *
      * @param date date limite de la tache
      */
     public void modifierDateLimite(LocalDate date) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 l.modifierDateLimite(date);
             }
         }
@@ -410,7 +395,6 @@ public class Tableau {
 
         if(Modele.user != null){
             try {
-
                 // On veut vérifier que la liste n'est pas déjà dans la table TABLEAULISTE
                 String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?;";
                 PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
@@ -605,6 +589,13 @@ public class Tableau {
     public void changerTitre(String nouveauTitre) {
         Loggeur.enregistrer("Changement du titre du tableau " + this.titre + " en " + nouveauTitre);
         this.titre = nouveauTitre;
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -614,5 +605,12 @@ public class Tableau {
      */
     public void setNumTableau(int numTableau) {
         this.numTableau = numTableau;
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

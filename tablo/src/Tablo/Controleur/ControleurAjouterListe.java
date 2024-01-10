@@ -49,14 +49,6 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
             // Création de la liste
             Liste l = new Liste(numListe, titre);
 
-	        if(Modele.user != null){
-		        try {
-			        l.save();
-		        } catch (Exception e) {
-			        e.printStackTrace();
-		        }
-	        }
-
             //On ajoute la liste au modele
             modele.ajouterListe(l);
         });

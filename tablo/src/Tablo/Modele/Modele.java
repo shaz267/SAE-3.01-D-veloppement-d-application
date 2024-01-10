@@ -84,6 +84,14 @@ public class Modele implements Sujet {
         //On ajoute le tableau à la liste des tableaux
         this.tableaux.add(tableau);
 
+        if(Modele.user != null){
+            try {
+                tableau.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         //On change le tableau courant
         this.changerTableauCourant(tableau.getNumTableau());
 

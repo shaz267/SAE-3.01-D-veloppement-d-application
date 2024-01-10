@@ -50,7 +50,6 @@ public class Tableau {
 
                 //On ajoute la tâche à la liste courante
                 l.ajouterTache(t);
-                System.out.println("Tache ajoutée à la liste " + Modele.getListeCourante());
             }
         }
     }
@@ -118,12 +117,9 @@ public class Tableau {
      */
     public boolean deplacerTache(Tache tache, int numListeDestination) {
         boolean res = false;
-        System.out.println("deplacerTache s'execute");
         //On récupère la liste de destination
         Liste listeDestination = this.listes.get(numListeDestination-1);
         Modele.setListeDestination(numListeDestination);
-        System.out.println("listeDestination : " + listeDestination.getNumListe());
-
             //On vérifie que la liste de destination existe
             if (listeDestination != null) {
                 //On retire la tache de la precedente liste
@@ -136,17 +132,14 @@ public class Tableau {
 
                 //On ajoute la tache à la liste de destination
                 listeDestination.ajouterTache(tache);
-                System.out.println(listeDestination);
 
                 // On réinitialise la tacte courante
                 Modele.setTacheCourante(-1);
                 //On change la liste courante
                 Modele.setListeCourante(numListeDestination);
-                System.out.println("Tache déplacée " + tache.getTitre() + " dans la liste " + Modele.getListeCourante());
                 res = true;
 
             }
-        System.out.println("tache déplacée " + res);
         return res;
     }
 

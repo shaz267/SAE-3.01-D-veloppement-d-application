@@ -43,8 +43,7 @@ public class Loggeur {
             // Fermeture du fichier
             writer.close();
         } catch (IOException e) {
-
-            System.out.println("Erreur lors de l'écriture du fichier log.txt");
+            throw new RuntimeException(e);
         }
 
     }
@@ -65,7 +64,7 @@ public class Loggeur {
             }
             reader.close();
         } catch (IOException e) {
-            System.out.println("Erreur lors de la lecture du fichier log.txt");
+            throw new RuntimeException(e);
         }
         return log.toString();
     }

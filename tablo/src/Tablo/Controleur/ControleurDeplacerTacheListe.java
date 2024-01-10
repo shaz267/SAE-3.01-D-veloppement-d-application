@@ -33,9 +33,6 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         {
             this.listeDragDropped(dragEvent);
         }
-        else
-
-        System.out.println("DragEvent : " + dragEvent.getEventType());
 
     }
 
@@ -43,7 +40,6 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
         if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getTarget() instanceof VueListe) {
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
             Modele.setListeCourante(this.vueListeDestination.getNumListe());
-            System.out.println("Drag Over - Source: " + Modele.getListeCourante());
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
         dragEvent.consume();
@@ -52,13 +48,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
 
     // On drag dropped on source
     private void listeDragDropped(DragEvent dragEvent) {
-        System.out.println("Drag Dropped - Source: " + dragEvent.getGestureSource() + ", Target: " + dragEvent.getTarget());        // On récupère la liste de destination
         int numListe = Modele.getListeCourante();
-
-            System.out.println("numListe : " + Modele.getListeCourante());
-
-            System.out.println("deplacement de la tache");
-            //System.out.println("numTache : " + Modele.getTacheCourante());
             setTacheADeplacer();
 
 
@@ -74,10 +64,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
     private void listeDragExited(DragEvent dragEvent) {
 
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
-            System.out.println("Drag Exited - Source: " + dragEvent.getGestureSource() + ", Target: " + dragEvent.getTarget());        // On récupère la liste de destination
             int numListe = this.vueListeDestination.getNumListe();
-            System.out.println("numListe : " + numListe);
-
 
         //dragEvent.setDropCompleted(true);
         dragEvent.consume();

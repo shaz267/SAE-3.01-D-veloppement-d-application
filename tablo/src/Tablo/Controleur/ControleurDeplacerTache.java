@@ -29,7 +29,6 @@ public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
         ClipboardContent content = new ClipboardContent();
         content.putImage(this.vueTacheADeplacer.snapshot(new SnapshotParameters(), null));
         db.setContent(content);
-        System.out.println("liste tache modele" + this.modele.getTaches());
         mouseEvent.consume();
     }
 

@@ -82,8 +82,6 @@ public class Liste {
         }
         Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
         // afficher la liste en question
-        System.out.println("Liste : " + this.taches);
-        System.out.println("tache ajoutée");
         t.setNumListe();
         this.taches.add(t);
     }
@@ -391,7 +389,6 @@ public class Liste {
             if (t.getSousTaches() != null) {
                 for (Tache sousTache : t.getSousTaches()) {
                     if (sousTache.equals(tacheCourante)) {
-                        System.out.println("Tache courante trouvée");
                         t.getSousTaches().set(t.getSousTaches().indexOf(sousTache), tacheMere);
                     }
                 }

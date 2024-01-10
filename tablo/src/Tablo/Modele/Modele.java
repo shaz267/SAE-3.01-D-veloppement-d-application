@@ -423,7 +423,6 @@ public class Modele implements Sujet {
     }
 
     public synchronized void notifierObservateurs() {
-        System.out.println("Notif");
         for (Observateur observateur : observateurs) {
 
             observateur.actualiser(this);

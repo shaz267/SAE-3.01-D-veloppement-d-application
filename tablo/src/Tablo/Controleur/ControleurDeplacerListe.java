@@ -24,7 +24,6 @@ public class ControleurDeplacerListe implements EventHandler<MouseEvent> {
         ClipboardContent content = new ClipboardContent();
         content.putImage(this.vueListeDestination.snapshot(new SnapshotParameters(), null));
         db.setContent(content);
-        System.out.println("liste destination : " + Modele.getListeDestination());
 
         mouseEvent.consume();
     }

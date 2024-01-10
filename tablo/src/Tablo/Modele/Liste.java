@@ -164,11 +164,16 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
         ArrayList<Tache> listTache = findAllTacheFromListe(this.id);
         // On supprime toutes les tâches de la base de données
         for(Tache t : listTache){
+            String SQLSousTache = "DELETE FROM `ESTSOUSTACHE` WHERE `id_tachefille` = ? OR `id_tachemere` = ?";
+            PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLSousTache);
+            prep1.setInt(1,t.getId());
+            prep1.setInt(2,t.getId());
+            prep1.executeUpdate();
             t.delete();
             String SQLPrep = "DELETE FROM `TACHELISTE` WHERE `id_liste` = ?";
-            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
-            prep.setInt(1,this.id);
-            prep.executeUpdate();
+            PreparedStatement prep2 = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep2.setInt(1,this.id);
+            prep2.executeUpdate();
         }
 
     }

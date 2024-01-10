@@ -104,13 +104,20 @@ public class MyApplication extends Application {
                 // On vérifie par la suite son mdp
                 // On hache le mdp entré
                 String mdpRecupHashe = Utilisateur.passwordHash(mdpRecup);
-                System.out.println("Mdp recup haché:"+mdpRecupHashe+"correct de sur");
 
                 // On récupère le mdp de l'utilisateur de la base
                 String mdpUser = "";
                 try {
-                    mdpUser += Modele.user.getMdp();
-                    System.out.println("Mdp recup de la base:"+mdpUser+"Correct?");
+                    if(Modele.user == null){
+                        // On affiche une erreur si l'utilisateur n'existe pas
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText("Erreur");
+                        alert.setContentText("L'utilisateur n'existe pas");
+                        alert.showAndWait();
+                    }
+                    else
+                        mdpUser += Modele.user.getMdp();
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -130,7 +137,7 @@ public class MyApplication extends Application {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Erreur");
                     alert.setHeaderText("Erreur");
-                    alert.setContentText("Le mot de passe est incorrect, ou l'utilisateur n'existe pas");
+                    alert.setContentText("Le mot de passe est incorrect");
                     alert.showAndWait();
                 }
             }

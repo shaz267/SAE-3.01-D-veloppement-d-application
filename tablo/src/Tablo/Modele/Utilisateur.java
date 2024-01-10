@@ -26,7 +26,7 @@ public class Utilisateur {
         this.id_user = -1; // -1 de base car l'objet n'est pas enregistré dans la bd
         this.pseudo = ps;
         this.email = email;
-        // On hashe le mot de passe
+        // On hashe le mot de passe si il ne l'est pas déja (un mdp non hashé ne peut pas etre plus long que 30 char)
         if(mdp.length() > 30){
             this.mdp = mdp;
         } else {

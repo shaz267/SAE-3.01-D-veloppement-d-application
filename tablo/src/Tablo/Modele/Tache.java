@@ -192,7 +192,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`, `type`) VALUES (?,?,?,?,?,?,?);";
+        String SQLPrep = "INSERT INTO `TACHE` (`id_tache`,`titre`,`contenu`,`date_deb`,`date_fin`,`estarchivee`, `type`, `id_user`) VALUES (?,?,?,?,?,?,?,?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep.setInt(1, id);
         prep.setString(2, titre);
@@ -201,6 +201,7 @@ public abstract class   Tache {
         prep.setString(5, dateLimite.toString());
         prep.setBoolean(6, estArchivee);
         prep.setString(7, this.getClass().getSimpleName());
+        prep.setString(8, this.getClass().getSimpleName());
         prep.execute();
 
     }
@@ -218,7 +219,7 @@ public abstract class   Tache {
         prep.setString(4,dateLimite.toString());
         prep.setBoolean(5,estArchivee);
         prep.setString(6, this.getClass().getSimpleName());
-        prep.setInt(7,id);
+        prep.setInt(7, Modele.user.getId());
         prep.executeUpdate();
     }
 
@@ -227,7 +228,7 @@ public abstract class   Tache {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(15), PRIMARY KEY (`id_tache`,`titre`));";
+        String SQLPrep = "CREATE TABLE `TACHE` (`id_tache` INT NOT NULL, `titre` varchar(100), `contenu` varchar(500), `date_deb` DATE, `date_fin` DATE, `estarchivee` TINYINT(1) DEFAULT 0, `type` varchar(15), `id_user` int NOT NULL, PRIMARY KEY (`id_tache`,`titre`));";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

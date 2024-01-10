@@ -169,7 +169,7 @@ public class Tableau {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_tableau`))";
+        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT NOT NULL, `titre` varchar(30), `id_user` NOT NULL, PRIMARY KEY (`id_tableau`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

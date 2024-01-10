@@ -172,7 +172,7 @@ public class Liste {
      * @throws SQLException
      */
     public static void createTable() throws SQLException {
-        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT NOT NULL, `titre` varchar(30), PRIMARY KEY (`id_liste`))";
+        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT NOT NULL, `titre` varchar(30), `id_user` int NOT NULL, PRIMARY KEY (`id_liste`))";
         Statement stmt = DBConnection.getConnection().createStatement();
         stmt.executeUpdate(SQLPrep);
     }

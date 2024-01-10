@@ -1,12 +1,8 @@
 package Tablo;
 
 import Tablo.Controleur.ControleurAjouterListe;
-import Tablo.Controleur.ControleurAjouterTableau;
-import Tablo.Controleur.ControleurParametre;
-import Tablo.Vue.VueDifferentTableaux;
-import Tablo.Vue.VueTableau;
-import Tablo.Vue.VueTitreTableau;
-import Tablo.Modele.Modele;
+import Tablo.Modele.*;
+import Tablo.Vue.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -14,14 +10,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -514,7 +506,7 @@ public class MyApplication extends Application {
                 // On met à jour la liste courante
                 Modele.setListeCourante(liste.getNumListe());
                 // On insère la liste dans le tableau
-                modele.ajouterListe(liste);
+                modele.ajouterListe(liste.getTitre());
                 // On récupère toutes les tâches de la liste
                 ArrayList<Tache> taches = Tache.findAllByListeId(liste.getId());
                 // Pour chaque tâche

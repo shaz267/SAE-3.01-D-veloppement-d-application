@@ -227,7 +227,6 @@ public abstract class   Tache {
         prep.setInt(8, Modele.user.getId());
         prep.setInt(9, numTache);
         prep.execute();
-
     }
 
     /**
@@ -485,5 +484,28 @@ public abstract class   Tache {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Méthode qui retourne une liste des sous taches de la tache courante
+     * @return la liste des sous taches
+     */
+    public ArrayList<Tache> findAllSousTaches() throws SQLException {
+        // On crée l'arraylist a retourner
+        ArrayList<Tache> soustaches = new ArrayList<Tache>();
+
+        // On récupère les sous taches de la tache courante dans la base de données
+        String SQLPrep = "SELECT id_tachefille FROM ESTSOUSTACHE WHERE id_tachemere = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,this.getId());
+        prep.execute();
+
+        ResultSet rs = prep.getResultSet();
+        // S'il y a un resultat
+        if (rs.next()) {
+            Tache t = Tache.findById(rs.getInt("id_tachefille"));
+            soustaches.add(t);
+        }
+        return soustaches;
     }
 }

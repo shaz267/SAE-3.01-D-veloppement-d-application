@@ -578,6 +578,21 @@ public class MyApplication extends Application {
                     Modele.setTacheCourante(tache.getNumTache());
                     // On ajoute la tâche à la liste
                     modele.ajouterTache(tache);
+                    // On récupère toutes les sous tâches de la tâche
+                    ArrayList<Tache> sousTaches = tache.findAllSousTaches();
+
+                    // On boucle sur l'ensemble des sous taches
+                    for (Tache sousTache : sousTaches) {
+                        // On ajoute la tâche fille à la tâche mère. Si le résultat est false on change la tache courante en TacheMere
+                        if (!modele.ajouterSousTache(sousTache)) {
+
+                            // On change la tâche courante en tâche mère
+                            modele.tacheCouranteEnMere();
+
+                            // On ajoute la tâche fille à la tâche mère
+                            modele.ajouterSousTache(sousTache);
+                        }
+                    }
                 }
             }
         }

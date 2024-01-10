@@ -56,8 +56,8 @@ public class TestTableauDB {
 	 * test find avec un titre existant
 	 */
 	@Test
-	public void testFindByNameExiste() throws SQLException {
-		ArrayList<Tableau> t = Tableau.findByName("test2");
+	public void testFindByTitreExiste() throws SQLException {
+		ArrayList<Tableau> t = Tableau.findByTitre("test2");
 		assertEquals(1, t.size(),"Il y a 1 enregistrements avec cette valeur dans la BD");
 		assertEquals(t.get(0).getId(), 2,"L'id doit être 2");
 	}
@@ -66,8 +66,8 @@ public class TestTableauDB {
 	 * test find avec un titre existant 2 fois
 	 */
 	@Test
-	public void testFindByName2Existe() throws SQLException {
-		ArrayList<Tableau> t = Tableau.findByName("test1");
+	public void testFindByTitre2Existe() throws SQLException {
+		ArrayList<Tableau> t = Tableau.findByTitre("test1");
 		assertEquals(2, t.size(),"Il y a 2 enregistrements avec cette valeur dans la BD");
 		assertEquals(t.get(0).getId(), 1,"L'id doit être 1");
 		assertEquals(t.get(1).getId(), 5,"L'id doit être 5");
@@ -77,8 +77,8 @@ public class TestTableauDB {
 	 * test find avec un titre inexistant
 	 */
 	@Test
-	public void testFindByNameInexiste() throws SQLException {
-		ArrayList<Tableau> t = Tableau.findByName("test5");
+	public void testFindByTitreInexiste() throws SQLException {
+		ArrayList<Tableau> t = Tableau.findByTitre("test5");
 		assertEquals(0, t.size(),"Il n'y a pas d'enregistrement avec cette valeur dans la BD");
 	}
 

@@ -78,10 +78,12 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
                 this.modele.ajouterTableau(t);
                 Loggeur.enregistrer("Ajout du tableau : " + titre + " dans l'application");
 
-                try {
-                    t.save();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if(Modele.user != null){
+                    try {
+                        t.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 // On ajoute la vue du tableau au modele

@@ -3072,3 +3072,18 @@
 15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
 15:15,21s -- Changement de la date limite de la tâche Tâche Mère en 2024-01-10
 15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:20,1s -- Ajout de la liste Liste 1 au tableau Mon Tableau
+15:20,1s -- Ajout de la liste Liste 2 au tableau Mon Tableau
+15:20,1s -- Ajout de la tâche Tâche à déplacer à la liste Liste 1
+15:20,1s -- Ajout de la liste Liste 1 au tableau Mon Tableau
+15:20,1s -- Ajout de la liste Liste 2 au tableau Mon Tableau
+15:20,1s -- Ajout de la tâche Tâche à déplacer à la liste Liste 2
+15:22,18s -- Ajout de la liste Liste au tableau Mon Tableau
+15:22,18s -- Suppression de la liste Liste du tableau Mon Tableau
+15:25,37s -- Ajout de la liste Liste au tableau Mon Tableau
+15:25,37s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:27,45s -- Ajout de la liste Liste au tableau Mon Tableau
+15:30,45s -- Ajout de la liste Liste au tableau Mon Tableau
+15:30,45s -- Ajout de la liste Liste 2 au tableau Mon Tableau
+15:30,45s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:30,45s -- Ajout de la tâche Tâche Mère à la liste Liste 2

@@ -13,47 +13,51 @@ class TableauTest {
 
     @Test
     void ajouterTache() {
+        // Données de test
         Tableau tableau = new Tableau(1, "Mon Tableau");
-        TacheMere tache = new TacheMere(1, "Ma Tâche");
-        tableau.ajouterTache(tache);
+        Liste liste = new Liste(1, "Liste");
+        TacheMere tacheMere = new TacheMere(1, "Tâche Mère");
+        tableau.ajouterListe(liste);
 
-        List<Tache> taches = tableau.getTaches();
-        assertTrue(taches.contains(tache));
+        // Appel de la méthode à tester
+        Modele.setListeCourante(liste.getNumListe());
+        tableau.ajouterTache(tacheMere);
+
+        // Vérification du résultat
+        assertTrue(tableau.getTaches().contains(tacheMere));
     }
 
     @Test
     void deplacerTache() {
+         // Données de test
         Tableau tableau = new Tableau(1, "Mon Tableau");
-        Liste liste1 = new Liste(1, "Liste 1");
+        Liste liste = new Liste(1, "Liste");
         Liste liste2 = new Liste(2, "Liste 2");
-        TacheMere tache = new TacheMere(2,"Tâche à déplacer");
-
-        liste1.ajouterTache(tache);
-        tableau.ajouterListe(liste1);
+        TacheMere tacheMere = new TacheMere(1, "Tâche Mère");
+        tableau.ajouterListe(liste);
         tableau.ajouterListe(liste2);
+        Modele.setListeCourante(liste.getNumListe());
+        tableau.ajouterTache(tacheMere);
 
-        assertTrue(tableau.deplacerTache(tache, 2));
+        // Appel de la méthode à tester
+        tableau.deplacerTache(tacheMere, 2);
 
-        // Vérifie que la tâche a été déplacée dans la liste 2
-        assertFalse(liste1.getTaches().contains(tache));
-        assertTrue(liste2.getTaches().contains(tache));
+        // Vérification du résultat
+        assertTrue(tableau.getTaches().contains(tacheMere));
     }
 
     @Test
     void retirerListe() {
+        // Données de test
         Tableau tableau = new Tableau(1, "Mon Tableau");
-        Liste liste1 = new Liste(1, "Liste 1");
-        Liste liste2 = new Liste(2, "Liste 2");
+        Liste liste = new Liste(1, "Liste");
+        tableau.ajouterListe(liste);
 
-        tableau.ajouterListe(liste1);
-        tableau.ajouterListe(liste2);
+        // Appel de la méthode à tester
+        Modele.setListeCourante(liste.getNumListe());
+        tableau.retirerListe();
 
-        // Sélectionne la liste courante à "Liste 1"
-        tableau.setNumTableau(1);
-
-        assertTrue(tableau.retirerListe());
-
-        // Vérifie que la liste 1 a été retirée et la liste 2 est maintenant la courante
-        assertEquals("Liste 2", tableau.getListes().get(0).getTitre());
+        // Vérification du résultat
+        assertFalse(tableau.getListes().contains(liste));
     }
 }

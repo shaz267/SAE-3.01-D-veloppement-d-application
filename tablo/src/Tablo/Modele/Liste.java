@@ -306,7 +306,7 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
                 this.save();
                 // On enregistre la tache dans la base de données
                 t.save();
-                // On enregistre la liste dans laquelle on a ajouté la tâche dans la base de données
+                // On enregistre le lien tache-liste dans la base de données
                 String SQLPrep = "INSERT INTO `TACHELISTE` (`id_liste`,`id_tache`) VALUES (?,?);";
                 PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
                 prep.setInt(1,this.id);

@@ -3,7 +3,9 @@ package Tablo.Modele;
 import Tablo.DBConnection;
 import Tablo.Loggeur;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -92,11 +94,24 @@ public class TacheMere extends Tache {
             if(Modele.user != null){
                 try {
                     this.save();
-                    String SQLPrep = "INSERT INTO `ESTSOUSTACHE` (`id_tachemere`, `id_tachefille`) VALUES (?, ?)";
-                    PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
-                    prep.setInt(1, this.getId());
-                    prep.setInt(2, tache.getId());
-                    prep.executeUpdate();
+
+                    // On vérifie dans la base que la relation de tache mère fille n'existe pas déjà
+                    String query = "SELECT * FROM `ESTSOUSTACHE` WHERE `id_tachemere` = ? AND `id_tachefille` = ?";
+                    PreparedStatement ps = DBConnection.getConnection().prepareStatement(query);
+                    ps.setInt(1, this.getId());
+                    ps.setInt(2, tache.getId());
+                    ps.execute();
+
+                    ResultSet rs = ps.getResultSet();
+                    // Si il n'y a pas de résultat, on ajoute la relation dans la base
+                    if(!rs.next()){
+                        String SQLPrep = "INSERT INTO `ESTSOUSTACHE` (`id_tachemere`, `id_tachefille`) VALUES (?, ?)";
+                        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                        prep.setInt(1, this.getId());
+                        prep.setInt(2, tache.getId());
+                        prep.executeUpdate();
+                    }
+
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

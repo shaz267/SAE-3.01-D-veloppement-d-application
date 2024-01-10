@@ -17,16 +17,12 @@ public class Init {
 
 	public static void main(String[] args) {
 		// On crée les tables
-		String creationASSIGNER = "CREATE TABLE `ASSIGNER` (`id_user` int(11) NOT NULL,`id_tache` int(11) NOT NULL, PRIMARY KEY (`id_user`,`id_tache`))";
-		String creationCOLLABO = "CREATE TABLE `COLLABO` (`id_edt` int(11) NOT NULL,`id_user` int(11) NOT NULL, PRIMARY KEY (`id_edt`,`id_user`))";
 		String creationESTSOUSTACHE = "CREATE TABLE `ESTSOUSTACHE` (`id_tachemere` int(11) NOT NULL,`id_tachefille` int(11) NOT NULL, PRIMARY KEY (`id_tachemere`,`id_tachefille`))";
 		String creationTABLEAULISTE = "CREATE TABLE `TABLEAULISTE` (`id_tableau` int(11) NOT NULL,`id_liste` int(11) NOT NULL, PRIMARY KEY (`id_tableau`,`id_liste`))";
 		String creationTACHELISTE = "CREATE TABLE `TACHELISTE` (`id_liste` int(11) NOT NULL,`id_tache` int(11) NOT NULL)";
 
 		// On les ajoute dans une liste
 		ArrayList<String> requetes = new ArrayList<String>();
-		requetes.add(creationASSIGNER);
-		requetes.add(creationCOLLABO);
 		requetes.add(creationESTSOUSTACHE);
 		requetes.add(creationTABLEAULISTE);
 		requetes.add(creationTACHELISTE);

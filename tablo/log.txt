@@ -3035,3 +3035,40 @@
 15:0,51s -- Ajout de la tâche Tâche Simple 2 à la tâche mère Tâche Mère
 15:0,51s -- Changement de la date de début de la tâche Tâche Simple 2 en 2024-01-12
 15:0,51s -- Changement de la date limite de la tâche Tâche Simple 2 en 2024-01-13
+15:3,18s -- Ajout de la tâche Tâche Simple à la tâche mère Tâche Mère
+15:3,18s -- Changement de la date de début de la tâche Tâche Simple en 2024-01-12
+15:3,18s -- Changement de la date limite de la tâche Tâche Simple en 2024-01-13
+15:3,18s -- Ajout de la tâche Tâche Simple 2 à la tâche mère Tâche Mère
+15:3,18s -- Changement de la date de début de la tâche Tâche Simple 2 en 2024-01-12
+15:3,18s -- Changement de la date limite de la tâche Tâche Simple 2 en 2024-01-13
+15:3,18s -- Ajout de la tâche Tâche Simple 3 à la tâche mère Tâche Mère
+15:3,18s -- Changement de la date de début de la tâche Tâche Simple 3 en 2024-01-12
+15:3,18s -- Changement de la date limite de la tâche Tâche Simple 3 en 2024-01-13
+15:3,18s -- Ajout de la tâche Tâche Simple à la tâche mère Tâche Mère
+15:3,18s -- Changement de la date de début de la tâche Tâche Simple en 2024-01-12
+15:3,18s -- Changement de la date limite de la tâche Tâche Simple en 2024-01-13
+15:3,18s -- Changement de la date limite de la tâche Tâche Mère en 2024-01-10
+15:3,18s -- Suppression de la tâche Tâche Simple de la tâche mère Tâche Mère
+15:3,18s -- Ajout de la tâche Tâche Simple à la tâche mère Tâche Mère
+15:3,18s -- Changement de la date de début de la tâche Tâche Simple en 2024-01-12
+15:3,18s -- Changement de la date limite de la tâche Tâche Simple en 2024-01-13
+15:3,18s -- Ajout de la tâche Tâche Simple 2 à la tâche mère Tâche Mère
+15:3,18s -- Changement de la date de début de la tâche Tâche Simple 2 en 2024-01-12
+15:3,18s -- Changement de la date limite de la tâche Tâche Simple 2 en 2024-01-13
+15:15,21s -- Changement du titre de la liste Liste en Nouveau titre
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Changement du titre de la tâche Tâche Mère en Nouveau titre
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Changement du contenu de la tâche Tâche Mère en Nouveau contenu
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Ajout de la tâche Tâche Simple à la tâche mère Tâche Mère
+15:15,21s -- Changement de la date de début de la tâche Tâche Simple en 2024-01-12
+15:15,21s -- Changement de la date limite de la tâche Tâche Simple en 2024-01-13
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Archivage de la tâche Tâche Mère de la liste Liste
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Changement de la date de début de la tâche Tâche Mère en 2024-01-10
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste
+15:15,21s -- Changement de la date limite de la tâche Tâche Mère en 2024-01-10
+15:15,21s -- Ajout de la tâche Tâche Mère à la liste Liste

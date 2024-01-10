@@ -14,28 +14,7 @@ class TableauTest {
     @Test
     void ajouterTache() {
         Tableau tableau = new Tableau(1, "Mon Tableau");
-        Tache tache = new Tache(1, "Ma Tâche") {
-            @Override
-            public boolean ajouterTache(Tache tache) {
-                return false;
-            }
-
-            @Override
-            public boolean supprimerTache(Tache tache) {
-                return false;
-            }
-
-            @Override
-            public List<Tache> getSousTaches() {
-                return null;
-            }
-
-            @Override
-            public boolean supprimerSousTache(int sousTache) {
-                return false;
-            }
-        };
-
+        TacheMere tache = new TacheMere(1, "Ma Tâche");
         tableau.ajouterTache(tache);
 
         List<Tache> taches = tableau.getTaches();
@@ -47,27 +26,7 @@ class TableauTest {
         Tableau tableau = new Tableau(1, "Mon Tableau");
         Liste liste1 = new Liste(1, "Liste 1");
         Liste liste2 = new Liste(2, "Liste 2");
-        Tache tache = new Tache(2,"Tâche à déplacer") {
-            @Override
-            public boolean ajouterTache(Tache tache) {
-                return false;
-            }
-
-            @Override
-            public boolean supprimerTache(Tache tache) {
-                return false;
-            }
-
-            @Override
-            public List<Tache> getSousTaches() {
-                return null;
-            }
-
-            @Override
-            public boolean supprimerSousTache(int sousTache) {
-                return false;
-            }
-        };
+        TacheMere tache = new TacheMere(2,"Tâche à déplacer");
 
         liste1.ajouterTache(tache);
         tableau.ajouterListe(liste1);

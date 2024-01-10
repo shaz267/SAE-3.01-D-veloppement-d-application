@@ -48,20 +48,20 @@ public class ControleurAjoutTemplates implements EventHandler<ActionEvent> {
         //On fait un switch sur le titre du template
         switch (titre) {
             case "Conduite de projet":
-                //On modifie le template du modele
-                this.modele.setTemplate(new TemplateConduiteProjet(this.modele));
+                //On modifie le template du modele en utilisant le patron singleton
+                this.modele.setTemplate(TemplateConduiteProjet.getInstance(this.modele));
                 break;
             case "Modèle Kanban":
-                //On modifie le template du modele
-                this.modele.setTemplate(new TemplateKanban(this.modele));
+                //On modifie le template du modele en utilisant le patron singleton
+                this.modele.setTemplate(TemplateKanban.getInstance(this.modele));
                 break;
             case "Réunion hebdomadaire":
                 //On modifie le template du modele
-                this.modele.setTemplate(new TemplateReuHebdo(this.modele));
+                this.modele.setTemplate(TemplateReuHebdo.getInstance(this.modele));
                 break;
             case "Tableau Agile":
                 //On modifie le template du modele
-                this.modele.setTemplate(new TemplateTableauAgile(this.modele));
+                this.modele.setTemplate(TemplateTableauAgile.getInstance(this.modele));
                 break;
         }
         //On crée le tableau avec le template choisi

@@ -1,7 +1,7 @@
 package Tablo.Vue;
 
 import Tablo.Controleur.ControleurAjouterTableau;
-import Tablo.Controleur.ControleurCréerDiagramme;
+import Tablo.Controleur.ControleurCreerDiagramme;
 import Tablo.Controleur.ControleurParametre;
 import Tablo.Modele.Modele;
 import Tablo.Observateur;
@@ -67,7 +67,7 @@ public class VueVboxLeft extends VBox implements Observateur {
         boutonDiagGantt.setOnMousePressed(e -> boutonDiagGantt.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-size: 15px;")); // Changement de couleur au clic
 
         //On ajoute le controleur pour créer un diagramme de Gantt
-        boutonDiagGantt.setOnAction(new ControleurCréerDiagramme(modele));
+        boutonDiagGantt.setOnAction(new ControleurCreerDiagramme(modele));
 
 
         this.getChildren().addAll(boutonTableaux, vueDifferentTableaux, parametre, boutonDiagGantt);

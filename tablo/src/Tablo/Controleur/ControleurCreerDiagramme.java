@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ControleurCréerDiagramme implements EventHandler<ActionEvent> {
+public class ControleurCreerDiagramme implements EventHandler<ActionEvent> {
 
 
     /**
@@ -20,7 +20,7 @@ public class ControleurCréerDiagramme implements EventHandler<ActionEvent> {
      * Constructeur de la classe ControleurCréerDiagramme
      * @param m
      */
-    public ControleurCréerDiagramme(Modele m) {
+    public  ControleurCreerDiagramme(Modele m) {
         this.modele = m;
     }
 

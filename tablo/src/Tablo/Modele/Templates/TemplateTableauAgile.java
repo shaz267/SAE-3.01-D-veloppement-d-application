@@ -12,9 +12,30 @@ public class TemplateTableauAgile implements TemplatesStrategie{
      * Modele du template
      */
     private Modele modele;
-    
-    public TemplateTableauAgile(Modele modele) {
+
+    /**
+     * Instance du template qui est utilisée pour le patron singleton
+     */
+    private static TemplateTableauAgile instance;
+
+    /**
+     * Constructeur de la classe TemplateTableauAgile
+     * @param modele Modele de l'application
+     */
+    private TemplateTableauAgile(Modele modele) {
         this.modele = modele;
+    }
+
+    /**
+     * Méthode qui permet de récupérer l'instance du template
+     * @param modele Modele de l'application
+     * @return L'instance du template
+     */
+    public static synchronized TemplateTableauAgile getInstance(Modele modele) {
+        if (instance == null) {
+            instance = new TemplateTableauAgile(modele);
+        }
+        return instance;
     }
     
     @Override

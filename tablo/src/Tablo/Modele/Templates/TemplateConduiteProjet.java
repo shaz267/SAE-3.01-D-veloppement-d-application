@@ -12,11 +12,31 @@ public class TemplateConduiteProjet implements TemplatesStrategie{
      * Modele du template
      */
     private Modele modele;
-    
-    public TemplateConduiteProjet(Modele modele) {
+
+    /**
+     * Instance du template qui est utilisée pour le patron singleton
+     */
+    private static TemplateConduiteProjet instance;
+
+    /**
+     * Constructeur de la classe TemplateConduiteProjet
+     * @param modele
+     */
+    private TemplateConduiteProjet(Modele modele) {
         this.modele = modele;
     }
-    
+
+    /**
+     * Méthode qui permet de récupérer l'instance du template
+     * @param modele Modele de l'application
+     * @return L'instance du template
+     */
+    public static synchronized TemplateConduiteProjet getInstance(Modele modele) {
+        if (instance == null) {
+            instance = new TemplateConduiteProjet(modele);
+        }
+        return instance;
+    }
     
     @Override
     public void creerTableau() {

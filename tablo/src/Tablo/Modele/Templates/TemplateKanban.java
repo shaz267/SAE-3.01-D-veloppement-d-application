@@ -13,8 +13,20 @@ public class TemplateKanban implements TemplatesStrategie{
      */
     private Modele modele;
 
-    public TemplateKanban(Modele modele) {
+    /**
+     * Instance du template qui est utilisée pour le patron singleton
+     */
+    private static TemplateKanban instance;
+
+    private TemplateKanban(Modele modele) {
         this.modele = modele;
+    }
+
+    public static synchronized TemplateKanban getInstance(Modele modele) {
+        if (instance == null) {
+            instance = new TemplateKanban(modele);
+        }
+        return instance;
     }
 
     @Override

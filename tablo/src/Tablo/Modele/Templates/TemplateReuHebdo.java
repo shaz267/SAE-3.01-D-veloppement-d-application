@@ -12,10 +12,32 @@ public class TemplateReuHebdo implements TemplatesStrategie{
      * Modele du template
      */
     private Modele modele;
-    
-    public TemplateReuHebdo(Modele modele) {
+
+    /**
+     * Instance du template qui est utilisée pour le patron singleton
+     */
+    private static TemplateReuHebdo instance;
+
+    /**
+     * Constructeur de la classe TemplateReuHebdo
+     * @param modele Modele de l'application
+     */
+    private TemplateReuHebdo(Modele modele) {
         this.modele = modele;
     }
+
+    /**
+     * Méthode qui permet de récupérer l'instance du template
+     * @param modele Modele de l'application
+     * @return L'instance du template
+     */
+    public static synchronized TemplateReuHebdo getInstance(Modele modele) {
+        if (instance == null) {
+            instance = new TemplateReuHebdo(modele);
+        }
+        return instance;
+    }
+
     @Override
     public void creerTableau() {
 

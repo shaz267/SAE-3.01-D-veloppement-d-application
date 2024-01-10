@@ -302,6 +302,35 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Méthode qui permet de déplacer une liste dans un tableau.
+     */
+    public void deplacerListe(int numListe) {
+
+        for (Tableau tableau : tableaux) {
+
+            if (tableau.getNumTableau() == tableauCourant) {
+
+                tableau.deplacerListe(numListe);
+                this.notifierObservateurs();
+            }
+        }
+    }
+
+    /**
+     * Méthode qui permet de récupérer la liste à déplacer et la marque comme selectionnée
+     */
+    public Liste getListeADeplacer() {
+        Liste listeADeplacer = null;
+        for (Liste liste : this.getListes()) {
+            if (liste.getNumListe() == Modele.getListeCourante()) {
+                listeADeplacer = liste;
+                listeADeplacer.setSelectionnee(true);
+            }
+        }
+        return listeADeplacer;
+    }
+
+    /**
      * Méthode qui retire une liste au tableau courant
      *
      * @return true si la liste a été retirée, false sinon

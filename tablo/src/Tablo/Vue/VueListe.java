@@ -1,9 +1,6 @@
 package Tablo.Vue;
 
-import Tablo.Controleur.ControleurCreationTache;
-import Tablo.Controleur.ControleurListeCliquee;
-import Tablo.Controleur.ControleurDeplacerTacheListe;
-import Tablo.Controleur.ControleurTacheCliquee;
+import Tablo.Controleur.*;
 import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
@@ -99,6 +96,7 @@ public class VueListe extends VBox {
         this.setOnDragOver(new ControleurDeplacerTacheListe(modele));
         this.setOnDragExited(new ControleurDeplacerTacheListe(modele));
         this.setOnDragDropped(new ControleurDeplacerTacheListe(modele));
+        this.setOnDragDetected(new ControleurDeplacerListe(modele));
 
     }
 

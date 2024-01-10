@@ -207,6 +207,42 @@ public class Tableau {
     }
 
     /**
+     * Cette méthode permet de déplacer une liste dans le tableau
+     */
+    public void deplacerListe(int numListeDestination) {
+
+        //On récupère la liste de destination
+        Liste listeDestination = this.listes.get(numListeDestination-1);
+
+        //On vérifie que la liste de destination existe
+        if (listeDestination != null) {
+
+            //On récupère la liste courante
+            Liste listeCourante = null;
+            for (Liste l : this.listes) {
+                if (l.getNumListe() == Modele.getListeCourante()) {
+                    listeCourante = l;
+                }
+            }
+
+            //On récupère le numéro de la liste courante
+            int numListeCourante = listeCourante.getNumListe();
+
+            //On change le numéro de la liste courante
+            listeCourante.setNumListe(numListeDestination);
+
+            //On change le numéro de la liste de destination
+            listeDestination.setNumListe(numListeCourante);
+
+            //On change la liste courante
+            Modele.setListeCourante(numListeDestination);
+
+            //On enregistre l'action dans les logs
+            Loggeur.enregistrer("Déplacement de la liste " + listeCourante.getTitre() + " à la position " + numListeDestination + " du tableau " + this.titre);
+        }
+    }
+
+    /**
      * Retire une liste de l'objet Tableau
      *
      * @return true si on a supprimé la liste courante, false sinon

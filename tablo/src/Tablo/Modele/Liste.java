@@ -21,6 +21,9 @@ public class Liste {
     // Correspond au titre/nom de l'objet Liste
     private String titre;
 
+    // Correspond à la selection de la liste
+    private boolean selectionnee;
+
     // Correspond à l'ensemble des tâches dans un objet Liste
     private List<Tache> taches;
 
@@ -349,6 +352,15 @@ public class Liste {
     public int getNumListe() {
         return this.numListe;
     }
+
+    public void setSelectionnee(boolean b) {
+        this.selectionnee = b;
+    }
+    public boolean estSelectionnee() {
+        return this.selectionnee;
+    }
+
+
 
 
     /**

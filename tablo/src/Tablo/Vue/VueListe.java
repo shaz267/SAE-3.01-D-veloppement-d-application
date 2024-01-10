@@ -44,7 +44,7 @@ public class VueListe extends VBox {
 
         // Affichage du titre de la liste
         this.labelTitre = new Label(titre);
-        this.labelTitre.setStyle("-fx-font-weight: bold;");
+        this.labelTitre.setStyle("-fx-font-size: 15px;-fx-font-family: 'Roboto Light'; -fx-font-weight: bold;");
 
         this.getChildren().add(this.labelTitre);
 
@@ -64,12 +64,12 @@ public class VueListe extends VBox {
         // On ajoute un bouton pour ajouter une tâche
         Button btnAjouterTache = new Button("Ajouter une tache");
 
-        btnAjouterTache.setStyle("-fx-font-weight: bold;");
-        btnAjouterTache.setStyle("-fx-font-size: 20px;");
-        btnAjouterTache.setPrefSize(200, 50);
+        btnAjouterTache.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light'; ");
+        btnAjouterTache.setOnMouseEntered(e -> btnAjouterTache.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(50,80,46,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';")); // Changement de couleur au survol
+        btnAjouterTache.setOnMouseExited(e -> btnAjouterTache.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';"));  // Changement de couleur à la sortie du survol
+        btnAjouterTache.setOnMousePressed(e -> btnAjouterTache.setStyle("-fx-border-width: 3px; -fx-border-color: rgba(70,117,67,0.71); -fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';")); // Changement de couleur au clic
 
-        //On met le bouton en VERT
-        btnAjouterTache.setStyle("-fx-background-color: #b6f5b6;");
+        btnAjouterTache.setPrefSize(200, 50);
 
         //On récupère la liste courante
         Liste l = modele.getListes().get(this.numListe - 1);

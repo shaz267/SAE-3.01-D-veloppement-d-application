@@ -15,11 +15,8 @@ public class VueTitreTableau extends Text implements Observateur {
         super("");
 
         //On change le style du titre du tableau
-        this.setStyle("-fx-font-weight: bold;");
-        this.setStyle("-fx-background-color: #f8b9a7;");
+        this.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 35px; -fx-fill: rgba(70,117,67,0.71); -fx-underline: true;");
 
-        //Le texte en gras
-        this.setFont(javafx.scene.text.Font.font("Verdana", 35));
 
     }
 
@@ -36,5 +33,6 @@ public class VueTitreTableau extends Text implements Observateur {
 
         //On change le texte du titre du tableau
         this.setText(m.getTitreTableau());
+
     }
 }

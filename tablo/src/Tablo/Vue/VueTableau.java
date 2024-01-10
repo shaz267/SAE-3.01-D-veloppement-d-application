@@ -33,12 +33,15 @@ public class VueTableau extends ScrollPane implements Observateur {
         super();
 
         this.setPannable(true);
+        this.setStyle("-fx-border-color: #b3b3b3; -fx-border-width: 1px; -fx-background-color: transparent;");
 
         //On initialise le bouton et on lui donne un style
         ajouterListe = new Button("Ajouter une liste");
-        ajouterListe.setStyle("-fx-font-weight: bold;");
-        ajouterListe.setStyle("-fx-font-size: 20px;");
-        ajouterListe.setStyle("-fx-background-color: #b6f5b6;");
+        ajouterListe.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light'; ");
+        ajouterListe.setOnMouseEntered(e -> ajouterListe.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(50,80,46,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';")); // Changement de couleur au survol
+        ajouterListe.setOnMouseExited(e -> ajouterListe.setStyle("-fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';"));  // Changement de couleur à la sortie du survol
+        ajouterListe.setOnMousePressed(e -> ajouterListe.setStyle("-fx-border-width: 3px; -fx-border-color: rgba(70,117,67,0.71); -fx-font-size: 15px;-fx-background-color: rgba(70,117,67,0.71);-fx-text-fill: white;-fx-font-family: 'Roboto Light';")); // Changement de couleur au clic
+
         ajouterListe.setPrefSize(200, 50);
 
         //On masque le bouton
@@ -51,6 +54,7 @@ public class VueTableau extends ScrollPane implements Observateur {
 
         HBox container = new HBox();
         container.getChildren().addAll(listeContainer, ajouterListe);
+        container.setSpacing(10);
 
         this.setContent(container);
     }

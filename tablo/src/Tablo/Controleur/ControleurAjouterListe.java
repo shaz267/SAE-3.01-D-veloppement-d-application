@@ -3,6 +3,7 @@ package Tablo.Controleur;
 import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 
@@ -42,8 +43,21 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
         // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
         dialog.showAndWait().ifPresent(titre -> {
 
-            //On ajoute la liste au modele
-            modele.ajouterListe(titre);
+            //On vérifie que le titre de la liste est valide
+            if (titre.length() > 25 || titre.isEmpty()) {
+
+                //On affiche une alerte
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Erreur");
+                alert.setContentText("Le titre de la liste ne doit pas être vide et ne doit pas dépasser 25 caractères");
+                alert.showAndWait();
+
+            }else{
+                //On ajoute la liste au modele
+                modele.ajouterListe(titre);
+            }
+
         });
     }
 }

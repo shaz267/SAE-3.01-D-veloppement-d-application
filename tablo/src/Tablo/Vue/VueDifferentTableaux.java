@@ -93,8 +93,17 @@ public class VueDifferentTableaux extends VBox implements Observateur {
 
         // Si on clique sur un tableau avec le clic droit, on affiche un menu contextuel
         for (Button boutonsTableau : this.boutonsTableaux) {
-            boutonsTableau.setOnMousePressed(new ControleurTableauClicDroit(this.modele));
             boutonsTableau.setOnMouseClicked(new ControleurChangementTableau(this.modele));
+        }
+
+        for(Button bouton : this.boutonsTableaux){
+            bouton.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
+            bouton.setOnMouseEntered(e -> bouton.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
+            bouton.setOnMouseExited(e -> bouton.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
+            bouton.setOnMousePressed(e -> {
+                bouton.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;");
+                new ControleurTableauClicDroit(this.modele).handle(e);
+            });
         }
     }
 }

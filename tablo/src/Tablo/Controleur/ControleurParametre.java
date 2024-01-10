@@ -46,13 +46,17 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
 
         //On créé le texte qui va être affiché
         Text titreSombre = new Text("Mode sombre : ");
-        titreSombre.setStyle("-fx-font-weight: bold;");
-        titreSombre.setStyle("-fx-font-size: 20px;");
+        titreSombre.setStyle("-fx-font-size: 17px; -fx-font-family: 'Roboto Light'");
 
         //On créé le bouton qui va permettre de changer le mode sombre
         RadioButton ModeSombre = new RadioButton();
-        ModeSombre.setStyle("-fx-font-weight: bold;");
-        ModeSombre.setStyle("-fx-font-size: 20px;");
+
+        //On ajoute un évènement au bouton
+        ModeSombre.setOnAction(e -> Modele.changerModeSombre());
+
+        if (Modele.getModeSombre()) {
+            ModeSombre.setSelected(true);
+        }
 
         //On ajoute les composantes graphiques à la HBoxModeSombre
         HBoxModeSombre.setSpacing(20);
@@ -66,7 +70,7 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
 
         //On créé le texte qui va être affiché
         Text logText = new Text("Logs de l'application : ");
-        logText.setStyle("-fx-font-size: 20px;");
+        logText.setStyle("-fx-font-size: 17px; -fx-font-family: 'Roboto Light'");
 
         //On créé le TextArea qui va contenir les logs
         TextArea log = new TextArea();
@@ -79,7 +83,7 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
         Separator separator2 = new Separator();
 
         Text titreTachesArchivees = new Text("Tâches archivées : ");
-        titreTachesArchivees.setStyle("-fx-font-size: 20px;");
+        titreTachesArchivees.setStyle("-fx-font-size: 17px; -fx-font-family: 'Roboto Light'");
 
         //On ajoute la liste des taches archivées
         VueTachesArchivees vueTachesArchivees = new VueTachesArchivees(modele);

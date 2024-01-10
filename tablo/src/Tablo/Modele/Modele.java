@@ -47,6 +47,12 @@ public class Modele implements Sujet {
     private TemplatesStrategie template;
 
     /**
+     * Attribut ModeSombre qui permet de savoir si le mode sombre est activé ou non.
+     */
+    private static boolean ModeSombre = false;
+
+
+    /**
      * Constructeur de la classe Modele qui initialise les attributs tableauCourant, listeCourante et tacheCourante à -1.
      */
     public Modele() {
@@ -767,5 +773,20 @@ public class Modele implements Sujet {
         if (this.template != null)
             //On crée le tableau avec le template choisi
             this.template.creerTableau();
+    }
+
+    /**
+     * Méthode qui permet de changer l'attribut ModeSombre
+     */
+    public static void changerModeSombre() {
+        ModeSombre = !ModeSombre;
+    }
+
+    /**
+     * Méthode qui permet de savoir si le mode sombre est activé ou non
+     * @return ModeSombre
+     */
+    public static boolean getModeSombre() {
+        return ModeSombre;
     }
 }

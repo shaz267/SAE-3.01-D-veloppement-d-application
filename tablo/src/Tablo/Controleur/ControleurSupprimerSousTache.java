@@ -2,6 +2,7 @@ package Tablo.Controleur;
 
 import Tablo.Modele.Modele;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 public class ControleurSupprimerSousTache implements EventHandler<MouseEvent> {
@@ -25,6 +26,12 @@ public class ControleurSupprimerSousTache implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
-        this.modele.supprimerSousTache(this.numTache);
+        //On récupère le bouton supprimer
+        Button supprimer = (Button) mouseEvent.getSource();
+
+        if (this.modele.supprimerSousTache(this.numTache)){
+
+            supprimer.getScene().getWindow().hide();
+        }
     }
 }

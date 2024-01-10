@@ -60,7 +60,6 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         } else if (this.modele.retirerTableau()) {
             //On ferme la fenêtre
             supprimer.getScene().getWindow().hide();
-
         }
 
 

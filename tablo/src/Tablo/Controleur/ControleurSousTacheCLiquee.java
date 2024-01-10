@@ -47,5 +47,8 @@ public class ControleurSousTacheCLiquee  implements EventHandler<MouseEvent> {
 
         //On affiche la boîte de dialogue
         dialog.showAndWait();
+
+        //On ferme la fenêtre
+        vT.getScene().getWindow().hide();
     }
 }

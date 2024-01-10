@@ -17,7 +17,7 @@ public class VueSousTaches extends ScrollPane {
      * Constructeur de la classe VueSousTaches
      *
      * @param modele
-     */
+    l     */
     public VueSousTaches(Modele modele) {
         super();
         this.setPannable(true);

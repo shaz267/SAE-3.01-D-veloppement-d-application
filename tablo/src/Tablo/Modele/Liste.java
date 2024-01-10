@@ -238,7 +238,16 @@ public class Liste {
 
         if(Modele.user != null){
             try {
+                // On enregistre la liste dans la base de données
                 this.save();
+                // On enregistre la tache dans la base de données
+                t.save();
+                // On enregistre la liste dans laquelle on a ajouté la tâche dans la base de données
+                String SQLPrep = "INSERT INTO `TACHELISTE` (`id_liste`,`id_tache`) VALUES (?,?);";
+                PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                prep.setInt(1,this.id);
+                prep.setInt(2,t.getId());
+                prep.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -286,7 +295,6 @@ public class Liste {
      * @param tache
      * @param liste
      */
-
     public void retirerTache(Tache tache, Liste liste) {
 
      	//On supprime la tache de la liste

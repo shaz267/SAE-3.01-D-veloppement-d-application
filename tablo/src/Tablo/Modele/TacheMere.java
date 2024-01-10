@@ -1,7 +1,12 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 
+import javax.xml.transform.Result;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,19 @@ public class TacheMere extends Tache {
     }
 
     /**
+     * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
+     * @param titre
+     * @param contenu
+     * @param dateDebut
+     * @param dateLimite
+     * @param estArchivee
+     */
+    public TacheMere(String titre, String contenu, LocalDate dateDebut, LocalDate dateLimite, boolean estArchivee){
+        super(titre, contenu, dateDebut, dateLimite, estArchivee);
+        this.taches = new ArrayList<Tache>();
+    }
+
+    /**
      * Constructeur qui prend un Objet TacheSimple en paramètre. Et le transforme en TacheMere.
      */
     public TacheMere(Tache tache) {
@@ -36,7 +54,6 @@ public class TacheMere extends Tache {
         this.id = tache.getId();
         this.contenu = tache.getContenu();
         this.dateDebut = tache.getDateDebut();
-        this.estTerminee = tache.isEstTerminee();
         this.dateDebut = tache.getDateDebut();
         this.dateLimite = tache.getDateLimite();
         this.estArchivee = tache.isArchivee();
@@ -48,7 +65,6 @@ public class TacheMere extends Tache {
 
     /**
      * Méthode qui ajoute une tâche fille à la tâche mère.
-     *
      * @param tache tache à ajouter.
      */
     public boolean ajouterTache(Tache tache) {
@@ -64,7 +80,6 @@ public class TacheMere extends Tache {
         if (this.taches.contains(tache) || tache.hashCode() == this.hashCode() || tacheEstUneSousTacheDeLaTacheMere) {
             return false;
         } else {
-
             Loggeur.enregistrer("Ajout de la tâche " + tache.getTitre() + " à la tâche mère " + this.titre);
 
             //On récupere la durée de la tache fille. C'est a dire la différence entre la date de début et la date de fin.
@@ -79,7 +94,31 @@ public class TacheMere extends Tache {
                 //On modifie la date de fin de la tache fille pour que la durée de la tache fille ne change pas.
                 tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
             }
+            if(Modele.user != null){
+                try {
+                    this.save();
 
+                    // On vérifie dans la base que la relation de tache mère fille n'existe pas déjà
+                    String query = "SELECT * FROM `ESTSOUSTACHE` WHERE `id_tachemere` = ? AND `id_tachefille` = ?";
+                    PreparedStatement ps = DBConnection.getConnection().prepareStatement(query);
+                    ps.setInt(1, this.getId());
+                    ps.setInt(2, tache.getId());
+                    ps.execute();
+
+                    ResultSet rs = ps.getResultSet();
+                    // Si il n'y a pas de résultat, on ajoute la relation dans la base
+                    if(!rs.next()){
+                        String SQLPrep = "INSERT INTO `ESTSOUSTACHE` (`id_tachemere`, `id_tachefille`) VALUES (?, ?)";
+                        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                        prep.setInt(1, this.getId());
+                        prep.setInt(2, tache.getId());
+                        prep.executeUpdate();
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
             tache.setTacheMere(this);
             return this.taches.add(tache);
         }

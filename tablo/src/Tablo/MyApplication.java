@@ -1,12 +1,12 @@
 package Tablo;
 
-import Tablo.Controleur.ControleurAjoutTemplates;
 import Tablo.Controleur.ControleurAjouterListe;
 import Tablo.Controleur.ControleurAjouterTableau;
-import Tablo.Controleur.ControleurCréerDiagramme;
 import Tablo.Controleur.ControleurParametre;
+import Tablo.Vue.VueDifferentTableaux;
+import Tablo.Vue.VueTableau;
+import Tablo.Vue.VueTitreTableau;
 import Tablo.Modele.Modele;
-import Tablo.Vue.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Classe MyApplication qui hérite de Application et qui permet de lancer l'application
@@ -29,7 +31,7 @@ import java.util.Base64;
 public class MyApplication extends Application {
 
     // On crée le modèle
-    private Modele modele = new Modele();
+    private static Modele modele = new Modele();
 
     /**
      * Méthode qui permet de lancer l'écran de connexion d'inscription et de mode invité et qui permet de lancer l'application principale
@@ -112,15 +114,58 @@ public class MyApplication extends Application {
                 //On limite le champs de saisie du mot de passe pour éviter les injections SQL
             } else if (emailVerif(emailRecup) && mdpVerif(mdpRecup)) {
 
-                //TODO : relier la connexion à la base de données
-
-                //lancer l'application
+                // On vérifie que le mail et le mdp correspondent à un utilisateur de la base
+                // On commence par sélectionner l'utilisateur de la base qui correspond au mail entré pour la connexion
                 try {
-                    // Appel de startApplication avec le nouveau stage
-                    startApplication(stage);
-                } catch (IOException e) {
-                    // On relance une exception en cas d'erreur
+                    Modele.setUser(Utilisateur.findByEmail(emailRecup));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                // On vérifie par la suite son mdp
+                // On hache le mdp entré
+                String mdpRecupHashe = Utilisateur.passwordHash(mdpRecup);
+
+                // On récupère le mdp de l'utilisateur de la base
+                String mdpUser = "";
+                try {
+                    if(Modele.user == null){
+                        // On affiche une erreur si l'utilisateur n'existe pas
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText("Erreur");
+                        alert.setContentText("L'utilisateur n'existe pas");
+                        alert.showAndWait();
+                    }
+                    else
+                        mdpUser += Modele.user.getMdp();
+                } catch (SQLException e) {
                     throw new RuntimeException(e);
+                }
+
+                // On vérifie que le mdp entré correspond bien au mdp de l'utilisateur de la base
+                if(mdpUser.equals(mdpRecupHashe)){
+                    //lancer l'application
+                    try {
+                        // Appel de startApplication avec le nouveau stage
+                        startApplication(stage);
+                    } catch (IOException e) {
+                        // On relance une exception en cas d'erreur
+                        throw new RuntimeException(e);
+                    }
+                    // On importe les données correspondant au user connecte depuis la bd
+                    try {
+                        MyApplication.importerDonnees();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    // On affiche une erreur si le mdp entré ne correspond pas au mdp de l'utilisateur de la base
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Erreur");
+                    alert.setContentText("Le mot de passe est incorrect");
+                    alert.showAndWait();
                 }
             }
         });
@@ -186,9 +231,6 @@ public class MyApplication extends Application {
                 String mdpRecup = mdp.getText();
                 String confirmationMdpRecup = confirmationMdp.getText();
 
-                //On crée une variable qui va contenir le mot de passe hasher
-                String mdpHash = "";
-
                 //On vérifie que les champs de saisie ne sont pas vides
                 if (nomUtilisateurRecup.isEmpty() || emailRecup.isEmpty() || mdpRecup.isEmpty() || confirmationMdpRecup.isEmpty()) {
 
@@ -203,18 +245,15 @@ public class MyApplication extends Application {
                 } else if (pseudoVerif(nomUtilisateurRecup) && emailVerif(emailRecup) && mdpVerif(mdpRecup)) {
 
                     //On vérifie que le mot de passe et la confirmation du mot de passe sont identiques
-                    if (!mdpRecup.equals(confirmationMdpRecup)) {
-
-                        //On affiche une erreur si le mot de passe et la confirmation du mot de passe ne sont pas identiques
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Erreur");
-                        alert.setHeaderText("Erreur");
-                        alert.setContentText("Le mot de passe et la confirmation du mot de passe ne sont pas identiques");
-                        alert.showAndWait();
-
-                    } else {
-
-                        //TODO : ajouter le mot de passe hasher à la base de données avec le nom d'utilisateur et l'email
+                    if (mdpRecup.equals(confirmationMdpRecup)) {
+                        // On insère l'utilisateur avec le mdp, mail et pseudo récupérés en sauvegardant un objet Utilisateur
+                        Modele.setUser(new Utilisateur(nomUtilisateurRecup, emailRecup, mdpRecup));
+                        try {
+                            // On insère l'utilisateur dans la base de données
+                            Modele.user.save();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
 
                         //lancer l'application
                         try {
@@ -226,6 +265,13 @@ public class MyApplication extends Application {
                             // On relance une exception en cas d'erreur
                             throw new RuntimeException(e);
                         }
+                    } else {
+                        //On affiche une erreur si le mot de passe et la confirmation du mot de passe ne sont pas identiques
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText("Erreur");
+                        alert.setContentText("Le mot de passe et la confirmation du mot de passe ne sont pas identiques");
+                        alert.showAndWait();
                     }
                 }
 
@@ -275,9 +321,7 @@ public class MyApplication extends Application {
                 // On relance une exception en cas d'erreur
                 throw new RuntimeException(e);
             }
-
         });
-
 
         //On ajoute les composantes graphiques à la Hbox ModeInviter
         ModeInviter.getChildren().addAll(modeInviter, boutonInviter);
@@ -319,6 +363,7 @@ public class MyApplication extends Application {
 
         // On crée la racine
         BorderPane root = new BorderPane();
+
         // On crée la scène
         Scene scene = new Scene(root, 1200, 700); // Fenêtre 1200x700 pixels
 
@@ -381,7 +426,6 @@ public class MyApplication extends Application {
 
     /**
      * Méthode qui permet de limiter la taille du pseudo
-     *
      * @param pseudoRecup Pseudo à vérifier
      * @return Vrai si le pseudo est valide, faux sinon
      */
@@ -423,7 +467,6 @@ public class MyApplication extends Application {
 
     /**
      * Méthode qui permet de vérifier le mot de passe et de limiter la taille du mot de passe
-     *
      * @param mdpRecup Mot de passe à vérifier
      * @return Vrai si le mot de passe est valide, faux sinon
      */
@@ -449,6 +492,54 @@ public class MyApplication extends Application {
             alert.setContentText("Le mot de passe doit contenir au moins 8 caractères, au moins une majuscule, une minuscule et un chiffre");
             alert.showAndWait();
             return false;
+        }
+    }
+
+    /**
+     * Méthode qui permet d'importer les données d'un user (tableaux, listes, taches..) depuis la bd lors de la connexion
+     */
+    public static void importerDonnees() throws SQLException {
+        // On récupère tous les tableaux de l'utilisateur
+        ArrayList<Tableau> tableaux = Tableau.findAllByUserId(Modele.user.getId());
+        // Pour chaque tableau
+        for (Tableau tableau : tableaux) {
+            // On met à jour le tableau courant
+            modele.changerTableauCourant(tableau.getNumTableau());
+            // On insère le tableau
+            modele.ajouterTableau(tableau);
+            // On récupère toutes les listes du tableau
+            ArrayList<Liste> listes = Liste.findAllByTabId(tableau.getId());
+            // Pour chaque liste
+            for (Liste liste : listes) {
+                // On met à jour la liste courante
+                Modele.setListeCourante(liste.getNumListe());
+                // On insère la liste dans le tableau
+                modele.ajouterListe(liste);
+                // On récupère toutes les tâches de la liste
+                ArrayList<Tache> taches = Tache.findAllByListeId(liste.getId());
+                // Pour chaque tâche
+                for (Tache tache : taches) {
+                    // On met à jour le numéro de la tâche courante
+                    Modele.setTacheCourante(tache.getNumTache());
+                    // On ajoute la tâche à la liste
+                    modele.ajouterTache(tache);
+                    // On récupère toutes les sous tâches de la tâche
+                    ArrayList<Tache> sousTaches = tache.findAllSousTaches();
+
+                    // On boucle sur l'ensemble des sous taches
+                    for (Tache sousTache : sousTaches) {
+                        // On ajoute la tâche fille à la tâche mère. Si le résultat est false on change la tache courante en TacheMere
+                        if (!modele.ajouterSousTache(sousTache)) {
+
+                            // On change la tâche courante en tâche mère
+                            modele.tacheCouranteEnMere();
+
+                            // On ajoute la tâche fille à la tâche mère
+                            modele.ajouterSousTache(sousTache);
+                        }
+                    }
+                }
+            }
         }
     }
 }

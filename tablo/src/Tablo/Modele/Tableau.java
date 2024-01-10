@@ -1,8 +1,13 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 import javafx.scene.control.Alert;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,16 +43,216 @@ public class Tableau {
     }
 
     /**
+     * Constructeur de l'objet Tableau
+     * @param t titre du tableau
+     */
+    public Tableau(String t) {
+        this.id = -1;
+        this.titre = t;
+        this.listes = new ArrayList<>();
+    }
+
+    /**
+     * Méthode findAll permettant de récupérer tout les tableaux de la base de données
+     * @return ArrayList de Tableau
+     * @throws SQLException
+     */
+    public static ArrayList<Tableau> findAll() throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAU`;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        ArrayList<Tableau> listT = new ArrayList<>();
+        while (rs.next()) {
+            Tableau t = new Tableau(rs.getString("titre"));
+            t.id = rs.getInt("id_tableau");
+            listT.add(t);
+        }
+        return listT;
+    }
+
+    /**
+     * Méthode findById permettant de récupérer un tableau de la base de données en fonction de son id
+     * @param id id du Tableau à récupérer
+     * @return Tableau
+     * @throws SQLException
+     */
+    public static Tableau findById(int id) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAU` WHERE `id_tableau` = ?;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        if(rs.next() == false){
+            return null;
+        }
+        Tableau t = new Tableau(rs.getString("titre"));
+        t.id = rs.getInt("id_tableau");
+        return t;
+    }
+
+    /**
+     * Méthode findByTitre permettant de récupérer un tableau de la base de données en fonction de son titre
+     * @param titre
+     * @return
+     * @throws SQLException
+     */
+    public static ArrayList<Tableau> findByTitre(String titre) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAU` WHERE `titre` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setString(1,titre);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Tableau> listT = new ArrayList<>();
+        while (rs.next()) {
+            Tableau t = new Tableau(rs.getString("titre"));
+            t.id = rs.getInt("id_tableau");
+            listT.add(t);
+        }
+        return listT;
+    }
+
+    /**
+     * Méthode permettatnt de récupérer tout les tableaux d'un utilisateur
+     * @param id, id de l'utilisateur
+     * @return retourne la liste de ses tableaux
+     * @throws SQLException
+     */
+    public static ArrayList<Tableau> findAllByUserId(int id) throws SQLException {
+        String SQLPrep = "SELECT `titre`, `id_tableau`, `num_tab` FROM `TABLEAU` WHERE `id_user` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Tableau> listTabs = new ArrayList<>();
+        while (rs.next()) {
+            Tableau t = new Tableau(rs.getString("titre"));
+            t.id = rs.getInt("id_tableau");
+            t.numTableau = rs.getInt("num_tab");
+            listTabs.add(t);
+        }
+        return listTabs;
+    }
+
+
+    /**
+     * Cherche toutes les listes d'un tableau
+     * @param id_tableau id du tableau
+     * @return ArrayList de Liste
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findAllListeFromTableau(int id_tableau) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id_tableau);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Liste> listP = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = Liste.findById(rs.getInt("id_liste"));
+            listP.add(l);
+        }
+        return listP;
+    }
+
+    /**
+     * Supprime toutes les listes d'un tableau
+     * @throws SQLException
+     */
+    public void deleteAllListeFromTableau() throws SQLException{
+        // On récupère toutes les listes du tableau
+        ArrayList<Liste> listes = findAllListeFromTableau(this.id);
+        // On supprime toutes les listes du tableau
+        for(Liste l : listes){
+            String SQLPrep = "DELETE FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?";
+            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep.setInt(1, this.id);
+            prep.setInt(2, l.getId());
+            prep.execute();
+            l.deleteAllTacheFromListe();
+            l.delete();
+        }
+    }
+
+    /**
+     * Méthode delete permettant de supprimer un tableau de la base de données
+     * @throws SQLException
+     */
+    public void delete() throws SQLException {
+        String SQLDel = "DELETE FROM `TABLEAU` WHERE titre = ? AND id_tableau = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLDel);
+        prep1.setString(1,titre);
+        prep1.setInt(2,id);
+        prep1.executeUpdate();
+        id = -1;
+    }
+
+    /**
+     * Méthode save permettant de sauvegarder un tabeau dans la base de données
+     * @throws SQLException
+     */
+    public void save() throws SQLException {
+        if(id == -1){
+            // On récupère l'id de la tâche qui vient d'être créée
+            ArrayList<Tableau> tableaux = Tableau.findAll();
+            int id = tableaux.size() + 1;
+            this.id = id;
+            saveNew();
+        } else {
+            update();
+        }
+    }
+
+    /**
+     * Méthode saveNew permettant de sauvegarder un nouveau tableau dans la base de données
+     * @throws SQLException
+     */
+    public void saveNew() throws SQLException {
+        String SQLPrep = "INSERT INTO `TABLEAU` (`id_tableau`,`titre`, `id_user`, `num_tab`) VALUES (?,?,?,?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,id);
+        prep.setString(2, titre);
+        prep.setInt(3, Modele.user.getId());
+        prep.setInt(4, numTableau);
+        prep.execute();
+    }
+
+    /**
+     * Méthode update permettant de mettre à jour un tableau dans la base de données
+     * @throws SQLException
+     */
+    public void update() throws SQLException {
+        String SQLsave = "UPDATE `TABLEAU` SET `titre` = ? WHERE `id_tableau` = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLsave);
+        prep.setString(1,titre);
+        prep.setInt(2,id);
+        prep.executeUpdate();
+    }
+
+    /**
+     * Méthode createTable permettant de créer la table TABLEAU dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void createTable() throws SQLException {
+        String SQLPrep = "CREATE TABLE `TABLEAU` (`id_tableau` INT NOT NULL, `titre` varchar(30), `id_user` INT NOT NULL, `num_tab` INT NOT NULL, PRIMARY KEY (`id_tableau`))";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        stmt.executeUpdate(SQLPrep);
+    }
+
+    /**
+     * Méthode deleteTable permettant de supprimer la table TABLEAU dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void deleteTable() throws SQLException {
+        String SQLPrep = "DROP TABLE `TABLEAU`";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        stmt.executeUpdate(SQLPrep);
+    }
+
+    /**
      * Ajoute une tâche à la liste courante
-     *
      * @param t tâche à ajouter
      */
     public void ajouterTache(Tache t) {
-
         for (Liste l : this.listes) {
-
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 //On ajoute la tâche à la liste courante
                 l.ajouterTache(t);
             }
@@ -58,11 +263,9 @@ public class Tableau {
      * Retire une tâche de la liste courante
      */
     public boolean archiverTache() {
-
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 return l.archiverTache();
             }
         }
@@ -71,14 +274,12 @@ public class Tableau {
 
     /**
      * Change le titre de la tache dans la liste courante
-     *
      * @param nouveauTitre nouveau titre de la tache
      */
     public void changerTitreTache(String nouveauTitre) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 l.changerTitreTache(nouveauTitre);
             }
         }
@@ -86,7 +287,6 @@ public class Tableau {
 
     /**
      * Change le titre de la liste courante
-     *
      * @param nouveauContenu nouveau contenu de la tache
      */
     public void changerContenuTache(String nouveauContenu) {
@@ -94,7 +294,6 @@ public class Tableau {
         for (Liste l : this.listes) {
             //On vérifie que la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 //On change le contenu de la tâche
                 l.changerContenuTache(nouveauContenu);
             }
@@ -103,8 +302,8 @@ public class Tableau {
 
     /**
      * Deplacer une tache dans une autre liste
-     * @param tache
-     * @param numListeDestination
+     * @param tache tache à déplacer
+     * @param numListeDestination numéro de la liste de destination
      *
      * Vérifier que le nom de la tache n'existe pas dans la liste de destination
      * Vérifier que la liste de destination n'est pas la liste courante
@@ -147,14 +346,12 @@ public class Tableau {
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     *
      * @param date date de début de la tache
      */
     public void modifierDateDebut(LocalDate date) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 //On change la date de début de la tâche
                 l.modifierDateDebut(date);
             }
@@ -163,28 +360,13 @@ public class Tableau {
 
     /**
      * Modifie la date limite de la tache dans la liste courante
-     *
      * @param date date limite de la tache
      */
     public void modifierDateLimite(LocalDate date) {
         for (Liste l : this.listes) {
             //Si la liste est la liste courante
             if (l.getNumListe() == Modele.getListeCourante()) {
-
                 l.modifierDateLimite(date);
-            }
-        }
-    }
-
-    /**
-     * Appelle la méthode fini() de la liste courante
-     */
-    public void fini(){
-
-        for (Liste l : this.listes) {
-            if (l.getId() == Modele.getListeCourante()) {
-
-                l.fini();
             }
         }
     }
@@ -197,6 +379,32 @@ public class Tableau {
     public void ajouterListe(Liste l) {
         this.listes.add(l);
         Loggeur.enregistrer("Ajout de la liste " + l.getTitre() + " au tableau " + this.titre);
+
+        if(Modele.user != null){
+            try {
+                // On veut vérifier que la liste n'est pas déjà dans la table TABLEAULISTE
+                String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?;";
+                PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                prep.setInt(1, this.id);
+                prep.setInt(2, l.getId());
+                prep.execute();
+                ResultSet rs = prep.getResultSet();
+                //Si la liste n'est pas dans la table TABLEAULISTE
+                if(rs.next() == false){
+                    // On enregistre la liste dans la base de données
+                    l.save();
+
+                    //On ajoute le lien entre la liste et le tableau à la base de données
+                    SQLPrep = "INSERT INTO `TABLEAULISTE` (`id_tableau`,`id_liste`) VALUES (?,?);";
+                    prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                    prep.setInt(1, this.id);
+                    prep.setInt(2, l.getId());
+                    prep.execute();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
@@ -260,6 +468,19 @@ public class Tableau {
                     rangSuppr = i;
                     //On décrémente la liste courante
                     Modele.setListeCourante(Modele.getListeCourante() - 1);
+                    if(Modele.user != null){
+	                    try {
+                            String SQLPrep = "DELETE FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?";
+                            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                            prep.setInt(1, this.id);
+                            prep.setInt(2, liste.getId());
+                            prep.execute();
+                            liste.deleteAllTacheFromListe();
+                            liste.delete();
+	                    } catch (SQLException e) {
+		                    throw new RuntimeException(e);
+	                    }
+                    }
                 }
             }
         }
@@ -391,6 +612,13 @@ public class Tableau {
     public void changerTitre(String nouveauTitre) {
         Loggeur.enregistrer("Changement du titre du tableau " + this.titre + " en " + nouveauTitre);
         this.titre = nouveauTitre;
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -400,6 +628,13 @@ public class Tableau {
      */
     public void setNumTableau(int numTableau) {
         this.numTableau = numTableau;
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

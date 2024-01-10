@@ -1,8 +1,13 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 import javafx.scene.control.Alert;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,8 +44,217 @@ public class Liste {
         this.id = -1;
         this.titre = t;
         this.taches = new ArrayList<>();
-
         this.numListe = numListe;
+    }
+
+    /**
+     * Constructeur de l'objet Liste
+     * @param t
+     */
+    public Liste(String t) {
+        // l'id est initialisé à -1 conformément au patron activeRecord
+        this.id = -1;
+        this.titre = t;
+        this.taches = new ArrayList<>();
+    }
+
+    /**
+     * Méthode findAll permettant de récupérer toutes les listes de la base de données
+     * @return ArrayList de Liste
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findAll() throws SQLException {
+        String SQLPrep = "SELECT * FROM `LISTE`;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        ArrayList<Liste> listP = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = new Liste(rs.getString("titre"));
+            l.id = rs.getInt("id_liste");
+            listP.add(l);
+        }
+        return listP;
+    }
+
+    /**
+     * Méthode permettatnt de récupérer toutes les listes d'un tableau donné
+     * @param id, id du tableau
+     * @return retourne la liste de ses listes
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findAllByTabId(int id) throws SQLException {
+String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOIN TABLEAULISTE tl ON l.id_liste = tl.id_liste\n" +
+        "WHERE tl.id_tableau = ?;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        ArrayList<Liste> listes = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = new Liste(rs.getString("titre"));
+            l.id = rs.getInt("id_liste");
+            l.numListe = rs.getInt("num_liste");
+            listes.add(l);
+        }
+        return listes;
+    }
+
+    /**
+     * Méthode findById permettant de récupérer une liste de la base de données en fonction de son id
+     * @param id id de la liste à récupérer
+     * @return Liste
+     * @throws SQLException
+     */
+    public static Liste findById(int id) throws SQLException {
+        String SQLPrep = "SELECT * FROM `LISTE` WHERE `id_liste` = ?;";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id);
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+        if(rs.next() == false){
+            return null;
+        }
+        Liste l = new Liste(rs.getString("titre"));
+        l.id = rs.getInt("id_liste");
+        return l;
+    }
+
+    /**
+     * Méthode findByTitre permettant de récupérer une liste de la base de données en fonction de son titre
+     * @param titre
+     * @return
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findByTitre(String titre) throws SQLException {
+        String SQLPrep = "SELECT * FROM `LISTE` WHERE `titre` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setString(1,titre);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Liste> listP = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = new Liste(rs.getString("titre"));
+            l.id = rs.getInt("id_liste");
+            listP.add(l);
+        }
+        return listP;
+    }
+
+    /**
+     * Méthode findAllTacheFromListe permettant de récupérer toutes les tâches d'une liste de la base de données
+     * @param id_liste id de la liste dont on veut récupérer les tâches
+     * @return ArrayList de Tache
+     * @throws SQLException
+     */
+    public static ArrayList<Tache> findAllTacheFromListe(int id_liste) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TACHELISTE` WHERE `id_liste` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id_liste);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Tache> listP = new ArrayList<>();
+        while (rs.next()) {
+            Tache t = Tache.findById(rs.getInt("id_tache"));
+            listP.add(t);
+        }
+        return listP;
+    }
+
+    /**
+     * Méthode deleteAllTacheFromListe permettant de supprimer toutes les tâches d'une liste de la base de données
+     * @throws SQLException
+     */
+    public void deleteAllTacheFromListe() throws SQLException {
+        // On récupère toutes les tâches de la liste
+        ArrayList<Tache> listTache = findAllTacheFromListe(this.id);
+        // On supprime toutes les tâches de la base de données
+        for(Tache t : listTache){
+            String SQLSousTache = "DELETE FROM `ESTSOUSTACHE` WHERE `id_tachefille` = ? OR `id_tachemere` = ?";
+            PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLSousTache);
+            prep1.setInt(1,t.getId());
+            prep1.setInt(2,t.getId());
+            prep1.executeUpdate();
+            t.delete();
+            String SQLPrep = "DELETE FROM `TACHELISTE` WHERE `id_liste` = ?";
+            PreparedStatement prep2 = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep2.setInt(1,this.id);
+            prep2.executeUpdate();
+        }
+
+    }
+
+    /**
+     * Méthode delete permettant de supprimer une liste de la base de données
+     * @throws SQLException
+     */
+    public void delete() throws SQLException {
+        String SQLDel = "DELETE FROM `LISTE` WHERE titre = ? AND id_liste = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLDel);
+        prep1.setString(1,titre);
+        prep1.setInt(2,id);
+        prep1.executeUpdate();
+        id = -1;
+    }
+
+    /**
+     * Méthode save permettant de sauvegarder une liste dans la base de données
+     * @throws SQLException
+     */
+    public void save() throws SQLException {
+        if(id == -1){
+            // On récupère l'id de la tâche qui vient d'être créée
+            ArrayList<Liste> lists = Liste.findAll();
+            int id = lists.size() + 1;
+            this.id = id;
+            saveNew();
+        } else {
+            update();
+        }
+    }
+
+    /**
+     * Méthode saveNew permettant de sauvegarder une nouvelle liste dans la base de données
+     * @throws SQLException
+     */
+    public void saveNew() throws SQLException {
+        String SQLPrep = "INSERT INTO `LISTE` (`id_liste`,`titre`, `id_user`, `num_liste`) VALUES (?,?,?,?);";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep.setInt(1,id);
+        prep.setString(2, titre);
+        prep.setInt(3,Modele.user.getId());
+        prep.setInt(4,numListe);
+        prep.execute();
+    }
+
+    /**
+     * Méthode update permettant de mettre à jour une liste dans la base de données
+     * @throws SQLException
+     */
+    public void update() throws SQLException {
+        String SQLsave = "UPDATE `LISTE` SET `titre` = ? WHERE `id_liste` = ?";
+        PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLsave);
+        prep.setString(1,titre);
+        prep.setInt(2,id);
+        prep.executeUpdate();
+    }
+
+    /**
+     * Méthode createTable permettant de créer la table LISTE dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void createTable() throws SQLException {
+        String SQLPrep = "CREATE TABLE `LISTE` (`id_liste` INT NOT NULL, `titre` varchar(30), `id_user` int NOT NULL, `num_liste` int NOT NULL, PRIMARY KEY (`id_liste`))";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        stmt.executeUpdate(SQLPrep);
+    }
+
+    /**
+     * Méthode deleteTable permettant de supprimer la table LISTE dans la base de données (à utiliser pour les tests)
+     * @throws SQLException
+     */
+    public static void deleteTable() throws SQLException {
+        String SQLPrep = "DROP TABLE `LISTE`";
+        Statement stmt = DBConnection.getConnection().createStatement();
+        stmt.executeUpdate(SQLPrep);
     }
 
     /**
@@ -52,6 +266,13 @@ public class Liste {
 
         Loggeur.enregistrer("Changement du titre de la liste " + this.titre + " en " + titre);
         this.titre = titre;
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -84,6 +305,23 @@ public class Liste {
         // afficher la liste en question
         t.setNumListe();
         this.taches.add(t);
+
+        if(Modele.user != null){
+            try {
+                // On enregistre la liste dans la base de données
+                this.save();
+                // On enregistre la tache dans la base de données
+                t.save();
+                // On enregistre le lien tache-liste dans la base de données
+                String SQLPrep = "INSERT INTO `TACHELISTE` (`id_liste`,`id_tache`) VALUES (?,?);";
+                PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                prep.setInt(1,this.id);
+                prep.setInt(2,t.getId());
+                prep.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -138,8 +376,6 @@ public class Liste {
             }
         }
     }
-
-
 
 
     /**
@@ -270,34 +506,6 @@ public class Liste {
 
                 // On change la date limite de la tâche
                 t.modifierDateLimite(dateLimite);
-            }
-        }
-    }
-
-
-
-
-    /**
-	 * Permet de mettre une tâche en terminée
-	 */
-	public void fini(){
-
-        for (Tache t : this.taches) {
-            if (t.getNumTache() == Modele.getTacheCourante()) {
-
-                //Pour chaques sous taches des taches de la liste portant le même titre que la tache courante. On met la sous tache en terminée
-                for (Tache tache : this.taches) {
-                    if (tache.getSousTaches() != null) {
-                        for (Tache sousTache : tache.getSousTaches()) {
-                            if (sousTache.getTitre().equals(t.getTitre())) {
-                                sousTache.fini();
-                            }
-                        }
-                    }
-                }
-
-                // On met la tâche en terminée
-                t.fini();
             }
         }
     }

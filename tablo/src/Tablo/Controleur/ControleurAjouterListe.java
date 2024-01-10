@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 
+import java.sql.SQLException;
+
 /**
  * Classe ControleurAjouterListe qui permet de gérer l'ajout d'une liste
  */

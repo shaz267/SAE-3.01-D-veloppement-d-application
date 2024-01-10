@@ -1,11 +1,14 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 import Tablo.Modele.Templates.TemplatesStrategie;
 import Tablo.Observateur;
 import Tablo.Sujet;
 import javafx.scene.control.Alert;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,11 @@ public class Modele implements Sujet {
     private ArrayList<Observateur> observateurs;
 
     /**
+     * Attribut user de la classe Modele qui est un utilisateur qui représente l'utilisateur de l'application.
+     */
+    public static Utilisateur user = null;
+
+    /**
      * Attribut template de la classe Modele qui est un objet de type TemplatesStrategie qui représente le template de l'application.
      */
     private TemplatesStrategie template;
@@ -57,11 +65,10 @@ public class Modele implements Sujet {
      */
     public Modele() {
 
-        this.tableaux = new ArrayList<Tableau>();
-        this.observateurs = new ArrayList<Observateur>();
+        this.tableaux = new ArrayList<>();
+        this.observateurs = new ArrayList<>();
         this.template = null;
     }
-
 
 
     /**
@@ -90,6 +97,14 @@ public class Modele implements Sujet {
         //On ajoute le tableau à la liste des tableaux
         this.tableaux.add(tableau);
 
+        if(Modele.user != null){
+            try {
+                tableau.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         //On change le tableau courant
         this.changerTableauCourant(tableau.getNumTableau());
 
@@ -101,7 +116,6 @@ public class Modele implements Sujet {
      * Méthode qui permet de changer le tableau courant.
      */
     public void changerTableauCourant(int numTableau) {
-
         tableauCourant = numTableau;
         //On Notifie les observateurs
         this.notifierObservateurs();
@@ -109,15 +123,13 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une tache à la liste courante. et au tableau courant
-     *
-     * @param tache
+     * @param tache la tache à ajouter
      */
     public void ajouterTache(Tache tache) {
 
         for (Tableau tableau : tableaux) {
-
+            // Si le tableau est le tableau courant alors on ajoute la tâche au tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 tableau.ajouterTache(tache);
                 this.notifierObservateurs();
             }
@@ -125,14 +137,15 @@ public class Modele implements Sujet {
     }
 
     /**
-     * Méthode qui permet de déplacer une tâche d'une liste à une autre.
+     * Méthode qui déplace une tache dans le tableau courant.
+     * @param tache la tache à déplacer
+     * @param listeDestination la liste de destination
      */
     public void deplacerTache(Tache tache, int listeDestination) {
 
         for (Tableau tableau : tableaux) {
-
+            // Si le tableau est le tableau courant alors on déplace la tâche dans le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 tableau.deplacerTache(tache, listeDestination);
                 this.notifierObservateurs();
             }
@@ -154,15 +167,13 @@ public class Modele implements Sujet {
     }
 
     /**
-     * Méthode qui retire une tache du tableau courant de la liste courante.
+     * Méthode qui déplace une tache dans le tableau courant.
+     * @return true si on a déplacé la tache, false sinon
      */
     public boolean archiverTache() {
-
         for (Tableau tableau : tableaux) {
-
-            // Si le tableau est le tableau courant
+            // Si le tableau est le tableau courant alors on archive la tâche dans le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 return tableau.archiverTache();
             }
         }
@@ -170,23 +181,7 @@ public class Modele implements Sujet {
     }
 
     /**
-     * Méthode qui met la tâche en terminée.
-     */
-    public void fini() {
-
-        for (Tableau tableau : tableaux) {
-
-            if (tableau.getNumTableau() == tableauCourant) {
-
-                tableau.fini();
-                this.notifierObservateurs();
-            }
-        }
-    }
-
-    /**
      * Méthode qui change le titre de la tache dans la liste courante et dans le tableau courant.
-     *
      * @param nouveauTitre nouveau titre de la tache
      */
     public void changerTitreTache(String nouveauTitre) {
@@ -205,7 +200,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le contenu de la tache dans le tableau courant, dans la liste courante
-     *
      * @param nouveauContenu le nouveau contenu de la tâche
      */
     public void changerContenuTache(String nouveauContenu) {
@@ -223,7 +217,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change la date de début de la tâche courante
-     *
      * @param dateDebut Date de début de la tâche
      */
     public void modifierDateDebut(LocalDate dateDebut) {
@@ -243,7 +236,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change la date de fin de la tâche courante
-     *
      * @param dateLimite la nouvelle date de fin
      */
     public void modifierDateLimite(LocalDate dateLimite) {
@@ -260,7 +252,9 @@ public class Modele implements Sujet {
     }
 
     /**
-     * Permet de rajouter une sous tâche à la tache courante
+     * Méthode qui ajoute une sous tâche à la tâche courante.
+     * @param t la sous tâche à ajouter
+     * @return true si on a ajouté la sous tâche, false sinon
      */
     public boolean ajouterSousTache(Tache t) {
 
@@ -280,8 +274,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une liste au tableau courant.
-     *
-     * @param titre titre de la liste
+     * @param l la liste à ajouter
      */
     public void ajouterListe(String titre) {
 
@@ -332,7 +325,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retire une liste au tableau courant
-     *
      * @return true si la liste a été retirée, false sinon
      */
     public boolean retirerListe() {
@@ -353,7 +345,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui permet de changer le titre d'un tableau
-     *
      * @param titreTableau
      */
     public void changerTitreTableau(String titreTableau) {
@@ -372,7 +363,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui change le titre de la liste dans le tableau courant.
-     *
      * @param nouveauTitre nouveau titre de la liste
      */
     public void changerTitreListe(String nouveauTitre) {
@@ -387,8 +377,7 @@ public class Modele implements Sujet {
     }
 
     /**
-     * Méthode qui retourne le tableau courant.
-     *
+     * Méthode qui retourne la liste de tableaux.
      * @return les tableaux
      */
     public ArrayList<Tableau> getTableaux() {
@@ -397,7 +386,6 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne la liste de liste du tableau courant.
-     *
      * @return les listes
      */
     public ArrayList<Liste> getListes() {
@@ -411,48 +399,64 @@ public class Modele implements Sujet {
         return null;
     }
 
-
+    /**
+     * Méthode qui ajoute un observateur à la liste des observateurs.
+     * @param o l'observateur à ajouter
+     */
     public void enregistrerObservateur(Observateur o) {
-
         this.observateurs.add(o);
     }
 
+    /**
+     * Méthode qui supprime un observateur de la liste des observateurs.
+     * @param o l'observateur à supprimer
+     */
     public void supprimerObservateur(Observateur o) {
-
         this.observateurs.remove(o);
     }
 
+    /**
+     * Méthode qui notifie les observateurs.
+     */
     public synchronized void notifierObservateurs() {
+
         for (Observateur observateur : observateurs) {
-
             observateur.actualiser(this);
-
         }
     }
 
+    /**
+     * Méthode qui retourne le tableau courant.
+     * @return tableauCourant
+     */
     public static int getTableauCourant() {
         return tableauCourant;
     }
 
+    /**
+     * Méthode qui retourne la liste courante.
+     * @return listeCourante
+     */
     public static int getListeCourante() {
         return listeCourante;
     }
 
+    /**
+     * Méthode qui retourne la tâche courante.
+     * @return tacheCourante
+     */
     public static int getTacheCourante() {
         return tacheCourante;
     }
 
     /**
      * Méthode qui retourne la liste de tâches du tableau courant. et de la liste courante
-     *
      * @return les taches
      */
     public List<Tache> getTaches() {
-
         for (Tableau tableau : tableaux) {
-
+            // Si le tableau est le tableau courant alors on retourne la liste de tâches du tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 return tableau.getTaches();
             }
         }
@@ -465,10 +469,9 @@ public class Modele implements Sujet {
      * @return
      */
     public int getNumTableau(String titre) {
-
         for (Tableau tableau : this.getTableaux()) {
+            // Si le titre du tableau est le même que le titre passé en paramètre alors on retourne le numéro du tableau
             if (tableau.getTitre().equals(titre)) {
-
                 return tableau.getNumTableau();
             }
         }
@@ -485,14 +488,19 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Méthode qui set l'utilisateur
+     * @param u l'utilisateur à set
+     */
+    public static void setUser(Utilisateur u) {
+        user = u;
+    }
+
+    /**
      * Méthode qui convertie la tache courante en tache mère.
      */
     public void tacheCouranteEnMere() {
-
         for (Tableau tableau : tableaux) {
-
             if (tableau.getNumTableau() == tableauCourant) {
-
                 tableau.tacheCouranteEnMere();
                 this.notifierObservateurs();
             }
@@ -501,15 +509,12 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne la liste de tâches filles de la tâche courante
-     *
      * @return
      */
     public List<Tache> getSousTaches() {
-
         for (Tableau tableau : tableaux) {
-
+            // Si le tableau est le tableau courant alors on retourne la liste de sous tâches du tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 return tableau.getSousTaches();
             }
         }
@@ -518,20 +523,16 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne la tache associé au titre passé en paramètre dans la liste courante et le tableau courant.
-     *
      * @param titre
      * @return
      */
     public Tache getTache(String titre) {
-
         for (Tache tache : this.getTaches()) {
-
+            // Si le titre de la tâche est le même que le titre passé en paramètre alors on retourne la tâche
             if (tache.getTitre().equals(titre)) {
-
                 return tache;
             }
         }
-
         return null;
     }
 
@@ -540,7 +541,6 @@ public class Modele implements Sujet {
      * @param idTache
      * @return
      */
-
     public int getTacheByID(int idTache) {
 
         for (Tache tache : this.getTaches()) {
@@ -554,18 +554,14 @@ public class Modele implements Sujet {
         return -1;
     }
 
-
     /**
      * Méthode qui retourne le titre du tableau courant
-     *
      * @return titre
      */
     public String getTitreTableau() {
-
         for (Tableau tableau : tableaux) {
-
+            // Si le tableau est le tableau courant alors on retourne le titre du tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 return tableau.getTitre();
             }
         }
@@ -574,15 +570,12 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui retourne les tâches archivées du tableau courant
-     *
      * @return tachesArchivées
      */
     public ArrayList<Tache> getTachesArchivees() {
-
         for (Tableau tableau : tableaux) {
-
+            // Si le tableau est le tableau courant alors on retourne la liste de tâches archivées du tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
-
                 return tableau.getTachesArchivees();
             }
         }
@@ -591,7 +584,6 @@ public class Modele implements Sujet {
 
     /**
      * Methode qui permet de supprimer un tableau
-     *
      * @return true si on a supprimé le tableau courant, false sinon
      */
     public boolean retirerTableau() {
@@ -616,6 +608,15 @@ public class Modele implements Sujet {
 
                     //On récupère le rang du tableau à supprimer
                     rangSuppr = i;
+
+                    if(Modele.user != null){
+                        try {
+                            tab.deleteAllListeFromTableau();
+                            tab.delete();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
 
                     //Si on a supprimé le tableau 1 alors on change le tableau courant au nouveau tableau 1
                     if (Modele.getTableauCourant() == 1) {

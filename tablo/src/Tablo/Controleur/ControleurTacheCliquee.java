@@ -261,9 +261,16 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
                 ajouterTacheQuiEstSousTacheDeLaTacheCourante = tache.getSousTaches().contains(this.modele.getTaches().get(numTache - 1));
             }
 
+            boolean ajoutTacheDontLaTacheCouranteDescend = false;
+
+            if (tache.getSousTaches() != null) {
+
+                ajoutTacheDontLaTacheCouranteDescend = tache.getSousTachesReccursif().contains(this.modele.getTaches().get(numTache - 1));
+            }
+
 
             // On vérifie qu'on ajoute pas la tâche courante pour ne pas pouvoir se définir elle-même comme sous tâches. On vérifie aussi qu'on ajoute pas une tâche qui est déjà une sous tâche. Enfin on vérifie que la tâche qu'on ajoute au sous taches n'est pas une sous tâche de la tâche courante. Et la tache n'est pas archivée
-            if (tache != this.modele.getTaches().get(numTache - 1) && !ajouterTacheQuiEstSousTache && !ajouterTacheQuiEstSousTacheDeLaTacheCourante && !tache.isArchivee()) {
+            if (tache != this.modele.getTaches().get(numTache - 1) && !ajouterTacheQuiEstSousTache && !ajouterTacheQuiEstSousTacheDeLaTacheCourante && !tache.isArchivee() && !ajoutTacheDontLaTacheCouranteDescend) {
                 observableList.add(tache.getTitre());
             }
         }

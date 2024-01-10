@@ -19,7 +19,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class VueDiagrammeGantt extends ScrollPane implements Observateur {
+public class VueDiagrammeGantt extends ScrollPane{
 
     /**
      * Modele de l'application
@@ -32,10 +32,16 @@ public class VueDiagrammeGantt extends ScrollPane implements Observateur {
     private GridPane gridPane;
 
     /**
+     * HashMap qui contient les coordonnées des fleches qui relient les taches filles à la tache mère
+     */
+    private HashMap<Tache, ArrayList<Integer>> coordonneesFlechesTacheFilleFinXYDebutXY;
+
+    /**
      * Constructeur de la classe VueDiagrammeGantt
      */
     public VueDiagrammeGantt(Modele m) {
         super();
+        this.coordonneesFlechesTacheFilleFinXYDebutXY = new HashMap<>();
         this.modele = m;
 
         this.setPrefSize(1000, 600);
@@ -74,7 +80,7 @@ public class VueDiagrammeGantt extends ScrollPane implements Observateur {
         int placeDansLaGrille = 1;
 
         //variable qui permet de savoir combien de jours il y a dans le mois précédent on l'initialise au nombre de jours dans le mois de la date de début
-        int nombresDeJoursDansLeMois = dateDebut.lengthOfMonth() -  dateDebut.getDayOfMonth() + 1;
+        int nombresDeJoursDansLeMois = dateDebut.lengthOfMonth() - dateDebut.getDayOfMonth() + 1;
 
         //On affiche la date de début au format dd/mm/yyyy
         Text textDateDebut = new Text(dateDebut.getDayOfMonth() + "/" + dateDebut.getMonthValue() + "/" + dateDebut.getYear());
@@ -131,20 +137,21 @@ public class VueDiagrammeGantt extends ScrollPane implements Observateur {
             nombresDeJoursDansLeMois = currentMonth.lengthOfMonth();
         }
 
+        ArrayList<Tache> tachesSelectionnees = (ArrayList<Tache>) this.modele.getTachesSelectionnesTriees();
 
         //On rajoute les taches selectionnées à gauche du diagramme de gantt
-        for (int i = 0; i < this.modele.getTachesSelectionnees().size(); i++) {
+        for (int i = 0; i < tachesSelectionnees.size(); i++) {
 
             //Couleur aléatoire
-            Color color= javafx.scene.paint.Color.rgb((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
+            Color color = javafx.scene.paint.Color.rgb((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
 
             //On récupère la tache courante
-            Tache t = this.modele.getTachesSelectionnees().get(i);
+            Tache t = tachesSelectionnees.get(i);
 
             //Liste des sous taches de la tache courante
             ArrayList<Tache> sousTaches = new ArrayList<>();
             //On récupère la liste des sous taches de la tache courante
-            if (t.getSousTaches() != null){
+            if (t.getSousTaches() != null) {
 
                 sousTaches = (ArrayList<Tache>) t.getSousTaches();
             }
@@ -182,28 +189,50 @@ public class VueDiagrammeGantt extends ScrollPane implements Observateur {
 
                 //Si la date de la case courante est entre la date de début et de fin de la tache courante
                 if (dateCaseCourante.isAfter(t.getDateDebut().minusDays(1)) && dateCaseCourante.isBefore(t.getDateLimite().plusDays(1))) {
+
                     //On colorie la case en une couleur aléatoire
                     this.gridPane.add(new javafx.scene.shape.Rectangle(10, 30, color), j, i + 1, 1, 1);
+                } else {//Sinon
+
+                    //On colorie la case en blanc
+                    this.gridPane.add(new javafx.scene.shape.Rectangle(10, 30, Color.TRANSPARENT), j, i + 1, 1, 1);
                 }
-                else if (dateCaseCourante.isAfter(t.getDateLimite().plusDays(1))) {//Si on est après la date de fin de la tache courante
+
+
+                //----------------------Les fleches qui relient les taches filles à la tache mère ------------------
+
+                //Si la date de la case courante est égale à la date de début de la tache courante et que la tache courante est dans la liste des coordonnées des fleches
+                if (dateCaseCourante.isEqual(t.getDateDebut()) && this.coordonneesFlechesTacheFilleFinXYDebutXY.containsKey(t)) {
+
+                    ArrayList<Integer> coordonneesFinTacheMere = this.coordonneesFlechesTacheFilleFinXYDebutXY.get(t);
+
+                    System.out.println(j * 10 - coordonneesFinTacheMere.get(0) * 10 + 10);
+                    System.out.println((i + 1) * 30 - coordonneesFinTacheMere.get(1) * 30 + 30);
+
+                    Line line = new Line(5, 15, j * 10 - coordonneesFinTacheMere.get(0) * 10 + 10, (i + 1) * 30 - coordonneesFinTacheMere.get(1) * 30 + 30);
+                    line.setStrokeWidth(2);
+                    line.setStroke(Color.BLACK);
+
+                    this.gridPane.add(line, coordonneesFinTacheMere.get(0), coordonneesFinTacheMere.get(1), nbColonnes - coordonneesFinTacheMere.get(0), this.gridPane.getRowCount() - coordonneesFinTacheMere.get(1));
+                }
+                //Sinon si la date de la case Courante est égale a la date limite de la tache courante
+                if (dateCaseCourante.isEqual(t.getDateLimite())) {
 
                     for (Tache sousTache : sousTaches) {
 
+                        ArrayList<Integer> coordonneesFinTacheMere = new ArrayList<>();
+                        coordonneesFinTacheMere.add(j);
 
+                        coordonneesFinTacheMere.add((i + 1));
+
+                        this.coordonneesFlechesTacheFilleFinXYDebutXY.put(sousTache, coordonneesFinTacheMere);
                     }
                 }
             }
+
+
         }
 
         this.setContent(this.gridPane);
-    }
-
-    /**
-     * Méthode qui permet d'actualiser la vue
-     * @param s Objet qui implémente l'interface Sujet et qui va être actualisé
-     */
-    @Override
-    public void actualiser(Sujet s) {
-
     }
 }

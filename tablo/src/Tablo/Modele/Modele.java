@@ -763,6 +763,52 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Cete méthode retourne le meme résultat que la méthode getTachesSelectionnees() mais les taches sont triées. Avec en premier les taches mères les plus hautes dans l'arborescence.
+     * @return
+     */
+        public List<Tache> getTachesSelectionnesTriees() {
+
+        ArrayList<Tache> tachesSelectionnees = (ArrayList<Tache>) this.getTachesSelectionnees();
+
+        ArrayList<Tache> tachesSelectionneesTriees = new ArrayList<Tache>();
+
+        //On parcourt les taches selectionnées
+        for (Tache tache : tachesSelectionnees) {
+
+            //Si la tache n'a pas de tache mère
+            if (tache.getTacheMere() == null) {
+
+                //On l'ajoute à la liste des taches selectionnées triées
+                tachesSelectionneesTriees.add(tache);
+
+                ArrayList<Tache> sousTaches = (ArrayList<Tache>) tache.getSousTachesReccursif();
+
+                //Si la tache a des sous taches
+                if (sousTaches != null) {
+
+                    //On parcourt les sous taches
+                    for (Tache t : tache.getSousTachesReccursif()) {
+
+                        //Si la tache n'est pas déjà dans la liste des taches selectionnées triées
+                        if (!tachesSelectionneesTriees.contains(t)) {
+                            tachesSelectionneesTriees.add(t);
+                        }
+                    }
+                }
+            }
+        }
+
+        //Si la liste des taches selectionnées triées a les memes éléments que la liste des taches selectionnées
+        if (tachesSelectionneesTriees.containsAll(tachesSelectionnees) && tachesSelectionnees.containsAll(tachesSelectionneesTriees)) {
+
+            //On retourne la liste des taches selectionnées triées
+            return tachesSelectionneesTriees;
+        }
+        //sinon on retourne la liste des taches selectionnées
+        return tachesSelectionnees;
+    }
+
+    /**
      * Methode qui vérifie si le tableau existe déjà
      * @param titre titre du tableau
      * @return true si le tableau n'existe pas, false sinon

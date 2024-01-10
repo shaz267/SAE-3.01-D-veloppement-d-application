@@ -33,12 +33,9 @@ public class ControleurCréerDiagramme implements EventHandler<ActionEvent> {
 
         // On crée la vue du diagramme de Gantt
         VueDiagrammeGantt vueDiagrammeGantt = new VueDiagrammeGantt(this.modele);
-        this.modele.enregistrerObservateur(vueDiagrammeGantt);
 
         popupStage.setScene(new Scene(vueDiagrammeGantt, 1000, 600));
 
         popupStage.showAndWait();
-
-        this.modele.supprimerObservateur(vueDiagrammeGantt);
     }
 }

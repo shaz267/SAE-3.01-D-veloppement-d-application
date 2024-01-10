@@ -1,5 +1,6 @@
 package Tablo.Modele;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +56,14 @@ public class TacheSimple extends Tache {
      * @return
      */
     public List<Tache> getSousTaches() {
+        return null;
+    }
+
+    /**
+     * Méthode qui permet de retourner les sous tâches de la tâche courante. et qui est récursive. Ce qui signifie qu'elle retourne les sous tâches des sous tâches etc
+     * @return
+     */
+    public ArrayList<Tache> getSousTachesReccursif() {
         return null;
     }
 }

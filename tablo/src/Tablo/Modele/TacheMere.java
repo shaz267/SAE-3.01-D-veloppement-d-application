@@ -41,6 +41,7 @@ public class TacheMere extends Tache {
         this.dateLimite = tache.getDateLimite();
         this.estArchivee = tache.isArchivee();
         this.selectionnee = tache.isSelectionnee();
+        this.tacheMere = tache.getTacheMere();
 
         this.taches = new ArrayList<Tache>();
     }
@@ -48,7 +49,7 @@ public class TacheMere extends Tache {
     /**
      * Méthode qui ajoute une tâche fille à la tâche mère.
      *
-     * @param tache
+     * @param tache tache à ajouter.
      */
     public boolean ajouterTache(Tache tache) {
 
@@ -79,6 +80,7 @@ public class TacheMere extends Tache {
                 tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
             }
 
+            tache.setTacheMere(this);
             return this.taches.add(tache);
         }
     }
@@ -169,5 +171,23 @@ public class TacheMere extends Tache {
     public List<Tache> getSousTaches() {
 
         return this.taches;
+    }
+
+    /**
+     * Méthode qui permet de retourner les sous tâches de la tâche courante. et qui est récursive. Ce qui signifie qu'elle retourne les sous tâches des sous tâches etc
+     * @return
+     */
+    public ArrayList<Tache> getSousTachesReccursif() {
+
+        ArrayList<Tache> sousTaches = new ArrayList<Tache>();
+
+        for(Tache tache : this.taches){
+            sousTaches.add(tache);
+            if (tache.getSousTaches() != null) {
+                sousTaches.addAll(tache.getSousTachesReccursif());
+            }
+        }
+
+        return sousTaches;
     }
 }

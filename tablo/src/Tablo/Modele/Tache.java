@@ -3,6 +3,7 @@ package Tablo.Modele;
 import Tablo.Loggeur;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,6 +55,11 @@ public abstract class Tache {
     protected boolean selectionnee;
 
     /**
+     * Attribut tacheMere de la classe Tache qui est une tâche qui représente la tâche mère de la tâche courante.
+     */
+    protected TacheMere tacheMere;
+
+    /**
      * Constructeur de la classe Tache qui prend en paramètre un entier id, une chaîne de caractères titre et une chaîne de caractères contenu.
      *
      * @param titre
@@ -74,6 +80,7 @@ public abstract class Tache {
 
         this.estArchivee = false;
         this.selectionnee = false;
+        this.tacheMere = null;
         setNumListe();
     }
 
@@ -270,4 +277,23 @@ public abstract class Tache {
      * @return
      */
     public abstract boolean supprimerSousTache(int sousTache);
+
+    /**
+     * Méthode qui permet de retourner les sous tâches de la tâche courante. et qui est récursive. Ce qui signifie qu'elle retourne les sous tâches des sous tâches etc
+     * @return
+     */
+    public abstract ArrayList<Tache> getSousTachesReccursif();
+
+
+    /**
+     * Méthode qui permet de retourner la tâche mère de la tâche courante.
+     * @return
+     */
+    public TacheMere getTacheMere() {
+        return this.tacheMere;
+    }
+
+    public void setTacheMere(TacheMere tacheMere) {
+        this.tacheMere = tacheMere;
+    }
 }

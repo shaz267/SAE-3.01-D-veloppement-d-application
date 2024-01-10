@@ -1,9 +1,9 @@
 package Tablo.Controleur;
 
+import Tablo.Modele.Liste;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tache;
 import Tablo.Vue.VueListe;
-import Tablo.Controleur.ControleurDeplacerTache;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
 
@@ -11,7 +11,6 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
 
     private Modele modele;
     private VueListe vueListeDestination;
-
     private Tache tacheADeplacer;
 
     public ControleurDeplacerTacheListe(Modele m) {
@@ -40,78 +39,60 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
 
     }
 
-    private boolean listeDragOver(DragEvent dragEvent) {
-        boolean accept = false;
-        if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getDragboard().hasString()) {
-            System.out.println("Drag Over - Source: " + dragEvent.getGestureSource() + ", Target: " + dragEvent.getTarget());
-            dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+    private void listeDragOver(DragEvent dragEvent) {
+        if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getTarget() instanceof VueListe) {
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
-            accept = true;
+            Modele.setListeCourante(this.vueListeDestination.getNumListe());
+            System.out.println("Drag Over - Source: " + Modele.getListeCourante());
+            dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
         dragEvent.consume();
-        return accept;
     }
 
+
     // On drag dropped on source
-    private void listeDragDropped(DragEvent dragEvent){
-        this.vueListeDestination = (VueListe) dragEvent.getTarget();
+    private void listeDragDropped(DragEvent dragEvent) {
         System.out.println("Drag Dropped - Source: " + dragEvent.getGestureSource() + ", Target: " + dragEvent.getTarget());        // On récupère la liste de destination
-        int numListe = this.vueListeDestination.getNumListe();
-        System.out.println("numListe : " + numListe);
+        int numListe = Modele.getListeCourante();
 
-        // On vérifie que le numéro de la liste est valide
-        if (numListe >= 0 && numListe < modele.getListes().size()) {
+            System.out.println("numListe : " + Modele.getListeCourante());
+
             System.out.println("deplacement de la tache");
-            this.tacheADeplacer = getTacheADeplacer();
-            int numTache = Modele.getTacheCourante();
-            System.out.println("numTache : " + Modele.getTacheCourante());
-            // On vérifie que le numéro de la tache est valide
-                System.out.println("tache valide");
-                Tache tache = modele.getTaches().get(Modele.getTacheCourante());
-                modele.deplacerTache(tache, numListe);
-                System.out.println("Tache déplacée " + tache.getTitre() + " dans la liste " + numListe);
-                System.out.println(this.modele.getListes().get(numListe).getTaches().get(numTache).getTitre());
+            //System.out.println("numTache : " + Modele.getTacheCourante());
+            setTacheADeplacer();
 
-        }
+
+            modele.deplacerTache(this.tacheADeplacer, numListe);
+
+
 
         dragEvent.setDropCompleted(true);
         dragEvent.consume();
     }
 
+
     private void listeDragExited(DragEvent dragEvent) {
-        this.vueListeDestination = (VueListe) dragEvent.getTarget();
-        System.out.println("Drag Dropped - Source: " + dragEvent.getGestureSource() + ", Target: " + dragEvent.getTarget());        // On récupère la liste de destination
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            this.vueListeDestination = (VueListe) dragEvent.getTarget();
+            System.out.println("Drag Exited - Source: " + dragEvent.getGestureSource() + ", Target: " + dragEvent.getTarget());        // On récupère la liste de destination
+            int numListe = this.vueListeDestination.getNumListe();
+            System.out.println("numListe : " + numListe);
 
 
         //dragEvent.setDropCompleted(true);
         dragEvent.consume();
     }
 
-    public Tache getTacheADeplacer() {
-        Tache tache = null;
-        for (int i = 0; i < modele.getTaches().size(); i++) {
-            if (modele.getTaches().get(i).getNumTache() == Modele.getTacheCourante()) {
-                tache = modele.getTaches().get(i);
+    /**
+     * Méthode qui retourne la tache à déplacer
+     * Cette méthode cherche la tache dont l'attribut selectionnee est à true
+     */
+    private void setTacheADeplacer() {
+        for (Liste l : this.modele.getListes()) {
+            for (Tache t : l.getTaches()) {
+                if (t.isEstSelectionnee()) {
+                    this.tacheADeplacer = t;
+                }
             }
-        }
-        return tache;
-    }
-
-
+        }}
 }

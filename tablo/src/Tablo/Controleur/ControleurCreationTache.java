@@ -56,6 +56,7 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
 
             //On ajoute la tache au modele
             modele.ajouterTache(tache);
+            System.out.println("liste tache modele" + this.modele.getTaches());
         });
     }
 }

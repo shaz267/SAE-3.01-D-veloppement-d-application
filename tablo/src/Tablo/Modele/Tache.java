@@ -167,8 +167,13 @@ public abstract class Tache {
         return this.id;
     }
 
+
+
     public boolean isEstTerminee() {
         return estTerminee;
+    }
+    public boolean isEstSelectionnee() {
+        return selectionnee;
     }
 
     /**
@@ -208,6 +213,7 @@ public abstract class Tache {
     public void setNumTache(int numTache) {
         this.numTache = numTache;
     }
+    public void setEstSelectionnee(boolean select) { this.selectionnee = select;}
     public int getNumListe() {
         return this.numListe;
     }

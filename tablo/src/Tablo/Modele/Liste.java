@@ -80,6 +80,8 @@ public class Liste {
         Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
         // afficher la liste en question
         System.out.println("Liste : " + this.taches);
+        System.out.println("tache ajoutée");
+        t.setNumListe();
         this.taches.add(t);
     }
 
@@ -120,23 +122,23 @@ public class Liste {
     }
 
     /**
-     * Permet de supprimer une tâche de la liste passée en paramètre
+     * Permet de supprimer une tâche de la liste courante
      * @param tache
-     * @param liste
      */
+    public void supprimerTache(Tache tache) {
 
-    public void retirerTache(Tache tache, Liste liste) {
+        //On supprime la tache de la liste
+        this.taches.remove(tache);
 
-     	//On supprime la tache de la liste
-     	liste.getTaches().remove(tache);
-
-     	//On supprime la tache de toutes les sous taches de la liste
-     	for (Tache t : liste.getTaches()) {
-     		if (t.getSousTaches() != null) {
-     			t.getSousTaches().remove(tache);
-     		}
-     	}
+        //On supprime la tache de toutes les sous taches de la liste
+        for (Tache t : this.taches) {
+            if (t.getSousTaches() != null) {
+                t.getSousTaches().remove(tache);
+            }
+        }
     }
+
+
 
 
     /**
@@ -270,15 +272,6 @@ public class Liste {
             }
         }
     }
-
-    /**
-     * Permet de déplacer une tâche dans une autre liste.
-     *
-     * @param tache               La tâche à déplacer.
-     * @param idListeDestination  L'identifiant de la liste de destination.
-     * @return                    Vrai si la tâche a été déplacée avec succès, sinon faux.
-     */
-
 
 
 

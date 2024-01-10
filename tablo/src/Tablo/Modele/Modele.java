@@ -134,6 +134,20 @@ public class Modele implements Sujet {
     }
 
     /**
+     * Méthode qui permet de récupérer la tache à déplacer et la marque comme selectionnée
+     */
+    public Tache getTacheADeplacer() {
+        Tache tacheADeplacer = null;
+        for (Tache tache : this.getTaches()) {
+            if (tache.getNumTache() == Modele.getTacheCourante()) {
+                tacheADeplacer = tache;
+                tacheADeplacer.setEstSelectionnee(true);
+            }
+        }
+        return tacheADeplacer;
+    }
+
+    /**
      * Méthode qui retire une tache du tableau courant de la liste courante.
      */
     public boolean archiverTache() {
@@ -374,10 +388,11 @@ public class Modele implements Sujet {
     }
 
     public synchronized void notifierObservateurs() {
-
+        System.out.println("Notif");
         for (Observateur observateur : observateurs) {
 
             observateur.actualiser(this);
+
         }
     }
 

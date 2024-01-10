@@ -50,6 +50,7 @@ public class Tableau {
 
                 //On ajoute la tâche à la liste courante
                 l.ajouterTache(t);
+                System.out.println("Tache ajoutée à la liste " + Modele.getListeCourante());
             }
         }
     }
@@ -117,43 +118,35 @@ public class Tableau {
      */
     public boolean deplacerTache(Tache tache, int numListeDestination) {
         boolean res = false;
-        System.out.println("deplacerTache");
+        System.out.println("deplacerTache s'execute");
         //On récupère la liste de destination
-        Liste listeDestination = this.listes.get(numListeDestination);
+        Liste listeDestination = this.listes.get(numListeDestination-1);
         Modele.setListeDestination(numListeDestination);
-
-        //On vérifie que la liste de destination n'est pas la liste courante
-        if (listeDestination.getNumListe() != Modele.getListeCourante()) {
+        System.out.println("listeDestination : " + listeDestination.getNumListe());
 
             //On vérifie que la liste de destination existe
             if (listeDestination != null) {
-
-                //On vérifie que la tache existe
-                if (tache != null) {
-
-                    //Si la tache possède des sous tâches, on les déplace aussi
-                    if (tache.getSousTaches() != null) {
-
-                        //On parcourt les sous tâches de la tache
-                        for (Tache sousTache : tache.getSousTaches()) {
-
-                            //On déplace la sous tâche
-                            this.deplacerTache(sousTache, numListeDestination);
-                        }
+                //On retire la tache de la precedente liste
+                for (Liste l : this.listes) {
+                    //Si la liste est la liste de la tache
+                    if (l.getNumListe() == tache.getNumListe()) {
+                        l.supprimerTache(tache);
                     }
-                    //On ajoute la tache à la liste de destination
-                    listeDestination.ajouterTache(tache);
-                    System.out.println("tache ajoutée à la liste de destination");
-                    //On retire la tache de la liste courante
-                    listes.get(Modele.getListeCourante()).retirerTache(tache, listes.get(Modele.getListeDestination()));
-
-                    //On change la liste courante
-                    Modele.setListeCourante(numListeDestination);
-                    System.out.println("Tache déplacée " + tache.getTitre() + " dans la liste " + numListeDestination);
-                    res = true;
                 }
+
+                //On ajoute la tache à la liste de destination
+                listeDestination.ajouterTache(tache);
+                System.out.println(listeDestination);
+
+                // On réinitialise la tacte courante
+                Modele.setTacheCourante(-1);
+                //On change la liste courante
+                Modele.setListeCourante(numListeDestination);
+                System.out.println("Tache déplacée " + tache.getTitre() + " dans la liste " + Modele.getListeCourante());
+                res = true;
+
             }
-        }
+        System.out.println("tache déplacée " + res);
         return res;
     }
 

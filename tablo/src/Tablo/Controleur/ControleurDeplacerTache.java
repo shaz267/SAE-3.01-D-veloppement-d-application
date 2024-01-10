@@ -24,15 +24,14 @@ public class ControleurDeplacerTache implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         this.vueTacheADeplacer = (VueTache) mouseEvent.getSource();
         Modele.setTacheCourante(this.vueTacheADeplacer.getNumTache());
+        this.modele.getTacheADeplacer();
         db = this.vueTacheADeplacer.startDragAndDrop(TransferMode.MOVE);
         ClipboardContent content = new ClipboardContent();
         content.putImage(this.vueTacheADeplacer.snapshot(new SnapshotParameters(), null));
         db.setContent(content);
+        System.out.println("liste tache modele" + this.modele.getTaches());
         mouseEvent.consume();
     }
 
-    public VueTache getVueTacheADeplacer() {
-        return vueTacheADeplacer;
-    }
 
 }

@@ -1,9 +1,12 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 import Tablo.Observateur;
 import Tablo.Sujet;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -534,6 +537,15 @@ public class Modele implements Sujet {
 
                     //On récupère le rang du tableau à supprimer
                     rangSuppr = i;
+
+                    if(Modele.user != null){
+                        try {
+                            tab.deleteAllListeFromTableau();
+                            tab.delete();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
 
                     //Si on a supprimé le tableau 1 alors on change le tableau courant au nouveau tableau 1
                     if (Modele.getTableauCourant() == 1) {

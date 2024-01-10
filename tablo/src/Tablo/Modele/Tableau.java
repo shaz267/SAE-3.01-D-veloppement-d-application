@@ -132,6 +132,45 @@ public class Tableau {
         return listTabs;
     }
 
+
+    /**
+     * Cherche toutes les listes d'un tableau
+     * @param id_tableau id du tableau
+     * @return ArrayList de Liste
+     * @throws SQLException
+     */
+    public static ArrayList<Liste> findAllListeFromTableau(int id_tableau) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id_tableau);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Liste> listP = new ArrayList<>();
+        while (rs.next()) {
+            Liste l = Liste.findById(rs.getInt("id_liste"));
+            listP.add(l);
+        }
+        return listP;
+    }
+
+    /**
+     * Supprime toutes les listes d'un tableau
+     * @throws SQLException
+     */
+    public void deleteAllListeFromTableau() throws SQLException{
+        // On récupère toutes les listes du tableau
+        ArrayList<Liste> listes = findAllListeFromTableau(this.id);
+        // On supprime toutes les listes du tableau
+        for(Liste l : listes){
+            String SQLPrep = "DELETE FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?";
+            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep.setInt(1, this.id);
+            prep.setInt(2, l.getId());
+            prep.execute();
+            l.deleteAllTacheFromListe();
+            l.delete();
+        }
+    }
+
     /**
      * Méthode delete permettant de supprimer un tableau de la base de données
      * @throws SQLException
@@ -370,9 +409,10 @@ public class Tableau {
         Loggeur.enregistrer("Ajout de la liste " + l.getTitre() + " au tableau " + this.titre);
 
         if(Modele.user != null){
-            // On veut vérifier que la liste n'est pas déjà dans la table TABLEAULISTE
-            String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?;";
             try {
+
+                // On veut vérifier que la liste n'est pas déjà dans la table TABLEAULISTE
+                String SQLPrep = "SELECT * FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?;";
                 PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
                 prep.setInt(1, this.id);
                 prep.setInt(2, l.getId());
@@ -380,6 +420,9 @@ public class Tableau {
                 ResultSet rs = prep.getResultSet();
                 //Si la liste n'est pas dans la table TABLEAULISTE
                 if(rs.next() == false){
+                    // On enregistre la liste dans la base de données
+                    l.save();
+
                     //On ajoute le lien entre la liste et le tableau à la base de données
                     SQLPrep = "INSERT INTO `TABLEAULISTE` (`id_tableau`,`id_liste`) VALUES (?,?);";
                     prep = DBConnection.getConnection().prepareStatement(SQLPrep);
@@ -418,6 +461,19 @@ public class Tableau {
                     rangSuppr = i;
                     //On décrémente la liste courante
                     Modele.setListeCourante(Modele.getListeCourante() - 1);
+                    if(Modele.user != null){
+	                    try {
+                            String SQLPrep = "DELETE FROM `TABLEAULISTE` WHERE `id_tableau` = ? AND `id_liste` = ?";
+                            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                            prep.setInt(1, this.id);
+                            prep.setInt(2, liste.getId());
+                            prep.execute();
+                            liste.deleteAllTacheFromListe();
+                            liste.delete();
+	                    } catch (SQLException e) {
+		                    throw new RuntimeException(e);
+	                    }
+                    }
                 }
             }
         }

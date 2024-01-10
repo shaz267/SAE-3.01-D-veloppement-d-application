@@ -137,6 +137,43 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
     }
 
     /**
+     * Méthode findAllTacheFromListe permettant de récupérer toutes les tâches d'une liste de la base de données
+     * @param id_liste id de la liste dont on veut récupérer les tâches
+     * @return ArrayList de Tache
+     * @throws SQLException
+     */
+    public static ArrayList<Tache> findAllTacheFromListe(int id_liste) throws SQLException {
+        String SQLPrep = "SELECT * FROM `TACHELISTE` WHERE `id_liste` = ?";
+        PreparedStatement prep1 = DBConnection.getConnection().prepareStatement(SQLPrep);
+        prep1.setInt(1,id_liste);
+        ResultSet rs = prep1.executeQuery();
+        ArrayList<Tache> listP = new ArrayList<>();
+        while (rs.next()) {
+            Tache t = Tache.findById(rs.getInt("id_tache"));
+            listP.add(t);
+        }
+        return listP;
+    }
+
+    /**
+     * Méthode deleteAllTacheFromListe permettant de supprimer toutes les tâches d'une liste de la base de données
+     * @throws SQLException
+     */
+    public void deleteAllTacheFromListe() throws SQLException {
+        // On récupère toutes les tâches de la liste
+        ArrayList<Tache> listTache = findAllTacheFromListe(this.id);
+        // On supprime toutes les tâches de la base de données
+        for(Tache t : listTache){
+            t.delete();
+            String SQLPrep = "DELETE FROM `TACHELISTE` WHERE `id_liste` = ?";
+            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep.setInt(1,this.id);
+            prep.executeUpdate();
+        }
+
+    }
+
+    /**
      * Méthode delete permettant de supprimer une liste de la base de données
      * @throws SQLException
      */

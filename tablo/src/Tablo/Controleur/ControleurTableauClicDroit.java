@@ -3,10 +3,7 @@ package Tablo.Controleur;
 import Tablo.Modele.Modele;
 import Tablo.Modele.Tableau;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -60,15 +57,25 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
 
             // On crée le TextArea qui va contenir le nouveau titre de la liste
             TextField champ_saisie = new TextField();
+            champ_saisie.setPromptText("Modifier ici");
+
+            Separator separateur = new Separator();
+            separateur.setMinHeight(10);
 
             // On crée le bouton supprimer pour supprimer la liste
             Button supprimer = new Button("Supprimer");
+            supprimer.setStyle("-fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';"); // Couleur du bouton
+            supprimer.setOnMouseEntered(e -> supprimer.setStyle("-fx-background-color: #808080;-fx-font-family: 'Roboto Light';")); // Changement de couleur au survol
+            supprimer.setOnMouseExited(e -> supprimer.setStyle("-fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';"));  // Changement de couleur à la sortie du survol
+            supprimer.setOnMousePressed(e -> supprimer.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';")); // Changement de couleur au clic
 
             //On ajoute un évènement au bouton supprimer
             supprimer.setOnMouseClicked(new ControleurSupprimerTableau(this.modele, numTableau));
 
             // On ajoute les éléments à la VBox
-            conteneur.getChildren().addAll(champ_saisie, supprimer);
+            conteneur.getChildren().addAll(champ_saisie,separateur, supprimer);
+            conteneur.setAlignment(javafx.geometry.Pos.CENTER);
+            conteneur.setSpacing(10);
 
             // On ajoute la VBox à la boîte de dialogue
             dialog.getDialogPane().setContent(conteneur);

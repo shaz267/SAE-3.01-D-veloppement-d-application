@@ -26,11 +26,8 @@ public class VueTache extends Button{
         this.numTache = numTache;
 
         //On change  le style de la tache
-        this.setStyle("-fx-font-weight: bold;");
-        this.setStyle("-fx-font-size: 40px;");
-        this.setStyle("-fx-background-color: #f8b9a7;");
+        this.setStyle("-fx-background-color: rgba(187,108,87,0.71); -fx-font-family: 'Roboto Light'; -fx-text-fill: white; -fx-font-size: 15px;");
         this.setPrefSize(200, 50);
-        this.setFont(javafx.scene.text.Font.font("Verdana", 15));
         this.setOnDragDetected(new ControleurDeplacerTache(modele));
     }
 

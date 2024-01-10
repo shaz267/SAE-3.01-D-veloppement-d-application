@@ -30,7 +30,7 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
         //On récupère la tache qui a été cliquée
         VueTache vT = (VueTache) mouseEvent.getSource();
 
-        vT.setStyle("-fx-background-color: #666666;");
+        vT.setStyle("-fx-background-color: rgba(167,181,248,0.2); -fx-font-family: 'Roboto Light'; -fx-font-size: 15px; -fx-border-width: 1px; -fx-border-color: #000000; -fx-border-radius: 5px;");
 
         //On récupère le numéro de la liste
         int numTache = vT.getNumTache();

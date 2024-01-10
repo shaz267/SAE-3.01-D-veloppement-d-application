@@ -50,7 +50,7 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
             for (Tableau t : this.modele.getTableaux()) {
 
                 // Si le titre est déjà utilisé, on affiche une erreur et on quitte la méthode
-                if (t.getTitre().equals(titre)) {
+                if (t.getTitre().equals(titre)){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Erreur");
                     alert.setHeaderText("Erreur");
@@ -61,12 +61,12 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
                 Loggeur.enregistrer("Ajout du tableau : " + titre + " dans l'application");
             }
 
-            // Si le titre ne dépasse pas 15 caractères, on affiche une erreur et on quitte la méthode
-            if (titre.length() > 15) {
+            // Si le titre dépasse 15 caractères ou est vide, on affiche une erreur et on quitte la méthode
+            if (titre.length() > 15 || titre.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
                 alert.setHeaderText("Erreur");
-                alert.setContentText("Le titre du tableau ne doit pas dépasser 15 caractères");
+                alert.setContentText("Le titre du tableau est vide ou ne doit pas dépasser 15 caractères");
                 alert.showAndWait();
 
                 //sinon on ajoute le tableau

@@ -70,14 +70,14 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
                 this.modele.setTacheCouranteSelectionnee(false);
 
                 //On met la tache à sa couleur d'origine
-                vT.setStyle("-fx-background-color: #f8b9a7");
+                vT.setStyle("-fx-background-color: rgba(187,108,87,0.71); -fx-font-family: 'Roboto Light'; -fx-text-fill: white; -fx-font-size: 15px;");
             }
             else {//Sinon on la selectionne
 
                 this.modele.setTacheCouranteSelectionnee(true);
 
                 //On rend la tache grise
-                vT.setStyle("-fx-background-color: rgba(167,181,248,0.2)");
+                vT.setStyle("-fx-background-color: rgba(167,181,248,0.2); -fx-font-family: 'Roboto Light'; -fx-font-size: 15px; -fx-border-width: 1px; -fx-border-color: #000000; -fx-border-radius: 5px;");
             }
         }
 
@@ -95,33 +95,59 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
             VBox conteneur = new VBox();
 
             Label labeltitre = new Label("Titre");
+            labeltitre.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
             // On crée le TextField qui va contenir le nouveau titre de la tâche
             TextField titreField = new TextField();
             titreField.setText(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
 
+            Separator separator = new Separator();
+            separator.setMinHeight(10);
+
             Label labelcontenu = new Label("Contenu");
+            labelcontenu.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
             // On crée le TextArea qui va contenir la description de la tâche
             TextArea contenuArea = new TextArea();
             contenuArea.setText(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getContenu());
+            contenuArea.setPrefHeight(100);
+
+            Separator separator1 = new Separator();
+            separator1.setMinHeight(10);
 
             Label labelDateDeb = new Label("Date début");
+            labelDateDeb.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
             // On crée le DatePicker pour gérer la date de début
             DatePicker dateDeb = new DatePicker();
             dateDeb.setShowWeekNumbers(false);
             dateDeb.setValue(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateDebut());
 
+            Separator separator2 = new Separator();
+            separator2.setMinHeight(10);
+
             Label labelDateFin = new Label("Date fin");
+            labelDateFin.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
             // On crée le DatePicker pour gérer la date de fin
             DatePicker dateFin = new DatePicker();
             dateFin.setShowWeekNumbers(false);
             dateFin.setValue(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getDateLimite());
 
+            Separator separator3 = new Separator();
+            separator3.setMinHeight(10);
+
             Label labelsoustache = new Label("Choisir une sous tâche");
+            labelsoustache.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
             // On crée la comboBox qui contiendra la liste des tâches qu'on pourra ajouter en sous tâche
             ComboBox<String> listeSousTache = getStringComboBox(numTache);
 
+            Separator separator4 = new Separator();
+            separator4.setMinHeight(10);
+
             // On crée le bouton supprimer pour supprimer la liste
             Button archButton = new Button("Archiver la tâche");
+            archButton.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
+            archButton.setOnMouseEntered(e -> archButton.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
+            archButton.setOnMouseExited(e -> archButton.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
+            archButton.setOnMousePressed(e -> archButton.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
+
 
             // On ajoute le controleur pour supprimer la liste
             archButton.setOnMouseClicked(new ControleurArchiverTache(this.modele));
@@ -129,7 +155,8 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
             VueSousTaches vueSousTaches = new VueSousTaches(this.modele);
 
             // On ajoute les composantes graphiques à la VBox
-            conteneur.getChildren().addAll(labeltitre, titreField, labelcontenu, contenuArea, labelDateDeb, dateDeb, labelDateFin, dateFin, labelsoustache, listeSousTache, vueSousTaches, archButton);
+            conteneur.getChildren().addAll(labeltitre, titreField, separator, labelcontenu, contenuArea, separator1, labelDateDeb, dateDeb, separator2, labelDateFin, dateFin, separator3, labelsoustache, listeSousTache, vueSousTaches, separator4, archButton);
+            conteneur.setSpacing(5);
 
             // On ajoute la VBox à la boîte de dialogue
             dialog.getDialogPane().setContent(conteneur);

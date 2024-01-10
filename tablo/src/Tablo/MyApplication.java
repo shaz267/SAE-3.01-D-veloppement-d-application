@@ -41,6 +41,18 @@ public class MyApplication extends Application {
     @Override
     public void start(Stage stage) {
 
+        // On crée les composantes graphiques qui récupèrent le logo
+        Image logo = new Image("Logo_Tablo.png");
+        ImageView view = new ImageView(logo);
+
+        //On redimensionne l'image
+        view.setFitHeight(40);
+        view.setFitWidth(40);
+
+
+        //On utilise cette image pour l'image de l'application
+        stage.getIcons().add(logo);
+
         //On crée la Hbox principal
         VBox root = new VBox();
 
@@ -49,8 +61,8 @@ public class MyApplication extends Application {
 
         //On crée le titre Connexion
         Text titreConnexion = new Text("Connexion");
-        titreConnexion.setStyle("-fx-font-weight: bold;");
-        titreConnexion.setStyle("-fx-font-size: 40px;");
+        titreConnexion.setStyle("-fx-font-weight: bold;-fx-font-size: 40px;-fx-font-family: 'Roboto Light';-fx-underline: true;");
+
 
         //Email à remplir pour se connecter
         HBox EmailConnection = new HBox();
@@ -58,6 +70,7 @@ public class MyApplication extends Application {
         //On crée le texte Email
         TextField emailField = new TextField();
         emailField.setPromptText("Email");
+        emailField.setStyle("-fx-border-radius: 510px; -fx-border-color: #000000; -fx-border-width: 2px; -fx-background-color: transparent;");
 
         //On ajoute les composantes graphiques à la Hbox EmailConnection
         EmailConnection.getChildren().addAll(emailField);
@@ -68,12 +81,18 @@ public class MyApplication extends Application {
         //On crée le texte Mot de passe qui va être caché
         PasswordField mdpField = new PasswordField();
         mdpField.setPromptText("Mot de passe");
+        mdpField.setStyle("-fx-border-radius: 510px; -fx-border-color: #000000; -fx-border-width: 2px; -fx-background-color: transparent;");
 
         //On ajoute les composantes graphiques à la Hbox MdpConnection
         MdpConnection.getChildren().addAll(mdpField);
 
         //Bouton connexion pour se connecter sur le stage principal
         Button boutonConnexion = new Button("Connexion");
+        boutonConnexion.setStyle("-fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';"); // Couleur du bouton
+        boutonConnexion.setOnMouseEntered(e -> boutonConnexion.setStyle("-fx-background-color: #808080;-fx-font-family: 'Roboto Light';")); // Changement de couleur au survol
+        boutonConnexion.setOnMouseExited(e -> boutonConnexion.setStyle("-fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';"));  // Changement de couleur à la sortie du survol
+        boutonConnexion.setOnMousePressed(e -> boutonConnexion.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';")); // Changement de couleur au clic
+
 
         //On attribue une action au bouton connexion
         boutonConnexion.setOnMouseClicked(event -> {
@@ -93,7 +112,7 @@ public class MyApplication extends Application {
                 alert.showAndWait();
 
                 //On limite le champs de saisie du mot de passe pour éviter les injections SQL
-            } else if (emailVerif(emailRecup) && mdpVerif(mdpRecup)){
+            } else if (emailVerif(emailRecup) && mdpVerif(mdpRecup)) {
 
                 //TODO : relier la connexion à la base de données
 
@@ -113,10 +132,15 @@ public class MyApplication extends Application {
 
         //On crée le texte Inscription
         Text inscription = new Text("Si vous n'avez pas de compte, inscrivez-vous : ");
-        inscription.setStyle("-fx-font-weight: bold;");
+        inscription.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
 
         //On crée le bouton ici pour l'inscription
         Button boutonInscription = new Button("ici");
+        boutonInscription.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
+        boutonInscription.setOnMouseEntered(e -> boutonInscription.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
+        boutonInscription.setOnMouseExited(e -> boutonInscription.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
+        boutonInscription.setOnMousePressed(e -> boutonInscription.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
+
 
         //On attribue une action au bouton inscription
         boutonInscription.setOnMouseClicked(event -> {
@@ -132,21 +156,30 @@ public class MyApplication extends Application {
             //On crée le texte field pour le nom d'utilisateur
             TextField nomUtilisateur = new TextField();
             nomUtilisateur.setPromptText("Nom d'utilisateur");
+            nomUtilisateur.setStyle("-fx-border-radius: 510px; -fx-border-color: #000000; -fx-border-width: 2px; -fx-background-color: transparent;");
 
             //On crée le texte field pour l'email
             TextField email = new TextField();
             email.setPromptText("Email");
+            email.setStyle("-fx-border-radius: 510px; -fx-border-color: #000000; -fx-border-width: 2px; -fx-background-color: transparent;");
 
             //On crée le texte field pour le mot de passe
             PasswordField mdp = new PasswordField();
             mdp.setPromptText("Mot de passe");
+            mdp.setStyle("-fx-border-radius: 510px; -fx-border-color: #000000; -fx-border-width: 2px; -fx-background-color: transparent;");
 
             //On crée le texte field pour la confirmation du mot de passe
             PasswordField confirmationMdp = new PasswordField();
             confirmationMdp.setPromptText("Confirmation du mot de passe");
+            confirmationMdp.setStyle("-fx-border-radius: 510px; -fx-border-color: #000000; -fx-border-width: 2px; -fx-background-color: transparent;");
 
             //On crée le bouton valider
             Button valider = new Button("Valider");
+            valider.setStyle("-fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';-fx-font-size: 15px;"); // Couleur du bouton
+            valider.setOnMouseEntered(e -> valider.setStyle("-fx-background-color: #808080;-fx-font-family: 'Roboto Light';-fx-font-size: 15px;")); // Changement de couleur au survol
+            valider.setOnMouseExited(e -> valider.setStyle("-fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';-fx-font-size: 15px;"));  // Changement de couleur à la sortie du survol
+            valider.setOnMousePressed(e -> valider.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';-fx-font-size: 15px;")); // Changement de couleur au clic
+
             valider.setOnMouseClicked(event1 -> {
 
                 //On récupère les champs de saisie
@@ -200,8 +233,12 @@ public class MyApplication extends Application {
 
             });
 
+            valider.setMinSize(80, 35);
+
             //On ajoute les composantes graphiques à la VBox rootInscription
             rootInscription.getChildren().addAll(nomUtilisateur, email, mdp, confirmationMdp, valider);
+            rootInscription.setAlignment(javafx.geometry.Pos.CENTER);
+            rootInscription.setSpacing(20);
 
             //On ajoute la VBox rootInscription à la boite de dialogue
             dialog.getDialogPane().setContent(rootInscription);
@@ -219,47 +256,30 @@ public class MyApplication extends Application {
 
         //On crée le texte Mode invité
         Text modeInviter = new Text("Mode invité : ");
-        modeInviter.setStyle("-fx-font-weight: bold;");
-        modeInviter.setStyle("-fx-font-size: 20px;");
+        modeInviter.setStyle("-fx-font-weight: bold; -fx-font-family: 'Roboto Light';-fx-font-size: 20px;");
 
         //On crée le bouton ici pour le mode invité
         Button boutonInviter = new Button("ici");
+        boutonInviter.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
+        boutonInviter.setOnMouseEntered(e -> boutonInviter.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
+        boutonInviter.setOnMouseExited(e -> boutonInviter.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
+        boutonInviter.setOnMousePressed(e -> boutonInviter.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
+
 
         //On attribue une action au bouton inviter
         boutonInviter.setOnMouseClicked(event -> {
 
-            //Ouverture boite de dialogue avec un nom d'utilisateur à rentrer
-            TextInputDialog dialog = new TextInputDialog("Nom d'utilisateur");
-            dialog.setTitle("Mode invité");
-            dialog.setHeaderText("Mode invité");
-            dialog.setContentText("Veuillez entrer votre nom d'utilisateur :");
-
-            //On montre la boite de dialogue et on attend la réponse de l'utilisateur
-            dialog.showAndWait().ifPresent(nomUtilisateur -> {
-
-                //Si le nom d'utilisateur est vide ou si on clique sur annuler on ne fait rien sinon on lance l'application
-                if (!nomUtilisateur.isEmpty() || dialog.getDialogPane().getButtonTypes().get(0).equals(ButtonType.CANCEL)) {
-
-                    //On limite le champs de saisie du nom d'utilisateur
-                    if (pseudoVerif(nomUtilisateur)) {
-
-                        //On lance l'application
-                        try {
-                            // Appel de startApplication avec le stage
-                            startApplication(stage);
-                        } catch (IOException e) {
-                            // On relance une exception en cas d'erreur
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
-
-            });
-
-            //TODO : mettre le nom d'utilisateur dans le modèle
-
+            //On lance l'application
+            try {
+                // Appel de startApplication avec le stage
+                startApplication(stage);
+            } catch (IOException e) {
+                // On relance une exception en cas d'erreur
+                throw new RuntimeException(e);
+            }
 
         });
+
 
         //On ajoute les composantes graphiques à la Hbox ModeInviter
         ModeInviter.getChildren().addAll(modeInviter, boutonInviter);
@@ -319,22 +339,6 @@ public class MyApplication extends Application {
         //On utilise cette image pour l'image de l'application
         stage.getIcons().add(logo);
 
-        //Espace de travail comboBox
-        ComboBox<String> espaceTravail = new ComboBox<>();
-
-        //On redimensionne le comboBox
-        espaceTravail.setMinWidth(150);
-        espaceTravail.setMinHeight(40);
-
-        //On met le titre du comboBox en "Espace de travail"
-        espaceTravail.setValue("Espaces de travail");
-        //On met en gras le titre du comboBox
-        espaceTravail.setStyle("-fx-font-weight: bold;");
-
-        //On ajoute l'items du comboBox
-        espaceTravail.getItems().add("Espace de travail 1");
-
-
         //Templates comboBox
         ComboBox<String> templates = new ComboBox<>();
         //On redimensionne le comboBox
@@ -363,45 +367,26 @@ public class MyApplication extends Application {
         //On met le titre du tableau au centre
         titreTableau.setTranslateX(300);
 
-        //Circle
-        /*Circle circle = new Circle();
-        circle.setCenterX(100.0f);
-        circle.setCenterY(100.0f);
-        circle.setRadius(20.0f);
-        circle.setStyle("-fx-fill: #FFFFFF; -fx-stroke: #000000; -fx-stroke-width: 2;");
-
-        //On ajoute un texte dans le cercle
-        Text text = new Text("A");
-        text.setStyle("-fx-font-weight: bold;");
-        text.setStyle("-fx-font-size: 30px;");
-        text.setX(80);
-        text.setY(110);
-
-        StackPane stack = new StackPane();
-        // On crée un padding pour décaler le StackPane à droite (on voulait le bouton du compte sur la droite)
-        stack.setPadding(new Insets(0, 0, 0, 755));
-        stack.getChildren().addAll(circle, text);*/
-
-        //TODO : mettre le StackPane à droite
-
-
         //On ajoute les composantes graphiques à la racine
-        top.getChildren().addAll(view, espaceTravail, templates, titreTableau);
+        top.getChildren().addAll(view, templates, titreTableau);
+        templates.setTranslateX(30);
         root.setTop(top);
 
         VBox left = new VBox();
 
         HBox boutonTableaux = new HBox();
 
-        HBox boutonCollaborateurs = new HBox();
-
         // On crée les composantes graphiques pour la zone 'left'
         //Tableaux
         Text tableaux = new Text("Tableaux");
-        tableaux.setStyle("-fx-font-weight: bold;");
-        tableaux.setStyle("-fx-font-size: 20px;");
+        tableaux.setStyle("-fx-font-weight: bold;-fx-font-family: 'Roboto Light';-fx-font-size: 20px;");
 
-        Button ajouterTableau = new Button("+");
+        Button ajouterTableau = new Button("\uD83D\uDCC5");
+        ajouterTableau.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
+        ajouterTableau.setOnMouseEntered(e -> ajouterTableau.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
+        ajouterTableau.setOnMouseExited(e -> ajouterTableau.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
+        ajouterTableau.setOnMousePressed(e -> ajouterTableau.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
+
 
         ajouterTableau.setOnMouseClicked(new ControleurAjouterTableau(modele));
 
@@ -410,32 +395,21 @@ public class MyApplication extends Application {
         boutonTableaux.getChildren().addAll(tableaux, ajouterTableau);
 
         VueDifferentTableaux vueDifferentTableaux = new VueDifferentTableaux(modele);
-        vueDifferentTableaux.setSpacing(20);
+        vueDifferentTableaux.setSpacing(10);
+        vueDifferentTableaux.setAlignment(javafx.geometry.Pos.CENTER);
 
         modele.enregistrerObservateur(vueDifferentTableaux);
-
-        //Collaborateurs
-        Text collaborateurs = new Text("Collaborateurs");
-        collaborateurs.setStyle("-fx-font-weight: bold;");
-        collaborateurs.setStyle("-fx-font-size: 20px;");
-
-        Button ajouterCollaborateur = new Button("+");
-
-
-        //On ajoute les composantes graphiques à la racine
-        boutonCollaborateurs.getChildren().addAll(collaborateurs, ajouterCollaborateur);
-
-        boutonCollaborateurs.setSpacing(20);
-
-
 
         HBox parametre = new HBox();
 
         Text titreParametres = new Text("Paramètres");
-        titreParametres.setStyle("-fx-font-weight: bold;");
-        titreParametres.setStyle("-fx-font-size: 20px;");
+        titreParametres.setStyle("-fx-font-weight: bold;-fx-font-size: 20px; -fx-font-family: 'Roboto Light'");
 
-        Button boutonParametre = new Button("+");
+        Button boutonParametre = new Button("⚙");
+        boutonParametre.setStyle("-fx-background-color: #C0C0C0;"); // Couleur du bouton
+        boutonParametre.setOnMouseEntered(e -> boutonParametre.setStyle("-fx-background-color: #808080;")); // Changement de couleur au survol
+        boutonParametre.setOnMouseExited(e -> boutonParametre.setStyle("-fx-background-color: #C0C0C0;"));  // Changement de couleur à la sortie du survol
+        boutonParametre.setOnMousePressed(e -> boutonParametre.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;")); // Changement de couleur au clic
 
         parametre.setSpacing(50);
 
@@ -443,22 +417,20 @@ public class MyApplication extends Application {
 
         boutonParametre.setOnMouseClicked(new ControleurParametre(modele));
 
-
-
         //Diagramme de Gantt
         Button boutonDiagGantt = new Button("Diagramme de Gantt");
-        boutonDiagGantt.setStyle("-fx-font-size: 18px;");
+        boutonDiagGantt.setStyle("-fx-background-color: #C0C0C0;-fx-font-size: 15px;"); // Couleur du bouton
+        boutonDiagGantt.setOnMouseEntered(e -> boutonDiagGantt.setStyle("-fx-background-color: #808080;-fx-font-size: 15px;")); // Changement de couleur au survol
+        boutonDiagGantt.setOnMouseExited(e -> boutonDiagGantt.setStyle("-fx-background-color: #C0C0C0;-fx-font-size: 15px;"));  // Changement de couleur à la sortie du survol
+        boutonDiagGantt.setOnMousePressed(e -> boutonDiagGantt.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-size: 15px;")); // Changement de couleur au clic
 
         //On ajoute le controleur pour créer un diagramme de Gantt
         boutonDiagGantt.setOnAction(new ControleurCréerDiagramme(modele));
 
 
-        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, boutonCollaborateurs, parametre, boutonDiagGantt);
-
+        left.getChildren().addAll(boutonTableaux, vueDifferentTableaux, parametre, boutonDiagGantt);
+        left.setPadding(new Insets(20));
         left.setSpacing(20);
-
-        //On décale les composantes graphiques un peu en bas pour qu'ils ne soient pas collés au bord
-        left.setTranslateY(30);
 
         root.setLeft(left);
 
@@ -468,6 +440,7 @@ public class MyApplication extends Application {
         modele.enregistrerObservateur(tableauCentre);
         tableauCentre.getAjouterListe().setOnMouseClicked(new ControleurAjouterListe(modele));
 
+        tableauCentre.setPadding(new Insets(20));
 
         //On ajoute le tableau au centre
         root.setCenter(tableauCentre);
@@ -485,12 +458,13 @@ public class MyApplication extends Application {
 
     /**
      * Méthode qui permet de limiter la taille du pseudo
+     *
      * @param pseudoRecup Pseudo à vérifier
      * @return Vrai si le pseudo est valide, faux sinon
      */
     public boolean pseudoVerif(String pseudoRecup) {
         //On vérifie que le pseudo ne dépasse pas 30 caractères
-        if (pseudoRecup.length() <= 30){
+        if (pseudoRecup.length() <= 30) {
             return true;
         } else {
             //On affiche une erreur si le pseudo dépasse 30 caractères
@@ -526,6 +500,7 @@ public class MyApplication extends Application {
 
     /**
      * Méthode qui permet de vérifier le mot de passe et de limiter la taille du mot de passe
+     *
      * @param mdpRecup Mot de passe à vérifier
      * @return Vrai si le mot de passe est valide, faux sinon
      */

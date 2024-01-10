@@ -43,21 +43,7 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
         //On récupère le bouton supprimer
         Button supprimer = (Button) mouseEvent.getSource();
 
-        //Si on essaye de supprimer le dernier tableau on affiche une erreur
-        if (this.modele.getTableaux().size() == 1) {
-
-            //On affiche une erreur
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur");
-            alert.setContentText("Vous ne pouvez pas supprimer le dernier tableau");
-            alert.showAndWait();
-
-            //On ferme la fenêtre
-            supprimer.getScene().getWindow().hide();
-
-            //Sinon si le tableau est supprimé on ferme la fenêtre
-        } else if (this.modele.retirerTableau()) {
+        if (this.modele.retirerTableau()) {
             //On ferme la fenêtre
             supprimer.getScene().getWindow().hide();
         }

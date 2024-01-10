@@ -11,7 +11,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -197,6 +196,13 @@ public class Liste {
 
         Loggeur.enregistrer("Changement du titre de la liste " + this.titre + " en " + titre);
         this.titre = titre;
+        if(Modele.user != null){
+            try {
+                this.save();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

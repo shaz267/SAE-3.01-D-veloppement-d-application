@@ -49,13 +49,14 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
             // Création de la liste
             Liste l = new Liste(numListe, titre);
 
-            //On ajoute la liste au modele
-            modele.ajouterListe(l);
 	        try {
 		        l.save();
 	        } catch (SQLException e) {
 		        throw new RuntimeException(e);
 	        }
+
+            //On ajoute la liste au modele
+            modele.ajouterListe(l);
         });
     }
 }

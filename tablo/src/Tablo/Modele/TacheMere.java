@@ -1,7 +1,9 @@
 package Tablo.Modele;
 
+import Tablo.DBConnection;
 import Tablo.Loggeur;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -86,6 +88,17 @@ public class TacheMere extends Tache {
 
                 //On modifie la date de fin de la tache fille pour que la durée de la tache fille ne change pas.
                 tache.modifierDateLimite(tache.getDateDebut().plusDays(dureeTache.getDayOfYear()));
+            }
+            if(Modele.user != null){
+                try {
+                    String SQLPrep = "INSERT INTO `ESTSOUSTACHE` (`id_tachemere`, `id_tachefille`) VALUES (?, ?)";
+                    PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                    prep.setInt(1, this.getId());
+                    prep.setInt(2, tache.getId());
+                    prep.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             return this.taches.add(tache);
         }

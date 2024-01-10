@@ -1,1 +1,13 @@
-Lors de cette itération nous nous sommes rendus compte qu'il existait une meilleure façon d'utiliser les templates, Hugo a donc légèrement modifié ce que Mathéo avait fini sans utiliser le Patron Stratégie
+Lors de cette itération nous avons terminés les dernières fonctionnalités qu'il nous restait : 
+  - Implémentation de la BD
+        - Inscription Utilisateur
+        - Connexion Utilisateur
+        - Récupération des taches/listes/tableaux d'un Utilisateur
+        - MAJ automatique des données dans la BD lors de la modification, la suppression et/ou insertion de ces données dans l'application
+        - Fichier d'initialisation des tables nécessaire à l'utilisation de la BD
+  - Diagramme de Gantt fonctionnel
+  - Drag N Drop des tâches
+  - Possibilité de choisir un mode sombre
+
+Nous avons par ailleurs légèrement modifié le style de l'interface de notre application pour le rendre plus agréable à l'utilisation.
+Nous sommes aussi rendus compte qu'il existait une meilleure façon d'implémenter la fonctionnalité d'utilisation des templates notamment en utilisant le patron Stratégie, rajoutant ainsi l'utilisation de ce patron, parmi les 4 autres déjà présents dans l'application.

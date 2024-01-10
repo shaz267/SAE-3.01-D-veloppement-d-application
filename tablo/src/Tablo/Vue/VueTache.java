@@ -1,6 +1,8 @@
 package Tablo.Vue;
 
 import Tablo.Modele.Modele;
+import Tablo.Observateur;
+import Tablo.Sujet;
 import javafx.scene.control.Button;
 import Tablo.Controleur.ControleurDeplacerTache;
 
@@ -15,15 +17,24 @@ public class VueTache extends Button{
     private int numTache;
 
     /**
+     * Attribut qui permet de savoir à quelle liste appartient la tache
+     */
+    private int numListe;
+
+
+    /**
      * Constructeur de la classe VueTache
      *
      * @param titre
      */
-    public VueTache(int numTache, String titre, Modele modele) {
+    public VueTache(int numTache, int numListe, String titre, Modele modele) {
         super(titre);
+
 
         // On initialise l'attribut numTache
         this.numTache = numTache;
+
+        this.numListe = numListe;
 
         //On change  le style de la tache
         this.setStyle("-fx-background-color: rgba(187,108,87,0.71); -fx-font-family: 'Roboto Light'; -fx-text-fill: white; -fx-font-size: 15px;");
@@ -37,5 +48,13 @@ public class VueTache extends Button{
      */
     public int getNumTache() {
         return numTache;
+    }
+
+    /**
+     * Méthode qui permet de récupérer le numéro de la liste
+     * @return numListe
+     */
+    public int getNumListe() {
+        return numListe;
     }
 }

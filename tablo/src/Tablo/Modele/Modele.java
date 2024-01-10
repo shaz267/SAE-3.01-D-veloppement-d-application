@@ -160,7 +160,7 @@ public class Modele implements Sujet {
         for (Tache tache : this.getTaches()) {
             if (tache.getNumTache() == Modele.getTacheCourante()) {
                 tacheADeplacer = tache;
-                tacheADeplacer.setEstSelectionnee(true);
+                tacheADeplacer.setSelectionnee(true);
             }
         }
         return tacheADeplacer;
@@ -274,7 +274,7 @@ public class Modele implements Sujet {
 
     /**
      * Méthode qui ajoute une liste au tableau courant.
-     * @param l la liste à ajouter
+     * @param titre le titre de la liste à ajouter
      */
     public void ajouterListe(String titre) {
 
@@ -867,5 +867,26 @@ public class Modele implements Sujet {
      */
     public static boolean getModeSombre() {
         return ModeSombre;
+    }
+
+    /**
+     * Méthode qui permet de récupérer le numéro de la tache associé au titre passé en paramètre.
+     * @param titre
+     * @param numListe
+     * @return
+     */
+    public int getNumTache(String titre , int numListe) {
+
+        Liste liste = this.getListes().get(numListe);
+
+        for (Tache tache : liste.getTaches()) {
+
+            if (tache.getTitre().equals(titre)) {
+
+                return tache.getNumTache();
+            }
+        }
+
+        return -1;
     }
 }

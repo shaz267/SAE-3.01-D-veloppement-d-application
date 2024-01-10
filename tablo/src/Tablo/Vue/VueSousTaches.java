@@ -34,7 +34,7 @@ public class VueSousTaches extends ScrollPane {
             int i = 0;
             for (Tache t : sousTaches) {
 
-                VueTache vt = new VueTache(t.getNumTache(), t.getTitre(), modele);
+                VueTache vt = new VueTache(t.getNumTache(),t.getNumListe(), t.getTitre(), modele);
 
                 //On diminue la taille de la tache
                 vt.setPrefSize(100, 25);

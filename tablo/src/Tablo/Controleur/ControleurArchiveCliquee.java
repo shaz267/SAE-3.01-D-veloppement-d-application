@@ -46,20 +46,19 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
         // On crée une VBox qui va contenir les choix de l'utilisateur
         VBox conteneur = new VBox();
 
-        //On crée les boutons
-        Button supr = new Button("Supprimer la tâche");
-        supr.setOnMouseClicked(new ControleurSupprimerArchive(modele));
-
         Button envoyerArchive = new Button("Envoyer sur le tableau");
-        envoyerArchive.setOnMouseClicked(new ControleurEnvoyerArchive(modele));
+        envoyerArchive.setOnAction(new ControleurEnvoyerArchive(modele, vT));
 
         //On ajoute les boutons à la VBox
-        conteneur.getChildren().addAll(supr, envoyerArchive);
+        conteneur.getChildren().addAll(envoyerArchive);
 
         //On ajoute la VBox à la boîte de dialogue
         dialog.getDialogPane().setContent(conteneur);
 
         //On affiche la boîte de dialogue
         dialog.showAndWait();
+
+        //On ferme la boite de dialogue
+        vT.getScene().getWindow().hide();
     }
 }

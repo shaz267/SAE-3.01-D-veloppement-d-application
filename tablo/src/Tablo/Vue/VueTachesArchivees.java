@@ -29,7 +29,7 @@ public class VueTachesArchivees extends ScrollPane {
             //Pour chaques taches archivées
             for (Tache t : modele.getTachesArchivees()) {
 
-                VueTache vt = new VueTache(t.getNumTache(), t.getTitre(), modele);
+                VueTache vt = new VueTache(t.getNumTache(), t.getNumListe(), t.getTitre(), modele);
 
                 //On diminue la taille de la tache
                 vt.setPrefSize(200, 50);

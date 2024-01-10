@@ -2,6 +2,7 @@ package Tablo.Modele;
 
 import Tablo.DBConnection;
 import Tablo.Loggeur;
+import Tablo.Vue.VueTache;
 import javafx.scene.control.Alert;
 
 import java.sql.PreparedStatement;
@@ -373,6 +374,12 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
         for (Tache t : this.taches) {
             if (t.getSousTaches() != null) {
                 t.getSousTaches().remove(tache);
+            }
+
+            //On met à jour le numéro de la tache cad on décrémente le numéro de la tache de 1 si le numéro de la tache est supérieur au numéro de la tache qu'on veut supprimer
+            if (t.getNumTache() > tache.getNumTache()) {
+
+                t.setNumTache(t.getNumTache() - 1);
             }
         }
     }

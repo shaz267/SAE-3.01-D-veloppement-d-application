@@ -46,7 +46,14 @@ public abstract class Tache {
      */
     protected boolean estArchivee;
 
+    /**
+     * Attribut numTache de la classe Tache qui est un entier qui représente la place de la tâche dans la liste.
+     */
     protected int numTache;
+
+    /**
+     * Attribut numListe de la classe Tache qui est un entier qui représente la liste à laquelle appartient la tâche.
+     */
     protected int numListe;
 
     /**
@@ -425,7 +432,6 @@ public abstract class Tache {
     public void setNumTache(int numTache) {
         this.numTache = numTache;
     }
-    public void setEstSelectionnee(boolean select) { this.selectionnee = select;}
 
     /**
      * Getter qui retourne l'attribut numListe de la tache

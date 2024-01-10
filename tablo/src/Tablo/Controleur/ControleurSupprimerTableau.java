@@ -18,18 +18,12 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
     private Modele modele;
 
     /**
-     * Numéro du tableau à supprimer
-     */
-    private int numTableau;
-
-    /**
      * Constructeur de la classe ControleurSupprimerTableau
      *
      * @param modele Modele de l'application
      */
-    public ControleurSupprimerTableau(Modele modele, int numTableau) {
+    public ControleurSupprimerTableau(Modele modele) {
         this.modele = modele;
-        this.numTableau = numTableau;
     }
 
     /**

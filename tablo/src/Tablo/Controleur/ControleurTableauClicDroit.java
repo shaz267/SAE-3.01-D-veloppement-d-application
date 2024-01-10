@@ -70,7 +70,7 @@ public class ControleurTableauClicDroit implements EventHandler<MouseEvent> {
             supprimer.setOnMousePressed(e -> supprimer.setStyle("-fx-border-width: 1px; -fx-border-color: #696969; -fx-background-color: #C0C0C0;-fx-font-family: 'Roboto Light';")); // Changement de couleur au clic
 
             //On ajoute un évènement au bouton supprimer
-            supprimer.setOnMouseClicked(new ControleurSupprimerTableau(this.modele, numTableau));
+            supprimer.setOnMouseClicked(new ControleurSupprimerTableau(this.modele));
 
             // On ajoute les éléments à la VBox
             conteneur.getChildren().addAll(champ_saisie,separateur, supprimer);

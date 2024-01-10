@@ -199,10 +199,10 @@ public class MyApplication extends Application {
                     //On vérifie que le mot de passe et la confirmation du mot de passe sont identiques
                     if (mdpRecup.equals(confirmationMdpRecup)) {
                         // On insère l'utilisateur avec le mdp, mail et pseudo récupérés en sauvegardant un objet Utilisateur
-                        Utilisateur user = new Utilisateur(nomUtilisateurRecup, emailRecup, mdpRecup);
+                        Modele.setUser(new Utilisateur(nomUtilisateurRecup, emailRecup, mdpRecup));
                         try {
                             // On insère l'utilisateur dans la base de données
-                            user.save();
+                            Modele.user.save();
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }
@@ -256,38 +256,14 @@ public class MyApplication extends Application {
 
         //On attribue une action au bouton inviter
         boutonInviter.setOnMouseClicked(event -> {
-
-            //Ouverture boite de dialogue avec un nom d'utilisateur à rentrer
-            TextInputDialog dialog = new TextInputDialog("Nom d'utilisateur");
-            dialog.setTitle("Mode invité");
-            dialog.setHeaderText("Mode invité");
-            dialog.setContentText("Veuillez entrer votre nom d'utilisateur :");
-
-            //On montre la boite de dialogue et on attend la réponse de l'utilisateur
-            dialog.showAndWait().ifPresent(nomUtilisateur -> {
-
-                //Si le nom d'utilisateur est vide ou si on clique sur annuler on ne fait rien sinon on lance l'application
-                if (!nomUtilisateur.isEmpty() || dialog.getDialogPane().getButtonTypes().get(0).equals(ButtonType.CANCEL)) {
-
-                    //On limite le champs de saisie du nom d'utilisateur
-                    if (pseudoVerif(nomUtilisateur)) {
-
-                        //On lance l'application
-                        try {
-                            // Appel de startApplication avec le stage
-                            startApplication(stage);
-                        } catch (IOException e) {
-                            // On relance une exception en cas d'erreur
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
-
-            });
-
-            //TODO : mettre le nom d'utilisateur dans le modèle
-
-
+            //On lance l'application
+            try {
+                // Appel de startApplication avec le stage
+                startApplication(stage);
+            } catch (IOException e) {
+                // On relance une exception en cas d'erreur
+                throw new RuntimeException(e);
+            }
         });
 
         //On ajoute les composantes graphiques à la Hbox ModeInviter

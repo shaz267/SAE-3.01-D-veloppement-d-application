@@ -148,10 +148,11 @@ public class Liste {
      * @throws SQLException
      */
     public void saveNew() throws SQLException {
-        String SQLPrep = "INSERT INTO `LISTE` (`id_liste`,`titre`) VALUES (?,?);";
+        String SQLPrep = "INSERT INTO `LISTE` (`id_liste`,`titre`, `id_user`) VALUES (?,?,?);";
         PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
         prep.setInt(1,id);
         prep.setString(2, titre);
+        prep.setInt(3,Modele.user.getId());
         prep.execute();
     }
 

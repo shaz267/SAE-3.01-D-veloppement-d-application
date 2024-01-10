@@ -1,9 +1,14 @@
-# SAE-3.01-D-veloppement-d-application
+# SAE-3.01-Développement-d-application
 ASSAL Hugo
 BOURDON Marin
 DELCOURT Mathias
 GRANDJEAN Mathéo
 KONÉ Ismaël
+
+Initialisation de la BD : 
+  1. Créez une base nommée 'tablo' dans PHPMyAdmin
+  2. Exécutez la classe 'Init.java' qui permet de créer les tables de la BD
+  3. Vous pouvez désormais utiliser librement l'application, pour cela, il vous suffit de lancer la classe MyApplication
 
 Bilan v1 :
 Nous avons ajoutés les fonctionnalités : 

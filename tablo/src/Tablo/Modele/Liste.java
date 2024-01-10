@@ -298,8 +298,6 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
             }
         }
         Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
-        // afficher la liste en question
-        System.out.println("Liste : " + this.taches);
         this.taches.add(t);
 
         if(Modele.user != null){

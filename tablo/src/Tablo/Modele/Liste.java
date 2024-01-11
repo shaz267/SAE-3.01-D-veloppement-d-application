@@ -283,18 +283,18 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
      */
     public void ajouterTache(Tache t) {
         try {
-            // On veut vérifier que la tache n'est pas déjà dans la table TACHELISTE
-            String SQLPrep = "SELECT * FROM `TACHELISTE` WHERE `id_liste` = ? AND `id_tache` = ?;";
-            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
-            prep.setInt(1, this.id);
-            prep.setInt(2, t.getId());
-            prep.execute();
-            ResultSet rs = prep.getResultSet();
+            if(Modele.user != null) {
+                // On veut vérifier que la tache n'est pas déjà dans la table TACHELISTE
+                String SQLPrep = "SELECT * FROM `TACHELISTE` WHERE `id_liste` = ? AND `id_tache` = ?;";
+                PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+                prep.setInt(1, this.id);
+                prep.setInt(2, t.getId());
+                prep.execute();
+                ResultSet rs = prep.getResultSet();
 
-            //Si la tache n'est pas dans la table TACHELISTE
-            if(!rs.next()){
-                // On enregistre la tache dans la base de données si l'user est connecté
-                if(Modele.user != null) {
+                //Si la tache n'est pas dans la table TACHELISTE
+                if (!rs.next()) {
+                    // On enregistre la tache dans la base de données si l'user est connecté
                     try {
                         // On enregistre la liste dans la base de données
                         this.save();
@@ -310,6 +310,7 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
                         e.printStackTrace();
                     }
                 }
+            }
                 //Si la liste est vide alors on initialise le numéro de la tache à 1 sinon on l'initialise à la taille de la liste + 1
                 if (this.taches == null) {
                     t.setNumTache(1);
@@ -335,13 +336,7 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
                 // afficher la liste en question
                 t.setNumListe();
                 this.taches.add(t);
-            }
 
-        else{
-            // afficher la liste en question
-            t.setNumListe();
-            this.taches.add(t);
-        }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

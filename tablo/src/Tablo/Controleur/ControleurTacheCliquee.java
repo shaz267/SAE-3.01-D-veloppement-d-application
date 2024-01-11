@@ -105,7 +105,6 @@ public class ControleurTacheCliquee implements EventHandler<MouseEvent> {
             labeltitre.setStyle("-fx-font-family: 'Roboto Light'; -fx-font-size: 13px");
             // On crée le TextField qui va contenir le nouveau titre de la tâche
             TextField titreField = new TextField();
-            System.out.println(Modele.getTacheCourante());
             titreField.setText(this.modele.getTaches().get(Modele.getTacheCourante() - 1).getTitre());
 
             Separator separator = new Separator();

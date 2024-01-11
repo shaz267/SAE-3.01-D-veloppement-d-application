@@ -299,20 +299,7 @@ public class Modele implements Sujet {
         }
     }
 
-    /**
-     * Méthode qui permet de déplacer une liste dans un tableau.
-     */
-    public void deplacerListe(int numListe) {
 
-        for (Tableau tableau : tableaux) {
-
-            if (tableau.getNumTableau() == tableauCourant) {
-
-                tableau.deplacerListe(numListe);
-                this.notifierObservateurs();
-            }
-        }
-    }
 
     /**
      * Méthode qui permet de récupérer la liste à déplacer et la marque comme selectionnée
@@ -634,6 +621,7 @@ public class Modele implements Sujet {
 
                 }
             }
+
         }
 
         //On décrémente les numéros des tableaux suivants si on a supprimé le tableau courant

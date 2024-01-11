@@ -3202,3 +3202,238 @@
 15:57,36s -- Ajout de la liste Liste 2 au tableau Mon Tableau
 15:57,36s -- Ajout de la tâche Tâche Mère à la liste Liste
 15:57,36s -- Ajout de la tâche Tâche Mère à la liste Liste 2
+18:49,15s -- Ajout de la liste * au tableau Nouveau tableau
+18:49,17s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+18:49,19s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+18:49,20s -- Ajout de la tâche Nouvelle Tache à la liste *
+18:49,22s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+18:49,24s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+18:49,38s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+18:49,39s -- Ajout de la tâche Nouvelle Tache à la liste *
+18:49,41s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+18:51,52s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+18:51,54s -- Ajout de la tâche Nouvelle Tache à la liste *
+18:52,2s -- Ajout de la tâche azj à la liste *
+18:52,4s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+18:52,5s -- Ajout de la tâche Nouvelle Tache à la liste *
+18:53,37s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+19:7,57s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+19:7,58s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+19:8,1s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+19:8,2s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+19:8,3s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+19:8,5s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,10s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:16,12s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:16,14s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:16,16s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,17s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,19s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,22s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,24s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,25s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,26s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,27s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,29s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,30s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,31s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,34s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,35s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,37s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:16,44s -- Ajout de la liste Project Structure au tableau Conduite de projet
+0:16,44s -- Ajout de la tâche Parties prenantes à la liste Project Structure
+0:16,44s -- Ajout de la tâche Revue hebdomadaire à la liste Project Structure
+0:16,44s -- Ajout de la liste Sujet de la prochaine réunion au tableau Conduite de projet
+0:16,44s -- Ajout de la tâche Problèmes HTML ! à la liste Sujet de la prochaine réunion
+0:16,44s -- Ajout de la tâche Activer les cookies ! à la liste Sujet de la prochaine réunion
+0:16,44s -- Ajout de la tâche Répartition des tâches à la liste Sujet de la prochaine réunion
+0:16,44s -- Ajout de la liste Tâches à faire au tableau Conduite de projet
+0:16,44s -- Ajout de la tâche Création bannière du site à la liste Tâches à faire
+0:16,44s -- Ajout de la tâche Création page de remerciement à la liste Tâches à faire
+0:16,44s -- Ajout de la tâche Création cahier des charges à la liste Tâches à faire
+0:16,44s -- Ajout de la liste Tâches en cours au tableau Conduite de projet
+0:16,44s -- Ajout de la tâche Création page d'annexe à la liste Tâches en cours
+0:16,44s -- Ajout de la liste Tâches terminées au tableau Conduite de projet
+0:16,44s -- Ajout de la tâche Création page de contact à la liste Tâches terminées
+0:16,44s -- Ajout de la tâche Création page d'accueil à la liste Tâches terminées
+0:16,46s -- Ajout de la tâche Création page d'accueil à la liste Sujet de la prochaine réunion
+0:16,50s -- Ajout de la tâche Création page d'accueil à la liste Sujet de la prochaine réunion
+0:16,53s -- Ajout de la tâche Création page d'accueil à la liste Tâches à faire
+0:16,54s -- Ajout de la tâche Création page d'accueil à la liste Tâches en cours
+0:16,56s -- Ajout de la tâche Création page d'accueil à la liste Tâches en cours
+0:16,59s -- Ajout de la tâche Création page d'accueil à la liste Tâches en cours
+0:17,1s -- Ajout de la tâche Création page d'accueil à la liste Tâches en cours
+0:17,4s -- Ajout de la tâche Création page d'accueil à la liste Tâches en cours
+0:17,6s -- Ajout de la tâche Création page d'accueil à la liste Tâches terminées
+0:17,8s -- Ajout de la tâche Création page d'accueil à la liste Tâches en cours
+0:17,10s -- Ajout de la tâche Création page d'accueil à la liste Tâches à faire
+0:17,12s -- Ajout de la tâche Création page d'annexe à la liste Tâches à faire
+0:17,14s -- Ajout de la tâche Création page d'annexe à la liste Tâches à faire
+0:17,16s -- Ajout de la tâche Création page d'annexe à la liste Tâches à faire
+0:17,17s -- Ajout de la tâche Création page d'annexe à la liste Tâches en cours
+0:17,19s -- Ajout de la tâche Création page d'annexe à la liste Tâches en cours
+0:17,41s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:18,2s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:20,4s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:20,6s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:20,7s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:20,9s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:20,28s -- Archivage de la tâche Nouvelle Tache de la liste Nouvelle liste
+0:21,16s -- Ajout de la tâche ,  à la liste Nouvelle liste
+0:21,19s -- Ajout de la tâche jn à la liste Nouvelle liste
+0:21,22s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,24s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,26s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,29s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,32s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,33s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,35s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,40s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:21,42s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,11s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,13s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,20s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:23,23s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,24s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,26s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,27s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,30s -- Ajout de la tâche nhk à la liste Nouvelle liste
+0:23,46s -- Ajout du tableau : ; ;x dans l'application
+0:23,46s -- Ajout du tableau : ; ;x dans l'application
+0:23,51s -- Ajout de la liste Nouvelle liste au tableau ; ;x
+0:23,53s -- Ajout de la liste Nouvelle liste au tableau ; ;x
+0:23,58s -- Ajout de la liste b  au tableau ; ;x
+0:24,1s -- Ajout de la liste dl au tableau ; ;x
+0:24,7s -- Ajout de la liste Nouvelle liste au tableau ; ;x
+0:24,8s -- Ajout de la liste Nouvelle liste au tableau ; ;x
+0:24,9s -- Ajout de la liste Nouvelle liste au tableau ; ;x
+0:25,51s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:25,52s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:25,53s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:25,56s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:25,58s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:25,59s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:26,1s -- Ajout de la tâche za,,s à la liste Nouvelle liste
+0:26,4s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:26,6s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:26,8s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:26,10s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:26,12s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:27,53s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:27,55s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:27,56s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:27,58s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:28,0s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:28,3s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:28,5s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:28,8s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,10s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:28,15s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,18s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,20s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,23s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,26s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,27s -- Ajout de la tâche , l à la liste Nouvelle liste
+0:28,29s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:28,31s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:33,30s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:33,32s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:33,34s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:33,40s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:33,44s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:33,52s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:33,57s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:34,0s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:34,4s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:34,8s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:34,11s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:34,13s -- Ajout de la tâche tv à la liste Nouvelle liste
+0:34,17s -- Ajout de la liste *: au tableau Nouveau tableau
+0:34,19s -- Ajout de la tâche Nouvelle Tache à la liste *:
+0:34,22s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:34,26s -- Ajout de la tâche Nouvelle Tache à la liste *:
+0:34,28s -- Ajout de la tâche Nouvelle Tache à la liste *:
+0:34,30s -- Ajout de la tâche Nouvelle Tache à la liste *:
+0:34,32s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:34,34s -- Ajout de la tâche Nouvelle Tache à la liste *:
+0:34,37s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:48,15s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:48,17s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:48,19s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:48,21s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,22s -- Ajout de la tâche nki à la liste Nouvelle liste
+0:48,25s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,28s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,30s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,32s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,34s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,36s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,40s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,42s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,49s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,52s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,53s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,55s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:48,57s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,1s -- Ajout de la tâche * à la liste Nouvelle liste
+0:49,3s -- Ajout de la tâche * à la liste Nouvelle liste
+0:49,4s -- Ajout de la tâche * à la liste Nouvelle liste
+0:49,6s -- Ajout de la tâche * à la liste Nouvelle liste
+0:49,7s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,9s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,11s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,13s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,14s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,15s -- Ajout de la tâche  jkl à la liste Nouvelle liste
+0:49,21s -- Ajout de la tâche * à la liste Nouvelle liste
+0:49,22s -- Ajout de la tâche * à la liste Nouvelle liste
+0:59,14s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:59,16s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:59,17s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:59,18s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+0:59,20s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:59,22s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:59,23s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:59,25s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:59,28s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,29s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:59,31s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+0:59,32s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,34s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,36s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,37s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,40s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,41s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,43s -- Ajout de la tâche tay à la liste Nouvelle liste
+0:59,46s -- Ajout de la tâche tay à la liste Nouvelle liste
+1:12,17s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+1:12,21s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+1:12,23s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,25s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,27s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,35s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+1:12,36s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,38s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,41s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,42s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,44s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:12,46s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,8s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,15s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,26s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,33s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,36s -- Ajout de la tâche l, à la liste Nouvelle liste
+1:14,38s -- Ajout de la tâche l, à la liste Nouvelle liste
+1:14,42s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,43s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,44s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,50s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,53s -- Ajout de la liste Nouvelle liste au tableau Nouveau tableau
+1:14,55s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,56s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+1:14,58s -- Ajout de la tâche Nouvelle Tache à la liste Nouvelle liste
+20:0,50s -- Ajout de la liste Nouvelle liste au tableau ;m
+20:0,51s -- Ajout de la liste Nouvelle liste au tableau ;m
+20:0,52s -- Ajout de la liste Nouvelle liste au tableau ;m
+20:0,55s -- Déplacement de la liste Nouvelle liste à la position 2 du tableau ;m
+20:0,56s -- Déplacement de la liste Nouvelle liste à la position 1 du tableau ;m

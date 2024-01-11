@@ -323,7 +323,7 @@ public class Tableau {
             if (listeDestination != null) {
                 //On retire la tache de la precedente liste
                 for (Liste l : this.listes) {
-                    //Si la liste est la liste de la tache
+                    //Si la liste est la liste de la tache<
                     if (l.getNumListe() == tache.getNumListe()) {
                         l.supprimerTache(tache);
                     }

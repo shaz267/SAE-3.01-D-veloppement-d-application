@@ -39,7 +39,7 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
     private void listeDragOver(DragEvent dragEvent) {
         if (dragEvent.getGestureSource() != dragEvent.getTarget() && dragEvent.getTarget() instanceof VueListe) {
             this.vueListeDestination = (VueListe) dragEvent.getTarget();
-            Modele.setListeCourante(this.vueListeDestination.getNumListe());
+            Modele.setListeDestination(this.vueListeDestination.getNumListe());
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
         dragEvent.consume();
@@ -48,14 +48,9 @@ public class ControleurDeplacerTacheListe implements EventHandler<DragEvent> {
 
     // On drag dropped on source
     private void listeDragDropped(DragEvent dragEvent) {
-        int numListe = Modele.getListeCourante();
+        int numListe = Modele.getListeDestination();
             setTacheADeplacer();
-
-
             modele.deplacerTache(this.tacheADeplacer, numListe);
-
-
-
         dragEvent.setDropCompleted(true);
         dragEvent.consume();
     }

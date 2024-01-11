@@ -389,8 +389,9 @@ public class Tableau {
                 prep.setInt(2, l.getId());
                 prep.execute();
                 ResultSet rs = prep.getResultSet();
+
                 //Si la liste n'est pas dans la table TABLEAULISTE
-                if(rs.next() == false){
+                if(!rs.next()){
                     // On enregistre la liste dans la base de données
                     l.save();
 

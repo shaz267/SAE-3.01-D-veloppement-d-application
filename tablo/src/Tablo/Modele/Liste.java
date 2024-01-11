@@ -282,46 +282,68 @@ String SQLPrep = "SELECT l.id_liste, l.titre, l.num_liste FROM LISTE l INNER JOI
      * @param t tâche à ajouter
      */
     public void ajouterTache(Tache t) {
-        //Si la liste est vide alors on initialise le numéro de la tache à 1 sinon on l'initialise à la taille de la liste + 1
-        if (this.taches == null) {
-            t.setNumTache(1);
-        } else {
-            t.setNumTache(this.taches.size() + 1);
-        }
-        //Si la liste n'est pas vide alors on vérifie que la tache n'existe pas déjà
-        if (this.taches != null) {
-            //Si une tache qui a le même titre existe déjà alors on ne l'ajoute pas
-            for (Tache tache : this.taches) {
-                if (tache.getTitre().equals(t.getTitre())) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur");
-                    alert.setHeaderText("Erreur de Tâche");
-                    alert.setContentText("Vous ne pouvez pas ajouter une tâche qui a le même titre qu'une autre tâche.");
-                    alert.showAndWait();
-                    return;
-                }
-            }
-        }
-        Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
-        // afficher la liste en question
-        t.setNumListe();
-        this.taches.add(t);
+        try {
+            // On veut vérifier que la tache n'est pas déjà dans la table TACHELISTE
+            String SQLPrep = "SELECT * FROM `TACHELISTE` WHERE `id_liste` = ? AND `id_tache` = ?;";
+            PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
+            prep.setInt(1, this.id);
+            prep.setInt(2, t.getId());
+            prep.execute();
+            ResultSet rs = prep.getResultSet();
 
-        if(Modele.user != null){
-            try {
-                // On enregistre la liste dans la base de données
-                this.save();
-                // On enregistre la tache dans la base de données
-                t.save();
-                // On enregistre le lien tache-liste dans la base de données
-                String SQLPrep = "INSERT INTO `TACHELISTE` (`id_liste`,`id_tache`) VALUES (?,?);";
-                PreparedStatement prep = DBConnection.getConnection().prepareStatement(SQLPrep);
-                prep.setInt(1,this.id);
-                prep.setInt(2,t.getId());
-                prep.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            //Si la tache n'est pas dans la table TACHELISTE
+            if(!rs.next()){
+                // On enregistre la tache dans la base de données si l'user est connecté
+                if(Modele.user != null) {
+                    try {
+                        // On enregistre la liste dans la base de données
+                        this.save();
+                        // On enregistre la tache dans la base de données
+                        t.save();
+                        // On enregistre le lien tache-liste dans la base de données
+                        String SQLQuery = "INSERT INTO `TACHELISTE` (`id_liste`,`id_tache`) VALUES (?,?);";
+                        PreparedStatement prep2 = DBConnection.getConnection().prepareStatement(SQLQuery);
+                        prep2.setInt(1, this.id);
+                        prep2.setInt(2, t.getId());
+                        prep2.execute();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                //Si la liste est vide alors on initialise le numéro de la tache à 1 sinon on l'initialise à la taille de la liste + 1
+                if (this.taches == null) {
+                    t.setNumTache(1);
+                } else {
+                    t.setNumTache(this.taches.size() + 1);
+                }
+                //Si la liste n'est pas vide alors on vérifie que la tache n'existe pas déjà
+                if (this.taches != null) {
+                    //Si une tache qui a le même titre existe déjà alors on ne l'ajoute pas
+                    for (Tache tache : this.taches) {
+                        if (tache.getTitre().equals(t.getTitre())) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Erreur");
+                            alert.setHeaderText("Erreur de Tâche");
+                            alert.setContentText("Vous ne pouvez pas ajouter une tâche qui a le même titre qu'une autre tâche.");
+                            alert.showAndWait();
+                            return;
+                        }
+                    }
+                }
+                Loggeur.enregistrer("Ajout de la tâche " + t.getTitre() + " à la liste " + this.titre);
+
+                // afficher la liste en question
+                t.setNumListe();
+                this.taches.add(t);
             }
+
+        else{
+            // afficher la liste en question
+            t.setNumListe();
+            this.taches.add(t);
+        }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

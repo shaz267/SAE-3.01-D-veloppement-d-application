@@ -334,7 +334,7 @@ public class MyApplication extends Application {
                 // On met à jour la liste courante
                 Modele.setListeCourante(liste.getNumListe());
                 // On insère la liste dans le tableau
-                modele.ajouterListe(liste.getTitre());
+                tableau.ajouterListe(liste);
                 // On récupère toutes les tâches de la liste
                 ArrayList<Tache> taches = Tache.findAllByListeId(liste.getId());
                 // Pour chaque tâche
@@ -342,7 +342,7 @@ public class MyApplication extends Application {
                     // On met à jour le numéro de la tâche courante
                     Modele.setTacheCourante(tache.getNumTache());
                     // On ajoute la tâche à la liste
-                    modele.ajouterTache(tache);
+                    liste.ajouterTache(tache);
                     // On récupère toutes les sous tâches de la tâche
                     ArrayList<Tache> sousTaches = tache.findAllSousTaches();
 

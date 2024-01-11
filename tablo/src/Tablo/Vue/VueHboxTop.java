@@ -5,6 +5,7 @@ import Tablo.Modele.Modele;
 import Tablo.Observateur;
 import Tablo.Sujet;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -38,7 +39,10 @@ public class VueHboxTop extends HBox implements Observateur {
         templates.setPromptText("Templates");
 
         //On met en gras le titre du comboBox
-        templates.setStyle("-fx-font-weight: bold;");
+        templates.setStyle("-fx-font-weight: bold; -fx-background-color: #C0C0C0; -fx-font-family: 'Roboto Light'; -fx-font-size: 15px;");
+        templates.setOnMouseEntered(e -> templates.setStyle("-fx-font-weight: bold; -fx-background-color: #808080; -fx-font-family: 'Roboto Light';-fx-font-size: 15px;")); // Changement de couleur au survol
+        templates.setOnMouseExited(e -> templates.setStyle("-fx-font-weight: bold; -fx-background-color: #C0C0C0; -fx-font-family: 'Roboto Light';-fx-font-size: 15px;"));  // Changement de couleur à la sortie du survol
+        templates.setOnMousePressed(e -> templates.setStyle("-fx-font-weight: bold; -fx-background-color: #808080; -fx-font-family: 'Roboto Light';-fx-border-width: 1px; -fx-border-color: #696969; -fx-border-radius: 3px;-fx-font-size: 15px;")); // Changement de couleur au clic
 
         //On ajoute les templates
         templates.getItems().add("Conduite de projet");

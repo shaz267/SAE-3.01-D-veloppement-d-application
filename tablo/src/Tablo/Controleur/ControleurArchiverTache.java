@@ -13,8 +13,12 @@ public class ControleurArchiverTache implements EventHandler<MouseEvent> {
     /**
      * Modèle de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
+    /**
+     * Constructeur de la classe ControleurArchiverTache
+     * @param m Modèle de l'application
+     */
     public ControleurArchiverTache(Modele m) {
 
         this.modele = m;
@@ -28,8 +32,7 @@ public class ControleurArchiverTache implements EventHandler<MouseEvent> {
 
         //On archive la tache courante. Si la tache est archivée, on ferme la fenêtre
         if (modele.archiverTache()) {
-
-            //On notifie les observateurs
+            // On notifie les observateurs
             modele.notifierObservateurs();
 
             // On ferme la fenêtre

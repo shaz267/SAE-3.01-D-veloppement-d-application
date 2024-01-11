@@ -17,7 +17,7 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurAjouterListe
@@ -31,7 +31,7 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
     /**
      * Méthode qui permet de gérer l'ajout d'une liste
      *
-     * @param mouseEvent
+     * @param mouseEvent Evènement de la souris
      */
     @Override
     public void handle(MouseEvent mouseEvent) {
@@ -59,7 +59,6 @@ public class ControleurAjouterListe implements EventHandler<MouseEvent> {
                 //On ajoute la liste au modele
                 modele.ajouterListe(titre);
             }
-
         });
     }
 }

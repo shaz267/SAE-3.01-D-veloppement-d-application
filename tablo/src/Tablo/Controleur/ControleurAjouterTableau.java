@@ -18,7 +18,7 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurAjouterTableau
@@ -58,7 +58,6 @@ public class ControleurAjouterTableau implements EventHandler<MouseEvent> {
                     alert.showAndWait();
                     return;
                 }
-                Loggeur.enregistrer("Ajout du tableau : " + titre + " dans l'application");
             }
 
             // Si le titre dépasse 15 caractères ou est vide, on affiche une erreur et on quitte la méthode

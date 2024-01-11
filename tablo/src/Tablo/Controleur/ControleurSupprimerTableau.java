@@ -15,7 +15,7 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurSupprimerTableau
@@ -41,7 +41,5 @@ public class ControleurSupprimerTableau implements EventHandler<MouseEvent> {
             //On ferme la fenêtre
             supprimer.getScene().getWindow().hide();
         }
-
-
     }
 }

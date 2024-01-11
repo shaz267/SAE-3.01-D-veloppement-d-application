@@ -14,7 +14,7 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurChangementTableau
@@ -37,6 +37,22 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
         Button b = (Button) mouseEvent.getSource();
 
         //On récupère le titre du bouton
+        int numTableau = getNumTableau(b);
+
+        //Si le numéro du tableau est différent de -1 (ce qui veut dire qu'on a trouvé le tableau)
+        if (numTableau != -1) {
+
+            //On change le tableau courant
+            this.modele.changerTableauCourant(numTableau);
+        }
+    }
+
+    /**
+     * Méthode qui permet de récupérer le numéro du tableau en fonction du bouton
+     * @param b Bouton sur lequel on a cliqué
+     * @return
+     */
+    private int getNumTableau(Button b) {
         String titre = b.getText();
 
         int numTableau = -1;
@@ -49,12 +65,6 @@ public class ControleurChangementTableau implements EventHandler<MouseEvent> {
                 numTableau = this.modele.getTableaux().get(i).getNumTableau();
             }
         }
-
-        //Si le numéro du tableau est différent de -1 (ce qui veut dire qu'on a trouvé le tableau)
-        if (numTableau != -1) {
-
-            //On change le tableau courant
-            this.modele.changerTableauCourant(numTableau);
-        }
+        return numTableau;
     }
 }

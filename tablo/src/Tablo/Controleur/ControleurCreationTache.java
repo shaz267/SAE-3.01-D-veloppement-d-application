@@ -13,8 +13,15 @@ import javafx.scene.control.TextInputDialog;
 
 public class ControleurCreationTache implements EventHandler<ActionEvent> {
 
-    private Modele modele;
+    /**
+     * Modele de l'application
+     */
+    private final Modele modele;
 
+    /**
+     * Constructeur de la classe ControleurCreationTache
+     * @param m Modele de l'application
+     */
     public ControleurCreationTache(Modele m) {
         this.modele = m;
     }
@@ -31,7 +38,6 @@ public class ControleurCreationTache implements EventHandler<ActionEvent> {
 
         //On change la liste courante
         Modele.setListeCourante(numListe);
-
 
         //On récupère le numéro de la tâche
         int numTache;

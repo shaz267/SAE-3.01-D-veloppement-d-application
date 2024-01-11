@@ -67,5 +67,4 @@ public class ControleurAjoutTemplates implements EventHandler<ActionEvent> {
         //On crée le tableau avec le template choisi
         this.modele.creerTableau();
     }
-
 }

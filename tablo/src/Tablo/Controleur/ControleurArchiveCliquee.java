@@ -16,8 +16,12 @@ public class ControleurArchiveCliquee implements EventHandler<MouseEvent> {
     /**
      * Modèle de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
+    /**
+     * Constructeur de la classe ControleurArchiveCliquee
+     * @param m Modèle de l'application
+     */
     public ControleurArchiveCliquee(Modele m) {
 
         this.modele = m;

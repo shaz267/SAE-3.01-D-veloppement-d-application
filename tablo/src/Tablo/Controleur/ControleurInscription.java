@@ -19,22 +19,16 @@ import java.sql.SQLException;
 public class ControleurInscription implements EventHandler<MouseEvent> {
 
     /**
-     * Modèle de l'application
-     */
-    private Modele modele;
-
-    /**
      * Stage de l'application
      */
-    private Stage stage;
+    private final Stage stage;
 
     /**
      * Constructeur de la classe ControleurInscription
-     * @param m Modèle de l'application
      * @param stage Stage de l'application
      */
-    public ControleurInscription(Modele m, Stage stage) {
-        this.modele = m;
+    public ControleurInscription(Stage stage) {
+
         this.stage = stage;
     }
 
@@ -45,9 +39,13 @@ public class ControleurInscription implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         //On crée la boite de dialogue pour l'inscription
-        ChoiceDialog<VBox> dialog = new ChoiceDialog<>();
+        Dialog<VBox> dialog = new Dialog<>();
         dialog.setTitle("Inscription");
         dialog.setHeaderText("Inscription");
+
+        // On permet de fermer la boite de dialogue
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CLOSE);
+
 
         //On crée la VBox pour l'inscription
         VBox rootInscription = new VBox();

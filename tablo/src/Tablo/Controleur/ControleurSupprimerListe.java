@@ -13,7 +13,7 @@ public class ControleurSupprimerListe implements EventHandler<MouseEvent> {
     /**
      * Modèle de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     public ControleurSupprimerListe(Modele m) {
         this.modele = m;

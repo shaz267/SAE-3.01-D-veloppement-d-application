@@ -17,7 +17,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurListeCliquee
@@ -31,7 +31,7 @@ public class ControleurListeCliquee implements EventHandler<MouseEvent> {
     /**
      * Méthode qui permet de gérer la modification d'une liste
      *
-     * @param mouseEvent
+     * @param mouseEvent Evènement de la souris
      */
     @Override
     public void handle(MouseEvent mouseEvent) {

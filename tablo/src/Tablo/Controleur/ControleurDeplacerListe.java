@@ -14,7 +14,7 @@ public class ControleurDeplacerListe implements EventHandler<MouseEvent> {
     /**
      * Attribut qui permet de gérer le modèle
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Attribut qui permet de reconnaitre une liste

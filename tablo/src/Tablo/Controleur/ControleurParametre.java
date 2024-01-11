@@ -18,7 +18,7 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurParametre
@@ -102,6 +102,5 @@ public class ControleurParametre implements EventHandler<MouseEvent> {
 
         //On affiche la boîte de dialogue
         dialog.showAndWait();
-
     }
 }

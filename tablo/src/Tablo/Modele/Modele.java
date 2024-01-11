@@ -97,6 +97,9 @@ public class Modele implements Sujet {
         //On ajoute le tableau à la liste des tableaux
         this.tableaux.add(tableau);
 
+        //On enregistre l'action dans les logs
+        Loggeur.enregistrer("Ajout du tableau : " + tableau.getTitre() + " dans l'application");
+
         if(Modele.user != null){
             try {
                 tableau.save();
@@ -174,6 +177,8 @@ public class Modele implements Sujet {
         for (Tableau tableau : tableaux) {
             // Si le tableau est le tableau courant alors on archive la tâche dans le tableau courant
             if (tableau.getNumTableau() == tableauCourant) {
+
+                //On archive la tache
                 return tableau.archiverTache();
             }
         }
@@ -629,7 +634,6 @@ public class Modele implements Sujet {
 
                 }
             }
-
         }
 
         //On décrémente les numéros des tableaux suivants si on a supprimé le tableau courant

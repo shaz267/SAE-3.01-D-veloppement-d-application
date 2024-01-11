@@ -14,12 +14,12 @@ public class ControleurEnvoyerArchive implements EventHandler<ActionEvent> {
     /**
      * Modèle de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Vue de la tache
      */
-    private VueTache vT;
+    private final VueTache vT;
 
     /**
      * Constructeur de la classe ControleurEnvoyerArchive
@@ -34,12 +34,14 @@ public class ControleurEnvoyerArchive implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
+        //On récupère la liste et la tache courante
         Liste l = modele.getListes().get(vT.getNumListe() - 1);
-
         Tache t = l.getTaches().get(vT.getNumTache() - 1);
 
+        //On archive la tache
         t.archiver(false);
 
+        //On notifie les observateurs
         modele.notifierObservateurs();
 
         //On ferme la fenêtre

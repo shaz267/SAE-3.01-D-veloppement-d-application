@@ -31,13 +31,17 @@ public class Init {
 		for (String requete : requetes) {
 			try {
 				DBConnection.getConnection().createStatement().executeUpdate(requete);
-			} catch (Exception e) {}
+			} catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 		}
 		try{
 			Utilisateur.createTable();
 			Tache.createTable();
 			Liste.createTable();
 			Tableau.createTable();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 	}
 }

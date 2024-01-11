@@ -10,12 +10,12 @@ public class ControleurSupprimerSousTache implements EventHandler<MouseEvent> {
     /**
      * Modèle de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Numéro de la tâche
      */
-    private int numTache;
+    private final int numTache;
 
     public ControleurSupprimerSousTache(Modele m, int numTache) {
 

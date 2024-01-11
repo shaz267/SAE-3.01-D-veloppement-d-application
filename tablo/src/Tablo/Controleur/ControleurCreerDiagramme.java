@@ -14,11 +14,11 @@ public class ControleurCreerDiagramme implements EventHandler<ActionEvent> {
     /**
      * Modele de l'application
      */
-    private Modele modele;
+    private final Modele modele;
 
     /**
      * Constructeur de la classe ControleurCréerDiagramme
-     * @param m
+     * @param m Modele de l'application
      */
     public  ControleurCreerDiagramme(Modele m) {
         this.modele = m;
@@ -27,6 +27,7 @@ public class ControleurCreerDiagramme implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
+        // On crée la fenêtre
         Stage popupStage  = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle("Diagramme de Gantt");
@@ -34,6 +35,7 @@ public class ControleurCreerDiagramme implements EventHandler<ActionEvent> {
         // On crée la vue du diagramme de Gantt
         VueDiagrammeGantt vueDiagrammeGantt = new VueDiagrammeGantt(this.modele);
 
+        // On ajoute la vue à la fenêtre
         popupStage.setScene(new Scene(vueDiagrammeGantt, 1000, 600));
 
         popupStage.showAndWait();

@@ -371,15 +371,15 @@ public class MyApplication extends Application {
         stage.getIcons().add(logo);
 
         // On crée les composantes graphiques
-        VueHboxTop top = new VueHboxTop(this.modele);
-        this.modele.enregistrerObservateur(top);
+        VueHboxTop top = new VueHboxTop(modele);
+        modele.enregistrerObservateur(top);
 
         // On place les composantes graphiques dans la zone 'top'
         root.setTop(top);
 
         // On crée les composantes graphiques pour la zone 'left'
-        VueVboxLeft left = new VueVboxLeft(this.modele);
-        this.modele.enregistrerObservateur(left);
+        VueVboxLeft left = new VueVboxLeft(modele);
+        modele.enregistrerObservateur(left);
 
         // On place les composantes graphiques dans la zone 'left'
         root.setLeft(left);

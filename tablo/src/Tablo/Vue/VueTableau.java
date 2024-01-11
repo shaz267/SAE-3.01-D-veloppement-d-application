@@ -74,7 +74,9 @@ public class VueTableau extends ScrollPane implements Observateur {
         if (Modele.getModeSombre()) {
 
             // On change le fond de la vue en sombre si le mode sombre est activé
-            this.setStyle("-fx-border-color: #b3b3b3; -fx-border-width: 1px; -fx-background-color: #2b2b2b;");
+            this.setStyle("-fx-border-color: #b3b3b3; -fx-border-width: 1px; -fx-background-color : #2b2b2b;");
+            this.setFitToWidth(true);
+            this.setFitToHeight(true);
 
             // On change le fond du conteneur des listes en sombre si le mode sombre est activé
             listeContainer.setStyle("-fx-background-color: #2b2b2b;");

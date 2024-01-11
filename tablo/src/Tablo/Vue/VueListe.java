@@ -47,14 +47,14 @@ public class VueListe extends VBox {
         if (Modele.getModeSombre()){
 
             // On change le fond de la liste en sombre si le mode sombre est activé
-            this.setStyle("-fx-background-color: #2b2b2b;");
+            this.setStyle("-fx-background-color: #424242;");
 
             // On change la couleur du texte en clair si le mode sombre est activé
             this.labelTitre.setStyle("-fx-font-size: 15px;-fx-font-family: 'Roboto Light'; -fx-font-weight: bold; -fx-text-fill: #f2f2f2;");
 
             // On associe un évènement pour gérer le survol de la liste
-            this.setOnMouseEntered(event -> setStyle("-fx-background-color: #232323;"));
-            this.setOnMouseExited(event -> setStyle("-fx-background-color: #2b2b2b;"));
+            this.setOnMouseEntered(event -> setStyle("-fx-background-color: #333333;"));
+            this.setOnMouseExited(event -> setStyle("-fx-background-color: #424242;"));
         } else {
 
             // On change le fond de la liste en clair si le mode sombre est désactivé
